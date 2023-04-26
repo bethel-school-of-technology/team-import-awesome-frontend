@@ -1,46 +1,95 @@
+import { useContext, useEffect, useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-
-
+import UserContext from '../contexts/userContext';
 
 const Navbar = () => {
+    let { logOutUser } = useContext(UserContext);
 
-    let currentUser = localStorage.getItem('myUsername');
-    console.log(currentUser);
+    const [currentUser, setUser] = useState();
 
-    function changeLoggedIn(value){
-        if( value === false ){
-            localStorage.setItem('myToken', '');
-            localStorage.setItem('myUsername', '');
-            window.location.reload(true);
-        };
-    };
+    function signedIn() {
+        let currentUser = localStorage.getItem('myUsername');
+        setUser(currentUser);
+    }
+
+    useEffect(() => {
+        async function fetchData() {
+            signedIn();
+        }
+        fetchData();
+    }, [logOutUser]);
 
     return (
         <>
-            <nav style={{display: 'inline-flex'}} className="nav-main">
-                <NavLink to={'/'} style={{fontSize: '40px',marginTop: '20px'}}>GoalGetter</NavLink>
-                <div style={{marginTop: '25px', marginRight: '20px',  position: 'absolute', right: '0'}}>
+            <nav style={{ display: 'inline-flex' }} className="nav-main">
+                <div>
+                    <NavLink
+                        to={'/'}
+                        style={{ fontSize: '40px', marginTop: '20px' }}
+                    >
+                        GoalGetter
+                    </NavLink>
+                </div>
+                <div
+                    style={{
+                        marginTop: '25px',
+                        marginRight: '20px',
+                        position: 'absolute',
+                        right: '0',
+                    }}
+                >
+                    {currentUser ? (
+                        <p
+                            style={{
+                                display: 'inline-flex',
+                                marginRight: '140px',
+                            }}
+                            className="welcome"
+                        >
+                            Hello, {currentUser}!
+                        </p>
+                    ) : (
+                        <p
+                            style={{
+                                display: 'inline-flex',
+                                marginRight: '100px',
+                            }}
+                            className="welcome"
+                        >
+                            Hello, please sign in!
+                        </p>
+                    )}
 
-                    { localStorage.getItem('myToken') ?
-                        <p style={{display: 'inline-flex', marginRight: '140px'}} className='welcome'>Hello, {currentUser}!</p> 
-                        :
-                        <p style={{display: 'inline-flex', marginRight: '100px'}} className='welcome'>Hello, please sign in!</p>
-                    }
+                    <NavLink style={{ marginRight: '10px' }}>
+                        WHY GoalGetters
+                    </NavLink>
 
-                    <NavLink style={{marginRight: '10px'}}>WHY GoalGetters</NavLink>
+                    <NavLink style={{ marginRight: '10px' }}>
+                        HOW It Works
+                    </NavLink>
 
-                    <NavLink style={{marginRight: '10px'}}>HOW It Works</NavLink>
+                    <NavLink style={{ marginRight: '10px' }}>About Us</NavLink>
 
-                    <NavLink style={{marginRight: '10px'}}>About Us</NavLink>
-
-                    { localStorage.getItem('myToken') ?
-                        <NavLink style={{marginRight: '10px'}} onClick={ () => { changeLoggedIn(false); }} to={'/signIn'}>Logout</NavLink>
-                        :
-                        <div style={{display: 'inline-flex'}}>
-                            <NavLink style={{marginRight: '10px'}} to={'/signIn'}>Login</NavLink>
+                    {currentUser ? (
+                        <NavLink
+                            style={{ marginRight: '10px' }}
+                            onClick={() => {
+                                logOutUser();
+                            }}
+                        >
+                            Logout
+                        </NavLink>
+                    ) : (
+                        <div style={{ display: 'inline-flex' }}>
+                            <NavLink
+                                style={{ marginRight: '10px' }}
+                                to={'/signIn'}
+                            >
+                                Login
+                            </NavLink>
                             <NavLink to={'/signUp'}>Register</NavLink>
                         </div>
-                    }
+                    )}
                 </div>
             </nav>
             <div className="outlet">
