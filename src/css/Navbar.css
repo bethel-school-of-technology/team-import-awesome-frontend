@@ -1,0 +1,31 @@
+.nav-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #93b7ff;
+}
+
+.nav-links {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.outlet {
+    padding: 1rem;
+}
