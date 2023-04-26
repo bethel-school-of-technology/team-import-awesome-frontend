@@ -63,30 +63,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-// {currentUser ? (
-//                         <p>Hello, {currentUser}!</p>
-//                     ) : (
-//                         <p>Hello, please sign in!</p>
-//                     )}
-
-//                     <NavLink>WHY GoalGetters</NavLink>
-
-//                     <NavLink>HOW It Works</NavLink>
-
-//                     <NavLink>About Us</NavLink>
-
-//                     {currentUser ? (
-//                         <NavLink
-//                             onClick={() => {
-//                                 logOutUser();
-//                             }}
-//                         >
-//                             Logout
-//                         </NavLink>
-//                     ) : (
-//                         <div>
-//                             <NavLink to={'/signIn'}>Login</NavLink>
-//                             <NavLink to={'/signUp'}>Register</NavLink>
-//                         </div>
-//                     )}
