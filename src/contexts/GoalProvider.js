@@ -1,3 +1,5 @@
+//  rough framework - might have to edit after testing - Brad
+
 import React from 'react';
 import axios from "axios";
 import GoalContext from "./GoalContext.js";
@@ -26,7 +28,7 @@ export const GoalProvider = (props) => {
 
     function addGoal(goal) { // authenticate user to create a goal
         let myHeaders = {
-            Authorization: `Bearer ${localStorage.getItem('userToken')}`
+            Authorization: `Bearer ${localStorage.getItem('myUsername')}`
         };
 
         return axios.post(baseUrl, goal, { headers: myHeaders }) // creates new goal using token - maybe add a check if username matches goal?
@@ -40,7 +42,7 @@ export const GoalProvider = (props) => {
 
     function editGoal(goal) { // authenticate user to edit a goal
         let myHeaders = {
-            Authorization: `Bearer ${localStorage.getItem('userToken')}`
+            Authorization: `Bearer ${localStorage.getItem('myUsername')}`
         }
 
         return axios.put(baseUrl + goal.goalId, goal, { headers: myHeaders }).then(response => { // updates goal - maybe add a check if username matches goal?
@@ -51,7 +53,7 @@ export const GoalProvider = (props) => {
 
     function deleteGoal(id) { // authenticate user to delete a goal
         let myHeaders = {
-            Authorization: `Bearer ${localStorage.getItem('userToken')}`
+            Authorization: `Bearer ${localStorage.getItem('myUsername')}`
         };
 
         return axios.delete(baseUrl + id, { headers: myHeaders }).then(response => { // deletes goal using token - maybe add a check if username matches goal?
