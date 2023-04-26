@@ -1,11 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './App';
-import './css/App.css';
+import React from 'react';
 
-ReactDOM.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-    document.getElementById('root')
-);
+
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(
+
+    <App />
+//followed the directions on an error message to fix create react app
+//said react no longer supported and needed to move to createRoot
+
+)
