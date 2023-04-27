@@ -1,4 +1,33 @@
-img {
-    height: 500px;
-    width: 700px;
+.homediv{
+    text-align: center;
+}
+
+.leftimg{
+    height: 100%;
+    width: 100%;
+    margin-left: 15%;
+}
+
+.rightimg{
+    height: 100%;
+    width: 100%;
+    margin-right: 15%;
+}
+
+.homerows{
+    padding-top: 40px;
+    padding-bottom: 40px
+}
+
+.rowodd{
+    background-color: rgba(106, 158, 217, 0.83);
+}
+
+.outlet{
+    background-color: rgba(248, 202, 134, 0.271);
+}
+
+.inspo{
+    text-align: center;
+    padding-bottom: 20px;
 }

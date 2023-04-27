@@ -36,9 +36,9 @@ const Navbar = () => {
                     ) : (
                         <p>Please Sign In</p>
                     )}
-                    <Link>WHY GoalGetters</Link>
-                    <Link>HOW It Works</Link>
-                    <Link>About Us</Link>
+                    <a rel='noopener' target='' href='#HOW'>HOW It Works</a>
+                    <a rel='noopener' target='' href='#WHY'>WHY GoalGetters</a>
+                    <a rel='noopener' target='' href='#ABOUT'>About Us</a>
                     {user ? (
                         <Link
                             onClick={() => {
