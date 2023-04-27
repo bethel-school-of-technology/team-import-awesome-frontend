@@ -10,7 +10,6 @@ import SignIn from './components/SignIn';
 function App() {
     return (
         <UserProvider>
-
             <div>
                 <BrowserRouter>
                     <Routes>

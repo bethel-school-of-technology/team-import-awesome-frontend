@@ -1,94 +1,57 @@
 import { useContext, useEffect, useState } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import UserContext from '../contexts/userContext';
+import '../css/Navbar.css';
 
 const Navbar = () => {
     let { logOutUser } = useContext(UserContext);
 
-    const [currentUser, setUser] = useState();
+    const [user, setUser] = useState();
 
-    function signedIn() {
-        let currentUser = localStorage.getItem('myUsername');
-        setUser(currentUser);
+    function isSignedIn() {
+        let user = localStorage.getItem('myUsername');
+        setUser(user);
     }
 
     useEffect(() => {
         async function fetchData() {
-            signedIn();
+            isSignedIn();
         }
         fetchData();
     }, [logOutUser]);
 
     return (
         <>
-            <nav style={{ display: 'inline-flex' }} className="nav-main">
-                <div>
-                    <NavLink
-                        to={'/'}
-                        style={{ fontSize: '40px', marginTop: '20px' }}
-                    >
-                        GoalGetter
-                    </NavLink>
+            <nav className="nav-main">
+                <div className="logo">
+                    <h2>
+                        <Link to={'/'}>GoalGetter</Link>
+                    </h2>
                 </div>
-                <div
-                    style={{
-                        marginTop: '25px',
-                        marginRight: '20px',
-                        position: 'absolute',
-                        right: '0',
-                    }}
-                >
-                    {currentUser ? (
-                        <p
-                            style={{
-                                display: 'inline-flex',
-                                marginRight: '140px',
-                            }}
-                            className="welcome"
-                        >
-                            Hello, {currentUser}!
-                        </p>
+                <div className="nav-links">
+                    {user ? (
+                        <h4>
+                            Welcome, <Link to={`/users/${user}`}>{user}</Link>
+                        </h4>
                     ) : (
-                        <p
-                            style={{
-                                display: 'inline-flex',
-                                marginRight: '100px',
-                            }}
-                            className="welcome"
-                        >
-                            Hello, please sign in!
-                        </p>
+                        <p>Please Sign In</p>
                     )}
-
-                    <NavLink style={{ marginRight: '10px' }}>
-                        WHY GoalGetters
-                    </NavLink>
-
-                    <NavLink style={{ marginRight: '10px' }}>
-                        HOW It Works
-                    </NavLink>
-
-                    <NavLink style={{ marginRight: '10px' }}>About Us</NavLink>
-
-                    {currentUser ? (
-                        <NavLink
-                            style={{ marginRight: '10px' }}
+                    <Link>WHY GoalGetters</Link>
+                    <Link>HOW It Works</Link>
+                    <Link>About Us</Link>
+                    {user ? (
+                        <Link
                             onClick={() => {
                                 logOutUser();
                             }}
                         >
-                            Logout
-                        </NavLink>
+                            Sign Out
+                        </Link>
                     ) : (
-                        <div style={{ display: 'inline-flex' }}>
-                            <NavLink
-                                style={{ marginRight: '10px' }}
-                                to={'/signIn'}
-                            >
-                                Login
-                            </NavLink>
-                            <NavLink to={'/signUp'}>Register</NavLink>
-                        </div>
+                        <>
+                            <Link to="/signIn">Sign In</Link>
+                            <Link to="/signUp">Register</Link>
+                        </>
                     )}
                 </div>
             </nav>
