@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import UserContext from './userContext.js';
 
 export const UserProvider = (props) => {
     const baseUrl = 'http://localhost:3000/users/';
+    const [user, setUser] = useState(null); // store user data here after logging in
+
+    useEffect(() => {
+        if (user === null) {
+            setUser(JSON.parse(localStorage.getItem('userData')))
+        }
+    }, [user])
 
     function createUser(username, password, firstName, lastName, age, email) {
         let user = { username, password, firstName, lastName, age, email };
@@ -19,6 +26,9 @@ export const UserProvider = (props) => {
         return axios.post(`${baseUrl}/login`, user).then((response) => {
             localStorage.setItem('myToken', response.data.token);
             localStorage.setItem('myUsername', user.username);
+            localStorage.setItem('userData', JSON.stringify(response.data.user))
+            setUser(response.data.user);
+            // Store response.data in local storage and retrieve it if no user is found on page load
             return new Promise((resolve) => resolve(response.data));
         });
     }
@@ -42,6 +52,7 @@ export const UserProvider = (props) => {
                 loginUser,
                 getUser,
                 logOutUser,
+                user
             }}
         >
             {props.children}
