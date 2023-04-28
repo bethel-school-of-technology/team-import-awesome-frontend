@@ -36,9 +36,9 @@ const Navbar = () => {
                     ) : (
                         <p>Please Sign In</p>
                     )}
-                    <a rel='noopener' target='' href='#HOW'>HOW It Works</a>
-                    <a rel='noopener' target='' href='#WHY'>WHY GoalGetters</a>
-                    <a rel='noopener' target='' href='#ABOUT'>About Us</a>
+                    <a rel='noopener' target='' href='http://localhost:3001/#HOW'>HOW It Works</a>
+                    <a rel='noopener' target='' href='http://localhost:3001/#WHY'>WHY GoalGetters</a>
+                    <a rel='noopener' target='' href='http://localhost:3001/#ABOUT'>About Us</a>
                     {user ? (
                         <Link
                             onClick={() => {
