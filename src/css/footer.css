@@ -1,0 +1,18 @@
+.footer-grid-container {
+    background-color: rgb(196, 212, 229);
+    display: grid;
+    grid-template-areas: "1 2 3";
+    align-items: center;
+    text-align: center;
+    height: 50px;
+}
+
+/* .grid-1 {
+    background-color: rgb(191, 145, 233);
+}
+.grid-2 {
+    background-color: rgb(122, 238, 184);
+}
+.grid-3 {
+    background-color: rgb(238, 187, 121);
+} */

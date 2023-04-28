@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import UserContext from '../contexts/userContext';
+import Footer from './Footer';
 import '../css/Navbar.css';
 
 const Navbar = () => {
@@ -29,27 +30,35 @@ const Navbar = () => {
                     </h2>
                 </div>
                 <div className="nav-links">
+                    <a rel="noopener" target="" href="#HOW">
+                        HOW It Works
+                    </a>
+                    <a rel="noopener" target="" href="#WHY">
+                        WHY GoalGetters
+                    </a>
+                    <a rel="noopener" target="" href="#ABOUT">
+                        About Us
+                    </a>
+
                     {user ? (
-                        <h4>
-                            Welcome, <Link to={`/users/${user}`}>{user}</Link>
-                        </h4>
-                    ) : (
-                        <p>Please Sign In</p>
-                    )}
-                    <a rel='noopener' target='' href='#HOW'>HOW It Works</a>
-                    <a rel='noopener' target='' href='#WHY'>WHY GoalGetters</a>
-                    <a rel='noopener' target='' href='#ABOUT'>About Us</a>
-                    {user ? (
-                        <Link
-                            onClick={() => {
-                                logOutUser();
-                            }}
-                        >
-                            Sign Out
-                        </Link>
+                        <>
+                            <h5>
+                                Welcome,{' '}
+                                <Link to={`/profile-page/${user}`}>{user}</Link>
+                            </h5>
+                            <Link
+                                onClick={() => {
+                                    logOutUser();
+                                }}
+                            >
+                                Sign Out
+                            </Link>
+                        </>
                     ) : (
                         <>
-                            <Link to="/signIn">Sign In</Link>
+                            <p>
+                                Please <Link to="/signIn">Sign In</Link>
+                            </p>
                             <Link to="/signUp">Register</Link>
                         </>
                     )}
@@ -58,6 +67,7 @@ const Navbar = () => {
             <div className="outlet">
                 <Outlet />
             </div>
+            <Footer />
         </>
     );
 };
