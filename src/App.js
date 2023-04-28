@@ -7,6 +7,7 @@ import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import ProfilePage from './components/profilePage';
 import Copyright from './components/Copyright';
+import GoalDetail from './components/GoalDetail';
 
 function App() {
     return (
@@ -21,6 +22,8 @@ function App() {
                             <Route
                                 path="/profilePage"
                                 element={<ProfilePage />}
+                            />
+                            <Route path='/goals/:id' element={<GoalDetail />}
                             />
                             <Route path="/copyright" element={<Copyright />} />
                         </Route>
