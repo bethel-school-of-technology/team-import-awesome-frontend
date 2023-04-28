@@ -6,6 +6,8 @@ import Test from './components/Test';
 import { UserProvider } from './contexts/userProvider';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
+import ProfilePage from './components/profilePage';
+
 
 function App() {
     return (
@@ -17,6 +19,7 @@ function App() {
                             <Route path="/signUp" element={<SignUp />} />
                             <Route path="/signIn" element={<SignIn />} />
                             <Route path="/" element={<Home />} />
+                            <Route path="/profilePage" element={<ProfilePage />} />
                             <Route path="/test" element={<Test />} />
                         </Route>
                         <Route
