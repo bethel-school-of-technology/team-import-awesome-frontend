@@ -2,12 +2,11 @@ import React from 'react';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
-import Test from './components/Test';
 import { UserProvider } from './contexts/userProvider';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import ProfilePage from './components/profilePage';
-
+import Copyright from './components/Copyright';
 
 function App() {
     return (
@@ -19,8 +18,11 @@ function App() {
                             <Route path="/signUp" element={<SignUp />} />
                             <Route path="/signIn" element={<SignIn />} />
                             <Route path="/" element={<Home />} />
-                            <Route path="/profilePage" element={<ProfilePage />} />
-                            <Route path="/test" element={<Test />} />
+                            <Route
+                                path="/profilePage"
+                                element={<ProfilePage />}
+                            />
+                            <Route path="/copyright" element={<Copyright />} />
                         </Route>
                         <Route
                             path="*"

@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import UserContext from '../contexts/userContext';
+import Footer from './Footer';
 import '../css/Navbar.css';
 
 const Navbar = () => {
@@ -29,16 +30,28 @@ const Navbar = () => {
                     </h2>
                 </div>
                 <div className="nav-links">
+
                     {user ? (
                         <h4>
                             Welcome, <Link to={`/users/${user}`}>{user}</Link>
                         </h4>
                     ) : (
-                        <p>Please Sign In</p>
+                        <p style={{paddingRight: "60px"}}>Please Sign In</p>
                     )}
-                    <a rel='noopener' target='' href='http://localhost:3001/#HOW'>HOW It Works</a>
-                    <a rel='noopener' target='' href='http://localhost:3001/#WHY'>WHY GoalGetters</a>
-                    <a rel='noopener' target='' href='http://localhost:3001/#ABOUT'>About Us</a>
+
+
+                    <a rel="noopener" target="" href="http://localhost:3001/#HOW">
+                        HOW It Works
+                    </a>
+                    <a rel="noopener" target="" href="http://localhost:3001/#WHY">
+                        WHY GoalGetters
+                    </a>
+                    <a rel="noopener" target="" href="http://localhost:3001/#ABOUT">
+                        About Us
+                    </a>
+
+                    
+
                     {user ? (
                         <Link
                             onClick={() => {
@@ -49,7 +62,9 @@ const Navbar = () => {
                         </Link>
                     ) : (
                         <>
-                            <Link to="/signIn">Sign In</Link>
+                            <p>
+                                <Link to="/signIn">Sign In</Link>
+                            </p>
                             <Link to="/signUp">Register</Link>
                         </>
                     )}
@@ -58,6 +73,7 @@ const Navbar = () => {
             <div className="outlet">
                 <Outlet />
             </div>
+            <Footer />
         </>
     );
 };
