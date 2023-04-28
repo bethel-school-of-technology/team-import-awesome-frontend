@@ -30,40 +30,46 @@ const Navbar = () => {
                     </h2>
                 </div>
                 <div className="nav-links">
-
-                    {user ? (
-                        <h4>
-                            Welcome, <Link to={`/users/${user}`}>{user}</Link>
-                        </h4>
-                    ) : (
-                        <p style={{paddingRight: "60px"}}>Please Sign In</p>
-                    )}
-
-
-                    <a rel="noopener" target="" href="http://localhost:3001/#HOW">
+                    <a
+                        rel="noopener"
+                        target=""
+                        href="http://localhost:3001/#HOW"
+                    >
                         HOW It Works
                     </a>
-                    <a rel="noopener" target="" href="http://localhost:3001/#WHY">
+                    <a
+                        rel="noopener"
+                        target=""
+                        href="http://localhost:3001/#WHY"
+                    >
                         WHY GoalGetters
                     </a>
-                    <a rel="noopener" target="" href="http://localhost:3001/#ABOUT">
+                    <a
+                        rel="noopener"
+                        target=""
+                        href="http://localhost:3001/#ABOUT"
+                    >
                         About Us
                     </a>
 
-                    
-
                     {user ? (
-                        <Link
-                            onClick={() => {
-                                logOutUser();
-                            }}
-                        >
-                            Sign Out
-                        </Link>
+                        <>
+                            <h5>
+                                Welcome,{' '}
+                                <Link to={`/profile-page/${user}`}>{user}</Link>
+                            </h5>
+                            <Link
+                                onClick={() => {
+                                    logOutUser();
+                                }}
+                            >
+                                Sign Out
+                            </Link>
+                        </>
                     ) : (
                         <>
                             <p>
-                                <Link to="/signIn">Sign In</Link>
+                                Please <Link to="/signIn">Sign In</Link>
                             </p>
                             <Link to="/signUp">Register</Link>
                         </>
