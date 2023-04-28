@@ -30,34 +30,40 @@ const Navbar = () => {
                     </h2>
                 </div>
                 <div className="nav-links">
-                    <a rel="noopener" target="" href="#HOW">
+
+                    {user ? (
+                        <h4>
+                            Welcome, <Link to={`/users/${user}`}>{user}</Link>
+                        </h4>
+                    ) : (
+                        <p style={{paddingRight: "60px"}}>Please Sign In</p>
+                    )}
+
+
+                    <a rel="noopener" target="" href="http://localhost:3001/#HOW">
                         HOW It Works
                     </a>
-                    <a rel="noopener" target="" href="#WHY">
+                    <a rel="noopener" target="" href="http://localhost:3001/#WHY">
                         WHY GoalGetters
                     </a>
-                    <a rel="noopener" target="" href="#ABOUT">
+                    <a rel="noopener" target="" href="http://localhost:3001/#ABOUT">
                         About Us
                     </a>
 
+                    
+
                     {user ? (
-                        <>
-                            <h5>
-                                Welcome,{' '}
-                                <Link to={`/profile-page/${user}`}>{user}</Link>
-                            </h5>
-                            <Link
-                                onClick={() => {
-                                    logOutUser();
-                                }}
-                            >
-                                Sign Out
-                            </Link>
-                        </>
+                        <Link
+                            onClick={() => {
+                                logOutUser();
+                            }}
+                        >
+                            Sign Out
+                        </Link>
                     ) : (
                         <>
                             <p>
-                                Please <Link to="/signIn">Sign In</Link>
+                                <Link to="/signIn">Sign In</Link>
                             </p>
                             <Link to="/signUp">Register</Link>
                         </>
