@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import {debounce} from "debounce";
 import UserContext from './userContext.js';
 
 export const UserProvider = (props) => {
@@ -45,6 +46,22 @@ export const UserProvider = (props) => {
         });
     }
 
+    function updateUserImmediate(user) {
+        console.log("saving")
+        
+        // TODO: Fix authentication
+        axios.put(baseUrl + "edit/" + user.username, user, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('myToken')}`,
+            },
+        }).then((response) => {
+            localStorage.setItem('userData', JSON.stringify(user))
+            setUser(user);
+        });
+    }
+
+    const updateUser = debounce(updateUserImmediate, 2500);
+
     return (
         <UserContext.Provider
             value={{
@@ -52,6 +69,7 @@ export const UserProvider = (props) => {
                 loginUser,
                 getUser,
                 logOutUser,
+                updateUser,
                 user
             }}
         >
