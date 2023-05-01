@@ -1,32 +1,26 @@
 import React, { useContext, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import GoalContext from '../contexts/GoalContext';
-import { useNavigate } from 'react-router-dom';
 
-const CreateGoal = ({show, close}) => {
+const AddGoal = ({show, close}) => {
     const [title, setTitle] = useState("");
     const [plan, setPlan] = useState("");
     const [timeframe, setTimeframe] = useState("");
 
-    let { addGoal} = useContext(GoalContext);
-    let navigate = useNavigate();
+    let { createGoal} = useContext(GoalContext);
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        
-     addGoal(title, plan, timeframe)
-       .then(() => {
-         navigate('/profilePage');
-        window.location.reload(true);
-        console.log('Goal created')
-        })
-        .catch(error => {
+
+    function handleSubmit() {
+
+        close();
+        createGoal(title, plan, timeframe).catch(error => {
             console.log(error);
             window.alert('Error creating goal');
         });
 
-        }
-    return (   
+    }
+
+    return (
         <div className="modal show"
         style={{ display: 'block', position: 'initial' }}>
         <Modal show={show} onHide={close}>
@@ -36,7 +30,7 @@ const CreateGoal = ({show, close}) => {
         <form onSubmit={handleSubmit} className="text-center">
 
             <br></br>
-            <h6 align="left">Title:</h6>
+            <h6>Title:</h6>
             <input  type="text" name="title" value={title} onChange={e => setTitle(e.target.value)} />
             <br></br>
             <h6>Plan:</h6>
@@ -57,9 +51,7 @@ const CreateGoal = ({show, close}) => {
             </Modal>
 
         </div>
-        
-
     )
 };
 
-export default CreateGoal;
+export default AddGoal;
