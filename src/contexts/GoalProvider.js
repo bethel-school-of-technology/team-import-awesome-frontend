@@ -53,7 +53,7 @@ export const GoalProvider = (props) => {
 
     function deleteGoal(id) { // authenticate user to delete a goal
         let myHeaders = {
-            Authorization: `Bearer ${localStorage.getItem('myUsername')}`
+            Authorization: `Bearer ${localStorage.getItem('myToken')}`
         };
 
         return axios.delete(baseUrl + id, { headers: myHeaders }).then(response => { // deletes goal using token - maybe add a check if username matches goal?

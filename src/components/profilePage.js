@@ -4,6 +4,7 @@ import * as dayjs from "dayjs";
 import UserContext from '../contexts/userContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/profilePage.css'
+import { GoalList } from './GoalList';
 
 
 
@@ -29,7 +30,9 @@ const ProfilePage = () => {
     };
 
     return (
+ 
         <UserContext.Consumer>
+             
 
             {
                 ({ profile }) => {
@@ -44,12 +47,6 @@ const ProfilePage = () => {
                             <div className="card-body">
                                 <h4 className="card-title">{user?.firstName} {user?.lastName}</h4>
                                 <h6 className="card-subtitle mb-2 text-muted">Age: {user?.age}</h6>
-                                {/* <EdiText className="card-text"
-                                type={Types.TEXT}
-                                      onSave={save}
-                                      onCancel={cancel}
-                                    value={user?.bio}
-                                    /> */}
 
                                     {/* TODO: Add outline if editable, only editable on authorized user's page */}
                                     <div contentEditable="true" onInput={onBioChange}>
@@ -57,6 +54,8 @@ const ProfilePage = () => {
                                     </div>
                             </div>
                         </div>
+                        
+                        <GoalList/>
                         <div>
                             {profile && profile.map((p) => {
                                 if (p.username === id) {
@@ -77,7 +76,9 @@ const ProfilePage = () => {
                     </div>
                 }
             }
-        </UserContext.Consumer>
+             </UserContext.Consumer>
+
+       
     );
 }
 

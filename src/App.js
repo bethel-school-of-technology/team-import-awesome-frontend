@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import { UserProvider } from './contexts/userProvider';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
-import ProfilePage from './components/profilePage';
+import ProfilePage from './components/ProfilePage';
 import Copyright from './components/Copyright';
 import GoalDetail from './components/GoalDetail';
 
