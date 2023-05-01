@@ -62,6 +62,7 @@ export const UserProvider = (props) => {
 
     const updateUser = debounce(updateUserImmediate, 2500);
 
+
     return (
         <UserContext.Provider
             value={{
