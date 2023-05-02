@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import UserContext from '../contexts/userContext';
 import Footer from './Footer';
-import '../css/navbar.css';
+import '../css/Navbar.css';
 
 const Navbar = () => {
     let { logOutUser } = useContext(UserContext);
