@@ -1,7 +1,17 @@
 .card {
-    width: 30%;
+    width: 40%;
 }
 
 .card-text {
  
+}
+
+.profilePage-main{
+    height: 100vh;
+}
+
+.profile-goallist{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
