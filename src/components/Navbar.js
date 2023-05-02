@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import UserContext from '../contexts/userContext';
 import Footer from './Footer';
-import '../css/Navbar.css';
+import '../css/navbar.css';
 
 const Navbar = () => {
     let { logOutUser } = useContext(UserContext);
@@ -59,8 +59,11 @@ const Navbar = () => {
                                 <Link to={`/profile-page/${user}`}>{user}</Link>
                             </h5>
                             <Link
+                                to="/"
                                 onClick={() => {
-                                    logOutUser();
+                                    logOutUser().then(() => {
+                                        window.location.reload(true);
+                                    });
                                 }}
                             >
                                 Sign Out

@@ -6,7 +6,9 @@ const Footer = () => {
         <div className="footer-grid-container">
             <div className="grid-1">By Team: Import Awesome!</div>
             <div className="grid-2">
-                <Link to={'/copyright'}>Copyright Info</Link>
+                <Link to={'http://localhost:3001/copyright'}>
+                    Copyright Info
+                </Link>
             </div>
             <div className="grid-3">
                 <Link
