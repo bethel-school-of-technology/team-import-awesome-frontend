@@ -47,7 +47,7 @@ export const GoalProvider = (props) => {
     function editGoal(goal) {
         // authenticate user to edit a goal
         let myHeaders = {
-            Authorization: `Bearer ${localStorage.getItem('myUsername')}`,
+            Authorization: `Bearer ${localStorage.getItem('myToken')}`,
         };
 
         return axios

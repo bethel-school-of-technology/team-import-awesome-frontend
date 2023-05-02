@@ -35,30 +35,31 @@ const ProfilePage = () => {
 
             {
                 ({ profile }) => {
-                    return <div>
+                    return (
+                    <div className='profilePage-main'>
                         <br />
                         <div>
                             <h3>Hello {user?.username}. Get goaling!</h3>
                         </div>
                         <br></br>
-                        <div style={{
-                            display: "flex",
-                        }}> 
-                        <div className="card">
-                            <img className="card-img-top" alt="" src="https://plus.unsplash.com/premium_photo-1673296129756-e45408e25250?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1026&q=80"></img>
-                            <div className="card-body">
-                                <h4 className="card-title">{user?.firstName} {user?.lastName}</h4>
-                                <h6 className="card-subtitle mb-2 text-muted">Age: {user?.age}</h6>
+                        <div className='profile-goallist'> 
+                            <div className="card">
+                                <img className="card-img-top" alt="" src="https://plus.unsplash.com/premium_photo-1673296129756-e45408e25250?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1026&q=80"></img>
+                                <div className="card-body">
+                                    <h4 className="card-title">{user?.firstName} {user?.lastName}</h4>
+                                    <h6 className="card-subtitle mb-2 text-muted">Age: {user?.age}</h6>
 
-                                    {/* TODO: Add outline if editable, only editable on authorized user's page */}
-                                    <div contentEditable="true" onInput={onBioChange}>
-                                        {user?.bio || "Add a bio!"}
-                                    </div>
+                                        {/* TODO: Add outline if editable, only editable on authorized user's page */}
+                                        <div contentEditable="true" onInput={onBioChange}>
+                                            {user?.bio || "Add a bio!"}
+                                        </div>
+                                </div>
                             </div>
-                        </div>
                         
-                        <GoalList/>
+                            <GoalList/>
+
                         </div>
+
                         <div>
                             {profile && profile.map((p) => {
                                 if (p.username === id) {
@@ -73,10 +74,13 @@ const ProfilePage = () => {
                                         </div>
                                     )
                                 }
+                                return null
                             })}
 
                         </div>
                     </div>
+                    
+                    )
                 }
             }
              </UserContext.Consumer>
