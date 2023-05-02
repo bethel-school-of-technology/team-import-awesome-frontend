@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {debounce} from "debounce";
+import { debounce } from 'debounce';
 import UserContext from './userContext.js';
 
 export const UserProvider = (props) => {
@@ -9,9 +9,9 @@ export const UserProvider = (props) => {
 
     useEffect(() => {
         if (user === null) {
-            setUser(JSON.parse(localStorage.getItem('userData')))
+            setUser(JSON.parse(localStorage.getItem('userData')));
         }
-    }, [user])
+    }, [user]);
 
     function createUser(username, password, firstName, lastName, age, email) {
         let user = { username, password, firstName, lastName, age, email };
@@ -27,7 +27,10 @@ export const UserProvider = (props) => {
         return axios.post(`${baseUrl}/login`, user).then((response) => {
             localStorage.setItem('myToken', response.data.token);
             localStorage.setItem('myUsername', user.username);
-            localStorage.setItem('userData', JSON.stringify(response.data.user))
+            localStorage.setItem(
+                'userData',
+                JSON.stringify(response.data.user)
+            );
             setUser(response.data.user);
             // Store response.data in local storage and retrieve it if no user is found on page load
             return new Promise((resolve) => resolve(response.data));
@@ -37,7 +40,7 @@ export const UserProvider = (props) => {
     function logOutUser() {
         localStorage.setItem('myToken', '');
         localStorage.setItem('myUsername', '');
-        window.location.reload(true);
+        // window.location.reload(true);
     }
 
     function getUser(id) {
@@ -47,21 +50,22 @@ export const UserProvider = (props) => {
     }
 
     function updateUserImmediate(user) {
-        console.log("saving")
-        
+        console.log('saving');
+
         // TODO: Fix authentication
-        axios.put(baseUrl + "edit/" + user.username, user, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('myToken')}`,
-            },
-        }).then((response) => {
-            localStorage.setItem('userData', JSON.stringify(user))
-            setUser(user);
-        });
+        axios
+            .put(baseUrl + 'edit/' + user.username, user, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('myToken')}`,
+                },
+            })
+            .then((response) => {
+                localStorage.setItem('userData', JSON.stringify(user));
+                setUser(user);
+            });
     }
 
     const updateUser = debounce(updateUserImmediate, 2500);
-
 
     return (
         <UserContext.Provider
@@ -71,7 +75,7 @@ export const UserProvider = (props) => {
                 getUser,
                 logOutUser,
                 updateUser,
-                user
+                user,
             }}
         >
             {props.children}
