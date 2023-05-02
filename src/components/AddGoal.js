@@ -7,13 +7,13 @@ const AddGoal = ({show, close}) => {
     const [plan, setPlan] = useState("");
     const [timeframe, setTimeframe] = useState("");
 
-    let { createGoal} = useContext(GoalContext);
+    let { addGoal} = useContext(GoalContext);
 
 
     function handleSubmit() {
 
         close();
-        createGoal(title, plan, timeframe).catch(error => {
+        addGoal(title, plan, timeframe).catch(error => {
             console.log(error);
             window.alert('Error creating goal');
         });

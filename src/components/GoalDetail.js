@@ -1,31 +1,35 @@
 import { useContext, useState, useEffect } from 'react';
 import GoalContext from '../contexts/GoalContext';
 import CommentContext from '../contexts/CommentContext';
+import { useParams } from 'react-router-dom';
 
 function GoalDetail() {
-    const { goal, editGoal, deleteGoal } = useContext(GoalContext); // retrieve goal data and editGoal & deleteGoal functions from context
+    const { goals, editGoal, deleteGoal } = useContext(GoalContext); // retrieve goal data and editGoal & deleteGoal functions from context
     const [userGoal, setUserGoal] = useState(null); // set state variable for the user's goal
     const [isEditing, setIsEditing] = useState(false); // set state variable for edit mode
     const { comment, getAllComments } = useContext(CommentContext); // retrieve comments data and getAllComments function from context
     const [goalComments, setGoalComments] = useState([]); // set state variable for comments that belong to the user's goal
-
+    let { id } = useParams();
 
     useEffect(() => {
         // find the goal with the same username as the logged in user
+        console.log(goals)
         async function fetchData() {
-            const currentUser = localStorage.getItem('myUsername');
-            const userGoal = goal.find(g => g.username === currentUser);
-            setUserGoal(userGoal);
+            console.log(goals)
+            setUserGoal(goals.find(g => g.goalId == id));
             setGoalComments(comment.filter(c => c.goalId === userGoal.id)); // filter comments that belong to the user's goal
             getAllComments(); // fetch all comments to ensure the latest data is shown
-        } fetchData();
+        }
+        if (userGoal === null && goals.length > 0) {
+            fetchData();
+        };
         console.log("User Goal:", userGoal);
-    }, [comment, goal, getAllComments]);
+    }, [comment, goals, getAllComments]);
 
 
     // display loading spinner while fetching data
     if (!userGoal) {
-        return <div>Loading...</div>;
+        return <div>Loading... {JSON.stringify(goals)}</div>;
     }
 
     // handle form submission in edit mode
@@ -76,7 +80,8 @@ function GoalDetail() {
                     <h2>{userGoal.title}</h2>
                     <p>{userGoal.plan}</p>
                     <p>Completed: {userGoal.completed ? 'Yes' : 'No'}</p>
-                    <p>Timeframe: {userGoal.timeframe.toDateString()}</p>
+                    <p>Plan: {userGoal.plan}</p>
+                    <p>Timeframe: {userGoal.timeframe}</p>
                     <button type="button" onClick={handleToggleEdit}>Edit</button>
                     <button onClick={handleDelete}>Delete</button>
                     <hr />
