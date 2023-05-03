@@ -14,13 +14,13 @@ export function GoalList() {
                     {goals.map(goal => <li key={goal.id} style={{
                         display: "flex",
                         gap: "10px"
-                    }}><a href={`/goals/${goal.goalId}`} >{goal.title}</a>
+                    }}><a className="goal-link" href={`/goals/${goal.goalId}`} >{goal.title}</a>
                     </li>)}
 
             </li>
         </ul>
         <div>
-            <Button variant="primary" onClick={() => setShowModal(true)}>
+            <Button className="btn" variant="primary" onClick={() => setShowModal(true)}>
                 Add Goal
             </Button>
         </div>

@@ -24,27 +24,27 @@ const AddGoal = ({show, close}) => {
         <div className="modal show"
         style={{ display: 'block', position: 'initial' }}>
         <Modal show={show} onHide={close}>
-            <Modal.Header closeButton>
-                <Modal.Title>Set a New Goal</Modal.Title>
+            <Modal.Header closeButton className='modal-header'>
+                <Modal.Title className='modal-title'>Set a New Goal</Modal.Title>
             </Modal.Header>
-        <form onSubmit={handleSubmit} className="text-center">
+        <form onSubmit={handleSubmit} className="modal-form">
 
             <br></br>
-            <h6>Title:</h6>
-            <input  type="text" name="title" value={title} onChange={e => setTitle(e.target.value)} />
+        
+            <input  placeholder='title' type="text" name="title" value={title} onChange={e => setTitle(e.target.value)} />
             <br></br>
-            <h6>Plan:</h6>
-            <input type="text" name="plan" value={plan} onChange={e => setPlan(e.target.value)} />
+       
+            <input placeholder='plan' type="text" name="plan" value={plan} onChange={e => setPlan(e.target.value)} />
             <br></br>
-            <h6>Timeframe:</h6>
-            <input type="text" name="timeframe" value={timeframe} onChange={e => setTimeframe(e.target.value)} />
+  
+            <input placeholder='timeframe'  type="text" name="timeframe" value={timeframe} onChange={e => setTimeframe(e.target.value)} />
             <br /><br></br>
         </form>
-        <Modal.Footer>
-                    <Button variant="secondary" onClick={close}>
+        <Modal.Footer className='modal-footer'>
+                    <Button onClick={close}>
                         Cancel
                     </Button>
-                    <Button variant="primary" onClick={handleSubmit}>
+                    <Button onClick={handleSubmit}>
                         Add Goal
                     </Button>
                 </Modal.Footer>

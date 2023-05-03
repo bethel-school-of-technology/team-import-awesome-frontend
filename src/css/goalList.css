@@ -1,0 +1,26 @@
+.list-group {
+    color: #ffffff;
+}
+
+.list-group-item {
+    font-family: "Questria", sans-serif;
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 4;
+    background: #94B0B7;
+    width: 50rem;
+    margin: 7em;
+    padding: 2em;
+    border-radius: 50px;
+}
+
+a.goal-link {
+    color:#ffffff;
+    width: 50rem;
+    border-style: none none solid;
+    border-color: #ffffff;
+}
+
+a.goal-link:hover {
+    color:#C2C8C5;
+}

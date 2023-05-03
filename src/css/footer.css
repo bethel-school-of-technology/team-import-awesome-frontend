@@ -1,5 +1,5 @@
 .footer-grid-container {
-    background-color: rgb(196, 212, 229);
+    background-color:#C2C8C5;
     display: grid;
     grid-template-areas: "1 2 3";
     align-items: center;
