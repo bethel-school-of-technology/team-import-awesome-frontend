@@ -42,27 +42,29 @@ export function GoalList() {
             <GoalContext.Consumer>
                 {({goals}) => {
                     return (
-                        <div>
-                            <Button variant="primary" onClick={() => setShowModal(true)}>
-                                Add Goal
-                            </Button>
+                        <div className="goal-container">
+  
                             <ul class="list-group">
-                        
-                                        {goals.map(goal => 
+
+                                        {goals.map(goal =>
                                             <li key={goal.goalId} className="list-group-item">
                                                 <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange}/>
                                                 <a className="goalItem" href={`/goals/${goal.goalId}`} >{goal.title}</a>
                                             </li>
-                                        
+
                                         )}
 
                             </ul>
-                            
+                            <br></br>
+                            <Button variant="primary" onClick={() => setShowModal(true)}>
+                                Add Goal
+                            </Button>
+
                             <AddGoal show={showModal} close={() => setShowModal(false)} />
                         </div>
                     )
                 }}
-            
+
             </GoalContext.Consumer>
         </div>
     )

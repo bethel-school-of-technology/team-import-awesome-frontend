@@ -1,0 +1,21 @@
+.modal-header {
+    background-color: #7697A0;
+    font-weight: 800;
+    text-align: center;
+}
+.modal-title {
+    font-weight: 800;
+    text-align: center;
+}
+.modal-form {
+    background-color: #C2C8C5;   
+    padding: 2em;
+}
+
+.modal-footer {
+    background-color: #7697A0;
+}
+
+input {
+    margin: 1em;
+}

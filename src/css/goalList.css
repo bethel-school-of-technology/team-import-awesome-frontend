@@ -1,3 +1,32 @@
+.goal-container {
+    margin-top: 5em;
+}
 .goalItem{
+    margin: 2em;
     padding: 10px 20px;
+    color: #ffffff;
+}
+
+
+.list-group-item {
+    font-family: "Questria", sans-serif;
+    color: #ffffff;
+    font-size: 18px;
+    background: #94B0B7;
+    width: 50rem;
+    padding: 2em;
+    border-radius: 15
+    px;
+    border: none solid none;
+}
+
+a.goal-link {
+    color:#ffffff;
+    width: 50rem;
+    border-style: none none solid;
+    border-color: #ffffff;
+}
+
+a.goal-link:hover {
+    color:#C2C8C5;
 }
