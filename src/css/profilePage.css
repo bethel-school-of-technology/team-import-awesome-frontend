@@ -1,7 +1,104 @@
-.card {
-    width: 30%;
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&display=swap');
+
+body {
+font-family: "Questria", sans-serif;
+font-size: 12px;
+line-height: 1.7;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+color: #ffffff;
+font-weight: 400;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+font-family: "Questria", sans-serif !important;
+}
+.container {
+background: #4A707A;
+
+margin: 5em;
+padding: 2em;
+border-radius: 10px;
+
+}
+.title {
+font-size: 3rem;
+font-weight: 300;
+text-align: center;
+}
+.user-profile {
+text-align: center;
+}
+.avatar-container {
+width: 15rem;
+height: 15rem;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 auto;
+border-radius: 50%;
+}
+.avatar-container .avatar {
+width: 12rem;
+height: 12rem;
+border-radius: 50%;
+}
+.user-name {
+font-size: 2.3rem;
+font-weight: 500;
 }
 
-.card-text {
- 
+.user-info {
+justify-content: space-evenly;
+text-align: center;
+padding: 30px;
+margin-top: -15px;
+color: #fff;
 }
+
+
+button.btn {
+  align-items: center;
+  background-color: #4A707A;
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+  color: #ffffff;
+  display: inline-flex;
+  font-family: "Questria";
+  font-size: 18px;
+  font-weight: 700;
+  height: 48px;
+  letter-spacing: .25px;
+  line-height: normal;
+  max-width: 100%;
+  overflow: visible;
+  padding: 2px 24px;
+  margin-left: auto;
+  display: block;
+  text-align: center;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+}
+
+.btn:hover {
+  background: #7697A0;
+  color: #ffffff;
+}
+
+.btn:active {
+  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+  outline: none;
+  background: #7697A0;
+  color: #ffffff;
+}
+
+
+
