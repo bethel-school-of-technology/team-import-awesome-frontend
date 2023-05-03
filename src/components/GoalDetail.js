@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import GoalContext from '../contexts/GoalContext';
 import CommentContext from '../contexts/CommentContext';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function GoalDetail() {
     const { goals, editGoal, deleteGoal } = useContext(GoalContext); // retrieve goal data and editGoal & deleteGoal functions from context
@@ -10,13 +10,14 @@ function GoalDetail() {
     const { comment, getAllComments } = useContext(CommentContext); // retrieve comments data and getAllComments function from context
     const [goalComments, setGoalComments] = useState([]); // set state variable for comments that belong to the user's goal
     let { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         // find the goal with the same username as the logged in user
         console.log(goals)
         async function fetchData() {
             console.log(goals)
-            setUserGoal(goals.find(g => g.goalId == id));
+            setUserGoal(goals.find(g => g.goalId === parseInt(id)));
             setGoalComments(comment.filter(c => c.goalId === userGoal.id)); // filter comments that belong to the user's goal
             getAllComments(); // fetch all comments to ensure the latest data is shown
         }
@@ -24,7 +25,7 @@ function GoalDetail() {
             fetchData();
         };
         console.log("User Goal:", userGoal);
-    }, [comment, goals, getAllComments]);
+    }, [comment, goals, getAllComments, id, userGoal]);
 
 
     // display loading spinner while fetching data
@@ -47,7 +48,13 @@ function GoalDetail() {
     // delete goal
     const handleDelete = () => {
         if (window.confirm('Are you sure you want to delete this goal?')) { // user confirmation to prevent accidental deleting
-            deleteGoal(userGoal.id);
+            deleteGoal(userGoal.goalId).then(() => {
+                navigate(`/profile-page/${userGoal.username}`)
+            }).catch((error) => {
+                console.log(error)
+                navigate('/signIn')
+            });
+            
         }
     };
 
@@ -85,7 +92,7 @@ function GoalDetail() {
                     <button type="button" onClick={handleToggleEdit}>Edit</button>
                     <button onClick={handleDelete}>Delete</button>
                     <hr />
-                    <h3>Comments:</h3>
+                    {/* <h3>Comments:</h3>
                     {goalComments.length > 0 ? (
                         <ul>
                             {goalComments.map((comment) => (
@@ -97,7 +104,7 @@ function GoalDetail() {
                         </ul>
                     ) : (
                         <p>No comments yet.</p>
-                    )}
+                    )} */}
                 </div>
             )}
         </div>

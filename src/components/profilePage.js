@@ -89,6 +89,7 @@ const ProfilePage = () => {
                                         </div>
                                     )
                                 }
+                                return null
                             })}
 
                         </div>
