@@ -4,20 +4,21 @@ import CommentContext from '../contexts/CommentContext';
 import { useNavigate, useParams } from 'react-router-dom';
 
 function GoalDetail() {
-    const { goals, editGoal, deleteGoal } = useContext(GoalContext); // retrieve goal data and editGoal & deleteGoal functions from context
+    const { goals, editGoal, deleteGoal, getGoal } = useContext(GoalContext); // retrieve goal data and editGoal & deleteGoal functions from context
     const [userGoal, setUserGoal] = useState(null); // set state variable for the user's goal
     const [isEditing, setIsEditing] = useState(false); // set state variable for edit mode
     const { comment, getAllComments } = useContext(CommentContext); // retrieve comments data and getAllComments function from context
     const [goalComments, setGoalComments] = useState([]); // set state variable for comments that belong to the user's goal
-    let { id } = useParams();
+    let { goalId } = useParams();
     const navigate = useNavigate();
 
+
     useEffect(() => {
+        if (goalId === undefined) return
+
         // find the goal with the same username as the logged in user
-        console.log(goals)
         async function fetchData() {
-            console.log(goals)
-            setUserGoal(goals.find(g => g.goalId === parseInt(id)));
+                await getGoal(goalId).then((goal) => setUserGoal(goal))
             setGoalComments(comment.filter(c => c.goalId === userGoal.id)); // filter comments that belong to the user's goal
             getAllComments(); // fetch all comments to ensure the latest data is shown
         }
@@ -25,7 +26,7 @@ function GoalDetail() {
             fetchData();
         };
         console.log("User Goal:", userGoal);
-    }, [comment, goals, getAllComments, id, userGoal]);
+    }, [comment, goals, getAllComments, goalId, userGoal]);
 
 
     // display loading spinner while fetching data
