@@ -1,73 +1,123 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import AddGoal from "./AddGoal";
 import GoalContext from "../contexts/GoalContext";
 import '../css/goalList.css'
+import { useParams } from "react-router-dom";
+
 
 export function GoalList() {
-    const { goals, editGoal } = useContext(GoalContext);
+   const [ goals, setGoals ] = useState([])
+   let { username } = useParams();
+    let { getUserGoals } = useContext(GoalContext)
+
+
+    const [ user, setUser ] = useState('');
     const [showModal, setShowModal] = useState(false);
-    const [ isChecked, setIsChecked ] = useState(false);
 
-    function handleCheckboxChange() {
-        setIsChecked(!isChecked);
-      }
+   function isLoggedIn(){
+        let user = localStorage.getItem('myUsername');
+        setUser(user);
+   }
 
-    const goalComplete = (goal) => {
-        const editedGoal = { ...goal, completed: true}
-        editGoal(editedGoal)
-        .then(()=>{
-            console.log('success')
-        })
-        .catch((error) =>{
-            console.log(error)
-        })
-    }
+   useEffect(() => {
+        async function fetchData(){
+            await isLoggedIn();
+            await getUserGoals(username).then((goals) => setGoals(goals))
 
-    const goalIncomplete = (goal) => {
-        const editedGoal = { ...goal, completed: false}
-        editGoal(editedGoal)
-        .then(()=>{
-            console.log('success')
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-    }
-
+        }
+        fetchData();
+    },[username]);
 
 
     return (
         <div>
             <GoalContext.Consumer>
-                {({goals}) => {
-                    return (
-                        <div className="goal-container">
-  
-                            <ul class="list-group">
+                {
+                    ({goals}) => {
+                        return(
+                            <div>
+                                <AddGoal show={showModal} close={() => setShowModal(false)} /> 
+                                <Button variant="primary" onClick={() => setShowModal(true)}>
+                                    Add Goal
+                                </Button>
+                                <h2>Goal List</h2>
+                                <div>
+                                    {goals.map((g) => {
+                                        return(
+                                            <div key={g.goalId}>
+                                                <p>{g.username}</p>
+                                                <p>{g.title}</p>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                                
 
-                                        {goals.map(goal =>
-                                            <li key={goal.goalId} className="list-group-item">
-                                                <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange}/>
-                                                <a className="goalItem" href={`/goals/${goal.goalId}`} >{goal.title}</a>
-                                            </li>
-
-                                        )}
-
-                            </ul>
-                            <br></br>
-                            <Button variant="primary" onClick={() => setShowModal(true)}>
-                                Add Goal
-                            </Button>
-
-                            <AddGoal show={showModal} close={() => setShowModal(false)} />
-                        </div>
-                    )
-                }}
-
+                            </div>
+                        )
+                    }
+                }
             </GoalContext.Consumer>
         </div>
     )
 }
 
 export default GoalList;
+
+
+{/* <AddGoal show={showModal} close={() => setShowModal(false)} />  */}
+ // const { goals, editGoal } = useContext(GoalContext);
+    // const [ isChecked, setIsChecked ] = useState(false);
+
+    // function handleCheckboxChange() {
+    //     setIsChecked(!isChecked);
+    //   }
+
+    // const goalComplete = (goal) => {
+    //     const editedGoal = { ...goal, completed: true}
+    //     editGoal(editedGoal)
+    //     .then(()=>{
+    //         console.log('success')
+    //     })
+    //     .catch((error) =>{
+    //         console.log(error)
+    //     })
+    // }
+
+    // const goalIncomplete = (goal) => {
+    //     const editedGoal = { ...goal, completed: false}
+    //     editGoal(editedGoal)
+    //     .then(()=>{
+    //         console.log('success')
+    //     })
+    //     .catch((error) => {
+    //         console.log(error)
+    //     })
+    // }
+
+
+
+    // {({goals}) => {
+    //     return (
+    //         <div className="goal-container">
+
+    //             <ul class="list-group">
+
+    //                         {goals.map(goal =>
+    //                             <li key={goal.goalId} className="list-group-item">
+    //                                 <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange}/>
+    //                                 <a className="goalItem" href={`/goals/${goal.goalId}`} >{goal.title}</a>
+    //                             </li>
+    //                         )}
+
+    //             </ul>
+    //             <br></br>
+                // <Button variant="primary" onClick={() => setShowModal(true)}>
+                //     Add Goal
+                // </Button>
+
+    //             <AddGoal show={showModal} close={() => setShowModal(false)} />
+    //         </div>
+    //     )
+    // }}

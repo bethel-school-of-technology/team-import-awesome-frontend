@@ -3,22 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import GoalContext from './GoalContext.js';
-import { useParams } from 'react-router-dom';
 
 export const GoalProvider = (props) => {
-    console.log(props)
-
     const [goals, setGoals] = useState([]); // set state variable of goal
     const baseUrl = 'http://localhost:3000/goals/'; // the baseURL used for the axios calls
     const [ user, setUser ] = useState('');
-    let { username } = useParams();
-
-    useEffect(() => {
-        async function fetchData(){
-            await setUser(username);
-        }
-        fetchData();
-    }, [username])
 
 
     useEffect(() => {
@@ -35,8 +24,9 @@ export const GoalProvider = (props) => {
     //     return axios.get(baseUrl).then((response) => setGoals(response.data));
     // }
 
-    function getUserGoals() {
-        return axios.get(baseUrl + user).then((response) => setGoals(response.data))
+    async function getUserGoals(username) {
+        const response = await axios.get(`${baseUrl}${username}`);
+        return setGoals(response.data);
     }
 
     function getGoal(id) {
@@ -56,7 +46,6 @@ export const GoalProvider = (props) => {
             .post(baseUrl, {title, plan, timeframe}, { headers: myHeaders }) // creates new goal using token - maybe add a check if username matches goal?
             .then((response) => {
                 getUserGoals();
-                console.log(goals);
                 return new Promise((resolve) => resolve(response.data));
             });
     }
