@@ -147,7 +147,10 @@ const Copyright = () => {
             <br></br>
             <br></br>
             <div style={{ textAlign: 'center' }}>
-                <img src="https://danbolton.ewlyn.com//sites/danbolton.com/files/admiral_ackbar_says_its_a_trap.jpg" alt="It's a trap!"></img>
+                <img
+                    src="https://danbolton.ewlyn.com//sites/danbolton.com/files/admiral_ackbar_says_its_a_trap.jpg"
+                    alt="It's a trap!"
+                ></img>
             </div>
         </>
     );

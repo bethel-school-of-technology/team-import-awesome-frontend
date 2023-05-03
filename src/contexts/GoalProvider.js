@@ -7,8 +7,7 @@ import GoalContext from './GoalContext.js';
 export const GoalProvider = (props) => {
     const [goals, setGoals] = useState([]); // set state variable of goal
     const baseUrl = 'http://localhost:3000/goals/'; // the baseURL used for the axios calls
-    const [ user, setUser ] = useState('');
-
+    const [user, setUser] = useState('');
 
     useEffect(() => {
         // once the component is mounted - executes getAllGoals only when necessary
@@ -29,11 +28,10 @@ export const GoalProvider = (props) => {
         return setGoals(response.data);
     }
 
-    function getGoal(id) {
+    async function getGoal(id) {
         // retrieve goal by id
-        return axios.get(baseUrl + id).then((response) => {
-            return new Promise((resolve) => resolve(response.data));
-        });
+        const response = await axios.get(baseUrl + id);
+        return await new Promise((resolve) => resolve(response.data));
     }
 
     function addGoal(title, plan, timeframe) {
@@ -43,7 +41,7 @@ export const GoalProvider = (props) => {
         };
 
         return axios
-            .post(baseUrl, {title, plan, timeframe}, { headers: myHeaders }) // creates new goal using token - maybe add a check if username matches goal?
+            .post(baseUrl, { title, plan, timeframe }, { headers: myHeaders }) // creates new goal using token - maybe add a check if username matches goal?
             .then((response) => {
                 getUserGoals();
                 return new Promise((resolve) => resolve(response.data));
@@ -89,7 +87,7 @@ export const GoalProvider = (props) => {
                 addGoal,
                 editGoal,
                 deleteGoal,
-                getUserGoals
+                getUserGoals,
             }}
         >
             {props.children}
