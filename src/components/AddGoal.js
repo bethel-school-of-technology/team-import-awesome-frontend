@@ -57,7 +57,7 @@ const AddGoal = ({show, close}) => {
 
                 <Modal.Footer className='modal-footer'>
 
-                    <p>This shit Brokey</p>
+                    
 
                 </Modal.Footer>
             </Modal>
