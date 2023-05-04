@@ -1,7 +1,10 @@
-.goal-container {
+/* Tricia CSS */
+
+/* .goal-container {
     margin-top: 5em;
 }
-.goalItem{
+
+.goalItem {
     margin: 2em;
     padding: 10px 20px;
     color: #ffffff;
@@ -15,18 +18,28 @@
     background: #94B0B7;
     width: 50rem;
     padding: 2em;
-    border-radius: 15
-    px;
+    border-radius: 15 px;
     border: none solid none;
 }
 
 a.goal-link {
-    color:#ffffff;
+    color: #ffffff;
     width: 50rem;
     border-style: none none solid;
     border-color: #ffffff;
 }
 
 a.goal-link:hover {
-    color:#C2C8C5;
+    color: #C2C8C5;
+} */
+
+/* Brad CSS */
+
+.goalList {
+    background: #4A707A;
+    justify-content: space-evenly;
+    text-align: center;
+    margin: 5em;
+    padding: 2em;
+    border-radius: 10px;
 }
