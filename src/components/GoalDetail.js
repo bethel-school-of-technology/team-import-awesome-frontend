@@ -1,7 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { Button } from "react-bootstrap";
 import GoalContext from '../contexts/GoalContext';
 import CommentContext from '../contexts/CommentContext';
 import { useNavigate, useParams } from 'react-router-dom';
+import '../css/GoalDetail.css'
 
 function GoalDetail() {
     const { goals, editGoal, deleteGoal, getGoal } = useContext(GoalContext); // retrieve goal data and editGoal & deleteGoal functions from context
@@ -102,15 +104,19 @@ function GoalDetail() {
                     </button>
                 </form>
             ) : (
-                <div>
+                <div class="container">
                     <p>Completed: {userGoal.completed}</p>
                     <h2>Title: {userGoal.title}</h2>
                     <p>Plan: {userGoal.plan}</p>
                     <p>Timeframe: {userGoal.timeframe}</p>
-                    <button type="button" onClick={handleToggleEdit}>
-                        Edit
-                    </button>
-                    <button onClick={handleDelete}>Delete</button>
+                    <div className="buttons">
+                        <Button className="editBtn" variant="primary" onClick={handleToggleEdit}>
+                            Edit
+                        </Button>
+                        <Button className="deleteBtn" variant="primary" onClick={handleDelete}>
+                            Delete
+                        </Button>
+                    </div>
                     <hr />
                     {/* <h3>Comments:</h3>
                     {goalComments.length > 0 ? (

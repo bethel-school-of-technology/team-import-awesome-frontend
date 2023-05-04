@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 // import * as dayjs from "dayjs";
 import UserContext from '../contexts/userContext';
+import GoalContext from '../contexts/GoalContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/profilePage.css'
 import '../css/goalList.css'
@@ -13,7 +14,7 @@ const ProfilePage = () => {
 
     let { username } = useParams();
 
-    const [ currentUser, setCurrentUser ] = useState();
+    const [currentUser, setCurrentUser] = useState();
 
     function isLoggedIn() {
         let loggedUser = localStorage.getItem('currentUser');
@@ -21,8 +22,8 @@ const ProfilePage = () => {
     }
 
     let { getUser } = useContext(UserContext);
-    
-    let [ user, setUser ] = useState({
+
+    let [user, setUser] = useState({
         username: '',
         email: '',
         firstName: '',
@@ -32,16 +33,16 @@ const ProfilePage = () => {
     });
 
     useEffect(() => {
-        async function fetchUserData(){
+        async function fetchUserData() {
             await getUser(username).then((username) => setUser(username))
         }
-       
+
         isLoggedIn();
         fetchUserData()
 
-    },[getUser, username]);
+    }, [getUser, username]);
 
-  
+
     return (
         <div>
             <div class="container">
@@ -58,7 +59,7 @@ const ProfilePage = () => {
                     <br></br>
                     <br />
                     <div className="user-bio">
-                    <p> {user.bio || "Add a bio!"}</p>
+                        <p> {user.bio || "Add a bio!"}</p>
                     </div>
                     <br></br>
                     <br />

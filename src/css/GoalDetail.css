@@ -1,0 +1,22 @@
+.container {
+    background: #4A707A;
+    justify-content: space-evenly;
+    text-align: center;
+    margin: 5em;
+    padding: 2em;
+    border-radius: 10px;
+}
+
+.buttons {
+    display: flex;
+}
+
+/* Stupid Buttons aren't moving closer together >:( */
+
+.editBtn {
+    margin-right: 10px;
+}
+
+.deleteBtn {
+    margin-right: -10px;
+}

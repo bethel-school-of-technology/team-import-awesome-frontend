@@ -1,5 +1,6 @@
-import { useContext, useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom"
+import { Button, Card } from "react-bootstrap";
 import AddGoal from "./AddGoal";
 import GoalContext from "../contexts/GoalContext";
 import '../css/goalList.css'
@@ -7,52 +8,54 @@ import { useParams } from "react-router-dom";
 
 
 export function GoalList() {
-   const [ goals, setGoals ] = useState([])
-   let { username } = useParams();
+    const [goals, setGoals] = useState([])
+    let { username } = useParams();
     let { getUserGoals } = useContext(GoalContext)
 
 
-    const [ user, setUser ] = useState('');
+    const [user, setUser] = useState('');
     const [showModal, setShowModal] = useState(false);
 
-   function isLoggedIn(){
+    function isLoggedIn() {
         let user = localStorage.getItem('myUsername');
         setUser(user);
-   }
+    }
 
-   useEffect(() => {
-        async function fetchData(){
+    useEffect(() => {
+        async function fetchData() {
             await isLoggedIn();
             await getUserGoals(username).then((goals) => setGoals(goals))
 
         }
         fetchData();
-    },[username]);
+    }, [username]);
 
 
     return (
         <div>
             <GoalContext.Consumer>
                 {
-                    ({goals}) => {
-                        return(
+                    ({ goals }) => {
+                        return (
                             <div>
-                                <AddGoal show={showModal} close={() => setShowModal(false)} /> 
+                                <AddGoal show={showModal} close={() => setShowModal(false)} />
                                 <Button variant="primary" onClick={() => setShowModal(true)}>
                                     Add Goal
                                 </Button>
-                                <h2>Goal List</h2>
-                                <div>
-                                    {goals.map((g) => {
-                                        return(
-                                            <div key={g.goalId}>
-                                                <p>{g.username}</p>
-                                                <p>{g.title}</p>
-                                            </div>
-                                        )
-                                    })}
+                                <div classname="goalList">
+                                    <h2>Goal List</h2>
+                                    <div>
+                                        {goals.map((g) => {
+                                            return (
+                                                <div key={g.goalId}>
+                                                    <Card>
+                                                        <Link to={`/goals/${g.goalId}`}>{g.title}</Link>
+                                                    </Card>
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
                                 </div>
-                                
 
                             </div>
                         )
@@ -66,7 +69,7 @@ export function GoalList() {
 export default GoalList;
 
 
-{/* <AddGoal show={showModal} close={() => setShowModal(false)} />  */}
+{/* <AddGoal show={showModal} close={() => setShowModal(false)} />  */ }
  // const { goals, editGoal } = useContext(GoalContext);
     // const [ isChecked, setIsChecked ] = useState(false);
 
