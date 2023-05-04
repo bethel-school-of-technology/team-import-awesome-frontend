@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&display=swap');
 
+.profilePage-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 body {
 font-family: "Questria", sans-serif;
 font-size: 12px;
@@ -22,6 +29,7 @@ textarea {
 font-family: "Questria", sans-serif !important;
 }
 .container {
+width: 50%;
 background: #4A707A;
 margin: 5em;
 padding: 2em;

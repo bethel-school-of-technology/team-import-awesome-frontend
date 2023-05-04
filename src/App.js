@@ -34,7 +34,7 @@ function App() {
                                         element={<ProfilePage />}
                                     />
                                     <Route
-                                        path="/goals/:id"
+                                        path="/goals/detail/:id"
                                         element={<GoalDetail />}
                                     />
                                     <Route

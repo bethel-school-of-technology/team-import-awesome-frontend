@@ -1,24 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 // import * as dayjs from "dayjs";
 import UserContext from '../contexts/userContext';
 import GoalContext from '../contexts/GoalContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../css/profilePage.css'
-import '../css/goalList.css'
-import '../css/addGoal.css'
+import '../css/profilePage.css';
+import '../css/goalList.css';
+import '../css/addGoal.css';
 import { GoalList } from './GoalList';
 
-
 const ProfilePage = () => {
-
     let { username } = useParams();
 
     const [currentUser, setCurrentUser] = useState();
 
     function isLoggedIn() {
         let loggedUser = localStorage.getItem('currentUser');
-        setCurrentUser(loggedUser)
+        setCurrentUser(loggedUser);
     }
 
     let { getUser } = useContext(UserContext);
@@ -29,47 +27,51 @@ const ProfilePage = () => {
         firstName: '',
         lastName: '',
         age: '',
-        bio: ''
+        bio: '',
     });
 
     useEffect(() => {
         async function fetchUserData() {
-            await getUser(username).then((username) => setUser(username))
+            await getUser(username).then((username) => setUser(username));
         }
 
         isLoggedIn();
-        fetchUserData()
-
+        fetchUserData();
     }, [getUser, username]);
 
-
     return (
-        <div>
-            <div class="container">
-                <h5 class="title">Hello {username}. Get goaling!</h5>
-                <div class="user-profile">
-                    <div class="avatar-container">
-                        <img src="https://plus.unsplash.com/premium_photo-1673296129756-e45408e25250?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1026&q=80" alt="" class="avatar" />
+        <div className="profilePage-main">
+            <div className="container">
+                <h5 className="title">Hello {username}. Get goaling!</h5>
+                <div className="user-profile">
+                    <div className="avatar-container">
+                        <img
+                            src="https://plus.unsplash.com/premium_photo-1673296129756-e45408e25250?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1026&q=80"
+                            alt=""
+                            className="avatar"
+                        />
                     </div>
-                    <h2 class="user-name">{user.firstName} {user.lastName}</h2>
+                    <h2 className="user-name">
+                        {user.firstName} {user.lastName}
+                    </h2>
                 </div>
                 <br></br>
-                <div class="user-info">
+                <div className="user-info">
                     <h6 className="user-age">Age: {user.age}</h6>
                     <br></br>
                     <br />
                     <div className="user-bio">
-                        <p> {user.bio || "Add a bio!"}</p>
+                        <p> {user.bio || 'Add a bio!'}</p>
                     </div>
                     <br></br>
                     <br />
-                    <div class='followers'>
+                    <div className="followers">
                         <h3>236</h3>
                         <small>followers</small>
                         <br></br>
                         <br></br>
                     </div>
-                    <div class="following">
+                    <div className="following">
                         <h3>38</h3>
                         <small>following</small>
                     </div>
@@ -77,33 +79,10 @@ const ProfilePage = () => {
             </div>
 
             <GoalList />
-
         </div>
-    )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    );
 
     // contentEditable="true" onInput={}
-
-
-
-
 
     // const [user, setUser] = useState(null);
     // let { getUser, updateUser } = useContext(UserContext);
@@ -114,7 +93,7 @@ const ProfilePage = () => {
     //             console.log(userData)
     //             setUser(userData);
     //         });
-    //     } 
+    //     }
     // }, [id, getUser]);
 
     // const onBioChange = (e) => {
@@ -188,8 +167,7 @@ const ProfilePage = () => {
     //         }
     //     </UserContext.Consumer>
 
-
     // );
-}
+};
 
 export default ProfilePage;

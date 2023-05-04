@@ -36,10 +36,18 @@ a.goal-link:hover {
 /* Brad CSS */
 
 .goalList {
+    display: flex;
+    flex-direction: column;
     background: #4A707A;
-    justify-content: space-evenly;
+    justify-content: center;
     text-align: center;
     margin: 5em;
-    padding: 2em;
+    padding: 2em 4rem;
     border-radius: 10px;
+    width: 900px;
+}
+
+.goalItem {
+    margin: 15px auto;
+    width: 80%;
 }
