@@ -1,38 +1,43 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Button } from "react-bootstrap";
+import { Button } from 'react-bootstrap';
 import GoalContext from '../contexts/GoalContext';
 import CommentContext from '../contexts/CommentContext';
 import { useNavigate, useParams } from 'react-router-dom';
-import '../css/GoalDetail.css'
+import '../css/GoalDetail.css';
 
 function GoalDetail() {
-    const { goals, editGoal, deleteGoal, getGoal } = useContext(GoalContext); // retrieve goal data and editGoal & deleteGoal functions from context
-    const [isEditing, setIsEditing] = useState(false); // set state variable for edit mode
-    const { comment, getAllComments } = useContext(CommentContext); // retrieve comments data and getAllComments function from context
-    const [goalComments, setGoalComments] = useState([]); // set state variable for comments that belong to the user's goal
+    // retrieve goal data and editGoal & deleteGoal functions from context
+    const { goals, editGoal, deleteGoal, getGoal } = useContext(GoalContext);
+
+    // set state variable for edit mode
+    const [isEditing, setIsEditing] = useState(false);
+
+    // retrieve comments data and getAllComments function from context
+    const { comment, getAllComments } = useContext(CommentContext);
+
+    // set state variable for comments that belong to the user's goal
+    const [goalComments, setGoalComments] = useState([]);
 
     const [userGoal, setUserGoal] = useState({
         completed: false,
         title: '',
         plan: '',
-        timeframe: '',
+        startDate: '',
+        endDate: '',
     });
 
     let { id } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
-        // if (goalId === undefined) return;
-
         async function fetchData() {
             await getGoal(id).then((goal) => setUserGoal(goal));
 
-            // setGoalComments(comment.filter((c) => c.goalId === userGoal.id));
-            // getAllComments();
+            setGoalComments(comment.filter((c) => c.goalId === userGoal.id));
+            getAllComments();
         }
 
         fetchData();
-        console.log('User Goal:', id);
     }, [id]);
 
     // display loading spinner while fetching data
@@ -54,8 +59,8 @@ function GoalDetail() {
 
     // delete goal
     const handleDelete = () => {
+        // user confirmation to prevent accidental deleting
         if (window.confirm('Are you sure you want to delete this goal?')) {
-            // user confirmation to prevent accidental deleting
             deleteGoal(userGoal.goalId)
                 .then(() => {
                     navigate(`/profile-page/${userGoal.username}`);
@@ -67,9 +72,15 @@ function GoalDetail() {
         }
     };
 
+    let startDate = userGoal.startDate;
+    let endDate = userGoal.endDate;
+    let newStartDate = new Date(startDate).toLocaleDateString();
+    let newEndDate = new Date(endDate).toLocaleDateString();
+
     return (
         <div>
-            {isEditing ? ( // conditional render for when the EDIT button is clicked
+            {/* conditional render for when the EDIT button is clicked */}
+            {isEditing ? (
                 <form onSubmit={handleSubmit}>
                     <label>
                         Title:
@@ -108,17 +119,26 @@ function GoalDetail() {
                     <p>Completed: {userGoal.completed}</p>
                     <h2>Title: {userGoal.title}</h2>
                     <p>Plan: {userGoal.plan}</p>
-                    <p>Timeframe: {userGoal.timeframe}</p>
+                    <p>Start Date: {newStartDate}</p>
+                    <p>End Date: {newEndDate}</p>
                     <div className="buttons">
-                        <Button className="editBtn" variant="primary" onClick={handleToggleEdit}>
+                        <Button
+                            className="editBtn"
+                            variant="primary"
+                            onClick={handleToggleEdit}
+                        >
                             Edit
                         </Button>
-                        <Button className="deleteBtn" variant="primary" onClick={handleDelete}>
+                        <Button
+                            className="deleteBtn"
+                            variant="primary"
+                            onClick={handleDelete}
+                        >
                             Delete
                         </Button>
                     </div>
                     <hr />
-                    {/* <h3>Comments:</h3>
+                    <h3>Comments:</h3>
                     {goalComments.length > 0 ? (
                         <ul>
                             {goalComments.map((comment) => (
@@ -130,7 +150,7 @@ function GoalDetail() {
                         </ul>
                     ) : (
                         <p>No comments yet.</p>
-                    )} */}
+                    )}
                 </div>
             )}
         </div>
