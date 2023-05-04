@@ -26,17 +26,18 @@ const Navbar = () => {
             <nav className="nav-main">
                 <div className="logo">
                     <h2>
-                        <Link to={'/'}><img src='../assets/GoalGetterLogo2.png' width='20%'></img></Link>
+                        <Link to={'/'}>
+                            <img
+                                src="../assets/GoalGetterLogo2.png"
+                                width="20%"
+                            ></img>
+                        </Link>
                     </h2>
                 </div>
                 <div className="nav-links">
-                    <a
-                        rel="noopener"
-                        target=""
-                        href="http://localhost:3001/#HOW"
-                    >
+                    <Link rel="noopener" target="" to="/#HOW">
                         HOW It Works
-                    </a>
+                    </Link>
                     <a
                         rel="noopener"
                         target=""

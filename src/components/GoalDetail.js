@@ -24,6 +24,7 @@ function GoalDetail() {
         plan: '',
         startDate: '',
         endDate: '',
+        Comments: [],
     });
 
     let { id } = useParams();
@@ -32,9 +33,6 @@ function GoalDetail() {
     useEffect(() => {
         async function fetchData() {
             await getGoal(id).then((goal) => setUserGoal(goal));
-
-            setGoalComments(comment.filter((c) => c.goalId === userGoal.id));
-            getAllComments();
         }
 
         fetchData();
@@ -139,12 +137,12 @@ function GoalDetail() {
                     </div>
                     <hr />
                     <h3>Comments:</h3>
-                    {goalComments.length > 0 ? (
+                    {userGoal.Comments.length > 0 ? (
                         <ul>
-                            {goalComments.map((comment) => (
-                                <li key={comment.id}>
-                                    <p>{comment.body}</p>
-                                    <p>Author: {comment.author}</p>
+                            {userGoal.Comments.map((c) => (
+                                <li key={c.id}>
+                                    <p>{c.comment}</p>
+                                    <p>User: {c.username}</p>
                                 </li>
                             ))}
                         </ul>
