@@ -26,7 +26,7 @@ const Navbar = () => {
             <nav className="nav-main">
                 <div className="logo">
                     <h2>
-                        <Link to={'/'}>GoalGetter</Link>
+                        <Link to={'/'}><img src='../assets/GoalGetterLogo2.png' width='20%'></img></Link>
                     </h2>
                 </div>
                 <div className="nav-links">
