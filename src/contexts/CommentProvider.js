@@ -38,7 +38,7 @@ export const CommentProvider = (props) => {
         return axios
             .post(baseUrl, comment, { headers: myHeaders }) // creates new comment using token
             .then((response) => {
-                getAllComments();
+                // getAllComments();
                 return new Promise((resolve) => resolve(response.data));
             });
     }
