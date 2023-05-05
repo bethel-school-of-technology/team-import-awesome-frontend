@@ -4,6 +4,7 @@ import GoalContext from '../contexts/GoalContext';
 import CommentContext from '../contexts/CommentContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../css/GoalDetail.css';
+import { CommentList } from './CommentList';
 
 function GoalDetail() {
     // retrieve goal data and editGoal & deleteGoal functions from context
@@ -76,7 +77,7 @@ function GoalDetail() {
     let newEndDate = new Date(endDate).toLocaleDateString();
 
     return (
-        <div>
+        <div className='goal-detail-body'>
             {/* conditional render for when the EDIT button is clicked */}
             {isEditing ? (
                 <form onSubmit={handleSubmit}>
@@ -113,13 +114,13 @@ function GoalDetail() {
                     </button>
                 </form>
             ) : (
-                <div class="container">
+                <div className="container">
                     <p>Completed: {userGoal.completed}</p>
                     <h2>Title: {userGoal.title}</h2>
                     <p>Plan: {userGoal.plan}</p>
                     <p>Start Date: {newStartDate}</p>
                     <p>End Date: {newEndDate}</p>
-                    <div className="buttons">
+                    <div className="button-container">
                         <Button
                             className="editBtn"
                             variant="primary"
@@ -136,19 +137,7 @@ function GoalDetail() {
                         </Button>
                     </div>
                     <hr />
-                    <h3>Comments:</h3>
-                    {userGoal.Comments.length > 0 ? (
-                        <ul>
-                            {userGoal.Comments.map((c) => (
-                                <li key={c.id}>
-                                    <p>{c.comment}</p>
-                                    <p>User: {c.username}</p>
-                                </li>
-                            ))}
-                        </ul>
-                    ) : (
-                        <p>No comments yet.</p>
-                    )}
+                    <CommentList comments={userGoal.Comments} />
                 </div>
             )}
         </div>

@@ -29,16 +29,17 @@ export const CommentProvider = (props) => {
         });
     }
 
-    function addComment(comment) {
+    function addComment(newComment) {
         // authenticate user to create a comment
         let myHeaders = {
-            Authorization: `Bearer ${localStorage.getItem('myUsername')}`,
+            Authorization: `Bearer ${localStorage.getItem('myToken')}`,
         };
 
         return axios
-            .post(baseUrl, comment, { headers: myHeaders }) // creates new comment using token
+            .post(baseUrl, newComment, { headers: myHeaders }) // creates new comment using token
             .then((response) => {
                 // getAllComments();
+                console.log(newComment)
                 return new Promise((resolve) => resolve(response.data));
             });
     }

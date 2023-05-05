@@ -1,0 +1,13 @@
+.comment-card {
+    background-color: rgb(109, 216, 180);
+    margin: 15px;
+    padding: 10px;
+}
+
+.comment-card p {
+    color: black;
+}
+
+.comment-list-main {
+    margin: 0px auto;
+}
