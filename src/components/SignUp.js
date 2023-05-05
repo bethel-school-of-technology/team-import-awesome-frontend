@@ -10,13 +10,14 @@ const SignUp = () => {
     const [lastName, setLastName] = useState('');
     const [age, setAge] = useState('');
     const [email, setEmail] = useState('');
+    const [avatar, setAvatar] = useState('');
 
     let { createUser } = useContext(UserContext);
     let navigate = useNavigate();
 
     function handleSubmit(event) {
         event.preventDefault();
-        createUser(username, password, firstName, lastName, age, email)
+        createUser(username, password, firstName, lastName, age, email, avatar)
             .then(() => {
                 navigate('/signIn');
             })
@@ -27,67 +28,96 @@ const SignUp = () => {
     }
 
     return (
-        <div className="register-main">
-            <form onSubmit={handleSubmit} className="text-center">
-                <br></br>
-                <br></br>
+        <div class="register-photo">
+        <div class="form-container">
+            <div class="image-holder">
+            <div class="opacity-80">
+                <img src='../assets/GoalGetterLogo.png' width='80%' alt='logo' className='registration-logo' />
+            </div>
+            </div>
+            <form onSubmit={handleSubmit}>
+                <h2 class="text-center" color='#4A707A'><strong>Create</strong> an account.</h2>
+                <div class="form-group"> 
                 <input
-                    placeholder="Username"
-                    type="text"
-                    name="userName"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <br></br>
-                <br></br>
-                <input
-                    placeholder="Password"
-                    type="password"
-                    name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                            class="form-control"
+                            placeholder="Username"
+                            type="username"
+                            name="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                        </div>
+                        <div class="form-group">
+                        <input
+                        class="form-control"
+                            placeholder="Password"
+                            type="password"
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input
+                        class="form-control"
+                            placeholder="First Name"
+                            type="text"
+                            name="name"
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input
+                        class="form-control"
+                            placeholder="Last Name"
+                            type="text"
+                            name="name"
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input
+                        class="form-control"
+                            placeholder="Age"
+                            type="text"
+                            name="age"
+                            value={age}
+                            onChange={(e) => setAge(e.target.value)}
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input
+                        class="form-control"
+                            placeholder="Email"
+                            type="text"
+                            name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input
+                        class="form-control"
+                            placeholder="Profile Picture URL"
+                            type="text"
+                            name="profile avatar"
+                            value={avatar}
+                            onChange={(e) => setAvatar(e.target.value)}
+                        />
+                    </div>
+                <div class="form-group">
+                    <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox"/>I agree to the license terms.</label></div>
+                </div>
                 <br />
-                <br></br>
-                <input
-                    placeholder="First Name"
-                    type="text"
-                    name="name"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                />
+                <div class="form-group"><button class="btn btn-success btn-block" type="submit">Sign Up</button></div>
                 <br />
-                <br></br>
-                <input
-                    placeholder="Last Name"
-                    type="text"
-                    name="name"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                />
-                <br />
-                <br></br>
-                <input
-                    placeholder="Age"
-                    type="text"
-                    name="age"
-                    value={age}
-                    onChange={(e) => setAge(e.target.value)}
-                />
-                <br />
-                <br></br>
-                <input
-                    placeholder="Email"
-                    type="text"
-                    name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <br />
-                <br></br>
-                <button>Sign Up</button>
-            </form>
+                <a class="already" href="/">You already have an account? Login here.</a></form>
         </div>
+     
+        </div>
+
     );
 };
 
