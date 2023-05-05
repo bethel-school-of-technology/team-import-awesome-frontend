@@ -65,34 +65,38 @@ function GoalDetail() {
     let newEndDate = new Date(endDate).toLocaleDateString();
 
     return (
-        <div className="container">
-            <p>Completed: {userGoal.completed}</p>
-            <h2>Title: {userGoal.title}</h2>
-            <p>Plan: {userGoal.plan}</p>
-            <p>Start Date: {newStartDate}</p>
-            <p>End Date: {newEndDate}</p>
-            <div className="button-container">
-                <EditGoal
-                    show={showModal}
-                    close={() => setShowModal(false)}
-                />
-                <Button
-                    className="editBtn"
-                    variant="primary"
-                    onClick={() => setShowModal(true)}
-                >
-                    Edit
-                </Button>
-                <Button
-                    className="deleteBtn"
-                    variant="primary"
-                    onClick={handleDelete}
-                >
-                    Delete
-                </Button>
+        <div className='goal-detail-body'>
+            <div className="container">
+                <p>Completed: {userGoal.completed}</p>
+                <h2>Title: {userGoal.title}</h2>
+                <p>Plan: {userGoal.plan}</p>
+                <p>Start Date: {newStartDate}</p>
+                <p>End Date: {newEndDate}</p>
+                <div>
+                    <EditGoal
+                        show={showModal}
+                        close={() => setShowModal(false)}
+                    />
+                    <div className='button-container'>
+                        <Button
+                            className="editBtn"
+                            variant="primary"
+                            onClick={() => setShowModal(true)}
+                        >
+                            Edit
+                        </Button>
+                        <Button
+                            className="deleteBtn"
+                            variant="primary"
+                            onClick={handleDelete}
+                        >
+                            Delete
+                        </Button>
+                    </div>
+                </div>
+                <hr />
+                <CommentList comments={userGoal.Comments} />
             </div>
-            <hr />
-            <CommentList comments={userGoal.Comments} />
         </div>
     )
 }
