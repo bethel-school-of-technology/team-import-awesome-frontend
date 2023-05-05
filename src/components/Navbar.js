@@ -3,6 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 import UserContext from '../contexts/userContext';
 import Footer from './Footer';
 import '../css/Navbar.css';
+import { HashLink } from 'react-router-hash-link';
 
 const Navbar = () => {
     let { logOutUser } = useContext(UserContext);
@@ -24,34 +25,28 @@ const Navbar = () => {
     return (
         <>
             <nav className="nav-main">
-                <div className="logo">
-                    <h2>
+                <div>
+                    <h2 style={{width: "300px"}}>
                         <Link to={'/'}>
                             <img
+                                className="logo"
                                 src="../assets/GoalGetterLogo2.png"
-                                width="20%"
                             ></img>
                         </Link>
                     </h2>
                 </div>
                 <div className="nav-links">
-                    <Link rel="noopener" target="" to="/#HOW">
+                    <HashLink smooth to="http://localhost:3001/#HOW">
                         HOW It Works
-                    </Link>
-                    <a
-                        rel="noopener"
-                        target=""
-                        href="http://localhost:3001/#WHY"
+                    </HashLink>
+                    <HashLink smooth to="http://localhost:3001/#WHY"
                     >
                         WHY GoalGetters
-                    </a>
-                    <a
-                        rel="noopener"
-                        target=""
-                        href="http://localhost:3001/#ABOUT"
+                    </HashLink>
+                    <HashLink smooth to="http://localhost:3001/#ABOUT"
                     >
                         About Us
-                    </a>
+                    </HashLink>
 
                     {user ? (
                         <>
