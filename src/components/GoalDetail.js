@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import GoalContext from '../contexts/GoalContext';
+import EditGoal from './EditGoal';
 import CommentContext from '../contexts/CommentContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../css/GoalDetail.css';
@@ -25,6 +26,7 @@ function GoalDetail() {
         startDate: '',
         endDate: '',
     });
+    const [showModal, setShowModal] = useState(false);
 
     let { id } = useParams();
     const navigate = useNavigate();
@@ -52,10 +54,10 @@ function GoalDetail() {
         setIsEditing(false);
     };
 
-    // toggle edit mode
-    const handleToggleEdit = () => {
-        setIsEditing(!isEditing);
-    };
+    // // toggle edit mode
+    // const handleToggleEdit = () => {
+    //     setIsEditing(!isEditing);
+    // };
 
     // delete goal
     const handleDelete = () => {
@@ -79,82 +81,133 @@ function GoalDetail() {
 
     return (
         <div>
-            {/* conditional render for when the EDIT button is clicked */}
-            {isEditing ? (
-                <form onSubmit={handleSubmit}>
-                    <label>
-                        Title:
-                        <input
-                            type="text"
-                            value={userGoal.title}
-                            onChange={(event) =>
-                                setUserGoal({
-                                    ...userGoal,
-                                    title: event.target.value,
-                                })
-                            }
-                        />
-                    </label>
-                    <br />
-                    <label>
-                        Plan:
-                        <textarea
-                            value={userGoal.plan}
-                            onChange={(event) =>
-                                setUserGoal({
-                                    ...userGoal,
-                                    plan: event.target.value,
-                                })
-                            }
-                        />
-                    </label>
-                    <br />
-                    <button type="submit">Save</button>
-                    <button type="button" onClick={handleToggleEdit}>
-                        Cancel
-                    </button>
-                </form>
-            ) : (
-                <div class="container">
-                    <p>Completed: {userGoal.completed}</p>
-                    <h2>Title: {userGoal.title}</h2>
-                    <p>Plan: {userGoal.plan}</p>
-                    <p>Start Date: {newStartDate}</p>
-                    <p>End Date: {newEndDate}</p>
-                    <div className="buttons">
-                        <Button
-                            className="editBtn"
-                            variant="primary"
-                            onClick={handleToggleEdit}
-                        >
-                            Edit
-                        </Button>
-                        <Button
-                            className="deleteBtn"
-                            variant="primary"
-                            onClick={handleDelete}
-                        >
-                            Delete
-                        </Button>
-                    </div>
-                    <hr />
-                    <h3>Comments:</h3>
-                    {goalComments.length > 0 ? (
-                        <ul>
-                            {goalComments.map((comment) => (
-                                <li key={comment.id}>
-                                    <p>{comment.body}</p>
-                                    <p>Author: {comment.author}</p>
-                                </li>
-                            ))}
-                        </ul>
-                    ) : (
-                        <p>No comments yet.</p>
-                    )}
+            <div class="container">
+                <p>Completed: {userGoal.completed}</p>
+                <h2>Title: {userGoal.title}</h2>
+                <p>Plan: {userGoal.plan}</p>
+                <p>Start Date: {newStartDate}</p>
+                <p>End Date: {newEndDate}</p>
+                <div className="buttons">
+                    <EditGoal
+                        show={showModal}
+                        close={() => setShowModal(false)}
+                    />
+                    <Button
+                        className="editBtn"
+                        variant="primary"
+                        onClick={() => setShowModal(true)}
+                    // onClick={handleToggleEdit}
+                    >
+                        Edit
+                    </Button>
+                    <Button
+                        className="deleteBtn"
+                        variant="primary"
+                        onClick={handleDelete}
+                    >
+                        Delete
+                    </Button>
                 </div>
-            )}
+                <hr />
+                <h3>Comments:</h3>
+                {goalComments.length > 0 ? (
+                    <ul>
+                        {goalComments.map((comment) => (
+                            <li key={comment.id}>
+                                <p>{comment.body}</p>
+                                <p>Author: {comment.author}</p>
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>No comments yet.</p>
+                )}
+            </div>
         </div>
     );
 }
 
 export default GoalDetail;
+
+
+    //     return (
+    //         <div>
+    //             {/* conditional render for when the EDIT button is clicked */}
+    //             {isEditing ? (
+    //                 <form onSubmit={handleSubmit}>
+    //                     <label>
+    //                         Title:
+    //                         <input
+    //                             type="text"
+    //                             value={userGoal.title}
+    //                             onChange={(event) =>
+    //                                 setUserGoal({
+    //                                     ...userGoal,
+    //                                     title: event.target.value,
+    //                                 })
+    //                             }
+    //                         />
+    //                     </label>
+    //                     <br />
+    //                     <label>
+    //                         Plan:
+    //                         <textarea
+    //                             value={userGoal.plan}
+    //                             onChange={(event) =>
+    //                                 setUserGoal({
+    //                                     ...userGoal,
+    //                                     plan: event.target.value,
+    //                                 })
+    //                             }
+    //                         />
+    //                     </label>
+    //                     <br />
+    //                     <button type="submit">Save</button>
+    //                     <button type="button" onClick={handleToggleEdit}>
+    //                         Cancel
+    //                     </button>
+    //                 </form>
+    //             ) : (
+    //                 <div class="container">
+    //                     <p>Completed: {userGoal.completed}</p>
+    //                     <h2>Title: {userGoal.title}</h2>
+    //                     <p>Plan: {userGoal.plan}</p>
+    //                     <p>Start Date: {newStartDate}</p>
+    //                     <p>End Date: {newEndDate}</p>
+    //                     <div className="buttons">
+    //                         <Button
+    //                             className="editBtn"
+    //                             variant="primary"
+    //                             onClick={handleToggleEdit}
+    //                         >
+    //                             Edit
+    //                         </Button>
+    //                         <Button
+    //                             className="deleteBtn"
+    //                             variant="primary"
+    //                             onClick={handleDelete}
+    //                         >
+    //                             Delete
+    //                         </Button>
+    //                     </div>
+    //                     <hr />
+    //                     <h3>Comments:</h3>
+    //                     {goalComments.length > 0 ? (
+    //                         <ul>
+    //                             {goalComments.map((comment) => (
+    //                                 <li key={comment.id}>
+    //                                     <p>{comment.body}</p>
+    //                                     <p>Author: {comment.author}</p>
+    //                                 </li>
+    //                             ))}
+    //                         </ul>
+    //                     ) : (
+    //                         <p>No comments yet.</p>
+    //                     )}
+    //                 </div>
+    //             )}
+    //         </div>
+    //     );
+    // }
+
+    // export default GoalDetail;
