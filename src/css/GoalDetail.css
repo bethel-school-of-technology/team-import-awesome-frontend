@@ -1,22 +1,22 @@
 .container {
     background: #4A707A;
-    justify-content: space-evenly;
     text-align: center;
     margin: 5em;
     padding: 2em;
     border-radius: 10px;
 }
 
-.buttons {
+.button-container {
     display: flex;
+    justify-content: space-between;
 }
 
 /* Stupid Buttons aren't moving closer together >:( */
+/* The Buttons are now evenly spaced out in their box so :) 
+    Also its a bootstrap thing that they literally dont move so be
+    >:( @ bootstrap :) */
 
-.editBtn {
-    margin-right: 10px;
-}
-
-.deleteBtn {
-    margin-right: -10px;
+.goal-detail-body{
+    display: flex;
+    justify-content: center;
 }
