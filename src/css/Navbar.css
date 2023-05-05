@@ -7,16 +7,17 @@
 }
 
 .nav-links {
-    width: 60%;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
     font-weight: bold;
 }
 
 a:link {
     text-decoration: none;
     color: black;
-    padding-right: 10px;
+    /* padding-right: 10px; */
+    margin-right: 30px;
 }
 
 a:visited {
@@ -25,5 +26,10 @@ a:visited {
 
 a:hover {
     text-decoration: underline;
+}
+
+.logo{
+    max-width: 80%;
+    max-height: 150px;
 }
 
