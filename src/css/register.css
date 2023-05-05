@@ -1,8 +1,10 @@
 .registration-logo {
 margin: 50% 10% 10% 10%;
 }
-.text-center {
+.text-create {
     color: #4A707A;
+    font-size: 72px;
+    text-align: center;
 }
 .register-photo {
     padding: 80px 0;
@@ -18,10 +20,11 @@ margin: 50% 10% 10% 10%;
   
   .register-photo .form-container {
     display: table;
-    max-width: 900px;
-    width: 90%;
+    max-width: 1500px;
+    width: 100%;
     margin: 0 auto;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    border-radius: 5%;
   }
   
   .register-photo form {
@@ -54,6 +57,7 @@ margin: 50% 10% 10% 10%;
     color: inherit;
     text-indent: 0px;
     height: 40px;
+   
   }
   
   .register-photo form .form-check {
@@ -65,8 +69,13 @@ margin: 50% 10% 10% 10%;
   .register-photo form .already {
     display: block;
     text-align: center;
-    font-size: 12px;
+    font-size: 24px;
     color: #6f7a85;
     opacity: 0.9;
     text-decoration: none;
+    border-radius: 15px;
+  }
+  
+  .form-check-label {
+    font-size: 15px;
   }

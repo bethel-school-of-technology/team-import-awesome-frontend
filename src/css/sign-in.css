@@ -1,3 +1,58 @@
-.sign-in-main {
+.sign-in-body {
+    background-image: url(https://images.unsplash.com/photo-1504025468847-0e438279542c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1869&q=80);
+    background-size: cover;
+    width: 100vw;
     height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+.row {
+    padding: 10%;
+}
+
+.text-center {
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-group {
+    width: 450px;
+    margin: 10px;
+    padding-top: 10px;
+
+}
+
+.center .header {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    padding: 25px 0 30px 25px;
+    background: #7697A0;
+    text-align: center;
+
+}
+
+.form-container {
+    max-width: 500px;
+    width: 90%;
+    margin: 0 auto;
+    color: #7697A0;
+    background-color: #C2C8C5;
+}
+
+.welcome-container .container {
+    margin: 200px;
+    background-color: transparent;
+
+}
+
+.footer {
+    padding: 25px;
+    text-align: center;
+    font-weight: bold;
+
+}
+

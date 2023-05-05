@@ -36,7 +36,7 @@ const SignUp = () => {
             </div>
             </div>
             <form onSubmit={handleSubmit}>
-                <h2 class="text-center" color='#4A707A'><strong>Create</strong> an account.</h2>
+                <h1 class="text-create" color='#4A707A'><strong>Create</strong> an account.</h1>
                 <div class="form-group"> 
                 <input
                             class="form-control"
@@ -113,7 +113,7 @@ const SignUp = () => {
                 <br />
                 <div class="form-group"><button class="btn btn-success btn-block" type="submit">Sign Up</button></div>
                 <br />
-                <a class="already" href="/">You already have an account? Login here.</a></form>
+                <a class="already" href="/signIn"><strong>You already have an account? Login here.</strong></a></form>
         </div>
      
         </div>
