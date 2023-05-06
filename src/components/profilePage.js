@@ -8,11 +8,14 @@ import '../css/profilePage.css';
 import '../css/goalList.css';
 import '../css/addGoal.css';
 import { GoalList } from './GoalList';
+import { Button } from 'react-bootstrap';
+import EditProfile from './EditProfile';
 
 const ProfilePage = () => {
     let { username } = useParams();
 
     const [currentUser, setCurrentUser] = useState();
+    const [showModal, setShowModal] = useState(false);
 
     function isLoggedIn() {
         let loggedUser = localStorage.getItem('currentUser');
@@ -54,6 +57,16 @@ const ProfilePage = () => {
                     <h2 className="user-name">
                         {user.firstName} {user.lastName}
                     </h2>
+                    <EditProfile
+                        show={showModal}
+                        close={() => setShowModal(false)}
+                    />
+                    <Button
+                        variant="primary"
+                        onClick={() => setShowModal(true)}
+                    >
+                        EditProfile
+                    </Button>
                 </div>
                 <br></br>
                 <div className="user-info">
