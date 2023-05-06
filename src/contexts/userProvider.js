@@ -50,7 +50,7 @@ export const UserProvider = (props) => {
     }
 
     function updateUserImmediate(user) {
-        console.log('saving');
+        console.log('saving', user);
 
         // TODO: Fix authentication
         axios
