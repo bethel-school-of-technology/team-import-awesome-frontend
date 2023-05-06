@@ -30,7 +30,8 @@ const SignIn = () => {
 
             <div class="col-sm">
             <div className="sign-in-main">
-                <div class="form-container">
+               
+                <div class="form-container-sign-in">
 
                     <div class="center">
                         <div class="header">
@@ -40,19 +41,19 @@ const SignIn = () => {
 
                     <form onSubmit={handleSubmit}>
 
-                        <div class="form-group">
-                        <i class="fa fa-user icon"></i>
+                        <div class="form-grouping">
                             <input
-                                class="form-control"
+                                class="form-control-sign-in"
                                 placeholder="Username"
                                 type="text"
                                 name="userName"
                                 onChange={(e) => setUsername(e.target.value)}
                             />
                         </div>
-                        <div class="form-group">
+                        <div class="form-grouping">
                             <input
-                                class="form-control"
+
+                                class="form-control-sign-in"
                                 placeholder="Password"
                                 type="password"
                                 name="password"
@@ -61,11 +62,12 @@ const SignIn = () => {
                         </div>
 
                         <br />
-                        <div class="form-group"><button class="btn btn-success btn-block" type="submit">Sign Up</button></div>
+                        <div class="form-grouping"><button class="btn btn-success btn-block" type="submit">Sign Up</button></div>
                         <br />
                         <footer class="footer">
                         <a class="footer" href="/signUp">Don't have an account? register here.</a>
                   </footer>
+
                     </form>
 
                 </div>
@@ -74,7 +76,7 @@ const SignIn = () => {
             <div class="col-sm">
                 <div class="welcome-container">
                 <div class="container">
-            <h1 class="text-center" ><strong>Welcome Back!</strong></h1>
+            <h1 class="text-center dropshadow" ><strong>Welcome Back!</strong></h1>
             <br />
             <img class="text-center" width="40%" src="../assets/GoalGetterLogo.png" />
             </div>

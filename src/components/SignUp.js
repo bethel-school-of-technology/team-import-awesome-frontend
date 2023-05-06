@@ -31,11 +31,11 @@ const SignUp = () => {
         <div class="register-photo">
         <div class="form-container">
             <div class="image-holder">
-            <div class="opacity-80">
+            <div>
                 <img src='../assets/GoalGetterLogo.png' width='80%' alt='logo' className='registration-logo' />
             </div>
             </div>
-            <form onSubmit={handleSubmit}>
+            <form class="register-form" onSubmit={handleSubmit}>
                 <h1 class="text-create" color='#4A707A'><strong>Create</strong> an account.</h1>
                 <div class="form-group"> 
                 <input
@@ -107,13 +107,12 @@ const SignUp = () => {
                             onChange={(e) => setAvatar(e.target.value)}
                         />
                     </div>
-                <div class="form-group">
+                <div class="form-2">
                     <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox"/>I agree to the license terms.</label></div>
                 </div>
-                <br />
                 <div class="form-group"><button class="btn btn-success btn-block" type="submit">Sign Up</button></div>
-                <br />
-                <a class="already" href="/signIn"><strong>You already have an account? Login here.</strong></a></form>
+
+                <a class="already" href="/signIn"><strong>Already have an account? <br />Login here.</strong></a></form>
         </div>
      
         </div>
