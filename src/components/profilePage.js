@@ -20,7 +20,7 @@ const ProfilePage = () => {
         setCurrentUser(loggedUser);
     }
 
-    let { getUser, updateUser } = useContext(UserContext);
+    let { getUser } = useContext(UserContext);
 
     let [user, setUser] = useState({
         username: '',
@@ -41,22 +41,7 @@ const ProfilePage = () => {
         fetchUserData();
     }, [getUser, username]);
 
-    const onFirstNameChange = (e) => {
-        updateUser({ ...user, firstName: e.target.innerHTML })
-    };
-
-    const onLastNameChange = (e) => {
-        updateUser({ ...user, lastName: e.target.innerHTML })
-    };
-
-    const onAgeChange = (e) => {
-        updateUser({ ...user, age: e.target.innerHTML })
-    };
-
-
-    const onBioChange = (e) => {
-        updateUser({ ...user, bio: e.target.innerHTML })
-    };
+  
 
     return (
         <div className="profilePage-main">
@@ -70,10 +55,22 @@ const ProfilePage = () => {
                             className="avatar"
                         />
                     </div>
-                    <div className="firstName-lastName">
-                      <h2 contentEditable="true" onInput={onFirstNameChange}>{user.firstName}</h2> <h2 contentEditable="true" onInput={onLastNameChange}>{user.lastName}</h2>
+                 
+                </div>
+                <h2 className="user-name">
+                        {user.firstName} {user.lastName}
+                    </h2>
+                <br></br>
+                <div className="user-info">
+                    <h6 className="user-age"> Age: {user.age}</h6>
+                    <br></br>
+                    <br />
+                    <div className="user-bio">
+                         {user?.bio || 'Add a bio!'}
                     </div>
-                    {/* <EditProfile
+                    <br></br>
+
+                    <EditProfile
                         show={showModal}
                         close={() => setShowModal(false)}
                     />
@@ -82,17 +79,7 @@ const ProfilePage = () => {
                         onClick={() => setShowModal(true)}
                     >
                         EditProfile
-                    </Button> */}
-                </div>
-                <br></br>
-                <div className="user-info">
-                    <h6>Age:</h6><h6 className="user-age" contentEditable="true" onInput={onAgeChange}> {user.age}</h6>
-                    <br></br>
-                    <br />
-                    <div className="user-bio" contentEditable="true" onInput={onBioChange}>
-                         {user?.bio || 'Add a bio!'}
-                    </div>
-                    <br></br>
+                    </Button>
                     <br />
                     <div className="followers">
                         <h3>236</h3>
