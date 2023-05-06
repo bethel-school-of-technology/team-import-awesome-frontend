@@ -55,12 +55,14 @@ const EditGoal = ({ show, close }) => {
                 <form onSubmit={handleSubmit} className="modal-form">
                     <input
                         type="text"
+                        name="title"
                         value={updatedGoal.title}
                         onChange={handleChange}
                     />
                     <br></br>
 
                     <textarea
+                        name="plan"
                         value={updatedGoal.plan}
                         onChange={handleChange}
                     />
