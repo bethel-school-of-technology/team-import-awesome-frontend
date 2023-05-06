@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-// import * as dayjs from "dayjs";
 import UserContext from '../contexts/userContext';
-import GoalContext from '../contexts/GoalContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/profilePage.css';
 import '../css/goalList.css';
@@ -22,7 +20,7 @@ const ProfilePage = () => {
         setCurrentUser(loggedUser);
     }
 
-    let { getUser } = useContext(UserContext);
+    let { getUser, updateUser } = useContext(UserContext);
 
     let [user, setUser] = useState({
         username: '',
@@ -31,6 +29,7 @@ const ProfilePage = () => {
         lastName: '',
         age: '',
         bio: '',
+        avatar: ''
     });
 
     useEffect(() => {
@@ -42,6 +41,23 @@ const ProfilePage = () => {
         fetchUserData();
     }, [getUser, username]);
 
+    const onFirstNameChange = (e) => {
+        updateUser({ ...user, firstName: e.target.innerHTML })
+    };
+
+    const onLastNameChange = (e) => {
+        updateUser({ ...user, lastName: e.target.innerHTML })
+    };
+
+    const onAgeChange = (e) => {
+        updateUser({ ...user, age: e.target.innerHTML })
+    };
+
+
+    const onBioChange = (e) => {
+        updateUser({ ...user, bio: e.target.innerHTML })
+    };
+
     return (
         <div className="profilePage-main">
             <div className="container">
@@ -49,15 +65,15 @@ const ProfilePage = () => {
                 <div className="user-profile">
                     <div className="avatar-container">
                         <img
-                            src="https://plus.unsplash.com/premium_photo-1673296129756-e45408e25250?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1026&q=80"
+                            src={user.avatar}
                             alt=""
                             className="avatar"
                         />
                     </div>
-                    <h2 className="user-name">
-                        {user.firstName} {user.lastName}
-                    </h2>
-                    <EditProfile
+                    <div className="firstName-lastName">
+                      <h2 contentEditable="true" onInput={onFirstNameChange}>{user.firstName}</h2> <h2 contentEditable="true" onInput={onLastNameChange}>{user.lastName}</h2>
+                    </div>
+                    {/* <EditProfile
                         show={showModal}
                         close={() => setShowModal(false)}
                     />
@@ -66,15 +82,15 @@ const ProfilePage = () => {
                         onClick={() => setShowModal(true)}
                     >
                         EditProfile
-                    </Button>
+                    </Button> */}
                 </div>
                 <br></br>
                 <div className="user-info">
-                    <h6 className="user-age">Age: {user.age}</h6>
+                    <h6>Age:</h6><h6 className="user-age" contentEditable="true" onInput={onAgeChange}> {user.age}</h6>
                     <br></br>
                     <br />
-                    <div className="user-bio">
-                        <p> {user.bio || 'Add a bio!'}</p>
+                    <div className="user-bio" contentEditable="true" onInput={onBioChange}>
+                         {user?.bio || 'Add a bio!'}
                     </div>
                     <br></br>
                     <br />
