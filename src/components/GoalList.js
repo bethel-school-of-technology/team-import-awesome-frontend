@@ -47,9 +47,8 @@ export function GoalList({ goals }) {
 
 export default GoalList;
 
-{
-    /* <AddGoal show={showModal} close={() => setShowModal(false)} />  */
-}
+// <AddGoal show={showModal} close={() => setShowModal(false)} />
+
 // const { goals, editGoal } = useContext(GoalContext);
 // const [ isChecked, setIsChecked ] = useState(false);
 

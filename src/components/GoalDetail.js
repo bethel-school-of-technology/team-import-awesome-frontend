@@ -33,7 +33,7 @@ function GoalDetail() {
             await getGoal(id).then((goal) => setUserGoal(goal));
         }
         fetchData();
-    }, [id]);
+    }, [id, getGoal]);
 
     // display loading spinner while fetching data
     if (!userGoal) {
