@@ -27,10 +27,10 @@ const EditProfile = ({ show, close }) => {
     }
 
     useEffect(() => {
+        isLoggedIn();
         async function fetch() {
             await getUser(currentUser).then((user) => setUpdatedUser(user));
         }
-        isLoggedIn();
         fetch();
     }, [getUser, currentUser]);
 
