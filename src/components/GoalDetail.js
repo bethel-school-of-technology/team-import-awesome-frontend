@@ -2,14 +2,14 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import EditGoal from './EditGoal';
 import GoalContext from '../contexts/GoalContext';
-import CommentContext from '../contexts/CommentContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../css/GoalDetail.css';
 import { CommentList } from './CommentList';
 
 function GoalDetail() {
-    // retrieve goal data and editGoal & deleteGoal functions from context
     const { deleteGoal, getGoal } = useContext(GoalContext);
+    let { id } = useParams();
+    const navigate = useNavigate();
 
     // // retrieve comments data and getAllComments function from context
     // const { comment, getAllComments } = useContext(CommentContext);
@@ -28,14 +28,10 @@ function GoalDetail() {
 
     const [showModal, setShowModal] = useState(false);
 
-    let { id } = useParams();
-    const navigate = useNavigate();
-
     useEffect(() => {
         async function fetchData() {
             await getGoal(id).then((goal) => setUserGoal(goal));
         }
-
         fetchData();
     }, [id]);
 
@@ -65,7 +61,7 @@ function GoalDetail() {
     let newEndDate = new Date(endDate).toLocaleDateString();
 
     return (
-        <div className='goal-detail-body'>
+        <div className="goal-detail-body">
             <div className="container">
                 <p>Completed: {userGoal.completed}</p>
                 <h2>Title: {userGoal.title}</h2>
@@ -77,7 +73,7 @@ function GoalDetail() {
                         show={showModal}
                         close={() => setShowModal(false)}
                     />
-                    <div className='button-container'>
+                    <div className="button-container">
                         <Button
                             className="editBtn"
                             variant="primary"
@@ -98,7 +94,7 @@ function GoalDetail() {
                 <CommentList comments={userGoal.Comments} />
             </div>
         </div>
-    )
+    );
 }
 
 export default GoalDetail;

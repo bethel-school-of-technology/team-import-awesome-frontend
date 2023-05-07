@@ -1,80 +1,46 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
 import AddGoal from './AddGoal';
-import GoalContext from '../contexts/GoalContext';
 import '../css/goalList.css';
-import { useParams } from 'react-router-dom';
 
-export function GoalList() {
-    const [goals, setGoals] = useState([]);
-    let { username } = useParams();
-    let { getUserGoals } = useContext(GoalContext);
-
-    const [user, setUser] = useState('');
+export function GoalList({ goals }) {
     const [showModal, setShowModal] = useState(false);
-
-    function isLoggedIn() {
-        let user = localStorage.getItem('myUsername');
-        setUser(user);
-    }
-
-    useEffect(() => {
-        async function fetchData() {
-            await getUserGoals(username).then((goals) => setGoals(goals));
-        }
-        isLoggedIn();
-        fetchData();
-    }, []);
 
     return (
         <div>
-            <GoalContext.Consumer>
-                {({ goals }) => {
-                    return (
-                        <div>
-                            <AddGoal
-                                show={showModal}
-                                close={() => setShowModal(false)}
-                            />
-                            <Button
-                                variant="primary"
-                                onClick={() => setShowModal(true)}
-                            >
-                                Add Goal
-                            </Button>
-                            <div className="goalList">
-                                <h2>Goal List</h2>
-                                <div>
-                                    {goals.map((g) => {
-                                        let startDate = g.startDate;
-                                        let endDate = g.endDate;
-                                        let newStartDate = new Date(
-                                            startDate
-                                        ).toLocaleDateString();
-                                        let newEndDate = new Date(
-                                            endDate
-                                        ).toLocaleDateString();
-                                        return (
-                                            <div key={g.goalId}>
-                                                <Card className="goalItem">
-                                                    <Link
-                                                        to={`/goals/detail/${g.goalId}`}
-                                                    >
-                                                        {g.title}
-                                                    </Link>
-                                                    <p>{newStartDate}</p>
-                                                    <p>{newEndDate}</p>
-                                                </Card>
-                                            </div>
-                                        );
-                                    })}
+            <div>
+                <AddGoal show={showModal} close={() => setShowModal(false)} />
+                <Button variant="primary" onClick={() => setShowModal(true)}>
+                    Add Goal
+                </Button>
+                <div className="goalList">
+                    <h2>Goal List</h2>
+                    <div>
+                        {goals.map((g) => {
+                            let startDate = g.startDate;
+                            let endDate = g.endDate;
+                            let newStartDate = new Date(
+                                startDate
+                            ).toLocaleDateString();
+                            let newEndDate = new Date(
+                                endDate
+                            ).toLocaleDateString();
+                            return (
+                                <div key={g.goalId}>
+                                    <Card className="goalItem">
+                                        <Link to={`/goals/detail/${g.goalId}`}>
+                                            {g.title}
+                                        </Link>
+                                        <p>{newStartDate}</p>
+                                        <p>{newEndDate}</p>
+                                    </Card>
                                 </div>
-                            </div>
-                        </div>
-                    );
-                }}
-            </GoalContext.Consumer>
+                            );
+                        })}
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
