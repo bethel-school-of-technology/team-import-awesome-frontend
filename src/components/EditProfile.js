@@ -2,12 +2,10 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import UserContext from '../contexts/userContext';
 import { useNavigate } from 'react-router-dom';
-import '../css/addGoal.css';
+import '../css/edit-profile.css';
 
 const EditProfile = ({ show, close }) => {
-
-    const [updatedUser, setUpdatedUser] = useState({
-        username: '',
+    const [user, setUser] = useState({
         firstName: '',
         lastName: '',
         age: '',
@@ -16,34 +14,36 @@ const EditProfile = ({ show, close }) => {
         bio: '',
     });
 
-    const [currentUser, setCurrentUser] = useState();
+    const [currentUser, setCurrentUser] = useState('');
+
+    function isLoggedIn() {
+        let user = localStorage.getItem('myUsername');
+        setCurrentUser(user);
+    }
 
     let { getUser, updateUser } = useContext(UserContext);
     let navigate = useNavigate();
 
-    function isLoggedIn() {
-        let loggedUser = localStorage.getItem('myUsername');
-        setCurrentUser(loggedUser);
-    }
-
     useEffect(() => {
-        isLoggedIn();
         async function fetch() {
-            await getUser(currentUser).then((user) => setUpdatedUser(user));
+            await getUser(currentUser).then((user) => setUser(user));
         }
+        isLoggedIn();
         fetch();
     }, [getUser, currentUser]);
 
     function handleChange(event) {
-        setUpdatedUser((prevValue) => {
+        setUser((prevValue) => {
             return { ...prevValue, [event.target.name]: event.target.value };
         });
     }
 
     const handleSubmit = () => {
         close();
-        updateUser(updatedUser)
-            .then(navigate(`/profile-page/${updatedUser.userId}`))
+        updateUser(user)
+            .then(() => {
+                navigate(`/profile-page/${currentUser}`);
+            })
             .catch((error) => {
                 console.log(error);
                 window.alert('Error updating profile');
@@ -63,53 +63,66 @@ const EditProfile = ({ show, close }) => {
                 </Modal.Header>
 
                 <form onSubmit={handleSubmit} className="modal-form">
+                    <label>First Name</label>
                     <input
-                        type="text"
-                        name="username"
-                        value={updatedUser.username}
-                        onChange={handleChange}
-                    />
-                    <br></br>
-
-                    <input
+                        placeholder="First Name"
                         type="text"
                         name="firstName"
-                        value={updatedUser.firstName}
+                        value={user.firstName}
                         onChange={handleChange}
                     />
-                    <br></br>
-
+                    <br />
+                    <label>Last Name</label>
                     <input
+                        placeholder="Last Name"
                         type="text"
                         name="lastName"
-                        value={updatedUser.lastName}
+                        value={user.lastName}
                         onChange={handleChange}
                     />
-                    <br></br>
+                    <br />
 
+                    <label>Age</label>
                     <input
+                        placeholder="Age"
                         type="text"
                         name="age"
-                        value={updatedUser.age}
+                        value={user.age}
                         onChange={handleChange}
                     />
-                    <br></br>
+                    <br />
 
+                    <label>Email</label>
                     <input
+                        placeholder="Email"
                         type="text"
                         name="email"
-                        value={updatedUser.email}
+                        value={user.email}
                         onChange={handleChange}
                     />
-                    <br></br>
+                    <br />
 
-                    <input
-                        type="text"
-                        name="avatar"
-                        value={updatedUser.avatar}
+                    <label>Bio</label>
+                    <textarea
+                        placeholder="Bio"
+                        rows="6"
+                        cols="50"
+                        name="bio"
+                        value={user.bio}
                         onChange={handleChange}
                     />
-                    <br></br>
+                    <br />
+
+                    <label>Profile Pic URL</label>
+                    <textarea
+                        placeholder="Profile Pic URL"
+                        rows="6"
+                        cols="50"
+                        name="avatar"
+                        value={user.avatar}
+                        onChange={handleChange}
+                    />
+                    <br />
 
                     <button>Update Profile</button>
 
