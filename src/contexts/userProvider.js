@@ -49,23 +49,34 @@ export const UserProvider = (props) => {
         });
     }
 
-    function updateUserImmediate(user) {
-        console.log('saving', user);
+    function updateUser(user) {
+        const myHeaders = {
+            Authorization: `Bearer ${localStorage.getItem('myToken')}`
+        };
 
-        // TODO: Fix authentication
-        axios
-            .put(baseUrl + 'edit/' + user.username, user, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('myToken')}`,
-                },
+        return axios.put(`${baseUrl}/profile-page/${user.username}`, user, { headers: myHeaders })
+            .then(response => {
+                return new Promise(resolve => resolve(response.data));
             })
-            .then((response) => {
-                localStorage.setItem('userData', JSON.stringify(user));
-                setUser(user);
-            });
     }
 
-    const updateUser = debounce(updateUserImmediate, 2500);
+    // function updateUserImmediate(user) {
+    //     console.log('saving', user);
+
+    //     // TODO: Fix authentication
+    //     axios
+    //         .put(baseUrl + 'edit/' + user.username, user, {
+    //             headers: {
+    //                 Authorization: `Bearer ${localStorage.getItem('myToken')}`,
+    //             },
+    //         })
+    //         .then((response) => {
+    //             localStorage.setItem('userData', JSON.stringify(user));
+    //             setUser(user);
+    //         });
+    // }
+
+    // const updateUser = debounce(updateUserImmediate, 2500);
 
     return (
         <UserContext.Provider
