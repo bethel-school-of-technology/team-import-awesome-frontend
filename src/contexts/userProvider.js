@@ -13,10 +13,8 @@ export const UserProvider = (props) => {
         }
     }, [user]);
 
-    function createUser(username, password, firstName, lastName, age, email,avatar, bio ) {
-        let user = { username, password, firstName, lastName, age, email, avatar, bio };
-
-        return axios.post(baseUrl, user).then((response) => {
+    function createUser(newUser) {
+        return axios.post(baseUrl, newUser).then((response) => {
             return new Promise((resolve) => resolve(response.data));
         });
     }

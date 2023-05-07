@@ -11,7 +11,7 @@ const EditProfile = ({ show, close }) => {
         age: '',
         email: '',
         avatar: '',
-        bio: ''
+        bio: '',
     });
 
     const [currentUser, setCurrentUser] = useState('');
@@ -112,10 +112,14 @@ const EditProfile = ({ show, close }) => {
                         onChange={handleChange}
                     />
                     <br />
-                    <input
+                    <label>Profile Pic URL</label>
+                    <textarea
+                        placeholder="Profile Pic URL"
                         type="text"
-                        name="bio"
-                        value={updatedUser.bio}
+                        rows="6"
+                        cols="50"
+                        name="avatar"
+                        value={user.avatar}
                         onChange={handleChange}
                     />
                     <br />
