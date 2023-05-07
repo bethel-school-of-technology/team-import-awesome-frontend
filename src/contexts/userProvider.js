@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { debounce } from 'debounce';
+// import { debounce } from 'debounce';
 import UserContext from './userContext.js';
 
 export const UserProvider = (props) => {
@@ -40,7 +40,6 @@ export const UserProvider = (props) => {
     function logOutUser() {
         localStorage.setItem('myToken', '');
         localStorage.setItem('myUsername', '');
-        // window.location.reload(true);
     }
 
     function getUser(id) {
@@ -49,23 +48,37 @@ export const UserProvider = (props) => {
         });
     }
 
-    function updateUserImmediate(user) {
-        console.log('saving', user);
+    function updateUser(user) {
+        const myHeaders = {
+            Authorization: `Bearer ${localStorage.getItem('myToken')}`,
+        };
 
-        // TODO: Fix authentication
-        axios
-            .put(baseUrl + 'edit/' + user.username, user, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('myToken')}`,
-                },
+        return axios
+            .put(`${baseUrl}/edit/${user.username}`, user, {
+                headers: myHeaders,
             })
             .then((response) => {
-                localStorage.setItem('userData', JSON.stringify(user));
-                setUser(user);
+                return new Promise((resolve) => resolve(response.data));
             });
     }
 
-    const updateUser = debounce(updateUserImmediate, 2500);
+    // function updateUserImmediate(user) {
+    //     console.log('saving', user);
+
+    //     // TODO: Fix authentication
+    //     axios
+    //         .put(baseUrl + 'edit/' + user.username, user, {
+    //             headers: {
+    //                 Authorization: `Bearer ${localStorage.getItem('myToken')}`,
+    //             },
+    //         })
+    //         .then((response) => {
+    //             localStorage.setItem('userData', JSON.stringify(user));
+    //             setUser(user);
+    //         });
+    // }
+
+    // const updateUser = debounce(updateUserImmediate, 2500);
 
     return (
         <UserContext.Provider
