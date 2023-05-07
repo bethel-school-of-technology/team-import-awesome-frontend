@@ -24,7 +24,9 @@ const SignIn = () => {
     }
 
     return (
-        <body className="sign-in-body">
+
+        <body className='sign-in-body'>
+
             <div class="row align-items-center">
                 <div class="col-sm">
                     <div className="sign-in-main">
@@ -89,9 +91,35 @@ const SignIn = () => {
                                 src="../assets/GoalGetterLogo.png"
                             />
                         </div>
+
+
+                        <br />
+                        <div class="form-grouping"><button class="btn btn-success btn-block" type="submit">Sign In</button></div>
+                        <br />
+                        <footer class="footer">
+                        <a class="footer" href="/signUp">Don't have an account? register here.</a>
+                  </footer>
+
+                    </form>
+
+                </div>
+            </div>
+            </div>
+            <div class="col-sm">
+                <div class="welcome-container">
+                <div class="container">
+            <h1 class="text-center dropshadow" ><strong>Welcome Back!</strong></h1>
+            <br />
+            <img class="text-center" width="40%" src="../assets/GoalGetterLogo.png" />
+            </div>
+            </div>
+            </div>
+            </div>
+
                     </div>
                 </div>
             </div>
+
         </body>
     );
 };

@@ -4,7 +4,7 @@
 
 .text-create {
   color: #4A707A;
-  font-size: 72px;
+  font-size: 48px;
   text-align: center;
 }
 
@@ -13,10 +13,11 @@
   background: url(https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80);
   background-size: cover;
   background-position: center;
+
 }
 
 .form-container {
-  width: 35%;
+  width: 40%;
   margin: 0 0 25% 25%;
 }
 
@@ -28,12 +29,14 @@
 .form-2 {
   margin: 10px;
 
+
 }
 
 .register-form {
   display: table-cell;
   background-color: #ffffff;
   color: #505e6c;
+  width: 50%;
 
 }
 
@@ -45,7 +48,7 @@
   outline: none;
   color: inherit;
   text-indent: 0px;
-
+  padding: 0;
 }
 
 .register-photo .register-form .form-check {

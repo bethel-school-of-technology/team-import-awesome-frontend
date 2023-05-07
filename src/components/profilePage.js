@@ -28,8 +28,8 @@ const ProfilePage = () => {
         firstName: '',
         lastName: '',
         age: '',
-        bio: '',
-        avatar: ''
+        avatar: '',
+        bio: ''
     });
 
     useEffect(() => {
@@ -66,7 +66,7 @@ const ProfilePage = () => {
                     <br></br>
                     <br />
                     <div className="user-bio">
-                         {user?.bio || 'Add a bio!'}
+                         {user.bio}
                     </div>
                     <br></br>
 
