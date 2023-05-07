@@ -1,18 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import UserContext from '../contexts/userContext';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../css/profilePage.css';
-import '../css/goalList.css';
-import '../css/addGoal.css';
 import { GoalList } from './GoalList';
 import { Button } from 'react-bootstrap';
 import EditProfile from './EditProfile';
+import '../css/profilePage.css';
+import '../css/goalList.css';
+import '../css/addGoal.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ProfilePage = () => {
     let { getUser } = useContext(UserContext);
     let { username } = useParams();
 
+    // currentUser will get used for conditional rendering, don't delete it
     const [currentUser, setCurrentUser] = useState();
     const [showModal, setShowModal] = useState(false);
 
