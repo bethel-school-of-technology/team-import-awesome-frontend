@@ -24,6 +24,7 @@ const SignIn = () => {
     }
 
     return (
+<<<<<<< Updated upstream
 
         <body className='sign-in-body'>
             <div class="row align-items-center">
@@ -84,6 +85,36 @@ const SignIn = () => {
             </div>
             </div>
 
+=======
+        <body className='sign-in-body'>
+        <div className="sign-in-main">
+            <form onSubmit={handleSubmit} className="text-center">
+                <br></br>
+                <div className="mt-20">Welcome Back!</div>
+
+                <br></br>
+                <input
+                    className="p-2 border-[1px] ml-2 rounded-md border-gray-600"
+                    placeholder="Username"
+                    type="text"
+                    name="userName"
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+                <br></br>
+                <br></br>
+                <input
+                    className="p-2 border-[1px] ml-2 rounded-md border-gray-600"
+                    placeholder="Password"
+                    type="password"
+                    name="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <br />
+                <br />
+                <button>Sign In</button>
+            </form>
+        </div>
+>>>>>>> Stashed changes
         </body>
     );
 };
