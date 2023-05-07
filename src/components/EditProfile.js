@@ -13,7 +13,7 @@ const EditProfile = ({ show, close }) => {
         age: '',
         email: '',
         avatar: '',
-        bio: '',
+        bio: ''
     });
 
     const [currentUser, setCurrentUser] = useState();
@@ -105,8 +105,8 @@ const EditProfile = ({ show, close }) => {
 
                     <input
                         type="text"
-                        name="avatar"
-                        value={updatedUser.avatar}
+                        name="bio"
+                        value={updatedUser.bio}
                         onChange={handleChange}
                     />
                     <br></br>

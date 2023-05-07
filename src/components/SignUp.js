@@ -11,13 +11,15 @@ const SignUp = () => {
     const [age, setAge] = useState('');
     const [email, setEmail] = useState('');
     const [avatar, setAvatar] = useState('');
+    const [bio, setBio] = useState('');
 
     let { createUser } = useContext(UserContext);
     let navigate = useNavigate();
 
     function handleSubmit(event) {
         event.preventDefault();
-        createUser(username, password, firstName, lastName, age, email, avatar)
+        console.log(username, password, firstName, lastName, age, email, avatar, bio)
+        createUser(username, password, firstName, lastName, age, email, avatar, bio)
             .then(() => {
                 navigate('/signIn');
             })
@@ -105,6 +107,16 @@ const SignUp = () => {
                             name="profile avatar"
                             value={avatar}
                             onChange={(e) => setAvatar(e.target.value)}
+                        />
+                    </div>
+                    <div class="form-group">
+                        <input
+                        class="form-control"
+                            placeholder="Bio"
+                            type="text"
+                            name="bio"
+                            value={bio}
+                            onChange={(e) => setBio(e.target.value)}
                         />
                     </div>
                 <div class="form-2">

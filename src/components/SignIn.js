@@ -62,7 +62,7 @@ const SignIn = () => {
                         </div>
 
                         <br />
-                        <div class="form-grouping"><button class="btn btn-success btn-block" type="submit">Sign Up</button></div>
+                        <div class="form-grouping"><button class="btn btn-success btn-block" type="submit">Sign In</button></div>
                         <br />
                         <footer class="footer">
                         <a class="footer" href="/signUp">Don't have an account? register here.</a>
