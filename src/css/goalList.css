@@ -50,4 +50,5 @@ a.goal-link:hover {
 .goalItem {
     margin: 15px auto;
     width: 80%;
+    color: black;
 }

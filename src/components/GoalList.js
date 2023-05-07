@@ -21,11 +21,11 @@ export function GoalList() {
 
     useEffect(() => {
         async function fetchData() {
-            await isLoggedIn();
             await getUserGoals(username).then((goals) => setGoals(goals));
         }
+        isLoggedIn();
         fetchData();
-    }, [username]);
+    }, []);
 
     return (
         <div>
@@ -47,6 +47,14 @@ export function GoalList() {
                                 <h2>Goal List</h2>
                                 <div>
                                     {goals.map((g) => {
+                                        let startDate = g.startDate;
+                                        let endDate = g.endDate;
+                                        let newStartDate = new Date(
+                                            startDate
+                                        ).toLocaleDateString();
+                                        let newEndDate = new Date(
+                                            endDate
+                                        ).toLocaleDateString();
                                         return (
                                             <div key={g.goalId}>
                                                 <Card className="goalItem">
@@ -55,6 +63,8 @@ export function GoalList() {
                                                     >
                                                         {g.title}
                                                     </Link>
+                                                    <p>{newStartDate}</p>
+                                                    <p>{newEndDate}</p>
                                                 </Card>
                                             </div>
                                         );

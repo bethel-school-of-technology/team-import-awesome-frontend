@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { debounce } from 'debounce';
+// import { debounce } from 'debounce';
 import UserContext from './userContext.js';
 
 export const UserProvider = (props) => {
@@ -40,7 +40,6 @@ export const UserProvider = (props) => {
     function logOutUser() {
         localStorage.setItem('myToken', '');
         localStorage.setItem('myUsername', '');
-        // window.location.reload(true);
     }
 
     function getUser(id) {
@@ -51,13 +50,16 @@ export const UserProvider = (props) => {
 
     function updateUser(user) {
         const myHeaders = {
-            Authorization: `Bearer ${localStorage.getItem('myToken')}`
+            Authorization: `Bearer ${localStorage.getItem('myToken')}`,
         };
 
-        return axios.put(`${baseUrl}/profile-page/${user.username}`, user, { headers: myHeaders })
-            .then(response => {
-                return new Promise(resolve => resolve(response.data));
+        return axios
+            .put(`${baseUrl}/edit/${user.username}`, user, {
+                headers: myHeaders,
             })
+            .then((response) => {
+                return new Promise((resolve) => resolve(response.data));
+            });
     }
 
     // function updateUserImmediate(user) {
