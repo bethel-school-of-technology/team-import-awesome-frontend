@@ -58,7 +58,6 @@ const SignIn = () => {
                                     />
                                 </div>
 
-                                <br />
                                 <div class="form-grouping">
                                     <button
                                         class="btn btn-success btn-block"
@@ -67,10 +66,9 @@ const SignIn = () => {
                                         Sign In
                                     </button>
                                 </div>
-                                <br />
-                                <footer class="footer">
-                                    <Link class="footer" to={'/signUp'}>
-                                        Don't have an account? register here.
+
+                                <footer class="signIn-footer">
+                                    <Link class="footer" to={'/signUp'}><strong>Don't have an account? Register here.</strong>
                                     </Link>
                                 </footer>
                             </form>
@@ -181,7 +179,7 @@ export default SignIn;
 //         <div class="col-sm">
 //             <div class="welcome-container">
 //             <div class="container">
-//         <h1 class="text-center dropshadow" ><strong>Welcome Back!</strong></h1>
+//         <h1 class="text-center dropshadow"><strong>Welcome Back!</strong></h1>
 //         <br />
 //         <img class="text-center" width="40%" src="../assets/GoalGetterLogo.png" />
 //         </div>

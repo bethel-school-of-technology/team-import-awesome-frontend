@@ -2,18 +2,18 @@
   margin: 80% 10% 10% 10%;
 }
 
-.text-create {
+h1.text-create {
   color: #4A707A;
   font-size: 48px;
   text-align: center;
+  margin-top: 0px;
 }
 
-.image-holder {
+div.register-photo .image-holder {
   display: table-cell;
-  background: url(https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80);
+  background: url(https://images.unsplash.com/photo-1504025468847-0e438279542c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1869&q=80);
   background-size: cover;
   background-position: center;
-
 }
 
 .form-container {
@@ -28,8 +28,6 @@
 
 .form-2 {
   margin: 10px;
-
-
 }
 
 .register-form {
@@ -48,7 +46,7 @@
   outline: none;
   color: inherit;
   text-indent: 0px;
-  padding: 0;
+  padding: 10;
 }
 
 .register-photo .register-form .form-check {
@@ -60,7 +58,7 @@
   text-align: center;
   font-size: 18px;
   color: #6f7a85;
-  margin-bottom: 10px;
+  margin: 20px;
 }
 
 .form-check-label::hover {

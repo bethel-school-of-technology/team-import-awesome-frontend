@@ -114,26 +114,6 @@ const SignUp = () => {
                             onChange={handleChange}
                         />
                     </div>
-                    <div class="form-group">
-                        <input
-                            class="form-control"
-                            placeholder="Profile Picture URL"
-                            type="text"
-                            name="avatar"
-                            value={newUser.avatar}
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div class="form-group">
-                        <input
-                            class="form-control"
-                            placeholder="Bio"
-                            type="text"
-                            name="bio"
-                            value={newUser.bio}
-                            onChange={handleChange}
-                        />
-                    </div>
                     <div class="form-2">
                         <div class="form-check">
                             <label class="form-check-label">
