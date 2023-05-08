@@ -63,11 +63,17 @@ function GoalDetail() {
     return (
         <div className="goal-detail-body">
             <div className="container">
-                <p>Completed: {userGoal.completed}</p>
                 <h2>Title: {userGoal.title}</h2>
-                <p>Plan: {userGoal.plan}</p>
-                <p>Start Date: {newStartDate}</p>
-                <p>End Date: {newEndDate}</p>
+                <h5>Plan: {userGoal.plan}</h5>
+                <br />
+                <label>Goal Complete: </label>{' '}
+                <input
+                    type={'checkbox'}
+                    value={userGoal.completed}
+                    checked={userGoal.completed}
+                />
+                <div>Start Date: {newStartDate}</div>
+                <div>End Date: {newEndDate}</div>
                 <div>
                     <EditGoal
                         show={showModal}
