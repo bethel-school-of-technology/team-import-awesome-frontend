@@ -1,10 +1,10 @@
 .comment-card {
-    background-color: rgb(109, 216, 180);
+    background-color: rgb(229, 229, 229);
     margin: 15px;
     padding: 10px;
 }
 
-.comment-card p {
+.comment-card {
     color: black;
 }
 

@@ -23,15 +23,33 @@ export function GoalList({ goals }) {
                     {incompleteGoals.length > 0 ? (
                         <div>
                             <h3 className="category">In Progress:</h3>
-                            {incompleteGoals.map((goal) => (
-                                <div key={goal.goalId}>
-                                    <Card className="goalItem">
-                                        <Link to={`/goals/detail/${goal.goalId}`}>{goal.title}</Link>
-                                        <p>{goal.startDate}</p>
-                                        <p>{goal.endDate}</p>
-                                    </Card>
-                                </div>
-                            ))}
+                            {incompleteGoals.map((goal) => {
+                                let startDate = goal.startDate;
+                                let endDate = goal.endDate;
+                                let newStartDate = new Date(
+                                    startDate
+                                ).toLocaleDateString();
+                                let newEndDate = new Date(
+                                    endDate
+                                ).toLocaleDateString();
+                                return (
+                                    <div key={goal.goalId}>
+                                        <Card className="goalItem incomplete">
+                                            <div>
+                                                <Link
+                                                    to={`/goals/detail/${goal.goalId}`}
+                                                >
+                                                    {goal.title}
+                                                </Link>
+                                            </div>
+                                            <div>
+                                                <p>{newStartDate}</p>
+                                                <p>{newEndDate}</p>
+                                            </div>
+                                        </Card>
+                                    </div>
+                                );
+                            })}
                         </div>
                     ) : (
                         <div>
@@ -42,15 +60,33 @@ export function GoalList({ goals }) {
                     {completedGoals.length > 0 ? (
                         <div>
                             <h3 className="category">Completed:</h3>
-                            {completedGoals.map((goal) => (
-                                <div key={goal.goalId}>
-                                    <Card className="goalItem">
-                                        <Link to={`/goals/detail/${goal.goalId}`}>{goal.title}</Link>
-                                        <p>{goal.startDate}</p>
-                                        <p>{goal.endDate}</p>
-                                    </Card>
-                                </div>
-                            ))}
+                            {completedGoals.map((goal) => {
+                                let startDate = goal.startDate;
+                                let endDate = goal.endDate;
+                                let newStartDate = new Date(
+                                    startDate
+                                ).toLocaleDateString();
+                                let newEndDate = new Date(
+                                    endDate
+                                ).toLocaleDateString();
+                                return (
+                                    <div key={goal.goalId}>
+                                        <Card className="goalItem complete">
+                                            <div>
+                                                <Link
+                                                    to={`/goals/detail/${goal.goalId}`}
+                                                >
+                                                    {goal.title}
+                                                </Link>
+                                            </div>
+                                            <div>
+                                                <p>{newStartDate}</p>
+                                                <p>{newEndDate}</p>
+                                            </div>
+                                        </Card>
+                                    </div>
+                                );
+                            })}
                         </div>
                     ) : (
                         <div>

@@ -17,8 +17,9 @@ export function CommentList({ comments }) {
                 <div>
                     {comments.map((c) => (
                         <Card className="comment-card" key={c.commentId}>
-                            <p>{c.comment}</p>
-                            <p>User: {c.username}</p>
+                            <span>
+                                {c.username}: {c.comment}
+                            </span>
                         </Card>
                     ))}
                 </div>

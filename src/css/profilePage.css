@@ -29,7 +29,7 @@ textarea {
 font-family: "Questria", sans-serif !important;
 }
 .container {
-width: 50%;
+width: 60% !important;
 background: #4A707A;
 margin: 5em;
 padding: 2em;
