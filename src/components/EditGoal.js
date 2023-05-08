@@ -10,6 +10,7 @@ const EditGoal = ({ show, close }) => {
     const [updatedGoal, setUpdatedGoal] = useState({
         title: '',
         plan: '',
+        completed: false,
     });
 
     let { getGoal, editGoal } = useContext(GoalContext);
@@ -66,6 +67,23 @@ const EditGoal = ({ show, close }) => {
                         value={updatedGoal.plan}
                         onChange={handleChange}
                     />
+                    <br></br>
+
+                    <div>
+                    <input
+                        type="checkbox"
+                        name="completed"
+                        checked={updatedGoal.completed}
+                        onChange={() =>
+                        setUpdatedGoal((prevValue) => ({
+                         ...prevValue,
+                             completed: !prevValue.completed,
+                         }))
+                      }
+                    />
+                    <label for="completed" style={{ color: 'black' }}>Completed</label>
+                    </div>
+
                     <br></br>
 
                     <button>Update Goal</button>

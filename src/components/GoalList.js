@@ -7,6 +7,10 @@ import '../css/goalList.css';
 export function GoalList({ goals }) {
     const [showModal, setShowModal] = useState(false);
 
+    // Filter goals based on whether they are completed or not - Brad
+    const completedGoals = goals.filter((goal) => goal.completed);
+    const incompleteGoals = goals.filter((goal) => !goal.completed);
+
     return (
         <div>
             <div>
@@ -16,29 +20,44 @@ export function GoalList({ goals }) {
                 </Button>
                 <div className="goalList">
                     <h2>Goal List</h2>
-                    <div>
-                        {goals.map((g) => {
-                            let startDate = g.startDate;
-                            let endDate = g.endDate;
-                            let newStartDate = new Date(
-                                startDate
-                            ).toLocaleDateString();
-                            let newEndDate = new Date(
-                                endDate
-                            ).toLocaleDateString();
-                            return (
-                                <div key={g.goalId}>
+                    {incompleteGoals.length > 0 ? (
+                        <div>
+                            <h3 className="category">In Progress:</h3>
+                            {incompleteGoals.map((goal) => (
+                                <div key={goal.goalId}>
                                     <Card className="goalItem">
-                                        <Link to={`/goals/detail/${g.goalId}`}>
-                                            {g.title}
-                                        </Link>
-                                        <p>{newStartDate}</p>
-                                        <p>{newEndDate}</p>
+                                        <Link to={`/goals/detail/${goal.goalId}`}>{goal.title}</Link>
+                                        <p>{goal.startDate}</p>
+                                        <p>{goal.endDate}</p>
                                     </Card>
                                 </div>
-                            );
-                        })}
-                    </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div>
+                            <h3 className="category">In Progress:</h3>
+                            <p>No Goals In Progress</p>
+                        </div>
+                    )}
+                    {completedGoals.length > 0 ? (
+                        <div>
+                            <h3 className="category">Completed:</h3>
+                            {completedGoals.map((goal) => (
+                                <div key={goal.goalId}>
+                                    <Card className="goalItem">
+                                        <Link to={`/goals/detail/${goal.goalId}`}>{goal.title}</Link>
+                                        <p>{goal.startDate}</p>
+                                        <p>{goal.endDate}</p>
+                                    </Card>
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div>
+                            <h3 className="category">Completed:</h3>
+                            <p>No Goals Completed</p>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
