@@ -19,3 +19,8 @@
 input {
     margin: 1em;
 }
+
+label {
+    display: inline-block;
+    margin-left: 8px;
+}

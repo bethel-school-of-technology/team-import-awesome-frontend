@@ -52,3 +52,7 @@ a.goal-link:hover {
     width: 80%;
     color: black;
 }
+
+.category {
+    text-align: left;
+}
