@@ -2,14 +2,17 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import GoalContext from '../contexts/GoalContext';
 import { useNavigate, useParams } from 'react-router-dom';
+import moment from 'moment';
 import '../css/addGoal.css';
 
 const EditGoal = ({ show, close }) => {
-    let { id } = useParams()
+    let { id } = useParams();
 
     const [updatedGoal, setUpdatedGoal] = useState({
         title: '',
         plan: '',
+        startDate: '',
+        endDate: '',
         completed: false,
     });
 
@@ -17,7 +20,7 @@ const EditGoal = ({ show, close }) => {
     let navigate = useNavigate();
 
     useEffect(() => {
-        if (id === undefined) return
+        if (id === undefined) return;
 
         async function fetch() {
             await getGoal(id).then((goal) => setUpdatedGoal(goal));
@@ -41,6 +44,9 @@ const EditGoal = ({ show, close }) => {
             });
     };
 
+    let startDate = moment(updatedGoal.startDate).toDate();
+    let endDate = moment(updatedGoal.endDate).toDate();
+
     return (
         <div
             className="modal show"
@@ -48,12 +54,31 @@ const EditGoal = ({ show, close }) => {
         >
             <Modal show={show} onHide={close}>
                 <Modal.Header closeButton className="modal-header">
-                    <Modal.Title className="modal-title">
-                        Edit Goal
-                    </Modal.Title>
+                    <Modal.Title className="modal-title">Edit Goal</Modal.Title>
                 </Modal.Header>
 
                 <form onSubmit={handleSubmit} className="modal-form">
+                    <div>
+                        <input
+                            type="checkbox"
+                            name="completed"
+                            checked={updatedGoal.completed}
+                            onChange={() =>
+                                setUpdatedGoal((prevValue) => ({
+                                    ...prevValue,
+                                    completed: !prevValue.completed,
+                                }))
+                            }
+                        />
+                        <label
+                            for="completed"
+                            style={{ color: 'black', fontWeight: 'bold' }}
+                        >
+                            Completed
+                        </label>
+                    </div>
+                    <br></br>
+
                     <input
                         type="text"
                         name="title"
@@ -69,21 +94,20 @@ const EditGoal = ({ show, close }) => {
                     />
                     <br></br>
 
-                    <div>
                     <input
-                        type="checkbox"
-                        name="completed"
-                        checked={updatedGoal.completed}
-                        onChange={() =>
-                        setUpdatedGoal((prevValue) => ({
-                         ...prevValue,
-                             completed: !prevValue.completed,
-                         }))
-                      }
+                        type="date"
+                        name="startDate"
+                        defaultValue={moment(startDate).format('YYYY-MM-DD')}
+                        onChange={handleChange}
                     />
-                    <label for="completed" style={{ color: 'black' }}>Completed</label>
-                    </div>
+                    <br></br>
 
+                    <input
+                        type="date"
+                        name="endDate"
+                        defaultValue={moment(endDate).format('YYYY-MM-DD')}
+                        onChange={handleChange}
+                    />
                     <br></br>
 
                     <button>Update Goal</button>

@@ -3,12 +3,14 @@
     font-weight: 800;
     text-align: center;
 }
+
 .modal-title {
     font-weight: 800;
     text-align: center;
 }
+
 .modal-form {
-    background-color: #C2C8C5;   
+    background-color: #C2C8C5;
     padding: 2em;
 }
 
@@ -23,4 +25,25 @@ input {
 label {
     display: inline-block;
     margin-left: 8px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000000;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+    outline: none;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #31ffba;
+    border-color: #000000;
+}
+
+input[type="checkbox"]:hover {
+    background-color: #9bffde;
 }

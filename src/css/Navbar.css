@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 25px 5px 15px;
+    padding: 15px 55px 5px 15px;
     background-color: #7697A0;
 }
 
@@ -54,20 +54,18 @@ a:hover {
     #hamburger{
         display: block;
         position: absolute;
-        top: 5px;
-        right: 10px;
+        top: 0px;
+        right: 30px;
         cursor: pointer;
         width: 26px;
         float: right;
-        font-size: xx-large;
-        transition: transform 0.3s ease-in-out;
+        font-size: 45px;
     }
     .menu{
         text-align: center;
         width: 100%;
         display: none;
         clear: right;
-        transition: transform 0.3s ease-in-out;
     }
     .menu a {
         display: block;
