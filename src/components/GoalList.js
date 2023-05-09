@@ -5,7 +5,7 @@ import AddGoal from './AddGoal';
 import '../css/goalList.css';
 
 export function GoalList({ goals }) {
-    const [showModal, setShowModal] = useState(false);
+    // const [showModal, setShowModal] = useState(false);
 
     // Filter goals based on whether they are completed or not - Brad
     const completedGoals = goals.filter((goal) => goal.completed);
@@ -14,10 +14,10 @@ export function GoalList({ goals }) {
     return (
         <div>
             <div>
-                <AddGoal show={showModal} close={() => setShowModal(false)} />
+                {/* <AddGoal show={showModal} close={() => setShowModal(false)} />
                 <Button variant="primary" onClick={() => setShowModal(true)}>
                     Add Goal
-                </Button>
+                </Button> */}
                 <div className="goalList">
                     <h2>Goal List</h2>
                     {incompleteGoals.length > 0 ? (

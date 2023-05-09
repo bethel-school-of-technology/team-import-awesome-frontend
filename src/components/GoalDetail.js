@@ -27,12 +27,19 @@ function GoalDetail() {
     });
 
     const [showModal, setShowModal] = useState(false);
+    const [currentUser, setCurrentUser] = useState();
+
+    function isLoggedIn() {
+        let loggedUser = localStorage.getItem('myUsername');
+        setCurrentUser(loggedUser);
+    }
 
     useEffect(() => {
         async function fetchData() {
             await getGoal(id).then((goal) => setUserGoal(goal));
         }
         fetchData();
+        isLoggedIn();
     }, [id, getGoal]);
 
     // display loading spinner while fetching data
@@ -66,36 +73,46 @@ function GoalDetail() {
                 <h2>Title: {userGoal.title}</h2>
                 <h5>Plan: {userGoal.plan}</h5>
                 <br />
-                <label>Goal Complete: </label>{' '}
+                {userGoal.completed === true ? (
+                    <span>Goal Complete!</span>
+                ) : (
+                    <span>Goal Not Complete</span>
+                )}
+                {/* <label>Goal Complete: </label>{' '}
                 <input
                     type={'checkbox'}
                     value={userGoal.completed}
                     checked={userGoal.completed}
-                />
+                /> */}
                 <div>Start Date: {newStartDate}</div>
                 <div>End Date: {newEndDate}</div>
-                <div>
-                    <EditGoal
-                        show={showModal}
-                        close={() => setShowModal(false)}
-                    />
-                    <div className="button-container">
-                        <Button
-                            className="editBtn"
-                            variant="primary"
-                            onClick={() => setShowModal(true)}
-                        >
-                            Edit
-                        </Button>
-                        <Button
-                            className="deleteBtn"
-                            variant="primary"
-                            onClick={handleDelete}
-                        >
-                            Delete
-                        </Button>
+                {currentUser === userGoal.username ? (
+                    <div>
+                        <EditGoal
+                            show={showModal}
+                            close={() => setShowModal(false)}
+                        />
+                        <div className="button-container">
+                            <Button
+                                className="editBtn"
+                                variant="primary"
+                                onClick={() => setShowModal(true)}
+                            >
+                                Edit
+                            </Button>
+                            <Button
+                                className="deleteBtn"
+                                variant="primary"
+                                onClick={handleDelete}
+                            >
+                                Delete
+                            </Button>
+                        </div>
                     </div>
-                </div>
+                ) : (
+                    ''
+                )}
+
                 <hr />
                 <CommentList comments={userGoal.Comments} />
             </div>
