@@ -8,14 +8,15 @@ import '../css/profilePage.css';
 import '../css/goalList.css';
 import '../css/addGoal.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AddGoal from './AddGoal';
 
 const ProfilePage = () => {
     let { getUser } = useContext(UserContext);
     let { username } = useParams();
 
-    // currentUser will get used for conditional rendering, don't delete it
     const [currentUser, setCurrentUser] = useState();
     const [showModal, setShowModal] = useState(false);
+    const [showAddGoalModal, setShowAddGoalModal] = useState(false);
 
     function isLoggedIn() {
         let loggedUser = localStorage.getItem('myUsername');
@@ -60,18 +61,23 @@ const ProfilePage = () => {
                     <br />
                     <div className="user-bio">{user.bio}</div>
                     <br></br>
-
-                    <EditProfile
-                        show={showModal}
-                        close={() => setShowModal(false)}
-                    />
-                    <Button
-                        variant="primary"
-                        onClick={() => setShowModal(true)}
-                    >
-                        EditProfile
-                    </Button>
-                    <br />
+                    {username === currentUser ? (
+                        <>
+                            <EditProfile
+                                show={showModal}
+                                close={() => setShowModal(false)}
+                            />
+                            <Button
+                                variant="primary"
+                                onClick={() => setShowModal(true)}
+                            >
+                                EditProfile
+                            </Button>
+                            <br />
+                        </>
+                    ) : (
+                        ''
+                    )}
                     <div className="followers">
                         <h3>236</h3>
                         <small>followers</small>
@@ -82,6 +88,22 @@ const ProfilePage = () => {
                         <h3>38</h3>
                         <small>following</small>
                     </div>
+                    {username === currentUser ? (
+                        <>
+                            <AddGoal
+                                show={showAddGoalModal}
+                                close={() => setShowAddGoalModal(false)}
+                            />
+                            <Button
+                                variant="primary"
+                                onClick={() => setShowAddGoalModal(true)}
+                            >
+                                Add Goal
+                            </Button>
+                        </>
+                    ) : (
+                        ''
+                    )}
                 </div>
             </div>
             <GoalList goals={user.Goals} />
