@@ -1,6 +1,7 @@
 .container {
     background: #4A707A;
     text-align: center;
+    width: 60%;
     margin: 5em;
     padding: 2em;
     border-radius: 10px;
