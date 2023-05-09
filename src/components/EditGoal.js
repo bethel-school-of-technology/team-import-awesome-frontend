@@ -70,18 +70,18 @@ const EditGoal = ({ show, close }) => {
                     <br></br>
 
                     <div>
-                    <input
-                        type="checkbox"
-                        name="completed"
-                        checked={updatedGoal.completed}
-                        onChange={() =>
-                        setUpdatedGoal((prevValue) => ({
-                         ...prevValue,
-                             completed: !prevValue.completed,
-                         }))
-                      }
-                    />
-                    <label for="completed" style={{ color: 'black' }}>Completed</label>
+                        <input
+                            type="checkbox"
+                            name="completed"
+                            checked={updatedGoal.completed}
+                            onChange={() =>
+                                setUpdatedGoal((prevValue) => ({
+                                    ...prevValue,
+                                    completed: !prevValue.completed,
+                                }))
+                            }
+                        />
+                        <label for="completed" style={{ color: 'black', fontWeight: 'bold' }}>Completed</label>
                     </div>
 
                     <br></br>
