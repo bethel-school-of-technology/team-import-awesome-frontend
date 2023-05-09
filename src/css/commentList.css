@@ -4,8 +4,11 @@
     padding: 10px;
 }
 
+.comment-card h6 {
+    color: black
+}
 .comment-card {
-    color: black;
+    color: black
 }
 
 .comment-list-main {
