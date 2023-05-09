@@ -35,7 +35,10 @@ const Navbar = () => {
                         </Link>
                     </h2>
                 </div>
-                <div className="nav-links">
+                
+                <label id='hamburger' for='toggle'>&#9776;</label>
+                <input type='checkbox' id='toggle' />
+                <div className='menu nav-links'>
                     <HashLink smooth to="http://localhost:3001/#HOW">
                         HOW It Works
                     </HashLink>
@@ -68,7 +71,7 @@ const Navbar = () => {
                     ) : (
                         <>
                             <p>
-                                Please <Link to="/signIn">Sign In</Link>
+                                Please <Link style={{marginLeft: "5px"}} to="/signIn">Sign In</Link>
                             </p>
                             <Link to="/signUp">Register</Link>
                         </>
