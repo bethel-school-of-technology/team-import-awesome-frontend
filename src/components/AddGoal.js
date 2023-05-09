@@ -65,7 +65,7 @@ const AddGoal = ({ show, close }) => {
 
                     <input
                         placeholder="Start Date"
-                        type="text"
+                        type="date"
                         name="startDate"
                         value={newGoal.startDate}
                         onChange={handleChange}
@@ -74,7 +74,7 @@ const AddGoal = ({ show, close }) => {
 
                     <input
                         placeholder="End Date"
-                        type="text"
+                        type="date"
                         name="endDate"
                         value={newGoal.endDate}
                         onChange={handleChange}
