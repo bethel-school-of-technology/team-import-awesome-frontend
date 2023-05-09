@@ -1,29 +1,39 @@
-.homediv{
+.homediv {
     text-align: center;
 }
 
-.leftimg{
+.leftimg {
     height: 100%;
     width: 100%;
     margin-left: 15%;
 }
 
-.rightimg{
+.rightimg {
     height: 100%;
     width: 100%;
     margin-right: 15%;
 }
 
-.homerows{
+.homerows {
     padding-top: 40px;
     padding-bottom: 40px
 }
 
-.rowodd{
+.rowodd {
     background-color: #7697A0;
 }
 
-.inspo{
+.inspo {
     text-align: center;
     padding-bottom: 20px;
 }
+
+
+.carousel {
+    width:100%;
+}
+
+
+
+
+

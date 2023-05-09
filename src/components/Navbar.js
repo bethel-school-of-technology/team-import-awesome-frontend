@@ -31,6 +31,7 @@ const Navbar = () => {
                             <img
                                 className="logo"
                                 src="../assets/GoalGetterLogo2.png"
+                                alt="GoalGetter Logo"
                             ></img>
                         </Link>
                     </h2>
