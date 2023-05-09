@@ -28,19 +28,17 @@ select,
 textarea {
 font-family: "Questria", sans-serif !important;
 }
-.container {
-width: 60% !important;
+.profile-container {
+width: 80%;
 background: #4A707A;
 margin: 5em;
-padding: 2em;
+padding: 1em;
 border-radius: 10px;
-}
-.title {
-font-size: 3rem;
-font-weight: 300;
 text-align: center;
 }
-.user-profile {
+.title {
+font-size: 2rem;
+font-weight: 300;
 text-align: center;
 }
 .avatar-container {
@@ -58,6 +56,7 @@ height: 12rem;
 border-radius: 50%;
 }
 .user-name {
+text-align: center;
 font-size: 2.3rem;
 font-weight: 500;
 }
@@ -108,3 +107,13 @@ button.btn {
 
 
 
+@media screen and (max-width: 650px) {
+
+  .user-info{
+    display: none;
+  }
+  .user-welcome{
+    display: block
+  }
+  
+}

@@ -44,29 +44,35 @@ const ProfilePage = () => {
 
     return (
         <div className="profilePage-main">
-            <div className="container">
-                <h5 className="title">Hello, {username}! Get goaling!</h5>
-                <div className="user-profile">
-                    <div className="avatar-container">
-                        <img src={user.avatar} alt="" className="avatar" />
+            <div className="row profile-container">
+                <div className='col-6 user-welcome'>
+                    <h5 className="title">Hello, {username}! Get goaling!</h5>
+                    <div className="user-profile">
+                        <div className="avatar-container">
+                            <img src={user.avatar} alt="" className="avatar" />
+                        </div>
                     </div>
-                </div>
-                <h2 className="user-name">
-                    {user.firstName} {user.lastName}
-                </h2>
-                <br></br>
-                <div className="user-info">
+                    <br/>
+                    <h2 className="user-name">
+                        {user.firstName} {user.lastName}
+                    </h2>
+                    
                     <h6 className="user-age"> Age: {user.age}</h6>
-                    <br></br>
-                    <br />
+                </div>
+                {/* <br></br> */}
+                <div className="col-6 user-info">
+                    {/* <br></br>
+                    <br /> */}
                     <div className="user-bio">{user.bio}</div>
                     <br></br>
                     {username === currentUser ? (
                         <>
-                            <EditProfile
-                                show={showModal}
-                                close={() => setShowModal(false)}
-                            />
+                            <div style={{display: 'none'}}>
+                                <EditProfile
+                                    show={showModal}
+                                    close={() => setShowModal(false)}
+                                />
+                            </div>
                             <Button
                                 variant="primary"
                                 onClick={() => setShowModal(true)}
@@ -88,12 +94,15 @@ const ProfilePage = () => {
                         <h3>38</h3>
                         <small>following</small>
                     </div>
+                    <br/>
                     {username === currentUser ? (
                         <>
-                            <AddGoal
-                                show={showAddGoalModal}
-                                close={() => setShowAddGoalModal(false)}
-                            />
+                            <div style={{display: 'none'}}>
+                                <AddGoal
+                                    show={showAddGoalModal}
+                                    close={() => setShowAddGoalModal(false)}
+                                />
+                            </div>
                             <Button
                                 variant="primary"
                                 onClick={() => setShowAddGoalModal(true)}
