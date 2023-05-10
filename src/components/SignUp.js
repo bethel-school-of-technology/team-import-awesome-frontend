@@ -16,6 +16,8 @@ const SignUp = () => {
         avatar: '',
     });
 
+    const [agreedToTerms, setAgreedToTerms] = useState(false);
+
     let { createUser } = useContext(UserContext);
     let navigate = useNavigate();
 
@@ -27,6 +29,12 @@ const SignUp = () => {
 
     function handleSubmit(event) {
         event.preventDefault();
+
+        if (!agreedToTerms) {
+            window.alert('Please agree to the terms and conditions');
+            return;
+        }
+
         createUser(newUser)
             .then(() => {
                 navigate('/signIn');
@@ -120,13 +128,20 @@ const SignUp = () => {
                                 <input
                                     class="form-check-input"
                                     type="checkbox"
+                                    checked={agreedToTerms}
+                                    onChange={() => setAgreedToTerms(!agreedToTerms)}
+                                    required // checkbox has to be checked in order to proceed
                                 />
                                 I agree to the license terms.
                             </label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-success btn-block" type="submit">
+                        <button
+                            class="btn btn-success btn-block"
+                            type="submit"
+                            disabled={!agreedToTerms}
+                        >
                             Sign Up
                         </button>
                     </div>
