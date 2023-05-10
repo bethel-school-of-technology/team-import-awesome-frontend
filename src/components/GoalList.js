@@ -31,10 +31,7 @@ export function GoalList({ goals }) {
                                     .utc(goal.endDate)
                                     .format('MM/DD/YYYY');
 
-                                const timeRemaining = moment(endDate).from(
-                                    startDate,
-                                    true
-                                );
+                                const timeRemaining = moment(endDate).fromNow(true);
                                 return (
                                     <div key={goal.goalId}>
                                         <Card className="goalItem incomplete">
