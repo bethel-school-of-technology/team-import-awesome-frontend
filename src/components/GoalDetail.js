@@ -65,6 +65,7 @@ function GoalDetail() {
 
     let startDate = moment.utc(userGoal.startDate).format('MM/DD/YYYY');
     let endDate = moment.utc(userGoal.endDate).format('MM/DD/YYYY');
+    const timeRemaining = moment(endDate).from(startDate, true);
 
     return (
         <div className="goal-detail-body">
@@ -73,9 +74,9 @@ function GoalDetail() {
                 <h5>Plan: {userGoal.plan}</h5>
                 <br />
                 {userGoal.completed === true ? (
-                    <span>Goal Complete!</span>
+                    <h4>Goal Complete!</h4>
                 ) : (
-                    <span>Goal Not Complete</span>
+                    <h4>Goal Not Complete</h4>
                 )}
                 {/* <label>Goal Complete: </label>{' '}
                 <input
@@ -85,6 +86,7 @@ function GoalDetail() {
                 /> */}
                 <div>Start Date: {startDate}</div>
                 <div>End Date: {endDate}</div>
+                <h5>Time Remaining: {timeRemaining}</h5>
                 {currentUser === userGoal.username ? (
                     <div>
                         <EditGoal
