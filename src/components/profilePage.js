@@ -45,18 +45,20 @@ const ProfilePage = () => {
     return (
         <div className="profilePage-main">
             <div className="row profile-container">
-                <div className='col-md-6 col-sm-12 user-welcome'>
-                    <h6 className="title">Hello, {username}! Get goaling!</h6>
+                <div className="col-md-6 col-sm-12 user-welcome">
+                    <h6 className="title">
+                        Hello, {user.username}! Get goaling!
+                    </h6>
                     <div className="user-profile">
                         <div className="avatar-container">
                             <img src={user.avatar} alt="" className="avatar" />
                         </div>
                     </div>
-                    <br/>
+                    <br />
                     <h2 className="user-name">
                         {user.firstName} {user.lastName}
                     </h2>
-                    
+
                     <h6 className="user-age"> Age: {user.age}</h6>
                 </div>
                 {/* <br></br> */}
@@ -65,9 +67,9 @@ const ProfilePage = () => {
                     <br /> */}
                     <div className="user-bio">{user.bio}</div>
                     <br></br>
-                    {username === currentUser ? (
+                    {user.username === currentUser ? (
                         <>
-                            <div style={{display: 'none'}}>
+                            <div style={{ display: 'none' }}>
                                 <EditProfile
                                     show={showModal}
                                     close={() => setShowModal(false)}
@@ -94,17 +96,17 @@ const ProfilePage = () => {
                         <h3>38</h3>
                         <small>following</small>
                     </div>
-                    <br/>
-                    {username === currentUser ? (
+                    <br />
+                    {user.username === currentUser ? (
                         <>
-                            <div style={{display: 'none'}}>
+                            <div style={{ display: 'none' }}>
                                 <AddGoal
                                     show={showAddGoalModal}
                                     close={() => setShowAddGoalModal(false)}
                                 />
                             </div>
                             <Button
-                                className='add-goal-button'
+                                className="add-goal-button"
                                 variant="primary"
                                 onClick={() => setShowAddGoalModal(true)}
                             >

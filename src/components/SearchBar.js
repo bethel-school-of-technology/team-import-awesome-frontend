@@ -1,20 +1,36 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import UserContext from '../contexts/userContext';
 
 const SearchBar = () => {
+    const { getUser } = useContext(UserContext);
     const [userSearched, setUserSearched] = useState('');
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
-    function handleSubmit() {
-        navigate(`/profile-page/${userSearched}`);
+    async function handleSubmit(e) {
+        e.preventDefault();
+
+        try {
+            const result = await getUser(userSearched);
+
+            if (result) {
+                navigate(`/profile-page/${userSearched}`);
+            }
+        } catch (error) {
+            window.alert(`That User Does Not Exist :(
+
+Make sure the spelling is correct :)`);
+        }
+
+        setUserSearched('');
     }
 
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <button>Search</button>
+                <button type="submit">Search</button>
                 <input
-                    type={'search'}
+                    type="search"
                     placeholder="Search Users"
                     value={userSearched}
                     onChange={(e) => setUserSearched(e.target.value)}
