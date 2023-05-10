@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import '../css/goalList.css';
 import moment from 'moment';
+import { faTrophy } from "react-icons/fa";
 
 export function GoalList({ goals }) {
     // const [showModal, setShowModal] = useState(false);
@@ -36,11 +37,14 @@ export function GoalList({ goals }) {
                                     <div key={goal.goalId}>
                                         <Card className="goalItem incomplete">
                                             <div>
+                                                <faTrophy />
                                                 <Link
                                                     to={`/goals/detail/${goal.goalId}`}
                                                 >
                                                     {goal.title}
                                                 </Link>
+                                                <faTrophy />
+
                                             </div>
                                             <div>
                                                 <span>
