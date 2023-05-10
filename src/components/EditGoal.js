@@ -3,7 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import GoalContext from '../contexts/GoalContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import moment from 'moment';
-import Confetti from 'react-confetti'
+import Confetti from 'react-confetti';
 import '../css/addGoal.css';
 
 const EditGoal = ({ show, close }) => {
@@ -42,6 +42,14 @@ const EditGoal = ({ show, close }) => {
 
         editGoal(updatedGoal)
             .then(() => {
+                if (
+                    moment(updatedGoal.startDate).isValid() &&
+                    moment(updatedGoal.endDate).isValid()
+                ) {
+                    console.log('Dates Valid');
+                }
+            })
+            .then(() => {
                 if (updatedGoal.completed) {
                     close();
                     setShowCongratulations(true);
@@ -56,8 +64,8 @@ const EditGoal = ({ show, close }) => {
             });
     };
 
-    let startDate = moment(updatedGoal.startDate).toDate();
-    let endDate = moment(updatedGoal.endDate).toDate();
+    // let startDate = moment(updatedGoal.startDate).utcOffset(24).toDate();
+    // let endDate = moment(updatedGoal.endDate).utcOffset(24).toDate();
 
     return (
         <div
@@ -109,7 +117,9 @@ const EditGoal = ({ show, close }) => {
                     <input
                         type="date"
                         name="startDate"
-                        defaultValue={moment(startDate).format('YYYY-MM-DD')}
+                        defaultValue={moment
+                            .utc(updatedGoal.startDate)
+                            .format('YYYY-MM-DD')}
                         onChange={handleChange}
                     />
                     <br></br>
@@ -117,7 +127,9 @@ const EditGoal = ({ show, close }) => {
                     <input
                         type="date"
                         name="endDate"
-                        defaultValue={moment(endDate).format('YYYY-MM-DD')}
+                        defaultValue={moment
+                            .utc(updatedGoal.endDate)
+                            .format('YYYY-MM-DD')}
                         onChange={handleChange}
                     />
                     <br></br>
@@ -130,23 +142,42 @@ const EditGoal = ({ show, close }) => {
                 </form>
 
                 <Modal.Footer className="modal-footer" />
-
             </Modal>
             {/* Congratulations modal */}
-            <Modal show={showCongratulations} onHide={() => setShowCongratulations(false)}>
+            <Modal
+                show={showCongratulations}
+                onHide={() => setShowCongratulations(false)}
+            >
                 <Modal.Header closeButton className="modal-header">
                     <Modal.Title>Congratulations!</Modal.Title>
                 </Modal.Header>
 
-                <Modal.Body style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-                        <Confetti width={window.innerWidth} height={window.innerHeight} />
+                <Modal.Body
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                    }}
+                >
+                    <div
+                        style={{
+                            position: 'relative',
+                            width: '100%',
+                            height: '100%',
+                        }}
+                    >
+                        <Confetti
+                            width={window.innerWidth}
+                            height={window.innerHeight}
+                        />
                     </div>
                     <p>You have successfully completed your goal!</p>
                 </Modal.Body>
 
                 <Modal.Footer className="modal-footer">
-                    <Button onClick={() => setShowCongratulations(false)}>Close</Button>
+                    <Button onClick={() => setShowCongratulations(false)}>
+                        Close
+                    </Button>
                 </Modal.Footer>
             </Modal>
         </div>

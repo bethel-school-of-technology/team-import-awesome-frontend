@@ -7,7 +7,7 @@ import GoalContext from './GoalContext.js';
 export const GoalProvider = (props) => {
     const [goals, setGoals] = useState([]); // set state variable of goal
     const baseUrl = 'http://localhost:3000/goals/'; // the baseURL used for the axios calls
-    const [user, setUser] = useState('');
+    // const [user, setUser] = useState('');
 
     useEffect(() => {
         // once the component is mounted - executes getAllGoals only when necessary

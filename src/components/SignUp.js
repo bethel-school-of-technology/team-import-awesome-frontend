@@ -108,7 +108,7 @@ const SignUp = () => {
                         <input
                             class="form-control"
                             placeholder="Email"
-                            type="text"
+                            type="email"
                             name="email"
                             value={newUser.email}
                             onChange={handleChange}
