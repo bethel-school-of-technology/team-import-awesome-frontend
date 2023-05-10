@@ -95,7 +95,7 @@ const EditProfile = ({ show, close }) => {
                     <label>Email</label>
                     <input
                         placeholder="Email"
-                        type="text"
+                        type="email"
                         name="email"
                         value={user.email}
                         onChange={handleChange}
@@ -115,7 +115,7 @@ const EditProfile = ({ show, close }) => {
                     <label>Profile Pic URL</label>
                     <textarea
                         placeholder="Profile Pic URL"
-                        type="text"
+                        type="url"
                         rows="6"
                         cols="50"
                         name="avatar"

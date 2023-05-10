@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Card } from 'react-bootstrap';
-import AddGoal from './AddGoal';
+import { Card } from 'react-bootstrap';
 import '../css/goalList.css';
 import moment from 'moment';
 
@@ -25,12 +24,12 @@ export function GoalList({ goals }) {
                         <div>
                             <h3 className="category">In Progress:</h3>
                             {incompleteGoals.map((goal) => {
-                                let startDate = moment(goal.startDate).format(
-                                    'MM/DD/YYYY'
-                                );
-                                let endDate = moment(goal.endDate).format(
-                                    'MM/DD/YYYY'
-                                );
+                                let startDate = moment
+                                    .utc(goal.startDate)
+                                    .format('MM/DD/YYYY');
+                                let endDate = moment
+                                    .utc(goal.endDate)
+                                    .format('MM/DD/YYYY');
                                 return (
                                     <div key={goal.goalId}>
                                         <Card className="goalItem incomplete">
@@ -42,7 +41,11 @@ export function GoalList({ goals }) {
                                                 </Link>
                                             </div>
                                             <div>
-                                                <span>Start Date: {startDate}</span> - <span>End Date: {endDate}</span>
+                                                <span>
+                                                    Start Date: {startDate}
+                                                </span>{' '}
+                                                -{' '}
+                                                <span>End Date: {endDate}</span>
                                             </div>
                                         </Card>
                                     </div>
@@ -59,12 +62,12 @@ export function GoalList({ goals }) {
                         <div>
                             <h3 className="category">Completed:</h3>
                             {completedGoals.map((goal) => {
-                                let startDate = moment(goal.startDate).format(
-                                    'MM/DD/YYYY'
-                                );
-                                let endDate = moment(goal.endDate).format(
-                                    'MM/DD/YYYY'
-                                );
+                                let startDate = moment
+                                    .utc(goal.startDate)
+                                    .format('MM/DD/YYYY');
+                                let endDate = moment
+                                    .utc(goal.endDate)
+                                    .format('MM/DD/YYYY');
                                 return (
                                     <div key={goal.goalId}>
                                         <Card className="goalItem complete">
@@ -76,7 +79,11 @@ export function GoalList({ goals }) {
                                                 </Link>
                                             </div>
                                             <div>
-                                            <span>Start Date: {startDate}</span> - <span>End Date: {endDate}</span>
+                                                <span>
+                                                    Start Date: {startDate}
+                                                </span>{' '}
+                                                -{' '}
+                                                <span>End Date: {endDate}</span>
                                             </div>
                                         </Card>
                                     </div>

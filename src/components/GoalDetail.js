@@ -5,6 +5,7 @@ import GoalContext from '../contexts/GoalContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../css/GoalDetail.css';
 import { CommentList } from './CommentList';
+import moment from 'moment';
 
 function GoalDetail() {
     const { deleteGoal, getGoal } = useContext(GoalContext);
@@ -62,10 +63,8 @@ function GoalDetail() {
         }
     };
 
-    let startDate = userGoal.startDate;
-    let endDate = userGoal.endDate;
-    let newStartDate = new Date(startDate).toLocaleDateString();
-    let newEndDate = new Date(endDate).toLocaleDateString();
+    let startDate = moment.utc(userGoal.startDate).format('MM/DD/YYYY');
+    let endDate = moment.utc(userGoal.endDate).format('MM/DD/YYYY');
 
     return (
         <div className="goal-detail-body">
@@ -84,8 +83,8 @@ function GoalDetail() {
                     value={userGoal.completed}
                     checked={userGoal.completed}
                 /> */}
-                <div>Start Date: {newStartDate}</div>
-                <div>End Date: {newEndDate}</div>
+                <div>Start Date: {startDate}</div>
+                <div>End Date: {endDate}</div>
                 {currentUser === userGoal.username ? (
                     <div>
                         <EditGoal
