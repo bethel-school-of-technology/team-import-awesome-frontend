@@ -45,7 +45,7 @@ const ProfilePage = () => {
     return (
         <div className="profilePage-main">
             <div className="row profile-container">
-                <div className='col-6 user-welcome'>
+                <div className='col-md-6 col-sm-12 user-welcome'>
                     <h5 className="title">Hello, {username}! Get goaling!</h5>
                     <div className="user-profile">
                         <div className="avatar-container">
@@ -60,7 +60,7 @@ const ProfilePage = () => {
                     <h6 className="user-age"> Age: {user.age}</h6>
                 </div>
                 {/* <br></br> */}
-                <div className="col-6 user-info">
+                <div className="col-md-6 col-sm-12 user-info">
                     {/* <br></br>
                     <br /> */}
                     <div className="user-bio">{user.bio}</div>
@@ -104,6 +104,7 @@ const ProfilePage = () => {
                                 />
                             </div>
                             <Button
+                                className='add-goal-button'
                                 variant="primary"
                                 onClick={() => setShowAddGoalModal(true)}
                             >
