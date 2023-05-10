@@ -54,6 +54,11 @@ a.goal-link:hover {
     color: black;
 }
 
+.goalItem a{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 .category {
     text-align: left;
 }

@@ -58,14 +58,14 @@ function GoalDetail() {
                 })
                 .catch((error) => {
                     console.log(error);
-                    navigate('/signIn');
+                    navigate(`/profile-page/${userGoal.username}`);
                 });
         }
     };
 
     let startDate = moment.utc(userGoal.startDate).format('MM/DD/YYYY');
     let endDate = moment.utc(userGoal.endDate).format('MM/DD/YYYY');
-    const timeRemaining = moment(endDate).from(startDate, true);
+    const timeRemaining = moment(endDate).fromNow(true);
 
     return (
         <div className="goal-detail-body">
