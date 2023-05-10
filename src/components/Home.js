@@ -126,7 +126,7 @@ const Home = () => {
                 </div>
                 {/* ABOUT */}
                 <div className="row homerows rowodd" id="ABOUT">
-                    <div className="col-6 my-auto homediv">
+                    <div className="col-md-6 col-sm-12 my-auto homediv">
                         <h3>About Us</h3>
                         <p>
                             Welcome to Goal Getters!
@@ -140,9 +140,9 @@ const Home = () => {
                             working to improve Goal Getters by adding new features and enhancing its performance.
                         </p>
                     </div>
-                    <div className="col-6">
+                    <div className="col-md-6 col-sm-12">
                         <img
-                            className="w-75 rightimg"
+                            className=" rightimg"
                             src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGhlYWx0aHklMjBhY3Rpdml0aWVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60"
                             alt="Walking up steps"
                         />
@@ -150,14 +150,14 @@ const Home = () => {
                 </div>
                 {/* WHY */}
                 <div className="row homerows" id="WHY">
-                    <div className="col-6">
+                    <div className="col-md-6 col-sm-12">
                         <img
-                            className="w-75 leftimg"
+                            className=" leftimg"
                             src="https://images.unsplash.com/photo-1523206489230-c012c64b2b48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8SXBob25lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=400&q=60"
                             alt="Tossing a phone"
                         />
                     </div>
-                    <div className="col-6 my-auto mx-auto homediv">
+                    <div className="col-md-6 col-sm-12 my-auto mx-auto homediv">
                         <h3>Why GoalGetters?</h3>
                         <p>
                             Are you tired of setting fitness goals that you struggle to achieve?
@@ -186,7 +186,7 @@ const Home = () => {
                 </div>
                 {/* HOW */}
                 <div className="row homerows rowodd" id="HOW">
-                    <div className="col-6 m-auto homediv">
+                    <div className="col-md-6 col-sm-12 m-auto homediv">
                         <h3>How It Works</h3>
                         <p>Goal Getters is a user-friendly site that makes setting and achieving fitness goals easier than ever before. Here's how it works:</p>
 
@@ -204,9 +204,9 @@ const Home = () => {
                         <p>With Goal Getters, you have everything you need to make your fitness goals a reality.
                             Our site is designed to help you stay on track, stay motivated, and stay committed to your fitness journey.</p>
                     </div>
-                    <div className="col-6">
+                    <div className="col-md-6 col-sm-12">
                         <img
-                            className="w-75 rightimg"
+                            className="rightimg"
                             src="https://plus.unsplash.com/premium_photo-1681487975579-3cb90dbe46a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80"
                             alt="Gears working"
                         />
