@@ -46,7 +46,7 @@ const ProfilePage = () => {
         <div className="profilePage-main">
             <div className="row profile-container">
                 <div className='col-md-6 col-sm-12 user-welcome'>
-                    <h5 className="title">Hello, {username}! Get goaling!</h5>
+                    <h6 className="title">Hello, {username}! Get goaling!</h6>
                     <div className="user-profile">
                         <div className="avatar-container">
                             <img src={user.avatar} alt="" className="avatar" />

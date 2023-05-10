@@ -27,7 +27,7 @@ const Navbar = () => {
         <>
             <nav className="nav-main">
                 <div>
-                    <h2 style={{ width: '300px' }}>
+                    <h2 style={{ width: '200px' }}>
                         <Link to={'/'}>
                             <img
                                 className="logo"
@@ -37,7 +37,7 @@ const Navbar = () => {
                         </Link>
                     </h2>
                 </div>
-                <div className="searchBar">
+                <div className="search-bar">
                     <SearchBar />
                 </div>
 
@@ -45,7 +45,7 @@ const Navbar = () => {
                     &#9776;
                 </label>
                 <input type="checkbox" id="toggle" />
-                <div className="menu nav-links">
+                <div className='menu nav-links' style={{zIndex: 999}}>
                     <HashLink smooth to="http://localhost:3001/#HOW">
                         HOW
                     </HashLink>
@@ -58,10 +58,9 @@ const Navbar = () => {
 
                     {user ? (
                         <>
-                            <h5>
-                                Welcome,{' '}
-                                <Link to={`/profile-page/${user}`}>{user}</Link>
-                            </h5>
+                            
+                            <Link to={`/profile-page/${user}`}>Welcome, {user}</Link>
+                            
                             <Link
                                 to="/"
                                 onClick={() => {
@@ -75,15 +74,12 @@ const Navbar = () => {
                         </>
                     ) : (
                         <>
-                            <p>
-                                Please{' '}
-                                <Link
-                                    style={{ marginLeft: '5px' }}
-                                    to="/signIn"
-                                >
-                                    Sign In
-                                </Link>
-                            </p>
+                            <Link
+                                style={{ marginLeft: '5px' }}
+                                to="/signIn"
+                            >
+                               Please Sign In
+                            </Link>
                             <Link to="/signUp">Register</Link>
                         </>
                     )}
