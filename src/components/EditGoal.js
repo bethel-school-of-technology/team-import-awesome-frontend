@@ -3,6 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import GoalContext from '../contexts/GoalContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import moment from 'moment';
+import Confetti from 'react-confetti'
 import '../css/addGoal.css';
 
 const EditGoal = ({ show, close }) => {
@@ -15,6 +16,8 @@ const EditGoal = ({ show, close }) => {
         endDate: '',
         completed: false,
     });
+
+    const [showCongratulations, setShowCongratulations] = useState(false);
 
     let { getGoal, editGoal } = useContext(GoalContext);
     let navigate = useNavigate();
@@ -34,10 +37,19 @@ const EditGoal = ({ show, close }) => {
         });
     }
 
-    const handleSubmit = () => {
-        close();
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
         editGoal(updatedGoal)
-            .then(navigate(`/goals/detail/${updatedGoal.goalId}`))
+            .then(() => {
+                if (updatedGoal.completed) {
+                    close();
+                    setShowCongratulations(true);
+                } else {
+                    close();
+                }
+            })
+            .then(() => navigate(`/goals/detail/${updatedGoal.goalId}`))
             .catch((error) => {
                 console.log(error);
                 window.alert('Error updating goal');
@@ -117,7 +129,25 @@ const EditGoal = ({ show, close }) => {
                     <Button onClick={close}>Cancel</Button>
                 </form>
 
-                <Modal.Footer className="modal-footer"></Modal.Footer>
+                <Modal.Footer className="modal-footer" />
+
+            </Modal>
+            {/* Congratulations modal */}
+            <Modal show={showCongratulations} onHide={() => setShowCongratulations(false)}>
+                <Modal.Header closeButton className="modal-header">
+                    <Modal.Title>Congratulations!</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                        <Confetti width={window.innerWidth} height={window.innerHeight} />
+                    </div>
+                    <p>You have successfully completed your goal!</p>
+                </Modal.Body>
+
+                <Modal.Footer className="modal-footer">
+                    <Button onClick={() => setShowCongratulations(false)}>Close</Button>
+                </Modal.Footer>
             </Modal>
         </div>
     );
