@@ -1,9 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import UserContext from '../contexts/userContext';
 import Footer from './Footer';
 import '../css/Navbar.css';
 import { HashLink } from 'react-router-hash-link';
+import SearchBar from './SearchBar';
 
 const Navbar = () => {
     let { logOutUser } = useContext(UserContext);
@@ -26,7 +27,7 @@ const Navbar = () => {
         <>
             <nav className="nav-main">
                 <div>
-                    <h2 style={{width: "300px"}}>
+                    <h2 style={{ width: '300px' }}>
                         <Link to={'/'}>
                             <img
                                 className="logo"
@@ -36,20 +37,23 @@ const Navbar = () => {
                         </Link>
                     </h2>
                 </div>
-                
-                <label id='hamburger' for='toggle'>&#9776;</label>
-                <input type='checkbox' id='toggle' />
-                <div className='menu nav-links'>
+                <div className="searchBar">
+                    <SearchBar />
+                </div>
+
+                <label id="hamburger" for="toggle">
+                    &#9776;
+                </label>
+                <input type="checkbox" id="toggle" />
+                <div className="menu nav-links">
                     <HashLink smooth to="http://localhost:3001/#HOW">
-                        HOW It Works
+                        HOW
                     </HashLink>
-                    <HashLink smooth to="http://localhost:3001/#WHY"
-                    >
-                        WHY GoalGetters
+                    <HashLink smooth to="http://localhost:3001/#WHY">
+                        WHY
                     </HashLink>
-                    <HashLink smooth to="http://localhost:3001/#ABOUT"
-                    >
-                        About Us
+                    <HashLink smooth to="http://localhost:3001/#ABOUT">
+                        ABOUT
                     </HashLink>
 
                     {user ? (
@@ -72,7 +76,13 @@ const Navbar = () => {
                     ) : (
                         <>
                             <p>
-                                Please <Link style={{marginLeft: "5px"}} to="/signIn">Sign In</Link>
+                                Please{' '}
+                                <Link
+                                    style={{ marginLeft: '5px' }}
+                                    to="/signIn"
+                                >
+                                    Sign In
+                                </Link>
                             </p>
                             <Link to="/signUp">Register</Link>
                         </>
