@@ -30,6 +30,11 @@ export function GoalList({ goals }) {
                                 let endDate = moment
                                     .utc(goal.endDate)
                                     .format('MM/DD/YYYY');
+
+                                const timeRemaining = moment(endDate).from(
+                                    startDate,
+                                    true
+                                );
                                 return (
                                     <div key={goal.goalId}>
                                         <Card className="goalItem incomplete">
@@ -46,6 +51,11 @@ export function GoalList({ goals }) {
                                                 </span>{' '}
                                                 -{' '}
                                                 <span>End Date: {endDate}</span>
+                                                <br />
+                                                <span>
+                                                    Time Remaining:{' '}
+                                                    {timeRemaining}{' '}
+                                                </span>
                                             </div>
                                         </Card>
                                     </div>
