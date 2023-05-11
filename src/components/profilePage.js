@@ -79,7 +79,7 @@ const ProfilePage = () => {
                                 variant="primary"
                                 onClick={() => setShowModal(true)}
                             >
-                                EditProfile
+                                Edit Profile
                             </Button>
                             <br />
                         </>
