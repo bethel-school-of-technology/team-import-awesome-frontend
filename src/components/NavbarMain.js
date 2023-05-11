@@ -42,13 +42,9 @@ const NavbarMain = () => {
                         ></img>
                     </HashLink>
                 </Navbar.Brand>
-                <div className="ml-auto">
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <div className="mr-3">
                             <SearchBar />
-                        </div>
-                        <div className="ml-3">
                             <Nav>
                                 <Nav.Link>
                                     <HashLink smooth to="/#HOW">
@@ -66,7 +62,6 @@ const NavbarMain = () => {
                                     </HashLink>
                                 </Nav.Link>
                             </Nav>
-                        </div>
 
                         <Nav>
                             {user ? (
@@ -97,7 +92,7 @@ const NavbarMain = () => {
                                             to="/signIn"
                                             style={{ color: 'black' }}
                                         >
-                                            Please Sign In
+                                            Sign In
                                         </Link>
                                     </Nav.Link>
                                     <Nav.Link>
@@ -112,7 +107,6 @@ const NavbarMain = () => {
                             )}
                         </Nav>
                     </Navbar.Collapse>
-                </div>
             </Navbar>
             <div className="outlet">
                 <Outlet />
