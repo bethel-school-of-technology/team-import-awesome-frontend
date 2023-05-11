@@ -2,7 +2,7 @@ import { Carousel } from 'react-bootstrap';
 
 import '../css/home.css';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {

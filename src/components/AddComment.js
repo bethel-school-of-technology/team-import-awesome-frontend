@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
+import { React, useContext, useState } from "react";
 import CommentContext from "../contexts/CommentContext";
 import { useNavigate, useParams } from "react-router";
 import { Button, Modal } from "react-bootstrap";
 
-export function AddComment({show, close}){
+export function AddComment({ show, close }) {
     let { id } = useParams()
 
 
@@ -25,7 +25,7 @@ export function AddComment({show, close}){
 
     const handleSubmit = () => {
         close();
-        addComment(newComment, {goalId: id})
+        addComment(newComment, { goalId: id })
             .then(navigate(`/goals/detail/${id}`))
             .catch((error) => {
                 console.log(error);
@@ -35,7 +35,7 @@ export function AddComment({show, close}){
 
 
 
-    return(
+    return (
         <div
             className="modal show"
             style={{ display: 'block', position: 'initial' }}
@@ -55,7 +55,7 @@ export function AddComment({show, close}){
                         value={newComment.comment}
                         onChange={handleChange}
                     />
-                    
+
                     <br></br>
 
                     <button>Add Comment</button>
