@@ -1,19 +1,17 @@
-import { useContext, useState } from "react";
-import CommentContext from "../contexts/CommentContext";
-import { useNavigate, useParams } from "react-router";
-import { Button, Modal } from "react-bootstrap";
+import { useContext, useState } from 'react';
+import CommentContext from '../contexts/CommentContext';
+import { useNavigate, useParams } from 'react-router';
+import { Form, Button, Modal } from 'react-bootstrap';
 
-export function AddComment({show, close}){
-    let { id } = useParams()
-
+export function AddComment({ show, close }) {
+    let { id } = useParams();
 
     const [newComment, setNewComment] = useState({
         comment: '',
-        goalId: id
+        goalId: id,
     });
 
     let { addComment } = useContext(CommentContext);
-
 
     let navigate = useNavigate();
 
@@ -25,7 +23,7 @@ export function AddComment({show, close}){
 
     const handleSubmit = () => {
         close();
-        addComment(newComment, {goalId: id})
+        addComment(newComment, { goalId: id })
             .then(navigate(`/goals/detail/${id}`))
             .catch((error) => {
                 console.log(error);
@@ -33,9 +31,7 @@ export function AddComment({show, close}){
             });
     };
 
-
-
-    return(
+    return (
         <div
             className="modal show"
             style={{ display: 'block', position: 'initial' }}
@@ -47,27 +43,25 @@ export function AddComment({show, close}){
                     </Modal.Title>
                 </Modal.Header>
 
-                <form onSubmit={handleSubmit} className="modal-form">
-                    <input
-                        placeholder="comment"
-                        type="text"
-                        name="comment"
-                        value={newComment.comment}
-                        onChange={handleChange}
-                    />
-                    
-                    <br></br>
+                <Form onSubmit={handleSubmit} className="modal-form">
+                    <Form.Group>
+                        <Form.Control
+                            type="textarea"
+                            placeholder="Comment"
+                            name="comment"
+                            value={newComment.comment}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                    <br />
 
-                    <button>Add Comment</button>
-
-                    <br></br>
-
+                    <Button type="submit">Add Comment</Button>
+                    <br />
                     <Button onClick={close}>Cancel</Button>
-                </form>
+                </Form>
 
                 <Modal.Footer className="modal-footer"></Modal.Footer>
             </Modal>
         </div>
-    )
-
+    );
 }

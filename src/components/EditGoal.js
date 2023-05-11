@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Form, Modal, Button } from 'react-bootstrap';
 import GoalContext from '../contexts/GoalContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import moment from 'moment';
@@ -77,69 +77,75 @@ const EditGoal = ({ show, close }) => {
                     <Modal.Title className="modal-title">Edit Goal</Modal.Title>
                 </Modal.Header>
 
-                <form onSubmit={handleSubmit} className="modal-form">
-                    <div>
-                        <input
+                <Form onSubmit={handleSubmit} className="modal-form">
+                    <Form.Group>
+                        <Form.Check
                             type="checkbox"
+                            id="completed"
+                            label="Completed"
                             name="completed"
                             checked={updatedGoal.completed}
                             onChange={() =>
-                                setUpdatedGoal((prevValue) => ({
-                                    ...prevValue,
-                                    completed: !prevValue.completed,
+                                setUpdatedGoal((prevGoal) => ({
+                                    ...prevGoal,
+                                    completed: !prevGoal.completed,
                                 }))
                             }
                         />
-                        <label
-                            for="completed"
-                            style={{ color: 'black', fontWeight: 'bold' }}
-                        >
-                            Completed
-                        </label>
-                    </div>
-                    <br></br>
+                    </Form.Group>
+                    <br />
 
-                    <input
-                        type="text"
-                        name="title"
-                        value={updatedGoal.title}
-                        onChange={handleChange}
-                    />
-                    <br></br>
+                    <Form.Group>
+                        <Form.Control
+                            type="text"
+                            name="title"
+                            placeholder="Title"
+                            value={updatedGoal.title}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                    <br />
 
-                    <textarea
-                        name="plan"
-                        value={updatedGoal.plan}
-                        onChange={handleChange}
-                    />
-                    <br></br>
+                    <Form.Group>
+                        <Form.Control
+                            as="textarea"
+                            name="plan"
+                            placeholder="Plan"
+                            rows={3}
+                            value={updatedGoal.plan}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                    <br />
 
-                    <input
-                        type="date"
-                        name="startDate"
-                        defaultValue={moment
-                            .utc(updatedGoal.startDate)
-                            .format('YYYY-MM-DD')}
-                        onChange={handleChange}
-                    />
-                    <br></br>
+                    <Form.Group>
+                        <Form.Control
+                            type="date"
+                            name="startDate"
+                            defaultValue={moment
+                                .utc(updatedGoal.startDate)
+                                .format('YYYY-MM-DD')}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                    <br />
 
-                    <input
-                        type="date"
-                        name="endDate"
-                        defaultValue={moment
-                            .utc(updatedGoal.endDate)
-                            .format('YYYY-MM-DD')}
-                        onChange={handleChange}
-                    />
-                    <br></br>
+                    <Form.Group>
+                        <Form.Control
+                            type="date"
+                            name="endDate"
+                            defaultValue={moment
+                                .utc(updatedGoal.endDate)
+                                .format('YYYY-MM-DD')}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                    <br />
 
-                    <button>Update Goal</button>
-
-                    <br></br>
-
+                    <Button type="submit">Update Goal</Button>
+                    <br />
                     <Button onClick={close}>Cancel</Button>
-                </form>
+                </Form>
 
                 <Modal.Footer className="modal-footer" />
             </Modal>

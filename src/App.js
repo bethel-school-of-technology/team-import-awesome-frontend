@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import Home from './components/Home';
-import Navbar from './components/Navbar';
 import { UserProvider } from './contexts/userProvider';
 import { GoalProvider } from './contexts/GoalProvider';
 import { CommentProvider } from './contexts/CommentProvider';
@@ -10,6 +9,7 @@ import SignIn from './components/SignIn';
 import ProfilePage from './components/profilePage';
 import Copyright from './components/Copyright';
 import GoalDetail from './components/GoalDetail';
+import NavbarMain from './components/NavbarMain';
 
 function App() {
     return (
@@ -19,7 +19,7 @@ function App() {
                     <div>
                         <BrowserRouter>
                             <Routes>
-                                <Route exact path="/" element={<Navbar />}>
+                                <Route exact path="/" element={<NavbarMain />}>
                                     <Route path="/" element={<Home />} />
                                     <Route
                                         path="/signUp"

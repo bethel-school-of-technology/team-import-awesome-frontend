@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Form, Modal, Button } from 'react-bootstrap';
 import UserContext from '../contexts/userContext';
 import { useNavigate } from 'react-router-dom';
 import '../css/edit-profile.css';
@@ -62,74 +62,82 @@ const EditProfile = ({ show, close }) => {
                     </Modal.Title>
                 </Modal.Header>
 
-                <form onSubmit={handleSubmit} className="modal-form">
-                    <label>First Name</label>
-                    <input
-                        placeholder="First Name"
-                        type="text"
-                        name="firstName"
-                        value={user.firstName}
-                        onChange={handleChange}
-                    />
-                    <br />
-                    <label>Last Name</label>
-                    <input
-                        placeholder="Last Name"
-                        type="text"
-                        name="lastName"
-                        value={user.lastName}
-                        onChange={handleChange}
-                    />
-                    <br />
+                <Form onSubmit={handleSubmit} className="modal-form">
+                    <Form.Group>
+                        <Form.Label>First Name</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="First Name"
+                            name="firstName"
+                            value={user.firstName}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
 
-                    <label>Age</label>
-                    <input
-                        placeholder="Age"
-                        type="text"
-                        name="age"
-                        value={user.age}
-                        onChange={handleChange}
-                    />
+                    <Form.Group>
+                        <Form.Label>Last Name</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Last Name"
+                            name="lastName"
+                            value={user.lastName}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+
+                    <Form.Group>
+                        <Form.Label>Age</Form.Label>
+                        <Form.Control
+                            type="text"
+                            placeholder="Age"
+                            name="age"
+                            value={user.age}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+
+                    <Form.Group>
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control
+                            type="email"
+                            placeholder="Email"
+                            name="email"
+                            value={user.email}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+
+                    <Form.Group>
+                        <Form.Label>Bio</Form.Label>
+                        <Form.Control
+                            as="textarea"
+                            placeholder="Bio"
+                            rows={6}
+                            maxLength={255}
+                            name="bio"
+                            value={user.bio}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+
+                    <Form.Group>
+                        <Form.Label>Profile Pic URL</Form.Label>
+                        <Form.Control
+                            as="textarea"
+                            type="url"
+                            placeholder="Profile Pic URL"
+                            rows={6}
+                            maxLength={255}
+                            name="avatar"
+                            value={user.avatar}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
                     <br />
-
-                    <label>Email</label>
-                    <input
-                        placeholder="Email"
-                        type="email"
-                        name="email"
-                        value={user.email}
-                        onChange={handleChange}
-                    />
+                    <Button type="submit">Update Profile</Button>
                     <br />
-
-                    <label>Bio</label>
-                    <textarea
-                        placeholder="Bio"
-                        rows="6"
-                        cols="50"
-                        name="bio"
-                        value={user.bio}
-                        onChange={handleChange}
-                    />
-                    <br />
-                    <label>Profile Pic URL</label>
-                    <textarea
-                        placeholder="Profile Pic URL"
-                        type="url"
-                        rows="6"
-                        cols="50"
-                        name="avatar"
-                        value={user.avatar}
-                        onChange={handleChange}
-                    />
-                    <br />
-
-                    <button>Update Profile</button>
-
-                    <br></br>
-
                     <Button onClick={close}>Cancel</Button>
-                </form>
+                </Form>
 
                 <Modal.Footer className="modal-footer"></Modal.Footer>
             </Modal>

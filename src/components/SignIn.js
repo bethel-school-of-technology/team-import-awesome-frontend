@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../contexts/userContext.js';
@@ -26,66 +27,71 @@ const SignIn = () => {
 
     return (
         <body className="sign-in-body">
-            <div class="row align-items-center">
-                <div class="col-sm">
+            <div className="row align-items-center">
+                <div className="col-sm">
                     <div className="sign-in-main">
-                        <div class="form-container-sign-in">
-                            <div class="center">
-                                <div class="header">Login</div>
+                        <div className="form-container-sign-in">
+                            <div className="center">
+                                <div className="header">Login</div>
                             </div>
 
-                            <form onSubmit={handleSubmit}>
-                                <div class="form-grouping">
-                                    <input
-                                        class="form-control-sign-in"
-                                        placeholder="Username"
+                            <Form onSubmit={handleSubmit}>
+                                <div className="form-grouping">
+                                    <Form.Control
                                         type="text"
-                                        name="userName"
+                                        placeholder="Username"
+                                        name="username"
+                                        value={username}
                                         onChange={(e) =>
                                             setUsername(e.target.value)
                                         }
                                     />
                                 </div>
-                                <div class="form-grouping">
-                                    <input
-                                        class="form-control-sign-in"
-                                        placeholder="Password"
+                                <div className="form-grouping">
+                                    <Form.Control
                                         type="password"
+                                        placeholder="Password"
                                         name="password"
+                                        value={password}
                                         onChange={(e) =>
                                             setPassword(e.target.value)
                                         }
                                     />
                                 </div>
 
-                                <div class="form-grouping">
-                                    <button
-                                        class="btn btn-success btn-block"
+                                <div className="form-grouping">
+                                    <Button
+                                        variant="success"
                                         type="submit"
+                                        block
                                     >
                                         Sign In
-                                    </button>
+                                    </Button>
                                 </div>
 
-                                <footer class="signIn-footer">
-                                    <Link class="footer" to={'/signUp'}><strong>Don't have an account? Register here.</strong>
+                                <footer className="signIn-footer">
+                                    <Link className="footer" to="/signUp">
+                                        <strong>
+                                            Don't have an account? Register
+                                            here.
+                                        </strong>
                                     </Link>
                                 </footer>
-                            </form>
+                            </Form>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm">
-                    <div class="welcome-container">
-                        <div class="container">
-                            <h1 class="text-center dropshadow">
+                <div className="col-sm">
+                    <div className="welcome-container">
+                        <div className="container">
+                            <h1 className="text-center dropshadow">
                                 <strong>Welcome Back!</strong>
                             </h1>
                             <br />
                             <img
-                                class="text-center"
+                                className="text-center"
                                 width="40%"
-                                src="../assets/GoalGetterLogo.png"
+                                src={'../assets/GoalGetterLogo.png'}
                                 alt="img"
                             />
                         </div>

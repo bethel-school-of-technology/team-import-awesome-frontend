@@ -39,11 +39,10 @@ input[type="checkbox"] {
     outline: none;
 }
 
-input[type="checkbox"]:checked {
-    background-color: #31ffba;
+/* input[type="checkbox"]:checked {
     border-color: #000000;
-}
+} */
 
-input[type="checkbox"]:hover {
+/* input[type="checkbox"]:hover {
     background-color: #9bffde;
-}
+} */

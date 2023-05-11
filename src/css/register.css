@@ -17,7 +17,7 @@ div.register-photo .image-holder {
 }
 
 .form-container {
-  width: 40%;
+  width: 60%;
   margin: 0 0 25% 25%;
 }
 
@@ -63,4 +63,8 @@ div.register-photo .image-holder {
 
 .form-check-label::hover {
   font-size: 15px;
+}
+
+.sign-up-checkbox {
+  margin: 15px 15px;
 }
