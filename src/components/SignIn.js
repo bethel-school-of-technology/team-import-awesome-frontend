@@ -68,7 +68,7 @@ const SignIn = () => {
                                 </div>
 
                                 <footer class="signIn-footer">
-                                    <Link class="footer" to={'/signUp'}><strong>Don't have an account? Register here.</strong>
+                                    <Link class="footer" style= {{color: '#7697A0'}} to={'/signUp'}><strong>Don't have an account? Register here.</strong>
                                     </Link>
                                 </footer>
                             </form>

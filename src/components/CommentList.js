@@ -1,3 +1,4 @@
+import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { AddComment } from './AddComment';
 import { useState } from 'react';

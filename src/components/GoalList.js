@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import BgGradient from './BgGradient';
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import '../css/goalList.css';
 import moment from 'moment';
-import { faTrophy } from "react-icons/fa";
+
+
 
 export function GoalList({ goals }) {
     // const [showModal, setShowModal] = useState(false);
+    const [position, setPosition] = useState(744);
 
     // Filter goals based on whether they are completed or not - Brad
     const completedGoals = goals.filter((goal) => goal.completed);
     const incompleteGoals = goals.filter((goal) => !goal.completed);
+
+    // Currently causes a memory leak
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setPosition(position + 0.02);
+    //     }, 16);
+    //     return () => clearInterval(interval);
+    // });
+
 
     return (
         <div>
@@ -80,22 +92,25 @@ export function GoalList({ goals }) {
                                     .utc(goal.endDate)
                                     .format('MM/DD/YYYY');
                                 return (
-                                    <div key={goal.goalId}>
-                                        <Card className="goalItem complete">
-                                            <div>
-                                                <Link
-                                                    to={`/goals/detail/${goal.goalId}`}
-                                                >
-                                                    {goal.title}
-                                                </Link>
+                                    <div key={goal.goalId} className='goalItem'>
+                                        <Card >
+                                            <div className='goalContent'>
+                                                <div>
+                                                    <Link
+                                                        to={`/goals/detail/${goal.goalId}`}
+                                                    >
+                                                        {goal.title}
+                                                    </Link>
+                                                </div>
+                                                <div>
+                                                    <span>
+                                                        Start Date: {startDate}
+                                                    </span>{' '}
+                                                    -{' '}
+                                                    <span>End Date: {endDate}</span>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <span>
-                                                    Start Date: {startDate}
-                                                </span>{' '}
-                                                -{' '}
-                                                <span>End Date: {endDate}</span>
-                                            </div>
+                                            <BgGradient position={position} gradientId={goal.goalId}/>
                                         </Card>
                                     </div>
                                 );

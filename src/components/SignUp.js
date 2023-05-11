@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../contexts/userContext';
 import '../css/register.css';
@@ -58,10 +58,10 @@ const SignUp = () => {
                         />
                     </div>
                 </div>
-                <form class="register-form" onSubmit={handleSubmit}>
-                    <h1 class="text-create" color="#4A707A">
+                <div class="register-form" onSubmit={handleSubmit}>
+                    <p class="text-create" color="#4A707A">
                         <strong>Create</strong> an account.
-                    </h1>
+                    </p>
                     <div class="form-group">
                         <input
                             class="form-control"
@@ -152,7 +152,7 @@ const SignUp = () => {
                             Sign In here.
                         </strong>
                     </Link>
-                </form>
+                </div>
             </div>
         </div>
     );

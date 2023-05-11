@@ -78,7 +78,7 @@ const Navbar = () => {
                                 style={{ marginLeft: '5px' }}
                                 to="/signIn"
                             >
-                               Please Sign In
+                               Sign In
                             </Link>
                             <Link to="/signUp">Register</Link>
                         </>

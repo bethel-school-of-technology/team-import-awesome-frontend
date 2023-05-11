@@ -2,14 +2,14 @@
   margin: 80% 10% 10% 10%;
 }
 
-h1.text-create {
+.text-create {
   color: #4A707A;
   font-size: 48px;
   text-align: center;
   margin-top: 0px;
 }
 
-div.register-photo .image-holder {
+div.image-holder {
   display: table-cell;
   background: url(https://images.unsplash.com/photo-1504025468847-0e438279542c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1869&q=80);
   background-size: cover;
@@ -63,4 +63,22 @@ div.register-photo .image-holder {
 
 .form-check-label::hover {
   font-size: 15px;
+}
+
+@media screen and (min-width: 260px) and (max-width: 1000px) {
+  .register-photo .image-holder {
+    visibility: hidden;
+    clear: both;
+    display: none;
+  }
+  .register-photo .register-form {
+    padding: 75px;
+  }
+  .form-group {
+    width: 100%;
+    resize: vertical;
+  }
+  .register-photo .register-form .already {
+    font-size: 15px;
+  }
 }

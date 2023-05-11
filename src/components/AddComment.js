@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import CommentContext from "../contexts/CommentContext";
 import { useNavigate, useParams } from "react-router";
 import { Button, Modal } from "react-bootstrap";
