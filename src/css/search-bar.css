@@ -1,0 +1,7 @@
+.search-bar-group {
+    display: flex;
+}
+
+.search-btn{
+    height: 40px;
+}

@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../contexts/userContext';
+import '../css/search-bar.css';
 
 const SearchBar = () => {
     const { getUser } = useContext(UserContext);
@@ -27,15 +29,19 @@ Make sure the spelling is correct :)`);
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <button type="submit">Search</button>
-                <input
-                    type="search"
-                    placeholder="Search Users"
-                    value={userSearched}
-                    onChange={(e) => setUserSearched(e.target.value)}
-                />
-            </form>
+            <Form onSubmit={handleSubmit}>
+                <Form.Group className="search-bar-group">
+                    <Button type="submit" className="search-btn">
+                        Search
+                    </Button>
+                    <Form.Control
+                        type="search"
+                        placeholder="Search Users"
+                        value={userSearched}
+                        onChange={(e) => setUserSearched(e.target.value)}
+                    />
+                </Form.Group>
+            </Form>
         </>
     );
 };

@@ -38,6 +38,7 @@ export const UserProvider = (props) => {
     function logOutUser() {
         localStorage.setItem('myToken', '');
         localStorage.setItem('myUsername', '');
+        window.location.reload(true);
     }
 
     function getUser(id) {

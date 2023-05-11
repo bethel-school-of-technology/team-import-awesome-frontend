@@ -1,6 +1,7 @@
 .nav-main {
     display: flex;
     justify-content: space-between;
+    width: auto;
     align-items: center;
     padding: 15px 25px 5px 15px;
     background-color: #7697A0;
@@ -12,14 +13,9 @@
     font-weight: bold;
 }
 
-.nav-links h5 {
-    margin-bottom: 0;
-}
-
 a:link {
     text-decoration: none;
     color: black;
-    margin-right: 20px;
 }
 
 a:visited {
@@ -40,7 +36,7 @@ a:hover {
     padding-left: 10px;
 }
 
-#hamburger{
+/* #hamburger{
     margin: 0 40px, 0 0;
     line-height: 70px;
     display: none;
@@ -48,10 +44,10 @@ a:hover {
 
 #toggle{
     display: none;
-}
+} */
 
 
-@media screen and (max-width: 1039.2px){
+/* @media screen and (max-width: 1039.2px){
     #hamburger{
         display: flex;
         position: absolute;
@@ -72,14 +68,7 @@ a:hover {
         align-items: center;
         width: 100%;
     }
-    /* .menu a {
-        display: block;
-        margin: 0;
-    }
-    #toggle:checked + .menu{
-        display: block;
-        transform: translateY(0); */
-    /* } */
+    
     #toggle:checked ~ .menu{
         border: 1px solid #333;
         height: 2.5em;
@@ -96,4 +85,4 @@ a:hover {
         background-color: #222;
         opacity: 95%;
       }
-}
+} */

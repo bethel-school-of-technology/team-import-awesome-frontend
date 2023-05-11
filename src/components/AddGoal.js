@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Form, Modal, Button } from 'react-bootstrap';
 import GoalContext from '../contexts/GoalContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -44,49 +44,55 @@ const AddGoal = ({ show, close }) => {
                     </Modal.Title>
                 </Modal.Header>
 
-                <form onSubmit={handleSubmit} className="modal-form">
-                    <input
-                        placeholder="title"
-                        type="text"
-                        name="title"
-                        value={newGoal.title}
-                        onChange={handleChange}
-                    />
-                    <br></br>
+                <Form onSubmit={handleSubmit} className="modal-form">
+                    <Form.Group>
+                        <Form.Control
+                            type="text"
+                            placeholder="Title"
+                            name="title"
+                            value={newGoal.title}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                    <br />
 
-                    <input
-                        placeholder="plan"
-                        type="text"
-                        name="plan"
-                        value={newGoal.plan}
-                        onChange={handleChange}
-                    />
-                    <br></br>
+                    <Form.Group>
+                        <Form.Control
+                            type="text"
+                            placeholder="Plan"
+                            name="plan"
+                            value={newGoal.plan}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                    <br />
 
-                    <input
-                        placeholder="Start Date"
-                        type="date"
-                        name="startDate"
-                        value={newGoal.startDate}
-                        onChange={handleChange}
-                    />
-                    <br></br>
+                    <Form.Group>
+                        <Form.Control
+                            type="date"
+                            placeholder="Start Date"
+                            name="startDate"
+                            value={newGoal.startDate}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                    <br />
 
-                    <input
-                        placeholder="End Date"
-                        type="date"
-                        name="endDate"
-                        value={newGoal.endDate}
-                        onChange={handleChange}
-                    />
-                    <br></br>
+                    <Form.Group>
+                        <Form.Control
+                            type="date"
+                            placeholder="End Date"
+                            name="endDate"
+                            value={newGoal.endDate}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                    <br />
 
-                    <button>Add Goal</button>
-
-                    <br></br>
-
+                    <Button type="submit">Add Goal</Button>
+                    <br />
                     <Button onClick={close}>Cancel</Button>
-                </form>
+                </Form>
 
                 <Modal.Footer className="modal-footer"></Modal.Footer>
             </Modal>
