@@ -6,6 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import '../css/GoalDetail.css';
 import { CommentList } from './CommentList';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 function GoalDetail() {
     const { deleteGoal, getGoal } = useContext(GoalContext);
@@ -69,6 +70,10 @@ function GoalDetail() {
 
     return (
         <div className="goal-detail-body">
+            <div className='back-button'>
+                <Link onClick={() => navigate(-1)}>Return to Profile Page</Link>
+            </div>
+            
             <div className="container">
                 <h2>Title: {userGoal.title}</h2>
                 <h5>Plan: {userGoal.plan}</h5>
