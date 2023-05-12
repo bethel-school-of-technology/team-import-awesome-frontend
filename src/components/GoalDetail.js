@@ -65,7 +65,7 @@ function GoalDetail() {
     return (
         <div className="goal-detail-body">
             <div className="back-button">
-                <Link onClick={() => navigate(-1)}>Return to Profile Page</Link>
+                <Link to={`/profile-page/${userGoal.username}`}>Return to Profile Page</Link>
             </div>
 
             <div className="container">
@@ -89,14 +89,14 @@ function GoalDetail() {
                         <div className="button-container">
                             <Button
                                 className="editBtn"
-                                variant="primary"
+                                variant='outline'
                                 onClick={() => setShowModal(true)}
                             >
                                 Edit
                             </Button>
                             <Button
                                 className="deleteBtn"
-                                variant="primary"
+                                variant="outline"
                                 onClick={handleDelete}
                             >
                                 Delete

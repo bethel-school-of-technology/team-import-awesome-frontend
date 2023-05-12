@@ -69,6 +69,11 @@ div.register-photo .image-holder {
   margin: 15px 15px;
 }
 
+.sign-up-button:hover{
+  background-color: #456b74 !important;
+  color: #ffffff !important;
+}
+
 @media screen and (min-width: 260px) and (max-width: 1000px) {
   .register-photo .image-holder {
     visibility: hidden;

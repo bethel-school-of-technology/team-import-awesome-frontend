@@ -32,6 +32,15 @@ label {
     height: 25px;
 }
 
+#custom-switch:checked{
+    background-color: #7697A0;
+    border-color: #7697A0;
+}
+
+.add-goal-buttons:hover{
+    background-color: #3a5961 !important;
+}
+
 /* input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;

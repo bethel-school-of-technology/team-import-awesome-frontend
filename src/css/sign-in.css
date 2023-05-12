@@ -60,6 +60,10 @@
     text-shadow: 2px 2px 2px #7697A0;
 }
 
+.sign-in-button:hover{
+    background-color: #456b74 !important;
+}
+
 @media screen and (min-width: 260px) and (max-width: 1000px) {
     .welcome-container .container {
        display: none;

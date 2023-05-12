@@ -134,9 +134,9 @@ const EditProfile = ({ show, close }) => {
                         />
                     </Form.Group>
                     <br />
-                    <Button type="submit">Update Profile</Button>
+                    <Button className='edit-profile-buttons' type="submit">Update Profile</Button>
                     <br />
-                    <Button onClick={close}>Cancel</Button>
+                    <Button className='edit-profile-buttons' onClick={close}>Cancel</Button>
                 </Form>
 
                 <Modal.Footer className="modal-footer"></Modal.Footer>

@@ -61,7 +61,8 @@ const SignIn = () => {
 
                                 <div className="form-grouping">
                                     <Button
-                                        variant="success"
+                                        className='sign-in-button'
+                                        variant="outline"
                                         type="submit"
                                         block
                                     >

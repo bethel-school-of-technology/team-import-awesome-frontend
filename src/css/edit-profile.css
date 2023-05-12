@@ -6,3 +6,7 @@
 .modal-footer {
     background-color: #7697A0 !important
 }
+
+.edit-profile-buttons:hover{
+    background-color: #3a5961 !important;
+}

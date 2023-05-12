@@ -31,7 +31,7 @@ Make sure the spelling is correct :)`);
         <>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="search-bar-group">
-                    <Button type="submit" className="search-btn">
+                    <Button variant='outline' type="submit" className="search-btn">
                         Search
                     </Button>
                     <Form.Control
