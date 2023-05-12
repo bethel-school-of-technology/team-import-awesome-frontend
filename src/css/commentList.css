@@ -1,4 +1,5 @@
 .comment-card {
+    color: black;
     background-color: rgb(229, 229, 229);
     margin: 15px;
     padding: 10px;
@@ -7,10 +8,16 @@
 .comment-card h6 {
     color: black
 }
-.comment-card {
-    color: black
-}
 
 .comment-list-main {
     margin: 0px auto;
+}
+
+.comment {
+    display: flex;
+    text-align: center;
+}
+
+.date {
+    text-align: right;
 }

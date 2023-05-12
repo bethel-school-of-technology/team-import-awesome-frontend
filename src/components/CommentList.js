@@ -1,6 +1,7 @@
 import { Button, Card } from 'react-bootstrap';
 import { AddComment } from './AddComment';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../css/commentList.css';
 import moment from 'moment';
 
@@ -22,10 +23,17 @@ export function CommentList({ comments }) {
                         );
                         return (
                             <Card className="comment-card" key={c.commentId}>
-                                <h6>{createdAt}</h6>
+                                <Link style={{ fontWeight: "bold", textDecoration: "underline", textAlign: "left" }} to={`/profile-page/${c.username}`}>{c.username}</Link>
+                                <div className="date">
+                                    <p>{createdAt}</p>
+                                </div>
+                                <div className="comment">
+                                    <p>{c.comment}</p>
+                                </div>
+                                {/* <h6>{createdAt}</h6>
                                 <span>
                                     {c.username}: {c.comment}
-                                </span>
+                                </span> */}
                             </Card>
                         );
                     })}
