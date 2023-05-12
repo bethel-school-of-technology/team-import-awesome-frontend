@@ -91,7 +91,7 @@ const SignIn = () => {
                             <img
                                 className="text-center"
                                 width="40%"
-                                src={'../assets/GoalGetterLogo.png'}
+                                src={'/assets/GoalGetterLogo.png'}
                                 alt="img"
                             />
                         </div>

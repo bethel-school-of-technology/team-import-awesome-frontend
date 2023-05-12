@@ -68,3 +68,21 @@ div.register-photo .image-holder {
 .sign-up-checkbox {
   margin: 15px 15px;
 }
+
+@media screen and (min-width: 260px) and (max-width: 1000px) {
+  .register-photo .image-holder {
+    visibility: hidden;
+    clear: both;
+    display: none;
+  }
+  .register-photo .register-form {
+    padding: 75px;
+  }
+  .form-group {
+    width: 100%;
+    resize: vertical;
+  }
+  .register-photo .register-form .already {
+    font-size: 15px;
+  }
+}
