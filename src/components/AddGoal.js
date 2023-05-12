@@ -46,6 +46,7 @@ const AddGoal = ({ show, close }) => {
 
                 <Form onSubmit={handleSubmit} className="modal-form">
                     <Form.Group>
+                        <Form.Label>Title</Form.Label>
                         <Form.Control
                             type="text"
                             placeholder="Title"
@@ -57,6 +58,7 @@ const AddGoal = ({ show, close }) => {
                     <br />
 
                     <Form.Group>
+                        <Form.Label>Plan</Form.Label>
                         <Form.Control
                             type="text"
                             placeholder="Plan"
@@ -68,9 +70,10 @@ const AddGoal = ({ show, close }) => {
                     <br />
 
                     <Form.Group>
+                        <Form.Label>Start Date</Form.Label>
                         <Form.Control
                             type="date"
-                            placeholder="Start Date"
+                            placeholder="MM/DD/YYYY"
                             name="startDate"
                             value={newGoal.startDate}
                             onChange={handleChange}
@@ -79,9 +82,10 @@ const AddGoal = ({ show, close }) => {
                     <br />
 
                     <Form.Group>
+                        <Form.Label>End Date</Form.Label>
                         <Form.Control
                             type="date"
-                            placeholder="End Date"
+                            placeholder="MM/DD/YYYY"
                             name="endDate"
                             value={newGoal.endDate}
                             onChange={handleChange}

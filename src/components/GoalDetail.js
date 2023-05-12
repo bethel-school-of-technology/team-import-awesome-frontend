@@ -13,12 +13,6 @@ function GoalDetail() {
     let { id } = useParams();
     const navigate = useNavigate();
 
-    // // retrieve comments data and getAllComments function from context
-    // const { comment, getAllComments } = useContext(CommentContext);
-
-    // // set state variable for comments that belong to the user's goal
-    // const [goalComments, setGoalComments] = useState([]);
-
     const [userGoal, setUserGoal] = useState({
         completed: false,
         title: '',
