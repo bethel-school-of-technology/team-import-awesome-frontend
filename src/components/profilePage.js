@@ -9,6 +9,7 @@ import '../css/goalList.css';
 import '../css/addGoal.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddGoal from './AddGoal';
+import { Link } from 'react-router-dom';
 
 const ProfilePage = () => {
     let { getUser } = useContext(UserContext);
@@ -43,82 +44,93 @@ const ProfilePage = () => {
     }, [getUser, username]);
 
     return (
-        <div className="profilePage-main">
-            <div className="row profile-container">
-                <div className="col-md-6 col-sm-12 user-welcome">
-                    <h6 className="title">
-                        Hello, {user.username}! Get goaling!
-                    </h6>
-                    <div className="user-profile">
-                        <div className="avatar-container">
-                            <img src={user.avatar} alt="" className="avatar" />
+        <div>
+            {username !== currentUser ? (
+                <div className="row p-0 mb-3">
+                    <Link to={`/profile-page/${currentUser}`} >Return to {currentUser}'s Profile Page</Link>
+                </div>
+                    ) : (
+                        ''
+                    )  
+            }
+            <div className="profilePage-main">
+                
+                <div className="row mt-0 profile-container">
+                    <div className="col-md-6 col-sm-12 user-welcome">
+                        <h6 className="title">
+                            Hello, {user.username}! Get goaling!
+                        </h6>
+                        <div className="user-profile">
+                            <div className="avatar-container">
+                                <img src={user.avatar} alt="" className="avatar" />
+                            </div>
                         </div>
-                    </div>
-                    <br />
-                    <h2 className="user-name">
-                        {user.firstName} {user.lastName}
-                    </h2>
+                        <br />
+                        <h2 className="user-name">
+                            {user.firstName} {user.lastName}
+                        </h2>
 
-                    <h6 className="user-age"> Age: {user.age}</h6>
-                </div>
-                {/* <br></br> */}
-                <div className="col-md-6 col-sm-12 user-info">
-                    {/* <br></br>
-                    <br /> */}
-                    <div className="user-bio">{user.bio}</div>
-                    <br></br>
-                    {user.username === currentUser ? (
-                        <>
-                            <div style={{ display: 'none' }}>
-                                <EditProfile
-                                    show={showModal}
-                                    close={() => setShowModal(false)}
-                                />
-                            </div>
-                            <Button
-                                variant="primary"
-                                onClick={() => setShowModal(true)}
-                            >
-                                Edit Profile
-                            </Button>
-                            <br />
-                        </>
-                    ) : (
-                        ''
-                    )}
-                    <div className="followers">
-                        <h3>236</h3>
-                        <small>followers</small>
-                        <br></br>
-                        <br></br>
+                        <h6 className="user-age"> Age: {user.age}</h6>
                     </div>
-                    <div className="following">
-                        <h3>38</h3>
-                        <small>following</small>
+                    {/* <br></br> */}
+                    <div className="col-md-6 col-sm-12 user-info">
+                        {/* <br></br>
+                        <br /> */}
+                        <div className="user-bio">{user.bio}</div>
+                        <br></br>
+                        {user.username === currentUser ? (
+                            <>
+                                <div style={{ display: 'none' }}>
+                                    <EditProfile
+                                        show={showModal}
+                                        close={() => setShowModal(false)}
+                                    />
+                                </div>
+                                <Button
+                                    variant="outline"
+                                    onClick={() => setShowModal(true)}
+                                >
+                                    Edit Profile
+                                </Button>
+                                <br />
+                            </>
+                        ) : (
+                            ''
+                        )}
+                        <div className="followers">
+                            <h3>236</h3>
+                            <small>followers</small>
+                            <br></br>
+                            <br></br>
+                        </div>
+                        <div className="following">
+                            <h3>38</h3>
+                            <small>following</small>
+                        </div>
+                        <br />
+                        {user.username === currentUser ? (
+                            <>
+                                <div style={{ display: 'none' }}>
+                                    <AddGoal
+                                        show={showAddGoalModal}
+                                        close={() => setShowAddGoalModal(false)}
+                                    />
+                                </div>
+                                <Button
+                                    className="add-goal-button"
+                                    variant="outline"
+                                    onClick={() => setShowAddGoalModal(true)}
+                                >
+                                    Add Goal
+                                </Button>
+                            </>
+                        ) : (
+                            ''
+                        )}
                     </div>
-                    <br />
-                    {user.username === currentUser ? (
-                        <>
-                            <div style={{ display: 'none' }}>
-                                <AddGoal
-                                    show={showAddGoalModal}
-                                    close={() => setShowAddGoalModal(false)}
-                                />
-                            </div>
-                            <Button
-                                className="add-goal-button"
-                                variant="primary"
-                                onClick={() => setShowAddGoalModal(true)}
-                            >
-                                Add Goal
-                            </Button>
-                        </>
-                    ) : (
-                        ''
-                    )}
                 </div>
+                <GoalList goals={user.Goals} />
             </div>
-            <GoalList goals={user.Goals} />
         </div>
     );
 };

@@ -83,6 +83,7 @@ const NavbarMain = () => {
                                     <NavDropdown.Item
                                         onClick={() => {
                                             logOutUser();
+                                            navigate('/signIn');
                                         }}
                                     >
                                         Sign Out

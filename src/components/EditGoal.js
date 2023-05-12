@@ -146,9 +146,9 @@ const EditGoal = ({ show, close }) => {
                     </Form.Group>
                     <br />
 
-                    <Button type="submit">Update Goal</Button>
+                    <Button className='add-goal-buttons' variant='outline' type="submit">Update Goal</Button>
                     <br />
-                    <Button onClick={close}>Cancel</Button>
+                    <Button className='add-goal-buttons' variant='outline' onClick={close}>Cancel</Button>
                 </Form>
 
                 <Modal.Footer className="modal-footer" />
@@ -190,7 +190,7 @@ const EditGoal = ({ show, close }) => {
                 </Modal.Body>
 
                 <Modal.Footer className="modal-footer">
-                    <Button onClick={() => setShowCongratulations(false)}>
+                    <Button variant='outline' onClick={() => setShowCongratulations(false)}>
                         Close
                     </Button>
                 </Modal.Footer>
