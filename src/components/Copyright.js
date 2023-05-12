@@ -1,151 +1,100 @@
 const Copyright = () => {
     return (
         <>
-            <h1>Boring Copyright Information That No One Ever Reads...</h1>
+            <h1>DISCLAIMER- READ AT YOUR OWN RISK:</h1>
             <br></br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-            faucibus pulvinar elementum integer enim neque volutpat. Habitant
-            morbi tristique senectus et. Elementum integer enim neque volutpat.
-            Suscipit adipiscing bibendum est ultricies. Suspendisse sed nisi
-            lacus sed viverra tellus in hac. A cras semper auctor neque vitae
-            tempus quam. Sit amet venenatis urna cursus. Sit amet mattis
-            vulputate enim nulla. Diam ut venenatis tellus in metus vulputate
-            eu. Sociis natoque penatibus et magnis dis parturient montes
-            nascetur. Velit egestas dui id ornare arcu odio ut sem. Cursus sit
-            amet dictum sit amet justo donec enim
-            <br></br>
-            <br></br>
-            diam. Viverra suspendisse potenti nullam ac tortor vitae. Auctor
-            neque vitae tempus quam pellentesque nec nam aliquam sem. Feugiat in
-            ante metus dictum at tempor commodo ullamcorper a. Ipsum dolor sit
-            amet consectetur adipiscing elit duis tristique sollicitudin.
-            Porttitor eget dolor morbi non arcu. Id volutpat lacus laoreet non
-            curabitur gravida arcu. Mattis rhoncus urna neque viverra justo nec
-            ultrices. Sit amet purus gravida quis blandit turpis. Ut etiam sit
-            amet nisl purus in mollis nunc. Et tortor consequat id porta nibh.
-            Non sodales neque sodales ut etiam. Mauris cursus mattis molestie a
-            iaculis at erat pellentesque. Arcu ac tortor dignissim convallis
-            aenean et. Scelerisque viverra mauris in aliquam sem. Pellentesque
-            sit amet porttitor eget dolor morbi non arcu risus. Vitae suscipit
-            tellus
+            All clauses of this disclaimer apply to the disclaimer itself,
+            except fo this first sentence. The user of this website--the "Site" or "App"--
+            herby agrees to hold Import Awesome, its employees, associates, relatives, friends,
+            real or imaginary, alter egos, doppelgangers and pets harmless from any and all
+            liability that may arise from the improper use of this Site. The user absolves
+            all such persons from any liability arising out of or related to, proper use of the Site,
+            though Import Awesome expressly disclaims any implication as to which uses may or may
+            not be "proper" as used in this disclaimer. Copyright and other intellectual property
+            rights in and to the Site are the sole property of Import Awesome. In addition, Copyright
+            and other intelletua; property right as to any comments, goals, usernames, passwords,
+            or other information submitted by the user to the Site are the sole property of
+            Import Awesome. Reading, viewing, using, or otherwise interacting with the Site without
+            the prior express written consent of Import Awesome is hearby prohibited. All products,
+            brands, and company names mentioned in, on or about this Site are trademarks or trade
+            names of the respecitve companies and you shoud mentally insert the appropriate TM, ®, ©,
+            or whatever is appropriate. Any actions you take based on what you see, or think you see,
+            in this disclaimer are entirely your own responsibility.
+            ™,
             <br></br>
             <br></br>
-            mauris a diam maecenas sed enim. Non pulvinar neque laoreet
-            suspendisse interdum consectetur libero. Sed risus pretium quam
-            vulputate. Nisl suscipit adipiscing bibendum est ultricies. Nunc
-            mattis enim ut tellus elementum sagittis vitae et leo. Egestas
-            fringilla phasellus faucibus scelerisque eleifend donec pretium
-            vulputate sapien. Laoreet id donec ultrices tincidunt arcu non
-            sodales neque. Diam vulputate ut pharetra sit amet aliquam id.
-            Elementum nisi quis eleifend quam adipiscing vitae proin sagittis
-            nisl. Platea dictumst quisque sagittis purus sit. Faucibus et
-            molestie ac feugiat sed lectus vestibulum mattis ullamcorper. Non
-            sodales neque sodales ut etiam sit amet. Fringilla ut morbi
-            tincidunt augue. Euismod elementum nisi quis eleifend quam
-            adipiscing. Tortor id aliquet lectus proin. Sit amet nisl suscipit
-            adipiscing bibendum est. Mi bibendum neque egestas congue quisque
-            egestas. Venenatis urna cursus eget nunc scelerisque viverra mauris
-            in. In vitae turpis massa sed
+            EXTREMELY IMPORTANT:
+            Ignotanta legis neminem excusat! Ipse dixit! Caveat emptor! Caveat lector!
+            Caveat venditor! Omnibus, inthebus, onthebus! No represnetation whatsoever is made as
+            to the accuracy. politial correctness, spelling, syntax, semantics, content or meaning
+            of the text found on this Site, whether written by the user or written construction
+            of the Site --including any part of this disclaimer.-- Import Awesome expressly disclaims
+            liabitity for the accuracy, content or reasonalble understandability of any part of this
+            discalimer, particularly the part about the disclaimer that is written in Latin. Specifically,
+            Import Awesome disclaims any liablity for the sixth "Latin" sentence which does not really
+            mean anything and, if it does mean something --whether in Latin or some other languare,
+            real or imagined-- Import Awesome disclaims knowledge of or responsibility its meaning or accuracy.
+            In particular, Import Awesome disclaims knowledge of the one intentional spelling error inserted
+            into this disclaimer, which may or may not exist. If you believe you have found the spelling error,
+            you may send an email to  webmaster@importweasome.com and if you are the sixteenth person to do so,
+            you will not recieve a prize. You may have some rights not detailed in this disclaimer, but
+            frankly, we doubt it.
             <br></br>
             <br></br>
-            elementum. Faucibus et molestie ac feugiat sed lectus. Ut placerat
-            orci nulla pellentesque dignissim enim sit. Purus sit amet volutpat
-            consequat. Lectus mauris ultrices eros in cursus turpis massa
-            tincidunt dui. Egestas tellus rutrum tellus pellentesque eu
-            tincidunt tortor. Venenatis cras sed felis eget. Sit amet nulla
-            facilisi morbi tempus iaculis urna id volutpat. Massa enim nec dui
-            nunc mattis enim ut. Dignissim convallis aenean et tortor at risus
-            viverra. Nulla pharetra diam sit amet nisl suscipit. Id consectetur
-            purus ut faucibus pulvinar elementum. Eu sem integer vitae justo
-            eget magna fermentum iaculis. Eu feugiat pretium nibh ipsum
-            consequat nisl vel. Urna porttitor rhoncus dolor purus non enim
-            praesent. Quam vulputate dignissim suspendisse in est. Et malesuada
-            fames ac turpis. Metus aliquam eleifend mi in. A diam sollicitudin
-            tempor id eu.
+            This Site is meant for external use only. Improper use of the Site may cause mild or severe injuries,
+            including eye irritation, carpal tunnel, sporadic internal bleeding, migraine, angina, stomach
+            discomfort and possible paralysis. Some users may or many not additionally experience dizziness and
+            fainting spells. Should you experience these or any other symptoms including --but not limited to--
+            swelling, redness, or itching of the eyes, discontinue use and contact your physician immediately.
+            Not recommended for use by pregnant women, people who suffer from lower back pain, or irregular
+            heartbeat. Proper use of this Site may cause undisclosed injuries that may or may not be similar
+            to the injuries caused by improper use of the Site. Improt Awesome is not responsible for any injuries
+            that may occur as a result of proper or improper use of the Site. WARNING: According to the laws of
+            entropy and basic principles of thermodynamics, any use of this Site in any manner whatsoever increases
+            the amount of disorder in the universe. Import Awesome disclaims any responsibility for the fact that
+            the user, through the use of this Site, is contributing to this process, which the user acknowledges
+            will ultimately lead to the heat death of the entire universe. For a complete list of permissible uses
+            of the Pad, please write to Import Awesome, who may or may not forward your inquiry to whom it may concern,
+            who in turn may or may not --but is allowed to-- return same to you unopened. SAVE THIS ENTIRE DOCUMENT,
+            as it is important evidence of your use of the Site. In fact, BOOKMARK THIS ENTIRE Site. Failure to comply
+            renders all legal claims against Import Awesome null and void. In addition, Import Awesome hereby denies
+            the existence of any possible legal claims implied by the foregoing sentence.
             <br></br>
             <br></br>
-            Tortor dignissim convallis aenean et. Luctus venenatis lectus magna
-            fringilla urna porttitor rhoncus. Scelerisque purus semper eget
-            duis. Sapien nec sagittis aliquam malesuada. Nunc mi ipsum faucibus
-            vitae aliquet nec. Arcu non sodales neque sodales ut. Vitae congue
-            mauris rhoncus aenean vel elit scelerisque mauris. Et sollicitudin
-            ac orci phasellus egestas tellus rutrum tellus pellentesque. Euismod
-            in pellentesque massa placerat duis ultricies lacus sed turpis. Sed
-            id semper risus in hendrerit gravida rutrum quisque non. In ornare
-            quam viverra orci sagittis eu volutpat odio. Placerat in egestas
-            erat imperdiet. Egestas egestas fringilla phasellus faucibus.
-            Euismod lacinia at quis risus sed vulputate odio. Etiam dignissim
-            diam quis enim lobortis scelerisque fermentum dui faucibus. Duis
-            tristique sollicitudin nibh sit amet commodo nulla facilisi. Ac orci
-            phasellus egestas tellus rutrum tellus. Dolor sit amet consectetur
-            adipiscing elit. Egestas dui id ornare arcu odio ut. Viverra mauris
-            in aliquam sem fringilla ut. Ultrices mi tempus imperdiet nulla
-            malesuada pellentesque elit. Arcu vitae
+            Import Awesome expressly disclaims any possible liability arising out of the total coincidence that the word
+            'neminem' in Latin, which means 'no body' --as in the phrase 'ignorance of the law excuses nobody'-- happens
+            to contain the word 'eminem' which is the name of a well known hip-hop artist. Import Awesome does not endorse
+            Eminem. Neither Import Awesome nor the Site has anything at all to do with Eminem. Do not alter this disclaimer
+            under penalty of law. Do copy, paste or in anyway attempt to save this disclaimer. This disclaimer carries
+            important and valuable warranty information that provides you with rights, though Import Awesome disclaims these
+            rights as unenforceable and valueless. In order for your warranty rights to take effect, you must collect all
+            sixteen warranty sections  distributed throughout Site and email them to the address indicated on the meta tags
+            somewher on the internet. Failure to perform any of these necessary steps will result in all warranties being
+            null and void.
             <br></br>
             <br></br>
-            elementum curabitur vitae nunc sed. Tellus integer feugiat
-            scelerisque varius morbi enim nunc. Eu sem integer vitae justo eget.
-            Euismod elementum nisi quis eleifend quam adipiscing. Vitae justo
-            eget magna fermentum iaculis eu non diam. Elit sed vulputate mi sit
-            amet mauris. Porta nibh venenatis cras sed. Tellus molestie nunc non
-            blandit. Tempus iaculis urna id volutpat lacus laoreet non. Cursus
-            euismod quis viverra nibh cras pulvinar. Egestas quis ipsum
-            suspendisse ultrices gravida dictum fusce ut. Gravida arcu ac tortor
-            dignissim convallis aenean et tortor. Fames ac turpis egestas
-            integer eget aliquet nibh praesent. Arcu ac tortor dignissim
-            convallis aenean et tortor at. Ac feugiat sed lectus vestibulum.
-            Nisl purus in mollis nunc sed id semper. Elit pellentesque habitant
-            morbi tristique senectus et netus. Sit amet purus gravida quis
-            blandit. Sem viverra aliquet eget sit amet tellus cras
+            The Site has been tested for safety, reliability and dangerous side-effects by a randomly selected group of
+            blindfolded and sedated bootcamp students. Improt Awesome is not liable for side-effects arising from improper
+            use of the Site. Import Awesome is not liable from side-effects arising from proper use of the Site unless said
+            side-effects are specifically listed in the "Side-Effects for which Import Awesome is Liable" section, below.
+            In addition to the side effects that may be set forth in various paragraphs, user may experience, at some
+            undetermined future date, further side effects, of an as yet undetermined nature, which may or may not include
+            various symptoms. Do not be alarmed. If, however, you become alarmed, seek medical attention. Import Awesome is
+            not responsible for instances of alarm or medical attention arising from proper or improper use of the Site.
+            "Site," "App" and "GoalGetters" are registered trademarks of Import Awesome. In addition, the patent to the
+            code known generically as "GoalGetters" is the property of Improt Awesome, pending Patent and Trademark Office
+            approval, pending the seeking of such approval, the right to seek such approval being expressly claimed by
+            Import Awesome.
             <br></br>
             <br></br>
-            adipiscing. Massa tempor nec feugiat nisl pretium fusce. Fringilla
-            phasellus faucibus scelerisque eleifend donec pretium. Venenatis
-            urna cursus eget nunc scelerisque. Fringilla urna porttitor rhoncus
-            dolor purus non enim. Enim tortor at auctor urna nunc. Gravida
-            dictum fusce ut placerat orci nulla pellentesque dignissim. Arcu ac
-            tortor dignissim convallis aenean. Ut morbi tincidunt augue interdum
-            velit. Amet consectetur adipiscing elit pellentesque habitant morbi
-            tristique. Nunc sed augue lacus viverra vitae congue eu consequat.
-            Orci dapibus ultrices in iaculis nunc sed augue. Diam in arcu cursus
-            euismod quis viverra nibh. Sit amet commodo nulla facilisi nullam
-            vehicula ipsum a. Feugiat scelerisque varius morbi enim nunc.
-            Pellentesque adipiscing commodo elit at imperdiet dui. Quis auctor
-            elit sed vulputate mi sit amet. Sed vulputate mi sit amet mauris
-            commodo. Et magnis dis parturient
-            <br></br>
-            <br></br>
-            montes nascetur ridiculus. Massa sapien faucibus et molestie ac
-            feugiat sed. Et sollicitudin ac orci phasellus egestas tellus.
-            Facilisis mauris sit amet massa vitae tortor condimentum. Enim ut
-            tellus elementum sagittis vitae et leo duis. Lobortis mattis aliquam
-            faucibus purus in massa tempor nec. A lacus vestibulum sed arcu non.
-            Ut morbi tincidunt augue interdum velit euismod in. Sollicitudin
-            nibh sit amet commodo nulla. Felis bibendum ut tristique et egestas
-            quis. Euismod nisi porta lorem mollis aliquam ut porttitor. Commodo
-            quis imperdiet massa tincidunt
-            <br></br>
-            <br></br>
-            nunc pulvinar sapien et. Id interdum velit laoreet id donec ultrices
-            tincidunt. Ornare lectus sit amet est. Sit amet tellus cras
-            adipiscing. Massa ultricies mi quis hendrerit. Malesuada bibendum
-            arcu vitae elementum curabitur vitae nunc. At elementum eu facilisis
-            sed odio morbi. Ut morbi tincidunt augue interdum velit euismod in
-            pellentesque. Dis parturient montes nascetur ridiculus mus mauris
-            vitae. Enim eu turpis egestas pretium. Massa tincidunt dui ut
-            ornare. Aliquam malesuada bibendum arcu vitae. Pulvinar mattis nunc
-            sed blandit libero volutpat sed cras. Ut pharetra sit amet aliquam
-            id diam maecenas ultricies mi. Mauris rhoncus aenean vel elit
-            scelerisque mauris pellentesque pulvinar pellentesque. Fermentum
-            posuere urna nec tincidunt. Odio eu feugiat pretium nibh. Egestas
-            quis ipsum suspendisse ultrices gravida dictum fusce. Egestas erat
-            imperdiet sed euismod nisi porta lorem. Nulla aliquet porttitor
-            lacus luctus. In dictum non consectetur a erat nam. Lorem mollis
-            aliquam ut porttitor leo a. Commodo odio aenean sed adipiscing diam
-            donec. In mollis nunc sed id semper risus.
-            <br></br>
-            <br></br>
+            Recent Amendments and Changes to Site Disclaimer: for a complete list of recent amendments and changes to the 
+            Site Disclaimer, write to Import Awesome. Include in your letter the 27-digit product validation code printed
+            in clear lettering on the meta tag somewhere on the internet --see Warranty Information, above--. 
+            This disclaimer, the organization of the words into disclaiming sentences, and the general disclaiming theme
+            of this disclaimer are Stroock work product and intended solely for the use of GoalGetter users and holders 
+            in due course. If you are reading this disclaimer in an unauthorized manner you have done so in violation of
+            this disclaimer and must immediately cease and desist. Do so now. This is your final warning. Step away from
+            the your screen. Do it slowly and nobody will get hurt. If, however, you get hurt, Import Awesome is not liable.
             <div style={{ textAlign: 'center' }}>
                 <img
                     src="https://danbolton.ewlyn.com//sites/danbolton.com/files/admiral_ackbar_says_its_a_trap.jpg"

@@ -167,9 +167,12 @@ const EditGoal = ({ show, close }) => {
                 >
                     <div
                         style={{
-                            position: 'relative',
+                            position: 'fixed',
+                            top: 0,
+                            left: 0,
                             width: '100%',
                             height: '100%',
+                            pointerEvents: 'none',
                         }}
                     >
                         <Confetti
@@ -177,7 +180,7 @@ const EditGoal = ({ show, close }) => {
                             height={window.innerHeight}
                         />
                     </div>
-                    <p>You have successfully completed your goal!</p>
+                    <h3 style={{color:'#4A707A'}}>You have successfully completed your goal!</h3>
                 </Modal.Body>
 
                 <Modal.Footer className="modal-footer">

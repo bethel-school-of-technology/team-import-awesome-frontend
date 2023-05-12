@@ -57,7 +57,7 @@ const Home = () => {
                             alignItems="center"
                         />
 
-                        <Carousel.Caption>
+                        <Carousel.Caption className='carousel-text'>
                             <h3>Boost Your Cardio Endurance</h3>
                         </Carousel.Caption>
                     </Carousel.Item>
@@ -69,7 +69,7 @@ const Home = () => {
                             alignItems="center"
                         />
 
-                        <Carousel.Caption>
+                        <Carousel.Caption className='carousel-text'>
                             <h3>Increase Your Energy</h3>
                         </Carousel.Caption>
                     </Carousel.Item>
@@ -81,7 +81,7 @@ const Home = () => {
                             alignItems="center"
                         />
 
-                        <Carousel.Caption>
+                        <Carousel.Caption className='carousel-text'>
                             <h3>Improve Your Flexiblity</h3>
                         </Carousel.Caption>
                     </Carousel.Item>
@@ -93,7 +93,7 @@ const Home = () => {
                             alignItems="center"
                         />
 
-                        <Carousel.Caption>
+                        <Carousel.Caption className='carousel-text'>
                             <h3>Prioritize Recovery Days</h3>
                         </Carousel.Caption>
                     </Carousel.Item>
@@ -105,7 +105,7 @@ const Home = () => {
                             alignItems="center"
                         />
 
-                        <Carousel.Caption>
+                        <Carousel.Caption className='carousel-text'>
                             <h3>Start a Walking Program</h3>
                         </Carousel.Caption>
                     </Carousel.Item>
