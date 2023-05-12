@@ -70,10 +70,10 @@ function GoalDetail() {
 
     return (
         <div className="goal-detail-body">
-            <div className='back-button'>
+            <div className="back-button">
                 <Link onClick={() => navigate(-1)}>Return to Profile Page</Link>
             </div>
-            
+
             <div className="container">
                 <h2>Title: {userGoal.title}</h2>
                 <h5>Plan: {userGoal.plan}</h5>
@@ -83,12 +83,6 @@ function GoalDetail() {
                 ) : (
                     <h4>Goal Not Complete</h4>
                 )}
-                {/* <label>Goal Complete: </label>{' '}
-                <input
-                    type={'checkbox'}
-                    value={userGoal.completed}
-                    checked={userGoal.completed}
-                /> */}
                 <div>Start Date: {startDate}</div>
                 <div>End Date: {endDate}</div>
                 <h5>Time Remaining: {timeRemaining}</h5>
