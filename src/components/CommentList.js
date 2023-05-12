@@ -23,17 +23,17 @@ export function CommentList({ comments }) {
                         );
                         return (
                             <Card className="comment-card" key={c.commentId}>
-                                <Link style={{ fontWeight: "bold", textDecoration: "underline", textAlign: "left" }} to={`/profile-page/${c.username}`}>{c.username}</Link>
-                                <div className="date">
-                                    <p>{createdAt}</p>
-                                </div>
+                                <Card.Header className="comment-header custom-header">
+                                    <div className="header-left">
+                                        <Link style={{ fontWeight: "bold", textDecoration: "underline", textAlign: "left", display: "inline-block" }} to={`/profile-page/${c.username}`}>{c.username}</Link>
+                                    </div>
+                                    <div className="header-right">
+                                        <p style={{ display: "inline-block", textAlign: "right" }}>{createdAt}</p>
+                                    </div>
+                                </Card.Header>
                                 <div className="comment">
-                                    <p>{c.comment}</p>
+                                    <p style={{ marginTop: "10px", marginBottom: "10px" }}>{c.comment}</p>
                                 </div>
-                                {/* <h6>{createdAt}</h6>
-                                <span>
-                                    {c.username}: {c.comment}
-                                </span> */}
                             </Card>
                         );
                     })}
