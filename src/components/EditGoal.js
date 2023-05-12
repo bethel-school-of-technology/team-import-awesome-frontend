@@ -79,10 +79,10 @@ const EditGoal = ({ show, close }) => {
 
                 <Form onSubmit={handleSubmit} className="modal-form">
                     <Form.Group>
+                        <Form.Label>Goal Complete?</Form.Label>
                         <Form.Check
-                            type="checkbox"
-                            id="completed"
-                            label="Completed"
+                            type="switch"
+                            id="custom-switch"
                             name="completed"
                             checked={updatedGoal.completed}
                             onChange={() =>
@@ -96,6 +96,7 @@ const EditGoal = ({ show, close }) => {
                     <br />
 
                     <Form.Group>
+                        <Form.Label>Title</Form.Label>
                         <Form.Control
                             type="text"
                             name="title"
@@ -107,6 +108,7 @@ const EditGoal = ({ show, close }) => {
                     <br />
 
                     <Form.Group>
+                        <Form.Label>Plan</Form.Label>
                         <Form.Control
                             as="textarea"
                             name="plan"
@@ -119,6 +121,7 @@ const EditGoal = ({ show, close }) => {
                     <br />
 
                     <Form.Group>
+                        <Form.Label>Start Date</Form.Label>
                         <Form.Control
                             type="date"
                             name="startDate"
@@ -131,6 +134,7 @@ const EditGoal = ({ show, close }) => {
                     <br />
 
                     <Form.Group>
+                        <Form.Label>End Date</Form.Label>
                         <Form.Control
                             type="date"
                             name="endDate"
@@ -180,7 +184,9 @@ const EditGoal = ({ show, close }) => {
                             height={window.innerHeight}
                         />
                     </div>
-                    <h3 style={{color:'#4A707A'}}>You have successfully completed your goal!</h3>
+                    <h3 style={{ color: '#4A707A' }}>
+                        You have successfully completed your goal!
+                    </h3>
                 </Modal.Body>
 
                 <Modal.Footer className="modal-footer">
