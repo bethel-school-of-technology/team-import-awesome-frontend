@@ -13,6 +13,14 @@
     margin: 0px auto;
 }
 
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    height: 2rem;
+    padding: 0.5rem;
+    background-color: #7697A0;
+}
+
 .comment {
     display: flex;
     text-align: center;
