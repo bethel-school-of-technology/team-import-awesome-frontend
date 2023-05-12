@@ -52,7 +52,7 @@ const SignUp = () => {
                 <div className="image-holder">
                     <div>
                         <img
-                            src={'../assets/GoalGetterLogo.png'}
+                            src={'/assets/GoalGetterLogo.png'}
                             width="80%"
                             alt="logo"
                             className="registration-logo"

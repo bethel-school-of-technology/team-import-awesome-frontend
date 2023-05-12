@@ -1,5 +1,4 @@
 import { Carousel } from 'react-bootstrap';
-
 import '../css/home.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -52,7 +51,7 @@ const Home = () => {
                     <Carousel.Item>
                         <img
                             className="d-block img-fluid"
-                            src="../assets/jump.png"
+                            src="/assets/jump.png"
                             alt="Serious Side Steps"
                             alignItems="center"
                         />
@@ -64,7 +63,7 @@ const Home = () => {
                     <Carousel.Item>
                         <img
                             className="d-block img-fluid"
-                            src="../assets/yum.png"
+                            src="/assets/yum.png"
                             alt="I am now hungry"
                             alignItems="center"
                         />
@@ -76,7 +75,7 @@ const Home = () => {
                     <Carousel.Item>
                         <img
                             className="d-block img-fluid"
-                            src="../assets/yoga.png"
+                            src="/assets/yoga.png"
                             alt="Yoga Girl"
                             alignItems="center"
                         />
@@ -88,7 +87,7 @@ const Home = () => {
                     <Carousel.Item class="slides">
                         <img
                             className="d-block img-fluid"
-                            src="../assets/weight.png"
+                            src="/assets/weight.png"
                             alt="Weights"
                             alignItems="center"
                         />
@@ -100,7 +99,7 @@ const Home = () => {
                     <Carousel.Item class="slides">
                         <img
                             className="d-block img-fluid"
-                            src="../assets/shoe.png"
+                            src="/assets/shoe.png"
                             alt="Hikers"
                             alignItems="center"
                         />
