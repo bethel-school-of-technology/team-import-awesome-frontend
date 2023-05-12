@@ -180,7 +180,7 @@ const EditGoal = ({ show, close }) => {
                             height={window.innerHeight}
                         />
                     </div>
-                    <p>You have successfully completed your goal!</p>
+                    <h3 style={{color:'#4A707A'}}>You have successfully completed your goal!</h3>
                 </Modal.Body>
 
                 <Modal.Footer className="modal-footer">
