@@ -2,25 +2,11 @@ import { Carousel } from 'react-bootstrap';
 import '../css/home.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 const Home = () => {
     const [quotes, setQuotes] = useState([]);
     const [currentQuote, setCurrentQuote] = useState('');
     const [currentAuthor, setCurrentAuthor] = useState('');
-    const [user, setUser] = useState();
-
-    function isSignedIn() {
-        let user = localStorage.getItem('myUsername');
-        setUser(user);
-    }
-
-    useEffect(() => {
-        async function fetchData() {
-            isSignedIn();
-        }
-        fetchData();
-    });
 
     useEffect(() => {
         axios
@@ -56,7 +42,7 @@ const Home = () => {
                             alignItems="center"
                         />
 
-                        <Carousel.Caption className='carousel-text'>
+                        <Carousel.Caption className="carousel-text">
                             <h3>Boost Your Cardio Endurance</h3>
                         </Carousel.Caption>
                     </Carousel.Item>
@@ -68,7 +54,7 @@ const Home = () => {
                             alignItems="center"
                         />
 
-                        <Carousel.Caption className='carousel-text'>
+                        <Carousel.Caption className="carousel-text">
                             <h3>Increase Your Energy</h3>
                         </Carousel.Caption>
                     </Carousel.Item>
@@ -80,7 +66,7 @@ const Home = () => {
                             alignItems="center"
                         />
 
-                        <Carousel.Caption className='carousel-text'>
+                        <Carousel.Caption className="carousel-text">
                             <h3>Improve Your Flexiblity</h3>
                         </Carousel.Caption>
                     </Carousel.Item>
@@ -92,7 +78,7 @@ const Home = () => {
                             alignItems="center"
                         />
 
-                        <Carousel.Caption className='carousel-text'>
+                        <Carousel.Caption className="carousel-text">
                             <h3>Prioritize Recovery Days</h3>
                         </Carousel.Caption>
                     </Carousel.Item>
@@ -104,7 +90,7 @@ const Home = () => {
                             alignItems="center"
                         />
 
-                        <Carousel.Caption className='carousel-text'>
+                        <Carousel.Caption className="carousel-text">
                             <h3>Start a Walking Program</h3>
                         </Carousel.Caption>
                     </Carousel.Item>
