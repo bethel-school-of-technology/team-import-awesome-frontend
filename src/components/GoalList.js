@@ -79,14 +79,14 @@ export function GoalList({ goals }) {
                                 return (
                                     <div key={goal.goalId}>
                                         <Card className="goalItem complete">
-                                            <div>
+                                            <div className='goal-title'>
                                                 <FaTrophy />
                                                 <Link
                                                     to={`/goals/detail/${goal.goalId}`}
                                                 >
                                                     {goal.title}
-                                                    <FaTrophy />
                                                 </Link>
+                                                <FaTrophy />
                                             </div>
                                             <div>
                                                 <span>
