@@ -16,12 +16,13 @@ const SignIn = () => {
         event.preventDefault();
         loginUser(username, password)
             .then(() => {
-                navigate('/');
-                window.location.reload(true);
+                navigate(`/profile-page/${username}`);
             })
             .catch((error) => {
                 console.log(error);
-                window.alert('Failed login');
+                window.alert(
+                    'Failed Login: Please make sure spelling is correct.'
+                );
             });
     }
 

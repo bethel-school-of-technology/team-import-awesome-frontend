@@ -10,6 +10,7 @@ import ProfilePage from './components/ProfilePage';
 import Copyright from './components/Copyright';
 import GoalDetail from './components/GoalDetail';
 import NavbarMain from './components/NavbarMain';
+import NotFound from './components/NotFound';
 
 function App() {
     return (
@@ -42,15 +43,7 @@ function App() {
                                         element={<Copyright />}
                                     />
                                 </Route>
-                                <Route
-                                    path="*"
-                                    element={
-                                        <h1>
-                                            This Is Not The Page You're Looking
-                                            For
-                                        </h1>
-                                    }
-                                />
+                                <Route path="*" element={<NotFound />} />
                             </Routes>
                         </BrowserRouter>
                     </div>
