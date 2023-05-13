@@ -1,82 +1,78 @@
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Questrial&display=swap');
 
-.profilePage-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-body {
-font-family: "Questria", sans-serif;
-/* font-size: 12px;
-line-height: 1.7; */
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-color: #ffffff;
-font-weight: 400;
-}
 button,
 input,
 optgroup,
 select,
-textarea {
-font-family: "Questria", sans-serif !important;
+textarea,
+body {
+  font-family: "Questria", sans-serif;
 }
-.profile-container {
-width: 80%;
-background: #4A707A;
-margin: 5em;
-padding: 1em;
-border-radius: 10px;
-text-align: center;
-min-width: 497.91px;
+
+.profileCover-image {
+  display: table-cell;
+  width: 100%;
+  margin: -150px -100px 0px 0px;
 }
-.title {
-font-size: 2rem;
-font-weight: 300;
-text-align: center;
+
+.card-img-overlay {
+ pointer-events: none;
 }
+
+.profile-card {
+  display: table-cell;
+  background-color: #8d8d8db3;
+  padding-bottom: 2rem;
+}
+
+.profile-title {
+  font-size: 4rem;
+  font-weight: 300;
+  text-align: center;
+  margin-top: 13rem;
+  text-shadow: 2px 2px 2px #000000;
+}
+
 .avatar-container {
-width: 15rem;
-height: 15rem;
-display: flex;
-align-items: center;
-justify-content: center;
-margin: 0 auto;
-border-radius: 50%;
+  height: 0;
 }
+
 .avatar-container .avatar {
-width: 12rem;
-height: 12rem;
-border-radius: 50%;
-}
-.user-name {
-text-align: center;
-font-size: 2.3rem;
-font-weight: 500;
-}
-
-.user-info {
-justify-content: space-evenly;
-text-align: center;
-padding: 30px;
-margin-top: -15px;
-color: #fff;
+  margin-top: -10rem;
+  margin-left: 2rem;
+  padding: 0;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.443) 0 3px 5px 0px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
 }
 
+.first-last {
+  padding: 20px 0 0 0;
+  font-size: 3rem;
+}
+
+.profile-age {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.profile-bio {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.profile-followers {
+padding: .5rem;
+}
 
 button.btn {
   align-items: center;
   background-color: #55818d;
   border-radius: 8px;
   border-style: none;
-  box-shadow: rgba(0, 0, 0, 0.443) 0 3px 5px 0px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+  box-shadow: rgba(0, 0, 0, 0.443) 0 3px 5px 0px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
   color: #ffffff;
   display: inline-flex;
   font-family: "Questria";
@@ -91,7 +87,7 @@ button.btn {
   margin: auto;
   display: block;
   text-align: center;
-  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
 }
 
 .btn:hover {
@@ -106,20 +102,49 @@ button.btn {
   color: #ffffff;
 }
 
+@media screen and (max-width: 1150px) {
 
+  .profileCover-image {
+    display: table-cell;
+    width: 100%;
+    margin: -50px -20px 0px 0px;
+  }
 
-@media screen and (max-width: 767.2px) {
-
-  .followers{
+  .profile-title {
     display: none;
   }
-  .following{
-    display: none;
-  }
-  .user-age{
-    display: none;
-  }
-  .user-bio{
+
+  .row .text-center .profile-followers {
     display: none;
   }
 }
+
+@media screen and (max-width: 730px) {
+
+  .profileCover-image {
+    display: table-cell;
+    width: 100%;
+    margin: -50px -20px 0px 0px;
+  }
+
+  .profile-title {
+    display: none;
+  }
+
+  .avatar-container {
+    height: 3rem;
+  }
+  
+  .avatar-container .avatar {
+    margin-top: -5rem;
+    margin-left: 2rem;
+    padding: 0;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.443) 0 3px 5px 0px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+  }
+}
+
+
