@@ -93,9 +93,9 @@ const AddGoal = ({ show, close }) => {
                     </Form.Group>
                     <br />
 
-                    <Button type="submit">Add Goal</Button>
+                    <Button className='add-goal-buttons' variant='outline' type="submit">Add Goal</Button>
                     <br />
-                    <Button onClick={close}>Cancel</Button>
+                    <Button className='add-goal-buttons' variant='outline' onClick={close}>Cancel</Button>
                 </Form>
 
                 <Modal.Footer className="modal-footer"></Modal.Footer>

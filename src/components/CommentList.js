@@ -12,12 +12,12 @@ export function CommentList({ comments }) {
         <div className="comment-list-main">
             <h3>Comments:</h3>
             <AddComment show={showModal} close={() => setShowModal(false)} />
-            <Button variant="primary" onClick={() => setShowModal(true)}>
+            <Button variant='outline' onClick={() => setShowModal(true)}>
                 Add Comment
             </Button>
             {comments.length > 0 ? (
                 <div>
-                    {comments.map((c) => {
+                    {comments.sort((a, b) => b.createdAt.localeCompare(a.createdAt)).map((c) => {
                         let createdAt = moment(c.createdAt).format(
                             'MMMM Do YYYY, h:mm a'
                         );

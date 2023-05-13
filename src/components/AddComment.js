@@ -55,9 +55,9 @@ export function AddComment({ show, close }) {
                     </Form.Group>
                     <br />
 
-                    <Button type="submit">Add Comment</Button>
+                    <Button type="submit" variant='outline'>Add Comment</Button>
                     <br />
-                    <Button onClick={close}>Cancel</Button>
+                    <Button variant='outline' onClick={close}>Cancel</Button>
                 </Form>
 
                 <Modal.Footer className="modal-footer"></Modal.Footer>

@@ -127,6 +127,7 @@ const SignUp = () => {
                         />
                     </Form.Group>
                     <Button
+                        className='sign-up-button'
                         variant="dark"
                         type="submit"
                         disabled={!agreedToTerms}
