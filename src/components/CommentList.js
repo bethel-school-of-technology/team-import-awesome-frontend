@@ -33,6 +33,16 @@ export function CommentList({ comments }) {
                                 </Card.Header>
                                 <div className="comment">
                                     <p style={{ marginTop: "10px", marginBottom: "10px" }}>{c.comment}</p>
+                                    {c.username === currentUser && (
+                                        <div>
+                                            <Button variant='primary' size='sm' className='mr-2'>
+                                                Edit
+                                            </Button>
+                                            <Button variant='danger' size='sm'>
+                                                Delete
+                                            </Button>
+                                        </div>
+                                    )}
                                 </div>
                             </Card>
                         );
