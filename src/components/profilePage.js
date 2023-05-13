@@ -44,7 +44,7 @@ const ProfilePage = () => {
     }, [getUser, username]);
 
     return (
-        <body>
+        <>
             <div>
                 {username !== currentUser ? (
                     <div className="row p-0 mb-3">
@@ -142,7 +142,7 @@ const ProfilePage = () => {
                     <GoalList goals={user.Goals} />
                 </center>
             </div>
-        </body>
+        </>
     );
 };
 
