@@ -17,61 +17,57 @@ export const CommentProvider = (props) => {
         fetchData();
     }, []);
 
-    function getAllComments() {
+    async function getAllComments() {
         // retrieve all comments
-        return axios.get(baseUrl).then((response) => setComment(response.data));
+        const response = await axios.get(baseUrl);
+        return setComment(response.data);
     }
 
-    function getComment(id) {
+    async function getComment(id) {
         // retrieve comment by id
-        return axios.get(baseUrl + id).then((response) => {
-            return new Promise((resolve) => resolve(response.data));
-        });
+        const response = await axios.get(baseUrl + id);
+        return await new Promise((resolve) => resolve(response.data));
     }
 
-    function addComment(newComment) {
+    async function addComment(newComment) {
         // authenticate user to create a comment
         let myHeaders = {
             Authorization: `Bearer ${localStorage.getItem('myToken')}`,
         };
 
-        return axios
-            .post(baseUrl, newComment, { headers: myHeaders }) // creates new comment using token
-            .then((response) => {
-                // getAllComments();
-                console.log(newComment)
-                return new Promise((resolve) => resolve(response.data));
-            });
+        const response = await axios.post(baseUrl, newComment, {
+            headers: myHeaders,
+        }); // creates new comment using token
+
+        return await new Promise((resolve) => resolve(response.data));
     }
 
-    function editComment(comment) {
+    async function editComment(comment) {
         // authenticate user to edit a comment
         let myHeaders = {
             Authorization: `Bearer ${localStorage.getItem('myUsername')}`,
         };
 
-        return axios
-            .put(baseUrl + comment.commentId, comment, { headers: myHeaders })
-            .then((response) => {
-                // updates comment
-                getAllComments();
-                return new Promise((resolve) => resolve(response.data));
-            });
+        const response = await axios.put(baseUrl + comment.commentId, comment, {
+            headers: myHeaders,
+        });
+        // updates comment
+        getAllComments();
+        return await new Promise((resolve) => resolve(response.data));
     }
 
-    function deleteComment(id) {
+    async function deleteComment(id) {
         // authenticate user to delete a comment
         let myHeaders = {
             Authorization: `Bearer ${localStorage.getItem('myUsername')}`,
         };
 
-        return axios
-            .delete(baseUrl + id, { headers: myHeaders })
-            .then((response) => {
-                // deletes comment using token
-                getAllComments();
-                return new Promise((resolve) => resolve(response.data));
-            });
+        const response = await axios.delete(baseUrl + id, {
+            headers: myHeaders,
+        });
+        // deletes comment using token
+        getAllComments();
+        return await new Promise((resolve) => resolve(response.data));
     }
 
     return (

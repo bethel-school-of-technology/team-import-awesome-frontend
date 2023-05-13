@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import UserContext from '../contexts/userContext';
+import UserContext from '../contexts/UserContext';
 import '../css/search-bar.css';
 
 const SearchBar = () => {
@@ -15,13 +15,15 @@ const SearchBar = () => {
         try {
             const result = await getUser(userSearched);
 
-            if (result) {
+            if (userSearched === result.username) {
                 navigate(`/profile-page/${userSearched}`);
-            }
-        } catch (error) {
-            window.alert(`That User Does Not Exist :(
+            } else {
+                window.alert(`That User Does Not Exist :(
 
 Make sure the spelling is correct :)`);
+            }
+        } catch (error) {
+            console.log(error);
         }
 
         setUserSearched('');
@@ -31,7 +33,11 @@ Make sure the spelling is correct :)`);
         <>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="search-bar-group">
-                    <Button variant='outline' type="submit" className="search-btn">
+                    <Button
+                        variant="outline"
+                        type="submit"
+                        className="search-btn"
+                    >
                         Search
                     </Button>
                     <Form.Control

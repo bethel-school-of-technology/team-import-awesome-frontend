@@ -2,27 +2,37 @@ import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import UserContext from '../contexts/userContext.js';
+import UserContext from '../contexts/UserContext.js';
 import '../css/sign-in.css';
 
 const SignIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    const { getUser } = useContext(UserContext);
     let { loginUser } = useContext(UserContext);
     let navigate = useNavigate();
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
-        loginUser(username, password)
-            .then(() => {
-                navigate('/');
-                window.location.reload(true);
-            })
-            .catch((error) => {
-                console.log(error);
-                window.alert('Failed login');
-            });
+        try {
+            const result = await getUser(username);
+
+            if (result.username === username && result.password) {
+                loginUser(username, password).then(() => {
+                    navigate(`/profile-page/${username}`);
+                });
+            } else {
+                window.alert(
+                    `Failed Login: Check Username and Password are correct.`
+                );
+            }
+        } catch (error) {
+            console.log(error);
+            window.alert(
+                'Failed Login: Check Username and Password are correct.'
+            );
+        }
     }
 
     return (
@@ -61,7 +71,7 @@ const SignIn = () => {
 
                                 <div className="form-grouping">
                                     <Button
-                                        className='sign-in-button'
+                                        className="sign-in-button"
                                         variant="outline"
                                         type="submit"
                                         block

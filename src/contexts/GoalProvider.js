@@ -34,50 +34,49 @@ export const GoalProvider = (props) => {
         return await new Promise((resolve) => resolve(response.data));
     }
 
-    function addGoal(newGoal) {
+    async function addGoal(newGoal) {
         // authenticate user to create a goal
         let myHeaders = {
             Authorization: `Bearer ${localStorage.getItem('myToken')}`,
         };
 
-        return axios
-            .post(baseUrl, newGoal, { headers: myHeaders }) // creates new goal using token - maybe add a check if username matches goal?
-            .then((response) => {
-                getUserGoals();
-                return new Promise((resolve) => resolve(response.data));
-            });
+        const response = await axios.post(baseUrl, newGoal, {
+            headers: myHeaders,
+        }); // creates new goal using token - maybe add a check if username matches goal?
+        getUserGoals();
+        return await new Promise((resolve) => resolve(response.data));
     }
 
-    function editGoal(goal) {
+    async function editGoal(goal) {
         // authenticate user to edit a goal
         let myHeaders = {
             Authorization: `Bearer ${localStorage.getItem('myToken')}`,
         };
 
-        return axios
-            .put(`${baseUrl}detail/${goal.goalId}`, goal, {
+        const response = await axios.put(
+            `${baseUrl}detail/${goal.goalId}`,
+            goal,
+            {
                 headers: myHeaders,
-            })
-            .then((response) => {
-                // updates goal - maybe add a check if username matches goal?
-                getUserGoals();
-                return new Promise((resolve) => resolve(response.data));
-            });
+            }
+        );
+        // updates goal - maybe add a check if username matches goal?
+        getUserGoals();
+        return await new Promise((resolve) => resolve(response.data));
     }
 
-    function deleteGoal(id) {
+    async function deleteGoal(id) {
         // authenticate user to delete a goal
         let myHeaders = {
             Authorization: `Bearer ${localStorage.getItem('myToken')}`,
         };
 
-        return axios
-            .delete(`${baseUrl}detail/${id}`, { headers: myHeaders })
-            .then((response) => {
-                // deletes goal using token - maybe add a check if username matches goal?
-                getUserGoals();
-                return new Promise((resolve) => resolve(response.data));
-            });
+        const response = await axios.delete(`${baseUrl}detail/${id}`, {
+            headers: myHeaders,
+        });
+        // deletes goal using token - maybe add a check if username matches goal?
+        getUserGoals();
+        return await new Promise((resolve) => resolve(response.data));
     }
 
     return (

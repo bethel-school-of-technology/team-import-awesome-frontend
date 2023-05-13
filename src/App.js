@@ -1,15 +1,16 @@
 import React from 'react';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import Home from './components/Home';
-import { UserProvider } from './contexts/userProvider';
+import { UserProvider } from './contexts/UserProvider';
 import { GoalProvider } from './contexts/GoalProvider';
 import { CommentProvider } from './contexts/CommentProvider';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
-import ProfilePage from './components/profilePage';
+import ProfilePage from './components/ProfilePage';
 import Copyright from './components/Copyright';
 import GoalDetail from './components/GoalDetail';
 import NavbarMain from './components/NavbarMain';
+import NotFound from './components/NotFound';
 
 function App() {
     return (
@@ -42,15 +43,7 @@ function App() {
                                         element={<Copyright />}
                                     />
                                 </Route>
-                                <Route
-                                    path="*"
-                                    element={
-                                        <h1>
-                                            This Is Not The Page You're Looking
-                                            For
-                                        </h1>
-                                    }
-                                />
+                                <Route path="*" element={<NotFound />} />
                             </Routes>
                         </BrowserRouter>
                     </div>

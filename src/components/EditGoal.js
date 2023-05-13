@@ -4,7 +4,7 @@ import GoalContext from '../contexts/GoalContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import moment from 'moment';
 import Confetti from 'react-confetti';
-import '../css/addGoal.css';
+import '../css/add-goal.css';
 
 const EditGoal = ({ show, close }) => {
     let { id } = useParams();
@@ -146,9 +146,21 @@ const EditGoal = ({ show, close }) => {
                     </Form.Group>
                     <br />
 
-                    <Button className='add-goal-buttons' variant='outline' type="submit">Update Goal</Button>
+                    <Button
+                        className="add-goal-buttons"
+                        variant="outline"
+                        type="submit"
+                    >
+                        Update Goal
+                    </Button>
                     <br />
-                    <Button className='add-goal-buttons' variant='outline' onClick={close}>Cancel</Button>
+                    <Button
+                        className="add-goal-buttons"
+                        variant="outline"
+                        onClick={close}
+                    >
+                        Cancel
+                    </Button>
                 </Form>
 
                 <Modal.Footer className="modal-footer" />
@@ -190,7 +202,10 @@ const EditGoal = ({ show, close }) => {
                 </Modal.Body>
 
                 <Modal.Footer className="modal-footer">
-                    <Button variant='outline' onClick={() => setShowCongratulations(false)}>
+                    <Button
+                        variant="outline"
+                        onClick={() => setShowCongratulations(false)}
+                    >
                         Close
                     </Button>
                 </Modal.Footer>
