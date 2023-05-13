@@ -1,12 +1,13 @@
 .goalList {
     display: flex;
     flex-direction: column;
-    background: #4A707A;
+    background: #7697A0;
     justify-content: center;
     text-align: center;
     padding: 2em 4rem;
     border-radius: 10px;
     width: 900px;
+    border-radius: 0;
 }
 
 .goal-title{
@@ -15,8 +16,6 @@
     margin: 0 10px;
     margin-top: 4px;
 }   
-
-
 
 .goalItem {
     margin: 15px auto;
@@ -59,6 +58,7 @@
 @media screen and (max-width: 940px){
     .goalList{
         width: 800px;
+        margin: auto;
     }
 }
 
@@ -66,12 +66,14 @@
 @media screen and (max-width: 825px){
     .goalList{
         width: 700px;
+        margin: auto;
     }
 }
 
 @media screen and (max-width: 750px){
     .goalList{
         width: 500px;
+        margin: 0 0 0 0;
     }
     .goalItem{
         width: 100%;
