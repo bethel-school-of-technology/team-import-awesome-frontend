@@ -38,8 +38,7 @@ export const CommentProvider = (props) => {
         const response = await axios.post(baseUrl, newComment, {
             headers: myHeaders,
         }); // creates new comment using token
-        // getAllComments();
-        console.log(newComment);
+
         return await new Promise((resolve) => resolve(response.data));
     }
 

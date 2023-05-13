@@ -15,13 +15,15 @@ const SearchBar = () => {
         try {
             const result = await getUser(userSearched);
 
-            if (result) {
+            if (userSearched === result.username) {
                 navigate(`/profile-page/${userSearched}`);
-            }
-        } catch (error) {
-            window.alert(`That User Does Not Exist :(
+            } else {
+                window.alert(`That User Does Not Exist :(
 
 Make sure the spelling is correct :)`);
+            }
+        } catch (error) {
+            console.log(error);
         }
 
         setUserSearched('');

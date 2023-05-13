@@ -32,11 +32,11 @@ export const UserProvider = (props) => {
     function logOutUser() {
         localStorage.setItem('myToken', '');
         localStorage.setItem('myUsername', '');
-        window.location.reload(true);
+        // window.location.reload(true);
     }
 
-    async function getUser(id) {
-        const response = await axios.get(baseUrl + id);
+    async function getUser(username) {
+        const response = await axios.get(baseUrl + username);
         return await new Promise((resolve) => resolve(response.data));
     }
 

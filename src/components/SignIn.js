@@ -9,21 +9,30 @@ const SignIn = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    const { getUser } = useContext(UserContext);
     let { loginUser } = useContext(UserContext);
     let navigate = useNavigate();
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
-        loginUser(username, password)
-            .then(() => {
-                navigate(`/profile-page/${username}`);
-            })
-            .catch((error) => {
-                console.log(error);
+        try {
+            const result = await getUser(username);
+
+            if (result.username === username && result.password) {
+                loginUser(username, password).then(() => {
+                    navigate(`/profile-page/${username}`);
+                });
+            } else {
                 window.alert(
-                    'Failed Login: Please make sure spelling is correct.'
+                    `Failed Login: Check Username and Password are correct.`
                 );
-            });
+            }
+        } catch (error) {
+            console.log(error);
+            window.alert(
+                'Failed Login: Check Username and Password are correct.'
+            );
+        }
     }
 
     return (
