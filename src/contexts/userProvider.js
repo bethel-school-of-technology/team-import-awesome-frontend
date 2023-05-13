@@ -13,26 +13,20 @@ export const UserProvider = (props) => {
         }
     }, [user]);
 
-    function createUser(newUser) {
-        return axios.post(baseUrl, newUser).then((response) => {
-            return new Promise((resolve) => resolve(response.data));
-        });
+    async function createUser(newUser) {
+        const response = await axios.post(baseUrl, newUser);
+        return await new Promise((resolve) => resolve(response.data));
     }
 
-    function loginUser(username, password) {
+    async function loginUser(username, password) {
         let user = { username, password };
 
-        return axios.post(`${baseUrl}/login`, user).then((response) => {
-            localStorage.setItem('myToken', response.data.token);
-            localStorage.setItem('myUsername', user.username);
-            localStorage.setItem(
-                'userData',
-                JSON.stringify(response.data.user)
-            );
-            setUser(response.data.user);
-            // Store response.data in local storage and retrieve it if no user is found on page load
-            return new Promise((resolve) => resolve(response.data));
-        });
+        const response = await axios.post(`${baseUrl}/login`, user);
+        localStorage.setItem('myToken', response.data.token);
+        localStorage.setItem('myUsername', user.username);
+        localStorage.setItem('userData', JSON.stringify(response.data.user));
+        setUser(response.data.user);
+        return await new Promise((resolve) => resolve(response.data));
     }
 
     function logOutUser() {
@@ -41,24 +35,24 @@ export const UserProvider = (props) => {
         window.location.reload(true);
     }
 
-    function getUser(id) {
-        return axios.get(baseUrl + id).then((response) => {
-            return new Promise((resolve) => resolve(response.data));
-        });
+    async function getUser(id) {
+        const response = await axios.get(baseUrl + id);
+        return await new Promise((resolve) => resolve(response.data));
     }
 
-    function updateUser(user) {
+    async function updateUser(user) {
         const myHeaders = {
             Authorization: `Bearer ${localStorage.getItem('myToken')}`,
         };
 
-        return axios
-            .put(`${baseUrl}/edit/${user.username}`, user, {
+        const response = await axios.put(
+            `${baseUrl}/edit/${user.username}`,
+            user,
+            {
                 headers: myHeaders,
-            })
-            .then((response) => {
-                return new Promise((resolve) => resolve(response.data));
-            });
+            }
+        );
+        return await new Promise((resolve) => resolve(response.data));
     }
 
     // function updateUserImmediate(user) {
