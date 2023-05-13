@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import UserContext from '../contexts/userContext';
-import '../css/register.css';
+import UserContext from '../contexts/UserContext';
+import '../css/sign-up.css';
 
 const SignUp = () => {
     const [newUser, setNewUser] = useState({
@@ -127,7 +127,7 @@ const SignUp = () => {
                         />
                     </Form.Group>
                     <Button
-                        className='sign-up-button'
+                        className="sign-up-button"
                         variant="dark"
                         type="submit"
                         disabled={!agreedToTerms}

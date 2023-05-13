@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import EditGoal from './EditGoal';
 import GoalContext from '../contexts/GoalContext';
 import { useNavigate, useParams } from 'react-router-dom';
-import '../css/GoalDetail.css';
+import '../css/goal-detail.css';
 import { CommentList } from './CommentList';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
@@ -65,7 +65,9 @@ function GoalDetail() {
     return (
         <div className="goal-detail-body">
             <div className="back-button">
-                <Link to={`/profile-page/${userGoal.username}`}>Return to Profile Page</Link>
+                <Link to={`/profile-page/${userGoal.username}`}>
+                    Return to Profile Page
+                </Link>
             </div>
 
             <div className="container">
@@ -89,7 +91,7 @@ function GoalDetail() {
                         <div className="button-container">
                             <Button
                                 className="editBtn"
-                                variant='outline'
+                                variant="outline"
                                 onClick={() => setShowModal(true)}
                             >
                                 Edit

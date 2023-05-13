@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Form, Modal, Button } from 'react-bootstrap';
-import UserContext from '../contexts/userContext';
+import UserContext from '../contexts/UserContext';
 import { useNavigate } from 'react-router-dom';
 import '../css/edit-profile.css';
 
@@ -134,9 +134,13 @@ const EditProfile = ({ show, close }) => {
                         />
                     </Form.Group>
                     <br />
-                    <Button className='edit-profile-buttons' type="submit">Update Profile</Button>
+                    <Button className="edit-profile-buttons" type="submit">
+                        Update Profile
+                    </Button>
                     <br />
-                    <Button className='edit-profile-buttons' onClick={close}>Cancel</Button>
+                    <Button className="edit-profile-buttons" onClick={close}>
+                        Cancel
+                    </Button>
                 </Form>
 
                 <Modal.Footer className="modal-footer"></Modal.Footer>

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import UserContext from '../contexts/userContext.js';
+import UserContext from '../contexts/UserContext.js';
 import '../css/sign-in.css';
 
 const SignIn = () => {
@@ -61,7 +61,7 @@ const SignIn = () => {
 
                                 <div className="form-grouping">
                                     <Button
-                                        className='sign-in-button'
+                                        className="sign-in-button"
                                         variant="outline"
                                         type="submit"
                                         block

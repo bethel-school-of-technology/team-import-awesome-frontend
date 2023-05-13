@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import UserContext from '../contexts/userContext';
+import UserContext from '../contexts/UserContext';
 import '../css/search-bar.css';
 
 const SearchBar = () => {
@@ -31,7 +31,11 @@ Make sure the spelling is correct :)`);
         <>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="search-bar-group">
-                    <Button variant='outline' type="submit" className="search-btn">
+                    <Button
+                        variant="outline"
+                        type="submit"
+                        className="search-btn"
+                    >
                         Search
                     </Button>
                     <Form.Control

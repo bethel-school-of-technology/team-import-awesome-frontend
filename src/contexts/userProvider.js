@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 // import { debounce } from 'debounce';
-import UserContext from './userContext.js';
+import UserContext from './UserContext.js';
 
 export const UserProvider = (props) => {
     const baseUrl = 'http://localhost:3000/users/';

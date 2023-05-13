@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import UserContext from '../contexts/userContext';
+import UserContext from '../contexts/UserContext';
 import { GoalList } from './GoalList';
 import { Button } from 'react-bootstrap';
 import EditProfile from './EditProfile';
-import '../css/profilePage.css';
-import '../css/goalList.css';
-import '../css/addGoal.css';
+import '../css/profile-page.css';
+import '../css/goal-list.css';
+import '../css/add-goal.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddGoal from './AddGoal';
 import { Link } from 'react-router-dom';
@@ -48,21 +48,23 @@ const ProfilePage = () => {
             <div>
                 {username !== currentUser ? (
                     <div className="row p-0 mb-3">
-                        <Link to={`/profile-page/${currentUser}`} >Return to {currentUser}'s Profile Page</Link>
+                        <Link to={`/profile-page/${currentUser}`}>
+                            Return to {currentUser}'s Profile Page
+                        </Link>
                     </div>
                 ) : (
                     ''
-                )
-                }
+                )}
                 <div className="profilePage-main">
                     <div class="profile-card">
                         <div class="card-header">
                             <div class="cardImg">
                                 <img
                                     class="img-fluid"
-                                    className='profileCover-image'
+                                    className="profileCover-image"
                                     src="../assets/shoe.png"
-                                    alt="Responsive" />
+                                    alt="Responsive"
+                                />
                                 <div class="card-img-overlay">
                                     <h1 className="profile-title">
                                         Hello, {user.username}! Get goaling!
@@ -73,21 +75,34 @@ const ProfilePage = () => {
                             <div class="pro-img" className="avatar-container">
                                 <img
                                     src={user.avatar}
-                                    alt="" className="avatar"
-                                    variant="bottom" />
+                                    alt=""
+                                    className="avatar"
+                                    variant="bottom"
+                                />
                             </div>
                             <div class="card-body text-center">
-                                <h3 class='first-last'>{user.firstName} {user.lastName}</h3>
-                                <h6 className="profile-age"> Age: {user.age}</h6>
+                                <h3 class="first-last">
+                                    {user.firstName} {user.lastName}
+                                </h3>
+                                <h6 className="profile-age">
+                                    {' '}
+                                    Age: {user.age}
+                                </h6>
 
                                 <h6 className="profile-bio">{user.bio}</h6>
                             </div>
                             <div class="row text-center profile-followers">
                                 <div class="col-lg-2 col-md-2 col-sm-2">
-                                    <h6><strong>434K</strong></h6><small>Followers</small>
+                                    <h6>
+                                        <strong>434K</strong>
+                                    </h6>
+                                    <small>Followers</small>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-2">
-                                    <h6><strong>5454</strong></h6><small>Following</small>
+                                    <h6>
+                                        <strong>5454</strong>
+                                    </h6>
+                                    <small>Following</small>
                                 </div>
                             </div>
                             <br />
@@ -97,12 +112,15 @@ const ProfilePage = () => {
                                         <div style={{ display: 'none' }}>
                                             <EditProfile
                                                 show={showModal}
-                                                close={() => setShowModal(false)}
+                                                close={() =>
+                                                    setShowModal(false)
+                                                }
                                             />
                                         </div>
                                         <Button
                                             variant="primary"
-                                            onClick={() => setShowModal(true)}>
+                                            onClick={() => setShowModal(true)}
+                                        >
                                             Edit Profile
                                         </Button>
                                         <br />
@@ -110,24 +128,24 @@ const ProfilePage = () => {
                                 ) : (
                                     ''
                                 )}
-                                {user.username === currentUser ? (
-                                    <>
-                                    </>
-                                ) : (
-                                    ''
-                                )}
+                                {user.username === currentUser ? <></> : ''}
                                 {user.username === currentUser ? (
                                     <>
                                         <div style={{ display: 'none' }}>
                                             <AddGoal
                                                 show={showAddGoalModal}
-                                                close={() => setShowAddGoalModal(false)}
+                                                close={() =>
+                                                    setShowAddGoalModal(false)
+                                                }
                                             />
                                         </div>
                                         <Button
                                             className="add-goal-button"
                                             variant="primary"
-                                            onClick={() => setShowAddGoalModal(true)}>
+                                            onClick={() =>
+                                                setShowAddGoalModal(true)
+                                            }
+                                        >
                                             Add Goal
                                         </Button>
                                     </>
@@ -145,8 +163,6 @@ const ProfilePage = () => {
         </>
     );
 };
-
-
 
 export default ProfilePage;
 

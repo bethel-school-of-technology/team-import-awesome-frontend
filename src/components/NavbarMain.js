@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
-import UserContext from '../contexts/userContext';
+import UserContext from '../contexts/UserContext';
 import Footer from './Footer';
-import '../css/Navbar.css';
+import '../css/navbar-main.css';
 import { HashLink } from 'react-router-hash-link';
 import SearchBar from './SearchBar';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
@@ -23,8 +23,8 @@ const NavbarMain = () => {
         function autoSignOut() {
             setTimeout(() => {
                 navigate('/signIn');
-                logOutUser();
                 window.alert('Session Expired: Please Sign In');
+                logOutUser();
 
                 return () => clearTimeout(autoSignOut);
             }, 3600000);
@@ -47,69 +47,72 @@ const NavbarMain = () => {
                     </HashLink>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end'>
+                <Navbar.Collapse
+                    id="basic-navbar-nav"
+                    className="justify-content-end"
+                >
                     <SearchBar />
-                        <Nav>
-                            <Nav.Link>
-                                <HashLink smooth to="/#HOW">
-                                    HOW
-                                </HashLink>
-                            </Nav.Link>
-                            <Nav.Link>
-                                <HashLink smooth to="/#WHY">
-                                    WHY
-                                </HashLink>
-                            </Nav.Link>
-                            <Nav.Link>
-                                <HashLink smooth to="/#ABOUT">
-                                    ABOUT
-                                </HashLink>
-                            </Nav.Link>
-                        </Nav>
-                        <Nav>
-                            {user ? (
-                                <NavDropdown
-                                    title={`Welcome, ${user}`}
-                                    id="basic-nav-dropdown"
-                                >
-                                    <NavDropdown.Item>
-                                        <Link
-                                            to={`/profile-page/${user}`}
-                                            style={{ color: 'black' }}
-                                        >
-                                            To Profile
-                                        </Link>
-                                    </NavDropdown.Item>
-                                    <NavDropdown.Item
-                                        onClick={() => {
-                                            logOutUser();
-                                            navigate('/signIn');
-                                        }}
+                    <Nav>
+                        <Nav.Link>
+                            <HashLink smooth to="/#HOW">
+                                HOW
+                            </HashLink>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <HashLink smooth to="/#WHY">
+                                WHY
+                            </HashLink>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <HashLink smooth to="/#ABOUT">
+                                ABOUT
+                            </HashLink>
+                        </Nav.Link>
+                    </Nav>
+                    <Nav>
+                        {user ? (
+                            <NavDropdown
+                                title={`Welcome, ${user}`}
+                                id="basic-nav-dropdown"
+                            >
+                                <NavDropdown.Item>
+                                    <Link
+                                        to={`/profile-page/${user}`}
+                                        style={{ color: 'black' }}
                                     >
-                                        Sign Out
-                                    </NavDropdown.Item>
-                                </NavDropdown>
-                            ) : (
-                                <>
-                                    <Nav.Link style={{ marginLeft: '5px' }}>
-                                        <Link
-                                            to="/signIn"
-                                            style={{ color: 'black' }}
-                                        >
-                                            Sign In
-                                        </Link>
-                                    </Nav.Link>
-                                    <Nav.Link>
-                                        <Link
-                                            to="/signUp"
-                                            style={{ color: 'black' }}
-                                        >
-                                            Register
-                                        </Link>
-                                    </Nav.Link>
-                                </>
-                            )}
-                        </Nav>
+                                        To Profile
+                                    </Link>
+                                </NavDropdown.Item>
+                                <NavDropdown.Item
+                                    onClick={() => {
+                                        navigate('/signIn');
+                                        logOutUser();
+                                    }}
+                                >
+                                    Sign Out
+                                </NavDropdown.Item>
+                            </NavDropdown>
+                        ) : (
+                            <>
+                                <Nav.Link style={{ marginLeft: '5px' }}>
+                                    <Link
+                                        to="/signIn"
+                                        style={{ color: 'black' }}
+                                    >
+                                        Sign In
+                                    </Link>
+                                </Nav.Link>
+                                <Nav.Link>
+                                    <Link
+                                        to="/signUp"
+                                        style={{ color: 'black' }}
+                                    >
+                                        Register
+                                    </Link>
+                                </Nav.Link>
+                            </>
+                        )}
+                    </Nav>
                 </Navbar.Collapse>
             </Navbar>
             <div className="outlet">
