@@ -9,8 +9,9 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 function GoalDetail() {
-    const { deleteGoal, getGoal } = useContext(GoalContext);
     let { id } = useParams();
+
+    const { deleteGoal, getGoal } = useContext(GoalContext);
     const navigate = useNavigate();
 
     const [userGoal, setUserGoal] = useState({
@@ -110,7 +111,7 @@ function GoalDetail() {
                 )}
 
                 <hr />
-                <CommentList comments={userGoal.Comments} />
+                <CommentList comments={userGoal.Comments} currentUser={currentUser} userGoal={userGoal} />
             </div>
         </div>
     );

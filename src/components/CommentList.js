@@ -1,50 +1,24 @@
 import { Button, Card } from 'react-bootstrap';
 import { AddComment } from './AddComment';
 import { useState, useContext, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import UserContext from '../contexts/UserContext';
-import GoalContext from '../contexts/GoalContext';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import CommentContext from '../contexts/CommentContext';
+import EditComment from './EditComment';
 import '../css/comment-list.css';
 import moment from 'moment';
 
-export function CommentList({ comments }) {
+export function CommentList({ comments, currentUser, userGoal }) {
     let { id } = useParams();
 
     const [showModal, setShowModal] = useState(false);
-    const [currentUser, setCurrentUser] = useState(""); // current user state
-    const [goal, setGoal] = useState({}); // goal state
 
     const [comment, setComment] = useState({
         username: '',
         comment: '',
     });
 
-    let { getComment, editComment, deleteComment } = useContext(CommentContext);
-    let { getUser } = useContext(UserContext);
-    let { getGoal } = useContext(GoalContext);
-
-    function isLoggedIn() {
-        let user = localStorage.getItem('myUsername');
-        setCurrentUser(user);
-    }
-
-    useEffect(() => {
-        async function fetch() {
-            await getUser(currentUser).then((user) => setCurrentUser(user));
-        }
-        isLoggedIn();
-        fetch();
-    }, [getUser, currentUser]);
-
-    useEffect(() => {
-        if (id === undefined) return;
-
-        async function fetch() {
-            await getGoal(id).then((goal) => setGoal(goal));
-        }
-        fetch();
-    }, [id, getGoal]);
+    let { getComment, deleteComment } = useContext(CommentContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (id === undefined) return;
@@ -54,6 +28,21 @@ export function CommentList({ comments }) {
         }
         fetch();
     }, [id, getComment]);
+
+    // delete comment
+    const handleDelete = () => {
+        // user confirmation to prevent accidental deleting
+        if (window.confirm('Are you sure you want to delete this comment?')) {
+            deleteComment(comment.comment)
+                .then(() => {
+                    navigate(`/profile-page/${userGoal.goalId}`);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    navigate(`/goals/detail/${userGoal.goalId}`);
+                });
+        }
+    };
 
     return (
         <div className="comment-list-main">
@@ -90,14 +79,42 @@ export function CommentList({ comments }) {
                                             </Link>
                                         </div>
                                         <div className="header-right">
-                                            <p
-                                                style={{
-                                                    display: 'inline-block',
-                                                    textAlign: 'right',
-                                                }}
-                                            >
-                                                {createdAt}
-                                            </p>
+                                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                {c.username === currentUser ? (
+                                                    <div>
+                                                        <EditComment
+                                                            show={showModal}
+                                                            close={() => setShowModal(false)}
+                                                        />
+                                                        <Link to="#"
+                                                            className="crud-comment"
+                                                            style={{ marginLeft: '10px' }}
+                                                            onClick={() => setShowModal(true)}
+                                                        >
+                                                            Edit
+                                                        </Link>
+                                                        <Link
+                                                            className="crud-comment"
+                                                            style={{ marginLeft: '10px' }}
+                                                            onClick={handleDelete}
+                                                        >
+                                                            Delete
+                                                        </Link>
+                                                    </div>
+                                                ) : userGoal.username === currentUser ? (
+                                                    <div>
+                                                        <Link
+                                                            variant="link"
+                                                            className="delete-button"
+                                                            onClick={handleDelete}
+                                                        >
+                                                            Delete
+                                                        </Link>
+                                                    </div>
+                                                ) : null}
+                                                <p style={{ display: "inline-block", margin: "0 5px" }}>|</p>
+                                                <p style={{ display: "inline-block", marginRight: '10px' }}>{createdAt}</p>
+                                            </div>
                                         </div>
                                     </Card.Header>
                                     <div className="comment">
@@ -109,12 +126,38 @@ export function CommentList({ comments }) {
                                         >
                                             {c.comment}
                                         </p>
-                                        {(c.username === currentUser && !goal.username) || (goal.username && currentUser === goal.username) ? (
-                                            <div className="edit-delete-buttons">
-                                                <Button variant="link" className="edit-button">Edit</Button>
-                                                <Button variant="link" className="delete-button">Delete</Button>
+                                        {/* {c.username === currentUser ? (
+                                            <div>
+                                                <EditComment
+                                                    show={showModal}
+                                                    close={() => setShowModal(false)}
+                                                />
+                                                <div className="edit-delete-buttons">
+                                                    <Link to="#"
+                                                        className="crud-comment"
+                                                        onClick={() => setShowModal(true)}
+                                                    >
+                                                        Edit
+                                                    </Link>
+                                                    <Link
+                                                        className="crud-comment"
+                                                        onClick={handleDelete}
+                                                    >
+                                                        Delete
+                                                    </Link>
+                                                </div>
                                             </div>
-                                        ) : null}
+                                        ) : userGoal.username === currentUser ? (
+                                            <div className="edit-delete-buttons">
+                                                <Button
+                                                    variant="link"
+                                                    className="delete-button"
+                                                    onClick={handleDelete}
+                                                >
+                                                    Delete
+                                                </Button>
+                                            </div>
+                                        ) : null} */}
                                     </div>
                                 </Card>
                             );
