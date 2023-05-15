@@ -19,7 +19,7 @@ const SignIn = () => {
             const result = await getUser(username);
 
             if (result.username === username && result.password) {
-                loginUser(username, password).then(() => {
+                await loginUser(username, password).then(() => {
                     navigate(`/profile-page/${username}`);
                 });
             } else {
@@ -28,10 +28,14 @@ const SignIn = () => {
                 );
             }
         } catch (error) {
+            if (error.response && error.response.status === 401) {
+                window.alert(`Failed Login: Invalid username or password.`);
+            } else {
+                window.alert(
+                    `Failed Login: Check Username and Password are correct.`
+                );
+            }
             console.log(error);
-            window.alert(
-                'Failed Login: Check Username and Password are correct.'
-            );
         }
     }
 
