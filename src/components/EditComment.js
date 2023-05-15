@@ -14,10 +14,11 @@ const EditComment = ({comment, show, close }) => {
     let navigate = useNavigate();
 
     useEffect(() => {
-        if (comment === undefined) return;
+        if (comment === null) return;
 
         async function fetch() {
-            await getComment(comment.commentId).then((comment) => setUpdatedComment(comment));
+            const fetchedComment = await getComment(comment.commentId);
+            setUpdatedComment(fetchedComment)
             console.log(comment)
         }
         fetch();
@@ -58,7 +59,7 @@ const EditComment = ({comment, show, close }) => {
                             type="textarea"
                             placeholder="Comment"
                             name="comment"
-                            value={comment}
+                            value={updatedComment.comment}
                             onChange={handleChange}
                         />
                     </Form.Group>
