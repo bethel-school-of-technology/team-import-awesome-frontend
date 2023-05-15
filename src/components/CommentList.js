@@ -11,11 +11,10 @@ export function CommentList({ comments, currentUser, userGoal }) {
 
     const [showEditModal, setShowEditModal] = useState(false);
     const [showAddModal, setShowAddModal] = useState(false);
+    const [ toUpdate, setToUpdate ] = useState(null)
 
-    let { deleteComment } = useContext(CommentContext);
+    let { getComment, deleteComment } = useContext(CommentContext);
     const navigate = useNavigate();
-
-    
 
     // delete comment
     const handleDelete = (commentId) => {
@@ -23,7 +22,8 @@ export function CommentList({ comments, currentUser, userGoal }) {
         if (window.confirm('Are you sure you want to delete this comment?')) {
             deleteComment(commentId)
                 .then(() => {
-                    navigate(`/goals/detail/${userGoal.goalId}`);
+                   navigate(`/goals/detail/${userGoal.goalId}`);
+                   window.location.reload(true)
                 })
                 .catch((error) => {
                     console.log(error);
@@ -44,9 +44,17 @@ export function CommentList({ comments, currentUser, userGoal }) {
                     {comments
                         .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
                         .map((c) => {
+
                             let createdAt = moment(c.createdAt).format(
                                 'MMMM Do YYYY, h:mm a'
                             );
+
+                            let handleClick = async () => {
+                                let fetchedComment = await getComment(c.commentId);
+                                setShowEditModal(true);
+                                setToUpdate(fetchedComment);
+                            }
+
                             return (
                                 <Card
                                     className="comment-card"
@@ -73,12 +81,12 @@ export function CommentList({ comments, currentUser, userGoal }) {
                                                         <EditComment
                                                             show={showEditModal}
                                                             close={() => setShowEditModal(false)}
-                                                            comment={c}
+                                                            comment={toUpdate}
                                                         />
                                                         <Link to="#"
                                                             className="crud-comment"
                                                             style={{ marginLeft: '10px' }}
-                                                            onClick={() => setShowEditModal(true)}
+                                                            onClick={handleClick}
                                                         >
                                                             Edit
                                                         </Link>
