@@ -74,7 +74,7 @@ function GoalDetail() {
             <div className="container">
                 <h2>Title: {userGoal.title}</h2>
                 <h5>Plan: {userGoal.plan}</h5>
-                <br />
+                <hr/>
                 {userGoal.completed === true ? (
                     <h4>Goal Complete!</h4>
                 ) : (

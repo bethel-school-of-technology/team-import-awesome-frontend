@@ -45,7 +45,7 @@ export const CommentProvider = (props) => {
     async function editComment(comment) {
         // authenticate user to edit a comment
         let myHeaders = {
-            Authorization: `Bearer ${localStorage.getItem('myUsername')}`,
+            Authorization: `Bearer ${localStorage.getItem('myToken')}`,
         };
 
         const response = await axios.put(baseUrl + comment.commentId, comment, {
@@ -59,7 +59,7 @@ export const CommentProvider = (props) => {
     async function deleteComment(id) {
         // authenticate user to delete a comment
         let myHeaders = {
-            Authorization: `Bearer ${localStorage.getItem('myUsername')}`,
+            Authorization: `Bearer ${localStorage.getItem('myToken')}`,
         };
 
         const response = await axios.delete(baseUrl + id, {

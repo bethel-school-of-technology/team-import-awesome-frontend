@@ -1,11 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Form, Modal, Button } from 'react-bootstrap';
 import CommentContext from '../contexts/CommentContext';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../css/add-goal.css';
 
-const EditComment = ({ show, close }) => {
-    const { id } = useParams();
+const EditComment = ({comment, show, close }) => {
 
     const [updatedComment, setUpdatedComment] = useState({
         comment: '',
@@ -15,13 +14,14 @@ const EditComment = ({ show, close }) => {
     let navigate = useNavigate();
 
     useEffect(() => {
-        if (id === undefined) return;
+        if (comment === undefined) return;
 
         async function fetch() {
-            await getComment(id).then((comment) => setUpdatedComment(comment));
+            await getComment(comment.commentId).then((comment) => setUpdatedComment(comment));
+            console.log(comment)
         }
         fetch();
-    }, [id, getComment]);
+    }, [comment, getComment]);
 
     function handleChange(event) {
         setUpdatedComment((prevValue) => {
@@ -58,7 +58,7 @@ const EditComment = ({ show, close }) => {
                             type="textarea"
                             placeholder="Comment"
                             name="comment"
-                            value={updatedComment.comment}
+                            value={comment}
                             onChange={handleChange}
                         />
                     </Form.Group>

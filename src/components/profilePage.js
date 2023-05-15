@@ -47,13 +47,16 @@ const ProfilePage = () => {
         <>
             <div>
                 {username !== currentUser ? (
-                    <div className="row p-0 mb-3">
-                        <Link to={`/profile-page/${currentUser}`}>
+                    <div className="row p-0 mb-4">
+                        <Link to={`/profile-page/${currentUser}`} style={{zIndex: 999, marginLeft: '5px'}}>
                             Return to {currentUser}'s Profile Page
                         </Link>
                     </div>
                 ) : (
-                    ''
+                    <div>
+                    <br/>
+                    <br/>
+                    </div>
                 )}
                 <div className="profilePage-main">
                     <div class="profile-card">
