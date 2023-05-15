@@ -6,6 +6,8 @@ import UserContext from '../contexts/UserContext';
 import '../css/sign-up.css';
 
 const SignUp = () => {
+    const { getUser } = useContext(UserContext);
+
     const [newUser, setNewUser] = useState({
         username: '',
         password: '',
@@ -28,11 +30,18 @@ const SignUp = () => {
         });
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
+
+        const result = await getUser(newUser.username);
 
         if (!agreedToTerms) {
             window.alert('Please agree to the terms and conditions');
+            return;
+        }
+
+        if (result) {
+            window.alert('Username already exists. Please try another.');
             return;
         }
 

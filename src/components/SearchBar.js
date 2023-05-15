@@ -23,6 +23,17 @@ const SearchBar = () => {
 Make sure the spelling is correct :)`);
             }
         } catch (error) {
+            if (error.response && error.response.status === 401) {
+                window.alert(`That User Does Not Exist :(
+
+Make sure the spelling is correct :)`);
+            } else {
+                window.alert(
+                    `That User Does Not Exist :(
+
+Make sure the spelling is correct :)`
+                );
+            }
             console.log(error);
         }
 
