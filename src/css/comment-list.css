@@ -19,6 +19,7 @@
     height: 2rem;
     padding: 0.5rem;
     background-color: #7697A0;
+    align-items: center;
 }
 
 .comment {

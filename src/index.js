@@ -3,7 +3,7 @@ import App from './App';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import './css/app.css';
+import './css/App.css';
 
 const container = document.getElementById('root');
 const root = createRoot(container);

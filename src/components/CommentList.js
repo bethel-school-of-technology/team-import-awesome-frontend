@@ -1,41 +1,29 @@
 import { Button, Card } from 'react-bootstrap';
 import { AddComment } from './AddComment';
-import { useState, useContext, useEffect } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import CommentContext from '../contexts/CommentContext';
 import EditComment from './EditComment';
 import '../css/comment-list.css';
 import moment from 'moment';
 
 export function CommentList({ comments, currentUser, userGoal }) {
-    let { id } = useParams();
 
-    const [showModal, setShowModal] = useState(false);
+    const [showEditModal, setShowEditModal] = useState(false);
+    const [showAddModal, setShowAddModal] = useState(false);
 
-    const [comment, setComment] = useState({
-        username: '',
-        comment: '',
-    });
-
-    let { getComment, deleteComment } = useContext(CommentContext);
+    let { deleteComment } = useContext(CommentContext);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (id === undefined) return;
-
-        async function fetch() {
-            await getComment(id).then((comment) => setComment(comment));
-        }
-        fetch();
-    }, [id, getComment]);
+    
 
     // delete comment
-    const handleDelete = () => {
+    const handleDelete = (commentId) => {
         // user confirmation to prevent accidental deleting
         if (window.confirm('Are you sure you want to delete this comment?')) {
-            deleteComment(comment.comment)
+            deleteComment(commentId)
                 .then(() => {
-                    navigate(`/profile-page/${userGoal.goalId}`);
+                    navigate(`/goals/detail/${userGoal.goalId}`);
                 })
                 .catch((error) => {
                     console.log(error);
@@ -47,8 +35,8 @@ export function CommentList({ comments, currentUser, userGoal }) {
     return (
         <div className="comment-list-main">
             <h3>Comments:</h3>
-            <AddComment show={showModal} close={() => setShowModal(false)} />
-            <Button variant="outline" onClick={() => setShowModal(true)}>
+            <AddComment show={showAddModal} close={() => setShowAddModal(false)} />
+            <Button variant="outline" onClick={() => setShowAddModal(true)}>
                 Add Comment
             </Button>
             {comments.length > 0 ? (
@@ -83,20 +71,21 @@ export function CommentList({ comments, currentUser, userGoal }) {
                                                 {c.username === currentUser ? (
                                                     <div>
                                                         <EditComment
-                                                            show={showModal}
-                                                            close={() => setShowModal(false)}
+                                                            show={showEditModal}
+                                                            close={() => setShowEditModal(false)}
+                                                            comment={c}
                                                         />
                                                         <Link to="#"
                                                             className="crud-comment"
                                                             style={{ marginLeft: '10px' }}
-                                                            onClick={() => setShowModal(true)}
+                                                            onClick={() => setShowEditModal(true)}
                                                         >
                                                             Edit
                                                         </Link>
                                                         <Link
                                                             className="crud-comment"
                                                             style={{ marginLeft: '10px' }}
-                                                            onClick={handleDelete}
+                                                            onClick={() => handleDelete(c.commentId)}
                                                         >
                                                             Delete
                                                         </Link>
@@ -106,14 +95,14 @@ export function CommentList({ comments, currentUser, userGoal }) {
                                                         <Link
                                                             variant="link"
                                                             className="delete-button"
-                                                            onClick={handleDelete}
+                                                            onClick={() => handleDelete(c.commentId)}
                                                         >
                                                             Delete
                                                         </Link>
                                                     </div>
                                                 ) : null}
-                                                <p style={{ display: "inline-block", margin: "0 5px" }}>|</p>
-                                                <p style={{ display: "inline-block", marginRight: '10px' }}>{createdAt}</p>
+                                                <p className='mb-0 mx-1' >|</p>
+                                                <p className='mb-0' >{createdAt}</p>
                                             </div>
                                         </div>
                                     </Card.Header>

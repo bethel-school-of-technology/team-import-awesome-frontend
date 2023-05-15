@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Form } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import '../css/goal-list.css';
 import moment from 'moment';
 import { FaTrophy } from 'react-icons/fa';
-import GoalContext from '../contexts/GoalContext';
 
 export function GoalList({ goals }) {
     // const [showModal, setShowModal] = useState(false);
@@ -12,30 +11,6 @@ export function GoalList({ goals }) {
     // Filter goals based on whether they are completed or not - Brad
     const completedGoals = goals.filter((goal) => goal.completed);
     const incompleteGoals = goals.filter((goal) => !goal.completed);
-
-    const { editGoal } = useContext(GoalContext);
-
-    const goalComplete = (goal) => {
-        const updatedGoal = { ...goal, completed: true };
-        editGoal(updatedGoal)
-            .then(() => {
-                console.log('success');
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-
-    const goalIncomplete = (goal) => {
-        const updatedGoal = { ...goal, completed: false };
-        editGoal(updatedGoal)
-            .then(() => {
-                console.log('success');
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
 
     return (
         <div>
@@ -67,23 +42,6 @@ export function GoalList({ goals }) {
                                         <div key={goal.goalId}>
                                             <Card className="goalItem incomplete">
                                                 <div>
-                                                    <Form>
-                                                        <Form.Group>
-                                                            <Form.Label>
-                                                                Goal Complete?
-                                                            </Form.Label>
-                                                            <Form.Check
-                                                                type="switch"
-                                                                id="custom-switch"
-                                                                name="completed"
-                                                                onChange={() =>
-                                                                    goalComplete(
-                                                                        goal
-                                                                    )
-                                                                }
-                                                            />
-                                                        </Form.Group>
-                                                    </Form>
                                                     <Link
                                                         to={`/goals/detail/${goal.goalId}`}
                                                     >
@@ -133,23 +91,7 @@ export function GoalList({ goals }) {
                                         <div key={goal.goalId}>
                                             <Card className="goalItem complete">
                                                 <div className="goal-title">
-                                                    <Form>
-                                                        <Form.Group>
-                                                            <Form.Label>
-                                                                Goal Complete?
-                                                            </Form.Label>
-                                                            <Form.Check
-                                                                type="switch"
-                                                                id="custom-switch"
-                                                                name="completed"
-                                                                onChange={() =>
-                                                                    goalIncomplete(
-                                                                        goal
-                                                                    )
-                                                                }
-                                                            />
-                                                        </Form.Group>
-                                                    </Form>
+                                                    <FaTrophy />
                                                     <Link
                                                         to={`/goals/detail/${goal.goalId}`}
                                                     >
