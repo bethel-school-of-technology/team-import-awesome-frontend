@@ -44,7 +44,11 @@ const ProfilePage = () => {
     }, [getUser, username]);
 
     function loading() {
-        return <Spinner animation="border" />;
+        return (
+            <center>
+                <Spinner animation="border" />
+            </center>
+        );
     }
 
     function profile() {
@@ -128,7 +132,8 @@ const ProfilePage = () => {
                                             />
                                         </div>
                                         <Button
-                                            variant="primary"
+                                            className="add-goal-buttons"
+                                            variant="outline"
                                             onClick={() => setShowModal(true)}
                                         >
                                             Edit Profile
@@ -150,8 +155,8 @@ const ProfilePage = () => {
                                             />
                                         </div>
                                         <Button
-                                            className="add-goal-button"
-                                            variant="primary"
+                                            className="add-goal-buttons"
+                                            variant="outline"
                                             onClick={() =>
                                                 setShowAddGoalModal(true)
                                             }

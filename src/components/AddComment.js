@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import CommentContext from '../contexts/CommentContext';
 import { useNavigate, useParams } from 'react-router';
 import { Form, Button, Modal } from 'react-bootstrap';
+import '../css/add-goal.css';
 
 export function AddComment({ show, close }) {
     let { id } = useParams();
@@ -55,9 +56,21 @@ export function AddComment({ show, close }) {
                     </Form.Group>
                     <br />
 
-                    <Button type="submit" variant='outline'>Add Comment</Button>
+                    <Button
+                        className="add-goal-buttons"
+                        type="submit"
+                        variant="outline"
+                    >
+                        Add Comment
+                    </Button>
                     <br />
-                    <Button variant='outline' onClick={close}>Cancel</Button>
+                    <Button
+                        className="add-goal-buttons"
+                        variant="outline"
+                        onClick={close}
+                    >
+                        Cancel
+                    </Button>
                 </Form>
 
                 <Modal.Footer className="modal-footer"></Modal.Footer>
