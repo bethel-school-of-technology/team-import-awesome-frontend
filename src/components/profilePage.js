@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import UserContext from '../contexts/UserContext';
 import { GoalList } from './GoalList';
-import { Button } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 import EditProfile from './EditProfile';
 import '../css/profile-page.css';
 import '../css/goal-list.css';
@@ -43,19 +43,26 @@ const ProfilePage = () => {
         fetchData();
     }, [getUser, username]);
 
-    return (
-        <>
+    function loading() {
+        return <Spinner animation="border" />;
+    }
+
+    function profile() {
+        return (
             <div>
                 {username !== currentUser ? (
                     <div className="row p-0 mb-4">
-                        <Link to={`/profile-page/${currentUser}`} style={{zIndex: 999, marginLeft: '5px'}}>
+                        <Link
+                            to={`/profile-page/${currentUser}`}
+                            style={{ zIndex: 999, marginLeft: '5px' }}
+                        >
                             Return to {currentUser}'s Profile Page
                         </Link>
                     </div>
                 ) : (
                     <div>
-                    <br/>
-                    <br/>
+                        <br />
+                        <br />
                     </div>
                 )}
                 <div className="profilePage-main">
@@ -163,8 +170,11 @@ const ProfilePage = () => {
                     <GoalList goals={user.Goals} />
                 </center>
             </div>
-        </>
-    );
+        );
+    }
+
+    if (user === undefined) return loading();
+    return user.username !== username ? loading() : profile();
 };
 
 export default ProfilePage;
