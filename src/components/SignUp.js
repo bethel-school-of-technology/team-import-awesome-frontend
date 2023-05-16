@@ -33,26 +33,35 @@ const SignUp = () => {
     async function handleSubmit(event) {
         event.preventDefault();
 
-        const result = await getUser(newUser.username);
-
         if (!agreedToTerms) {
             window.alert('Please agree to the terms and conditions');
             return;
         }
 
-        if (result) {
-            window.alert('Username already exists. Please try another.');
-            return;
-        }
+        try {
+            const result = await getUser(newUser.username);
 
-        createUser(newUser)
-            .then(() => {
-                navigate('/signIn');
-            })
-            .catch((error) => {
-                console.log(error);
-                window.alert('Failed registration: error creating user');
-            });
+            if (result.username === newUser.username) {
+                window.alert('Username already exists. Please try another.');
+                return;
+            }
+        } catch (error) {
+            if (error.response.status === 404) {
+                await createUser(newUser)
+                    .then(() => {
+                        navigate('/signIn');
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        window.alert(
+                            'Failed Registration: Error creating user'
+                        );
+                    });
+            } else {
+                window.alert(`Failed Registration: Error creating user`);
+            }
+            console.log(error);
+        }
     }
 
     return (
