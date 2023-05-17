@@ -6,24 +6,39 @@ optgroup,
 select,
 textarea,
 body {
-  font-family: "Questria", sans-serif;
+  font-family: "Questrial", sans-serif;
+}
+
+.container-fluid {
+  margin: 0;
+  padding: 0;
+  display: fluid;
+  width: 100%;
+  background-color: #7697A0;
+}
+
+.container-header {
+  display:fluid;
+  width: 100%;
+}
+
+.profile-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 5rem 0 0 0;
 }
 
 .profileCover-image {
   display: table-cell;
-  width: 100%;
+  max-width: 100%;
   margin: -150px -100px 0px 0px;
+  padding: 0%;
 }
 
 .card-img-overlay {
- pointer-events: none;
+  pointer-events: none;
 }
 
-.profile-card {
-  display: table-cell;
-  background-color: #8d8d8db3;
-  padding-bottom: 2rem;
-}
 
 .profile-title {
   font-size: 4rem;
@@ -40,6 +55,7 @@ body {
 .avatar-container .avatar {
   margin-top: -10rem;
   margin-left: 2rem;
+  margin-bottom: 2em;
   padding: 0;
   width: 15rem;
   height: 15rem;
@@ -48,44 +64,39 @@ body {
   box-shadow: rgba(0, 0, 0, 0.443) 0 3px 5px 0px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
 }
 
+
 .first-last {
-  padding: 20px 0 0 0;
   font-size: 3rem;
 }
 
 .profile-age {
-  text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .profile-bio {
-  text-align: center;
   font-size: 1rem;
 }
 
-.profile-followers {
-padding: .5rem;
+.follow {
+text-align: center;
 }
 
+
+
+
 button.btn {
-  align-items: center;
   background-color: #55818d;
   border-radius: 8px;
   border-style: none;
   box-shadow: rgba(0, 0, 0, 0.443) 0 3px 5px 0px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
   color: #ffffff;
-  display: inline-flex;
-  font-family: "Questria";
+  font-family: "Questrial";
   font-size: 18px;
   font-weight: 700;
-  /* height: 48px; */
   letter-spacing: .25px;
-  /* line-height: normal; */
   max-width: 100%;
   overflow: visible;
   padding: 2px 24px;
-  margin: auto;
-  display: block;
   text-align: center;
   transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
 }
@@ -134,7 +145,7 @@ button.btn {
   .avatar-container {
     height: 3rem;
   }
-  
+
   .avatar-container .avatar {
     margin-top: -5rem;
     margin-left: 2rem;
@@ -146,5 +157,3 @@ button.btn {
     box-shadow: rgba(0, 0, 0, 0.443) 0 3px 5px 0px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
   }
 }
-
-
