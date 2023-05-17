@@ -71,7 +71,7 @@ function GoalDetail() {
                 </Link>
             </div>
 
-            <div className="container">
+            <div className="goal-container">
                 <h2>Title: {userGoal.title}</h2>
                 <h5>Plan: {userGoal.plan}</h5>
                 <hr/>
