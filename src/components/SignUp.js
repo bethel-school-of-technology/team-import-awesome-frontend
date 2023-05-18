@@ -41,7 +41,9 @@ const SignUp = () => {
         try {
             const result = await getUser(newUser.username);
 
-            if (result.username === newUser.username) {
+            if (
+                result.username.toLowerCase() === newUser.username.toLowerCase()
+            ) {
                 window.alert('Username already exists. Please try another.');
                 return;
             }
