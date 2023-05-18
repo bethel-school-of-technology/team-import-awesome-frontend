@@ -56,21 +56,28 @@ const ProfilePage = () => {
         return (
             <div  className="mw-100">
                 <div  className="mw-100">
-                {username !== currentUser ? (
-                    <Row className="justify-content-md-center">
-                        <Link
-                            to={`/profile-page/${currentUser}`}
-                            style={{ zIndex: 999, marginLeft: '5px' }}
-                        >
-                            Return to {currentUser}'s Profile Page
-                        </Link>
-                    </Row>
-                ) : (
-                    <div>
-                        <br />
-                        <br />
-                    </div>
-                )}
+                {
+                    !currentUser ? (
+                        <div>
+                            <br />
+                            <br />
+                        </div>
+                    ) : username !== currentUser ? (
+                        <Row className="justify-content-md-center">
+                            <Link
+                                to={`/profile-page/${currentUser}`}
+                                style={{ zIndex: 999, marginLeft: '5px' }}
+                            >
+                                Return to {currentUser}'s Profile Page
+                            </Link>
+                        </Row>
+                    ) : (
+                        <div>
+                            <br />
+                            <br />
+                        </div>
+                    )
+                }
                 <Container className="container-fluid mw-100">
                         <div className="fluid">
                             <div className="cardImg-fluid mw-100">
