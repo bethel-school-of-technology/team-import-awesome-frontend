@@ -27,3 +27,7 @@
     position: fixed;
     left: 20px;
 }
+
+.progress-bar {
+    background-color: #99c2ce;
+}

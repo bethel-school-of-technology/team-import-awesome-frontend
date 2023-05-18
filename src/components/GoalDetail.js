@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, ProgressBar } from 'react-bootstrap';
 import EditGoal from './EditGoal';
 import GoalContext from '../contexts/GoalContext';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -63,6 +63,15 @@ function GoalDetail() {
     let endDate = moment.utc(userGoal.endDate).format('MM/DD/YYYY');
     const timeRemaining = moment(endDate).fromNow(true);
 
+    let newCurrentDate = new Date();
+    let currentDate = moment.utc(newCurrentDate).format('MM/DD/YYYY');
+
+    let moment1 = moment(startDate);
+    let moment2 = moment(endDate);
+    let remainingTime = moment2.diff(currentDate, 'hours', true);
+    let totalTime = moment2.diff(moment1, 'hours', true);
+    let percent = (parseInt(remainingTime) / parseInt(totalTime)) * 100 - 100;
+
     return (
         <div className="goal-detail-body">
             <div className="back-button">
@@ -74,7 +83,7 @@ function GoalDetail() {
             <div className="goal-container">
                 <h2>Title: {userGoal.title}</h2>
                 <h5>Plan: {userGoal.plan}</h5>
-                <hr/>
+                <hr />
                 {userGoal.completed === true ? (
                     <h4>Goal Complete!</h4>
                 ) : (
@@ -82,7 +91,14 @@ function GoalDetail() {
                 )}
                 <div>Start Date: {startDate}</div>
                 <div>End Date: {endDate}</div>
-                <h5>Time Remaining: {timeRemaining}</h5>
+                {currentDate > endDate ? (
+                    <h5>Time Remaining: 0 Days</h5>
+                ) : (
+                    <h5>Time Remaining: {timeRemaining}</h5>
+                )}
+
+                <ProgressBar animated now={percent * -1} />
+                <br />
                 {currentUser === userGoal.username ? (
                     <div>
                         <EditGoal
@@ -109,9 +125,12 @@ function GoalDetail() {
                 ) : (
                     ''
                 )}
-
                 <hr />
-                <CommentList comments={userGoal.Comments} currentUser={currentUser} userGoal={userGoal} />
+                <CommentList
+                    comments={userGoal.Comments}
+                    currentUser={currentUser}
+                    userGoal={userGoal}
+                />
             </div>
         </div>
     );
