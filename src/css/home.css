@@ -10,6 +10,12 @@
     text-shadow: 2px 2px 2px #000000;
 }
 
+.quote {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4A707A;
+}
+
 .leftimg {
     display: flex;
     justify-content: center;
@@ -42,6 +48,10 @@
 
 .carousel {
     width:100%;
+}
+
+.why {
+    color: #4A707A;
 }
 
 @media screen and (max-width: 767.2px){

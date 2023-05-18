@@ -26,6 +26,10 @@ a:hover {
     text-decoration: underline;
 }
 
+.nav-dropdown:active {
+    background-color: #7697A0;
+}
+
 .logo{
     max-width: 95%;
     max-height: 150px;

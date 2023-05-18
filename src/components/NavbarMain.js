@@ -46,6 +46,23 @@ const NavbarMain = () => {
                         ></img>
                     </HashLink>
                 </Navbar.Brand>
+                <Nav>
+                    <Nav.Link>
+                        <HashLink smooth to="/#HOW">
+                            HOW
+                        </HashLink>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <HashLink smooth to="/#WHY">
+                            WHY
+                        </HashLink>
+                    </Nav.Link>
+                    <Nav.Link>
+                        <HashLink smooth to="/#ABOUT">
+                            ABOUT
+                        </HashLink>
+                    </Nav.Link>
+                </Nav>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse
                     id="basic-navbar-nav"
@@ -53,29 +70,13 @@ const NavbarMain = () => {
                 >
                     <SearchBar />
                     <Nav>
-                        <Nav.Link>
-                            <HashLink smooth to="/#HOW">
-                                HOW
-                            </HashLink>
-                        </Nav.Link>
-                        <Nav.Link>
-                            <HashLink smooth to="/#WHY">
-                                WHY
-                            </HashLink>
-                        </Nav.Link>
-                        <Nav.Link>
-                            <HashLink smooth to="/#ABOUT">
-                                ABOUT
-                            </HashLink>
-                        </Nav.Link>
-                    </Nav>
-                    <Nav>
                         {user ? (
                             <NavDropdown
                                 title={`Welcome, ${user}`}
                                 id="basic-nav-dropdown"
+                                className='nav-dropdown'
                             >
-                                <NavDropdown.Item>
+                                <NavDropdown.Item className='nav-dropdown'>
                                     <Link
                                         to={`/profile-page/${user}`}
                                         style={{ color: 'black' }}
@@ -84,6 +85,7 @@ const NavbarMain = () => {
                                     </Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item
+                                    className='nav-dropdown'
                                     onClick={() => {
                                         navigate('/signIn');
                                         logOutUser();

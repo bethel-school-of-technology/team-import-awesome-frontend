@@ -1,6 +1,8 @@
+import '../css/copyright.css'
+
 const Copyright = () => {
     return (
-        <>
+        <div className="copy">
             <h1>DISCLAIMER- READ AT YOUR OWN RISK:</h1>
             <br></br>
             All clauses of this disclaimer apply to the disclaimer itself,
@@ -101,9 +103,10 @@ const Copyright = () => {
                     alt="It's a trap!"
                 ></img>
             </div>
-        </>
+        </div>
     );
 };
+
 
 export default Copyright;
 
