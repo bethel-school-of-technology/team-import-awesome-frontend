@@ -96,7 +96,7 @@ const Home = () => {
                     </Carousel.Item>
                 </Carousel>
             </div>
-            <div className="mt-5">
+            <div className="mt-5 quote">
                 {/* Insiprational Quote */}
                 <div className="inspo">
                     <h4>"{currentQuote}"</h4>
@@ -142,8 +142,8 @@ const Home = () => {
                         />
                     </div>
                     <div className="col-md-6 col-sm-12 my-auto mx-auto homediv">
-                        <h3>Why GoalGetters?</h3>
-                        <p>
+                        <h3 className="why">Why GoalGetters?</h3>
+                        <p className="why">
                             Are you tired of setting fitness goals that you
                             struggle to achieve? Do you find yourself losing
                             motivation or not knowing where to start with your
