@@ -54,7 +54,7 @@ const ProfilePage = () => {
 
     function profile() {
         return (
-            <div  className="mw-100">
+            <div  className="return mw-100">
                 <div  className="mw-100">
                 {
                     !currentUser ? (
@@ -101,8 +101,8 @@ const ProfilePage = () => {
                                     variant="bottom"
                                 />
                             </div>
-                                <Row className='profile-row mt-5 mb-0 pt-5'>
-                                    <Col className="mt-5">
+                                <Row className='profile-row'>
+                                    <Col className="button-col">
                                     <div>
 
                                         {user.username === currentUser ? (
@@ -117,7 +117,7 @@ const ProfilePage = () => {
                                                 </div>
                                                 <Col xxlg={1}>
                                                     <Button
-                                                        className="add-goal-buttons"
+                                                        className="edit-goal-buttons"
                                                         variant="outline"
                                                         onClick={() => setShowModal(true)}
                                                     >

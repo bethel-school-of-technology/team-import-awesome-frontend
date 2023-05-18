@@ -6,7 +6,7 @@
     text-align: center;
     padding: 2em 4rem;
     border-radius: 10px;
-    width: 900px;
+    width: 100%;
     border-radius: 0;
 }
 
@@ -57,7 +57,7 @@
 
 @media screen and (max-width: 940px){
     .goalList{
-        width: 800px;
+        width: 100%;
         margin: auto;
     }
 }
@@ -65,14 +65,14 @@
 
 @media screen and (max-width: 825px){
     .goalList{
-        width: 700px;
+        width: 100%;
         margin: auto;
     }
 }
 
 @media screen and (max-width: 750px){
     .goalList{
-        width: 500px;
+        width: 100%;
         margin: 0 0 0 0;
     }
     .goalItem{
