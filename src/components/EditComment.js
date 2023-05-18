@@ -4,8 +4,7 @@ import CommentContext from '../contexts/CommentContext';
 import { useNavigate } from 'react-router-dom';
 import '../css/add-goal.css';
 
-const EditComment = ({comment, show, close }) => {
-
+const EditComment = ({ comment, show, close }) => {
     const [updatedComment, setUpdatedComment] = useState({
         comment: '',
     });
@@ -18,8 +17,8 @@ const EditComment = ({comment, show, close }) => {
 
         async function fetch() {
             const fetchedComment = await getComment(comment.commentId);
-            setUpdatedComment(fetchedComment)
-            console.log(comment)
+            setUpdatedComment(fetchedComment);
+            console.log(comment);
         }
         fetch();
     }, [comment, getComment]);
@@ -65,15 +64,27 @@ const EditComment = ({comment, show, close }) => {
                     </Form.Group>
                     <br />
 
-                    <Button type="submit" variant='outline'>Update Comment</Button>
+                    <Button
+                        className="add-goal-buttons"
+                        type="submit"
+                        variant="outline"
+                    >
+                        Update Comment
+                    </Button>
                     <br />
-                    <Button variant='outline' onClick={close}>Cancel</Button>
+                    <Button
+                        className="add-goal-buttons"
+                        variant="outline"
+                        onClick={close}
+                    >
+                        Cancel
+                    </Button>
                 </Form>
 
                 <Modal.Footer className="modal-footer"></Modal.Footer>
             </Modal>
         </div>
     );
-}
+};
 
 export default EditComment;
