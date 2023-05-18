@@ -1,7 +1,7 @@
 .nav-main {
     display: flex;
     justify-content: space-between;
-    /* width: auto; */
+    width: 100%;
     align-items: center;
     padding: 15px 25px 15px 15px;
     background-color: #7697A0;

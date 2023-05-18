@@ -8,7 +8,6 @@ textarea,
 body {
   font-family: "Questrial", sans-serif;
 }
-
 .container-fluid {
   margin: 0;
   padding: 0;
@@ -16,30 +15,25 @@ body {
   width: 100%;
   background-color: #7697A0;
 }
-
 .container-header {
   display:fluid;
   width: 100%;
 }
-
 .profile-row {
   display: flex;
   justify-content: space-between;
   margin: 5rem 0 0 0;
+  align-items: center;
 }
-
 .profileCover-image {
   display: table-cell;
   max-width: 100%;
   margin: -150px -100px 0px 0px;
   padding: 0%;
 }
-
 .card-img-overlay {
   pointer-events: none;
 }
-
-
 .profile-title {
   font-size: 4rem;
   font-weight: 300;
@@ -47,11 +41,9 @@ body {
   margin-top: 13rem;
   text-shadow: 2px 2px 2px #000000;
 }
-
 .avatar-container {
   height: 0;
 }
-
 .avatar-container .avatar {
   margin-top: -10rem;
   margin-left: 2rem;
@@ -63,27 +55,23 @@ body {
   border: 3px solid #ffffff;
   box-shadow: rgba(0, 0, 0, 0.443) 0 3px 5px 0px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
 }
-
-
 .first-last {
   font-size: 3rem;
 }
-
 .profile-age {
   font-size: 1.25rem;
 }
-
 .profile-bio {
   font-size: 1rem;
 }
-
 .follow {
 text-align: center;
 }
-
-
-
-
+.button-col {
+  display: flex;
+  align-items: last baseline;
+  padding-top: 2em;
+}
 button.btn {
   background-color: #55818d;
   border-radius: 8px;
@@ -100,12 +88,10 @@ button.btn {
   text-align: center;
   transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1), opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
 }
-
 .btn:hover {
   background: #7697A0;
   color: #ffffff;
 }
-
 .btn:active {
   box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
   outline: none;
@@ -113,47 +99,93 @@ button.btn {
   color: #ffffff;
 }
 
-@media screen and (max-width: 1150px) {
-
+@media screen and (max-width: 1440px) {
   .profileCover-image {
     display: table-cell;
     width: 100%;
     margin: -50px -20px 0px 0px;
   }
+  .profile-title {
+    font-size: 3rem;
+  }
+}
 
+@media screen and (max-width: 1150px) {
+  .profileCover-image {
+    display: table-cell;
+    width: 100%;
+    margin: -50px -20px 0px 0px;
+  }
   .profile-title {
     display: none;
   }
-
-  .row .text-center .profile-followers {
+  .follow {
     display: none;
+  }
+  .button-col {
+    display: flex;
+    align-items: last baseline;
+    padding-top: 3em;
   }
 }
 
 @media screen and (max-width: 730px) {
-
   .profileCover-image {
     display: table-cell;
     width: 100%;
     margin: -50px -20px 0px 0px;
   }
-
   .profile-title {
     display: none;
   }
-
   .avatar-container {
     height: 3rem;
   }
-
   .avatar-container .avatar {
     margin-top: -5rem;
     margin-left: 2rem;
-    padding: 0;
     width: 10rem;
     height: 10rem;
     border-radius: 50%;
-    border: 3px solid #ffffff;
-    box-shadow: rgba(0, 0, 0, 0.443) 0 3px 5px 0px, rgba(0, 0, 0, .14) 0 6px 10px 0, rgba(0, 0, 0, .12) 0 1px 18px 0;
+  }
+  div.profile-row.row {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profileCover-image {
+    display: table-cell;
+    width: 100%;
+    margin: -75px 20px 0px 0px;
+  }
+  .profile-row {
+    padding: 2rem 0 0 0;
+  }
+  .first-last {
+    font-size: 1.5rem;
+  }
+  .button-col {
+    display: flex;
+    align-items: last baseline;
+    padding-top: 1em;
+    margin-bottom: 1em;
+  }
+  button.btn{
+    font-size: 12px;
+    padding: 2px 12px;
+  }
+  .edit-goal-buttons {
+    margin-top: 0%;
+  }
+  
+}
+
+@media screen and (max-width: 415px) {
+  .avatar-container .avatar {
+    margin-top: -5rem;
+    margin-left: 0rem;
+    width: 9rem;
+    height: 9rem;
   }
 }
