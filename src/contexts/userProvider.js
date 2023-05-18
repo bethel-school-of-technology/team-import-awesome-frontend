@@ -38,6 +38,7 @@ export const UserProvider = (props) => {
     async function getUser(username) {
         const response = await axios.get(baseUrl + username);
         return await new Promise((resolve) => resolve(response.data));
+        // return axios.get(baseUrl + username);
     }
 
     async function updateUser(user) {

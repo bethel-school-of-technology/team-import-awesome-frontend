@@ -85,20 +85,27 @@ function GoalDetail() {
                 <h5>Plan: {userGoal.plan}</h5>
                 <hr />
                 {userGoal.completed === true ? (
-                    <h4>Goal Complete!</h4>
+                    <div>
+                        <h3>Congratulations</h3>
+                        <h4>Goal Complete!</h4>
+                    </div>
                 ) : (
-                    <h4>Goal Not Complete</h4>
-                )}
-                <div>Start Date: {startDate}</div>
-                <div>End Date: {endDate}</div>
-                {currentDate > endDate ? (
-                    <h5>Time Remaining: 0 Days</h5>
-                ) : (
-                    <h5>Time Remaining: {timeRemaining}</h5>
-                )}
+                    <div>
+                        <h4>Goal Not Complete</h4>
+                        <div>Start Date: {startDate}</div>
+                        <div>End Date: {endDate}</div>
+                        {currentDate > endDate ? (
+                            <h5>Time Remaining: 0 Days</h5>
+                        ) : (
+                            <h5>Time Remaining: {timeRemaining}</h5>
+                        )}
 
-                <ProgressBar animated now={percent * -1} />
-                <br />
+                        <ProgressBar animated now={percent * -1} />
+                        <br />
+                    </div>
+                )}
+                {/* Conditionally render the following if goal not complete */}
+
                 {currentUser === userGoal.username ? (
                     <div>
                         <EditGoal
