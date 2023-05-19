@@ -127,39 +127,14 @@ export function CommentList({ comments, currentUser, userGoal }) {
                                         >
                                             {c.comment}
                                         </p>
-                                        {/* {c.username === currentUser ? (
-                                            <div>
-                                                <EditComment
-                                                    show={showModal}
-                                                    close={() => setShowModal(false)}
-                                                />
-                                                <div className="edit-delete-buttons">
-                                                    <Link to="#"
-                                                        className="crud-comment"
-                                                        onClick={() => setShowModal(true)}
-                                                    >
-                                                        Edit
-                                                    </Link>
-                                                    <Link
-                                                        className="crud-comment"
-                                                        onClick={handleDelete}
-                                                    >
-                                                        Delete
-                                                    </Link>
-                                                </div>
-                                            </div>
-                                        ) : userGoal.username === currentUser ? (
-                                            <div className="edit-delete-buttons">
-                                                <Button
-                                                    variant="link"
-                                                    className="delete-button"
-                                                    onClick={handleDelete}
-                                                >
-                                                    Delete
-                                                </Button>
-                                            </div>
-                                        ) : null} */}
                                     </div>
+                                    {c.updatedAt > c.createdAt ? (
+                                            <div className='edited-notif'>
+                                                <div style={{fontStyle: 'italic'}}>edited</div>
+                                            </div>
+                                        ) : (
+                                            ''
+                                        )}
                                 </Card>
                             );
                         })}
