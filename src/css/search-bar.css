@@ -1,7 +1,19 @@
 .search-bar-group {
     display: flex;
 }
+.search-bar-input {
+    width: 150px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 7px 0px 0px 15px;
+    font-size: 18px;
+    outline: none;
+    transition: 0.2s;
+    margin-right: 10px;
+
+}
 
 .search-btn{
     height: 40px;
+    margin-right: 5px;
 }

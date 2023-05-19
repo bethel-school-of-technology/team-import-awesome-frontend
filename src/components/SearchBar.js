@@ -52,6 +52,7 @@ Make sure the spelling is correct :)`
                         Search
                     </Button>
                     <Form.Control
+                        className='search-bar-input'
                         type="search"
                         placeholder="Search Users"
                         value={userSearched}

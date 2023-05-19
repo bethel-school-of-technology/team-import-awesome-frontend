@@ -64,7 +64,7 @@ const NavbarMain = () => {
                         </HashLink>
                     </Nav.Link>
                     <Nav.Link>
-                        <HashLink smooth to="/#ABOUT">
+                        <HashLink className="about" smooth to="/#ABOUT">
                             ABOUT
                         </HashLink>
                     </Nav.Link>
