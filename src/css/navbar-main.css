@@ -12,6 +12,9 @@
     flex-direction: row;
     font-weight: bold;
 }
+.about{
+    margin-right: 55rem;
+}
 
 a:link {
     text-decoration: none;
