@@ -140,6 +140,10 @@ html, .not-found-body {
     transform: rotate(180deg);
 }
 
+.box__ghost{
+    height: 300px;
+}
+
 .box__ghost-container {
     background: var(--white);
     width: 100px;
