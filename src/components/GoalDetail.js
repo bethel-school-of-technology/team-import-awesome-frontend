@@ -80,9 +80,19 @@ function GoalDetail() {
 
     let moment1 = moment(startDate);
     let moment2 = moment(endDate);
-    let remainingTime = moment2.diff(currentDate, 'hours', true);
-    let totalTime = moment2.diff(moment1, 'hours', true);
+    let remainingTime = moment2.diff(currentDate, 'seconds', true);
+    let totalTime = moment2.diff(moment1, 'seconds', true);
     let percent = (parseInt(remainingTime) / parseInt(totalTime)) * 100 - 100;
+
+    function progressBar() {
+        if (currentDate < startDate) {
+            return <ProgressBar animated now={0} />;
+        } else if (currentDate > endDate) {
+            return <ProgressBar animated now={100} />;
+        } else {
+            return <ProgressBar animated now={percent * -1} />;
+        }
+    }
 
     function goalInfo() {
         return (
@@ -127,20 +137,25 @@ function GoalDetail() {
                                     {endDate}
                                 </div>
                                 {currentDate > endDate ? (
-                                    <h5>
-                                        <b>Time Remaining:</b> 0 Days
-                                    </h5>
+                                    <div>
+                                        <h5>
+                                            <b>Time Remaining:</b> 0 Days
+                                        </h5>
+                                        {progressBar()}
+                                        <br />
+                                    </div>
                                 ) : (
-                                    <h5>
-                                        <b>Time Remaining:</b> {timeRemaining}
-                                    </h5>
+                                    <div>
+                                        <h5>
+                                            <b>Time Remaining:</b>{' '}
+                                            {timeRemaining}
+                                        </h5>
+                                        {progressBar()}
+                                        <br />
+                                    </div>
                                 )}
-
-                                <ProgressBar animated now={percent * -1} />
-                                <br />
                             </div>
                         )}
-                        {/* Conditionally render the following if goal not complete */}
 
                         {currentUser === userGoal.username ? (
                             <div>
