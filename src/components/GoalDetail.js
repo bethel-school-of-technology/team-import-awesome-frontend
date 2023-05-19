@@ -34,15 +34,15 @@ function GoalDetail() {
     useEffect(() => {
         async function fetchData() {
             await getGoal(id)
-            .then((goal) => {
-                console.log(goal);
-                console.log(id);
-                setUserGoal(goal)
-            })
-            .catch((error) => {
-                console.log(error);
-                navigate('/page-not-found')
-            });
+                .then((goal) => {
+                    console.log(goal);
+                    console.log(id);
+                    setUserGoal(goal);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    navigate('/page-not-found');
+                });
         }
         fetchData();
         isLoggedIn();
@@ -84,8 +84,8 @@ function GoalDetail() {
     let totalTime = moment2.diff(moment1, 'hours', true);
     let percent = (parseInt(remainingTime) / parseInt(totalTime)) * 100 - 100;
 
-    function goalInfo(){
-        return(
+    function goalInfo() {
+        return (
             <div>
                 <div className="back-button">
                     <Link to={`/profile-page/${userGoal.username}`}>
@@ -95,23 +95,45 @@ function GoalDetail() {
 
                 <div className="goal-detail-body">
                     <div className="goal-container">
-                        <h2><b>Goal: </b>{userGoal.title}</h2>
-                        <h5><b>Plan:</b> {userGoal.plan}</h5>
+                        <h2>
+                            <b>Goal: </b>
+                            {userGoal.title}
+                        </h2>
+                        <h5>
+                            <b>Plan:</b> {userGoal.plan}
+                        </h5>
                         <hr />
                         {userGoal.completed === true ? (
-                            <div className='rainbow'>
+                            <div className="rainbow">
                                 {/* <h3>Congratulations</h3> */}
-                                <h3><b>Congratulations! <br></br> This Goal is Complete!</b></h3>
+                                <h3>
+                                    <b>
+                                        Congratulations! <br></br> This Goal is
+                                        Complete!
+                                    </b>
+                                </h3>
                             </div>
                         ) : (
                             <div>
-                                <h4><b>Goal Currently In Progress</b></h4>
-                                <div><b>Start Date: </b>{startDate}</div>
-                                <div><b>End Date: </b>{endDate}</div>
+                                <h4>
+                                    <b>Goal Currently In Progress</b>
+                                </h4>
+                                <div>
+                                    <b>Start Date: </b>
+                                    {startDate}
+                                </div>
+                                <div>
+                                    <b>End Date: </b>
+                                    {endDate}
+                                </div>
                                 {currentDate > endDate ? (
-                                    <h5><b>Time Remaining:</b> 0 Days</h5>
+                                    <h5>
+                                        <b>Time Remaining:</b> 0 Days
+                                    </h5>
                                 ) : (
-                                    <h5><b>Time Remaining:</b> {timeRemaining}</h5>
+                                    <h5>
+                                        <b>Time Remaining:</b> {timeRemaining}
+                                    </h5>
                                 )}
 
                                 <ProgressBar animated now={percent * -1} />
@@ -154,13 +176,12 @@ function GoalDetail() {
                         />
                     </div>
                 </div>
-            </div>    
-        )
+            </div>
+        );
     }
-    
+
     if (userGoal === undefined) return loading();
-    return userGoal.goalId != id ? loading() : goalInfo();
-    
+    return userGoal.goalId !== parseInt(id) ? loading() : goalInfo();
 }
 
 export default GoalDetail;
