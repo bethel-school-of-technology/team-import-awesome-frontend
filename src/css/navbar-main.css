@@ -44,53 +44,66 @@ a:hover {
     padding-left: 10px;
 }
 
-/* #hamburger{
-    margin: 0 40px, 0 0;
-    line-height: 70px;
-    display: none;
-}
 
-#toggle{
-    display: none;
-} */
-
-
-/* @media screen and (max-width: 1039.2px){
-    #hamburger{
-        display: flex;
-        position: absolute;
-        top: 0px;
-        right: 30px;
-        cursor: pointer;
-        width: 26px;
-        float: right;
-        font-size: 45px;
+ @media screen and (max-width: 1750px){
+    .about{
+        margin-right: 48rem;
     }
-    .menu{
-        position: absolute;
-        top: 0;
-        left: 0;
-        margin-top: 68px;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
+} 
+
+@media screen and (max-width: 1700px){
+    .about{
+        margin-right: 45rem;
     }
-    
-    #toggle:checked ~ .menu{
-        border: 1px solid #333;
-        height: 2.5em;
-        padding: 0.5em;
-        display: none;
-      }
-      .menu > a {
-        display: flex;
-        justify-content: center;
-        margin: 0;
-        padding: 0.5em 0;
-        width: 100%;
-        color: white;
-        background-color: #222;
-        opacity: 95%;
-      }
-} */
+} 
+
+@media screen and (max-width: 1630px){
+    .about{
+        margin-right: 40rem;
+    }
+} 
+
+@media screen and (max-width: 1530px){
+    .about{
+        margin-right: 35rem;
+    }
+} 
+
+@media screen and (max-width: 1430px){
+    .about{
+        margin-right: 30rem;
+    }
+} 
+
+@media screen and (max-width: 1330px){
+    .about{
+        margin-right: 25rem;
+    }
+} 
+
+@media screen and (max-width: 1275px){
+    .about{
+        margin-right: 20rem;
+    }
+} 
+
+@media screen and (max-width: 1195px){
+    .about{
+        margin-right: 15rem;
+    }
+} 
+
+@media screen and (max-width: 1115px){
+    .about{
+        margin-right: 10rem;
+    }
+} 
+
+@media screen and (max-width: 1050px){
+    .about{
+        margin-right: 8rem;
+    }
+    .nav-main{
+        font-size: 14px;
+    }
+} 
