@@ -125,9 +125,16 @@ function GoalDetail() {
                             </div>
                         ) : (
                             <div>
-                                <h4>
-                                    <b>Goal Currently In Progress</b>
-                                </h4>
+                                {currentDate > endDate ? (
+                                    <h4>
+                                        <b>Goal Out Of Time</b>
+                                    </h4>
+                                ) : (
+                                    <h4>
+                                        <b>Goal Currently In Progress</b>
+                                    </h4>
+                                )}
+
                                 <div>
                                     <b>Start Date: </b>
                                     {startDate}
