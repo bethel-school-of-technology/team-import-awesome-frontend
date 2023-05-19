@@ -2,7 +2,7 @@
     background: #4A707A;
     text-align: center;
     width: 60%;
-    margin: 3em 5em 5em 5em;
+    margin: 1em 5em 5em 5em;
     padding: 2em;
     border-radius: 0px;
 }
@@ -24,8 +24,8 @@
 }
 
 .back-button {
-    position: fixed;
-    left: 20px;
+    display: flex;
+    justify-content: start;
 }
 
 .progress-bar {

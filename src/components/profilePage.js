@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AddGoal from './AddGoal';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
+import moment from 'moment';
 
 const ProfilePage = () => {
     let { getUser } = useContext(UserContext);
@@ -59,6 +60,8 @@ const ProfilePage = () => {
             </center>
         );
     }
+
+    let userJoined = moment.utc(user.createdAt).format("MM/DD/YYYY");
 
     function profile() {
         return (
@@ -182,9 +185,9 @@ const ProfilePage = () => {
                                         {user.firstName} {user.lastName}
                                     </h3>
                                     <h6 className="profile-age">
-                                        {' '}
                                         Age: {user.age}
                                     </h6>
+                                    <h8 className="profile-joined">Joined On: {userJoined}</h8>
                                 </Col>
                                 <Col xxlg={3} className="">
                                     <h6 className="profile-bio">{user.bio}</h6>
