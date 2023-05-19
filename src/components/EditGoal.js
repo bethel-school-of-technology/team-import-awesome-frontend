@@ -204,7 +204,10 @@ const EditGoal = ({ show, close }) => {
                 <Modal.Footer className="modal-footer">
                     <Button
                         variant="outline"
-                        onClick={() => setShowCongratulations(false)}
+                        onClick={() => {
+                            setShowCongratulations(false);
+                            navigate(`/profile-page/${updatedGoal.username}`);
+                        }}
                     >
                         Close
                     </Button>

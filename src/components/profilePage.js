@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import UserContext from '../contexts/UserContext';
 import { GoalList } from './GoalList';
 import { Button, Spinner } from 'react-bootstrap';
@@ -15,6 +15,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 const ProfilePage = () => {
     let { getUser } = useContext(UserContext);
     let { username } = useParams();
+    const navigate = useNavigate();
 
     const [currentUser, setCurrentUser] = useState();
     const [showModal, setShowModal] = useState(false);
@@ -38,11 +39,18 @@ const ProfilePage = () => {
 
     useEffect(() => {
         async function fetchData() {
-            await getUser(username).then((username) => setUser(username));
+            await getUser(username)
+                .then((user) => {
+                    setUser(user);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    navigate('/page-not-found');
+                });
         }
         isLoggedIn();
         fetchData();
-    }, [getUser, username]);
+    }, [getUser, username, navigate]);
 
     function loading() {
         return (
@@ -54,10 +62,9 @@ const ProfilePage = () => {
 
     function profile() {
         return (
-            <div  className="return mw-100">
-                <div  className="mw-100">
-                {
-                    !currentUser ? (
+            <div className="return mw-100">
+                <div className="mw-100">
+                    {!currentUser ? (
                         <div>
                             <br />
                             <br />
@@ -76,9 +83,8 @@ const ProfilePage = () => {
                             <br />
                             <br />
                         </div>
-                    )
-                }
-                <Container className="container-fluid mw-100">
+                    )}
+                    <Container className="container-fluid mw-100">
                         <div className="fluid">
                             <div className="cardImg-fluid mw-100">
                                 <img
@@ -101,13 +107,14 @@ const ProfilePage = () => {
                                     variant="bottom"
                                 />
                             </div>
-                                <Row className='profile-row'>
-                                    <Col className="button-col">
+                            <Row className="profile-row">
+                                <Col className="button-col">
                                     <div>
-
                                         {user.username === currentUser ? (
                                             <>
-                                                <div style={{ display: 'none' }}>
+                                                <div
+                                                    style={{ display: 'none' }}
+                                                >
                                                     <EditProfile
                                                         show={showModal}
                                                         close={() =>
@@ -119,25 +126,34 @@ const ProfilePage = () => {
                                                     <Button
                                                         className="edit-goal-buttons"
                                                         variant="outline"
-                                                        onClick={() => setShowModal(true)}
+                                                        onClick={() =>
+                                                            setShowModal(true)
+                                                        }
                                                     >
                                                         Edit Profile
                                                     </Button>
                                                 </Col>
                                                 <br />
-
                                             </>
                                         ) : (
                                             ''
                                         )}
-                                        {user.username === currentUser ? <></> : ''}
+                                        {user.username === currentUser ? (
+                                            <></>
+                                        ) : (
+                                            ''
+                                        )}
                                         {user.username === currentUser ? (
                                             <>
-                                                <div style={{ display: 'none' }}>
+                                                <div
+                                                    style={{ display: 'none' }}
+                                                >
                                                     <AddGoal
                                                         show={showAddGoalModal}
                                                         close={() =>
-                                                            setShowAddGoalModal(false)
+                                                            setShowAddGoalModal(
+                                                                false
+                                                            )
                                                         }
                                                     />
                                                 </div>
@@ -147,48 +163,47 @@ const ProfilePage = () => {
                                                         className="add-goal-buttons"
                                                         variant="outline"
                                                         onClick={() =>
-                                                            setShowAddGoalModal(true)
+                                                            setShowAddGoalModal(
+                                                                true
+                                                            )
                                                         }
                                                     >
                                                         Add Goal
                                                     </Button>
                                                 </Col>
-
                                             </>
                                         ) : (
                                             ''
                                         )}
                                     </div>
-                                    </Col>
-                                    <Col xxlg={2} className="m-15">
-                                        <h3 className="first-last">
-                                            {user.firstName} {user.lastName}
-                                        </h3>
-                                        <h6 className="profile-age">
-                                            {' '}
-                                            Age: {user.age}
-                                        </h6>
-                                    </Col>
-                                    <Col xxlg={3} className="">
-                                        <h6 className="profile-bio">{user.bio}</h6>
-                                    </Col>
-                                        <Col className="follow">
-                                            <h6>
-                                                <strong>434K</strong>
-                                            </h6>
-                                            <small>Followers</small>
-                                           <br />
-                                            <h6>
-                                                <strong>5454</strong>
-                                            </h6>
-                                            <small>Following</small>
-                                        </Col>
+                                </Col>
+                                <Col xxlg={2} className="m-15">
+                                    <h3 className="first-last">
+                                        {user.firstName} {user.lastName}
+                                    </h3>
+                                    <h6 className="profile-age">
+                                        {' '}
+                                        Age: {user.age}
+                                    </h6>
+                                </Col>
+                                <Col xxlg={3} className="">
+                                    <h6 className="profile-bio">{user.bio}</h6>
+                                </Col>
+                                <Col className="follow">
+                                    <h6>
+                                        <strong>434K</strong>
+                                    </h6>
+                                    <small>Followers</small>
                                     <br />
-                                    
-                                </Row>
+                                    <h6>
+                                        <strong>5454</strong>
+                                    </h6>
+                                    <small>Following</small>
+                                </Col>
+                                <br />
+                            </Row>
                         </div>
-                        </Container>
-
+                    </Container>
                 </div>
                 <center className="row profile-container">
                     <GoalList goals={user.Goals} />
