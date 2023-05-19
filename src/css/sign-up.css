@@ -18,14 +18,13 @@ div.register-photo .image-holder {
 
 .form-container {
   width: 60%;
-  margin: 0 0 25% 25%;
+  margin: 5% 0 25% 25%;
 }
 
 .form-group {
   width: 90%;
   resize: vertical;
 }
-
 
 .register-form {
   display: table-cell;
@@ -66,29 +65,54 @@ div.register-photo .image-holder {
 }
 
 .sign-up-button {
-  margin-left: 2rem;;
+  margin-left: 6rem;
+  ;
 }
 
-.sign-up-button:hover{
+.sign-up-button:hover {
   background-color: #456b74 !important;
   color: #ffffff !important;
   margin: 2rem;
 }
 
-@media screen and (min-width: 260px) and (max-width: 1000px) {
-  .register-photo .image-holder {
-    visibility: hidden;
-    clear: both;
-    display: none;
+@media screen and (max-width: 1000px) {
+  div.register-photo .image-holder {
+    display: flex;
+    justify-content: center;
   }
+
   .register-photo .register-form {
-    padding: 75px;
+    display: flex;
+    flex-direction: column;
+    object-fit: contain;
   }
+
+  .form-container {
+    width: 60%;
+    margin: 5% 0% 25% 30%;
+  }
+
+  .registration-logo {
+    margin: 10% 10% 10% 10%;
+    width: 15rem;
+  }
+
+  form.register-form {
+    width: 100%;
+  }
+
   .form-group {
     width: 100%;
     resize: vertical;
   }
+
+  .sign-up-button {
+    margin-left: 25%;
+    width: 50%;
+  }
+
   .register-photo .register-form .already {
     font-size: 15px;
+    padding: 0;
   }
 }
