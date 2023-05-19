@@ -26,16 +26,12 @@ div.register-photo .image-holder {
   resize: vertical;
 }
 
-.form-2 {
-  margin: 10px;
-}
 
 .register-form {
   display: table-cell;
   background-color: #ffffff;
   color: #505e6c;
   width: 50%;
-
 }
 
 .register-form .form-control {
@@ -69,9 +65,14 @@ div.register-photo .image-holder {
   margin: 15px 15px;
 }
 
+.sign-up-button {
+  margin-left: 2rem;;
+}
+
 .sign-up-button:hover{
   background-color: #456b74 !important;
   color: #ffffff !important;
+  margin: 2rem;
 }
 
 @media screen and (min-width: 260px) and (max-width: 1000px) {

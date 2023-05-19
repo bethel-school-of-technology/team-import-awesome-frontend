@@ -15,10 +15,6 @@ export function GoalList({ goals }) {
     return (
         <div>
             <div>
-                {/* <AddGoal show={showModal} close={() => setShowModal(false)} />
-                <Button variant="primary" onClick={() => setShowModal(true)}>
-                    Add Goal
-                </Button> */}
                 <div className="goalList">
                     <h2>Goal List</h2>
                     {incompleteGoals.length > 0 ? (
