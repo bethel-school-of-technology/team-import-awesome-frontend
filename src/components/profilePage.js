@@ -70,14 +70,14 @@ const ProfilePage = () => {
                             <br />
                         </div>
                     ) : username !== currentUser ? (
-                        <Row className="justify-content-md-center">
-                            <Link
-                                to={`/profile-page/${currentUser}`}
-                                style={{ zIndex: 999, marginLeft: '5px' }}
-                            >
-                                Return to {currentUser}'s Profile Page
-                            </Link>
-                        </Row>
+                            <Row className="justify-content-md-center">
+                                <Link
+                                    to={`/profile-page/${currentUser}`}
+                                    style={{ zIndex: 999, marginLeft: '27px', marginBottom: '26px', color: 'white' }}
+                                >
+                                    Return to {currentUser}'s Profile Page
+                                </Link>
+                            </Row>
                     ) : (
                         <div>
                             <br />
