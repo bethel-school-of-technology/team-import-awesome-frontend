@@ -17,13 +17,13 @@
     Also its a bootstrap thing that they literally dont move so be
     >:( @ bootstrap :) */
 
-.goal-detail-body{
+.goal-detail-body {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.back-button{
+.back-button {
     position: fixed;
     left: 20px;
 }
@@ -32,6 +32,11 @@
     background-color: #99c2ce;
 }
 
-@media screen and (max-width: 830px) {
-
+.rainbow {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #00ff00, #00ee00, #00dd00, #00ff00, #00ff00, #0088ff, #0055ff, #0022ff, #5500ff, #aa00ff);
 }
+
+@media screen and (max-width: 830px) {}
