@@ -12,6 +12,9 @@ export function GoalList({ goals }) {
     const completedGoals = goals.filter((goal) => goal.completed);
     const incompleteGoals = goals.filter((goal) => !goal.completed);
 
+    let newCurrentDate = new Date();
+    let currentDate = moment.utc(newCurrentDate).format('MM/DD/YYYY');
+
     return (
         <div>
             <div>
@@ -53,10 +56,17 @@ export function GoalList({ goals }) {
                                                         End Date: {endDate}
                                                     </span>
                                                     <br />
-                                                    <span>
-                                                        Time Remaining:{' '}
-                                                        {timeRemaining}{' '}
-                                                    </span>
+                                                    {currentDate > endDate ? (
+                                                        <span>
+                                                            Time Remaining: Out
+                                                            of Time
+                                                        </span>
+                                                    ) : (
+                                                        <span>
+                                                            Time Remaining:{' '}
+                                                            {timeRemaining}{' '}
+                                                        </span>
+                                                    )}
                                                 </div>
                                             </Card>
                                         </div>
