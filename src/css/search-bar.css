@@ -1,5 +1,6 @@
 .search-bar-group {
     display: flex;
+    padding-right: 10px;
 }
 .search-bar-input {
     width: 150px;
@@ -9,8 +10,12 @@
     font-size: 18px;
     outline: none;
     transition: 0.2s;
-    margin-right: 10px;
+    margin-right: 25px;
+}
 
+.search-bar-input .form-control {
+    margin:0;
+    padding:0;
 }
 
 .search-btn{

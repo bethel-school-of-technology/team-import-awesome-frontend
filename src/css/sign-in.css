@@ -76,19 +76,22 @@
 }
 
 @media screen and (max-width: 950px) {
-    .sign-in-button {
-        margin-left: 30%;
-    }
-    .footer {
-        font-size: 14px;
-    }
     .form-grouping {
         padding: 6px;
     }
     .main-row {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         padding: 5% 20% 0 20%;
+    }
+    .form-sign-in {
+        margin-top: 10%;
+    }
+    .sign-in-button {
+        margin-left: 35%;
+    }
+    .footer {
+        font-size: 14px;
     }
     .welcome-message {
         margin-top: 10%;

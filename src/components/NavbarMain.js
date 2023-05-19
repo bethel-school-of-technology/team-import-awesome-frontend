@@ -46,29 +46,29 @@ const NavbarMain = () => {
                         ></img>
                     </HashLink>
                 </Navbar.Brand>
-          
+
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse
                     id="basic-navbar-nav"
                     className="justify-content-end"
                 >
-                          <Nav>
-                    <Nav.Link>
-                        <HashLink smooth to="/#HOW">
-                            HOW
-                        </HashLink>
-                    </Nav.Link>
-                    <Nav.Link>
-                        <HashLink smooth to="/#WHY">
-                            WHY
-                        </HashLink>
-                    </Nav.Link>
-                    <Nav.Link>
-                        <HashLink className="about" smooth to="/#ABOUT">
-                            ABOUT
-                        </HashLink>
-                    </Nav.Link>
-                </Nav>
+                    <Nav>
+                        <Nav.Link>
+                            <HashLink smooth to="/#HOW">
+                                HOW
+                            </HashLink>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <HashLink smooth to="/#WHY">
+                                WHY
+                            </HashLink>
+                        </Nav.Link>
+                        <Nav.Link>
+                            <HashLink className="about" smooth to="/#ABOUT">
+                                ABOUT
+                            </HashLink>
+                        </Nav.Link>
+                    </Nav>
                     <SearchBar />
                     <Nav>
                         {user ? (
@@ -99,6 +99,7 @@ const NavbarMain = () => {
                             <>
                                 <Nav.Link style={{ marginLeft: '5px' }}>
                                     <Link
+                                        className="sign-in-nav-link"
                                         to="/signIn"
                                         style={{ color: 'black' }}
                                     >
