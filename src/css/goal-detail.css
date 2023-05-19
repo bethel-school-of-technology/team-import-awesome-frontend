@@ -4,7 +4,7 @@
     width: 60%;
     margin: 3em 5em 5em 5em;
     padding: 2em;
-    border-radius: 10px;
+    border-radius: 0px;
 }
 
 .button-container {
@@ -30,4 +30,8 @@
 
 .progress-bar {
     background-color: #99c2ce;
+}
+
+@media screen and (max-width: 830px) {
+
 }

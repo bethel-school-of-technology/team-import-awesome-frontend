@@ -205,6 +205,7 @@ const ProfilePage = () => {
                         </div>
                     </Container>
                 </div>
+                <br />
                 <center className="row profile-container">
                     <GoalList goals={user.Goals} />
                 </center>

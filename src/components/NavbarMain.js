@@ -46,7 +46,13 @@ const NavbarMain = () => {
                         ></img>
                     </HashLink>
                 </Navbar.Brand>
-                <Nav>
+          
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse
+                    id="basic-navbar-nav"
+                    className="justify-content-end"
+                >
+                          <Nav>
                     <Nav.Link>
                         <HashLink smooth to="/#HOW">
                             HOW
@@ -63,11 +69,6 @@ const NavbarMain = () => {
                         </HashLink>
                     </Nav.Link>
                 </Nav>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse
-                    id="basic-navbar-nav"
-                    className="justify-content-end"
-                >
                     <SearchBar />
                     <Nav>
                         {user ? (

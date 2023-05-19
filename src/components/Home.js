@@ -96,7 +96,7 @@ const Home = () => {
                     </Carousel.Item>
                 </Carousel>
             </div>
-            <div className="mt-5 quote">
+            <div className="mt-5">
                 {/* Insiprational Quote */}
                 <div className="inspo">
                     <h4>"{currentQuote}"</h4>

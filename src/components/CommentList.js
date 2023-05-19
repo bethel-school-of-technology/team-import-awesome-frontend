@@ -110,7 +110,7 @@ export function CommentList({ comments, currentUser, userGoal }) {
                                                     </div>
                                                 ) : null}
                                                 <p className='mb-0 mx-1' >|</p>
-                                                <p className='mb-0' >{createdAt}</p>
+                                                <p className='mb-0 created' >{createdAt}</p>
                                             </div>
                                         </div>
                                     </Card.Header>
