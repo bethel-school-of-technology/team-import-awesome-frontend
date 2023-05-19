@@ -38,7 +38,7 @@ export function CommentList({ comments, currentUser, userGoal }) {
             {currentUser && (
                 <div>
                     <AddComment show={showAddModal} close={() => setShowAddModal(false)} />
-                    <Button variant="outline" onClick={() => setShowAddModal(true)}>
+                    <Button variant="outline" style={{ marginBottom: '10px' }} onClick={() => setShowAddModal(true)}>
                         Add Comment
                     </Button>
                 </div>

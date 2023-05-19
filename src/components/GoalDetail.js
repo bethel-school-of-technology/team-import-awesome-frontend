@@ -81,23 +81,23 @@ function GoalDetail() {
             </div>
 
             <div className="goal-container">
-                <h2>Title: {userGoal.title}</h2>
-                <h5>Plan: {userGoal.plan}</h5>
+                <h2><b>Goal: </b>{userGoal.title}</h2>
+                <h5><b>Plan:</b> {userGoal.plan}</h5>
                 <hr />
                 {userGoal.completed === true ? (
-                    <div>
-                        <h3>Congratulations</h3>
-                        <h4>Goal Complete!</h4>
+                    <div className='rainbow'>
+                        {/* <h3>Congratulations</h3> */}
+                        <h3><b>Congratulations! <br></br> This Goal is Complete!</b></h3>
                     </div>
                 ) : (
                     <div>
-                        <h4>Goal Not Complete</h4>
-                        <div>Start Date: {startDate}</div>
-                        <div>End Date: {endDate}</div>
+                        <h4><b>Goal Currently In Progress</b></h4>
+                        <div><b>Start Date: </b>{startDate}</div>
+                        <div><b>End Date: </b>{endDate}</div>
                         {currentDate > endDate ? (
-                            <h5>Time Remaining: 0 Days</h5>
+                            <h5><b>Time Remaining:</b> 0 Days</h5>
                         ) : (
-                            <h5>Time Remaining: {timeRemaining}</h5>
+                            <h5><b>Time Remaining:</b> {timeRemaining}</h5>
                         )}
 
                         <ProgressBar animated now={percent * -1} />
