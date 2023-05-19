@@ -11,7 +11,7 @@ export function CommentList({ comments, currentUser, userGoal }) {
 
     const [showEditModal, setShowEditModal] = useState(false);
     const [showAddModal, setShowAddModal] = useState(false);
-    const [ toUpdate, setToUpdate ] = useState(null)
+    const [toUpdate, setToUpdate] = useState(null)
 
     let { getComment, deleteComment } = useContext(CommentContext);
     const navigate = useNavigate();
@@ -22,8 +22,8 @@ export function CommentList({ comments, currentUser, userGoal }) {
         if (window.confirm('Are you sure you want to delete this comment?')) {
             deleteComment(commentId)
                 .then(() => {
-                   navigate(`/goals/detail/${userGoal.goalId}`);
-                   window.location.reload(true)
+                    navigate(`/goals/detail/${userGoal.goalId}`);
+                    window.location.reload(true)
                 })
                 .catch((error) => {
                     console.log(error);
@@ -35,10 +35,14 @@ export function CommentList({ comments, currentUser, userGoal }) {
     return (
         <div className="comment-list-main">
             <h3>Comments:</h3>
-            <AddComment show={showAddModal} close={() => setShowAddModal(false)} />
-            <Button variant="outline" onClick={() => setShowAddModal(true)}>
-                Add Comment
-            </Button>
+            {currentUser && (
+                <div>
+                    <AddComment show={showAddModal} close={() => setShowAddModal(false)} />
+                    <Button variant="outline" onClick={() => setShowAddModal(true)}>
+                        Add Comment
+                    </Button>
+                </div>
+            )}
             {comments.length > 0 ? (
                 <div>
                     {comments
