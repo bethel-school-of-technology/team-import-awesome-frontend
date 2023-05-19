@@ -61,7 +61,7 @@ const ProfilePage = () => {
         );
     }
 
-    let userJoined = moment.utc(user.createdAt).format("MM/DD/YYYY");
+    let userJoined = moment.utc(user.createdAt).format('MM/DD/YYYY');
 
     function profile() {
         return (
@@ -70,20 +70,23 @@ const ProfilePage = () => {
                     {!currentUser ? (
                         <div>
                             <br />
-                            <br />
                         </div>
                     ) : username !== currentUser ? (
-                            <Row className="justify-content-md-center">
-                                <Link
-                                    to={`/profile-page/${currentUser}`}
-                                    style={{ zIndex: 999, marginLeft: '27px', marginBottom: '26px', color: 'white' }}
-                                >
-                                    Return to {currentUser}'s Profile Page
-                                </Link>
-                            </Row>
+                        <Row className="justify-content-md-center">
+                            <Link
+                                to={`/profile-page/${currentUser}`}
+                                style={{
+                                    zIndex: 999,
+                                    marginLeft: '27px',
+                                    marginBottom: '26px',
+                                    color: 'white',
+                                }}
+                            >
+                                Return to {currentUser}'s Profile Page
+                            </Link>
+                        </Row>
                     ) : (
                         <div>
-                            <br />
                             <br />
                         </div>
                     )}
@@ -187,7 +190,9 @@ const ProfilePage = () => {
                                     <h6 className="profile-age">
                                         Age: {user.age}
                                     </h6>
-                                    <h8 className="profile-joined">Joined On: {userJoined}</h8>
+                                    <h8 className="profile-joined">
+                                        Joined On: {userJoined}
+                                    </h8>
                                 </Col>
                                 <Col xxlg={3} className="">
                                     <h6 className="profile-bio">{user.bio}</h6>
