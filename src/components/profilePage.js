@@ -154,7 +154,7 @@ const ProfilePage = () => {
                                                 <div
                                                     style={{ display: 'none' }}
                                                 >
-                                                    <AddGoal
+                                                    <AddGoal // renders AddGoal component for the modal
                                                         show={showAddGoalModal}
                                                         close={() =>
                                                             setShowAddGoalModal(
@@ -215,14 +215,18 @@ const ProfilePage = () => {
                 </div>
                 <br />
                 <center className="row profile-container">
-                    <GoalList goals={user.Goals} />
+                    <GoalList // renders GoalList to display goals - passes goals as parameter for user.Goal object to this nested component
+                        goals={user.Goals} />
                 </center>
             </div>
         );
     }
 
-    if (user === undefined) return loading();
+    if (user === undefined) return loading(); // check if the user data is undefined - return a loading state if the user data is not available
     return user.username !== username ? loading() : profile();
+    // Check if the username associated with the user does not match the provided username
+    // Return a loading state if the usernames don't match
+    // Return the user's profile if the usernames match
 };
 
 export default ProfilePage;
