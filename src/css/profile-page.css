@@ -61,6 +61,10 @@ body {
 }
 .profile-age {
   font-size: 1.25rem;
+  margin-left: 3rem;
+}
+.profile-joined {
+  text-align: center;
 }
 .profile-bio {
   font-size: 1rem;
@@ -125,6 +129,12 @@ button.btn {
     font-size: 2.5rem;
     margin-left: -5rem;
   }
+  .profile-age {
+    margin-left: -.5rem;
+  }
+  .profile-joined {
+    margin-left: -3rem;
+  }
   .follow {
     display: none;
   }
@@ -145,6 +155,14 @@ button.btn {
   }
   .profile-title {
     display: none;
+  }
+  .profile-age {
+    font-size: 1rem;
+    margin-left: 1.5rem;
+  }
+  .profile-joined {
+    font-size: .75rem;
+    margin-left: 0rem;
   }
   .avatar-container {
     height: 3rem;
@@ -183,6 +201,9 @@ button.btn {
     font-size: 1.5rem;
     margin-left: -1rem;
   }
+  .profile-joined {
+    margin-left: -.5rem;
+  }
   .button-col {
     display: flex;
     align-items: last baseline;
@@ -202,12 +223,23 @@ button.btn {
 
 @media screen and (max-width: 415px) {
   .avatar-container .avatar {
-    margin-top: -5rem;
+    margin-top: -4rem;
     margin-left: 0rem;
     width: 7rem;
     height: 7rem;
   }
   .profile-row {
     padding: 0 0 0 0;
+  }
+  .first-last {
+    font-size: 1.25rem;
+    margin-left: 0rem;
+  }
+  .profile-age {
+    margin-left: 0rem;
+  }
+  .profile-joined {
+    font-size: x-small;
+    margin-left: -1rem;
   }
 }
