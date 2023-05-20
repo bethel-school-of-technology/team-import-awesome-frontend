@@ -8,26 +8,26 @@ import SearchBar from './SearchBar';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 const NavbarMain = () => {
-    let { logOutUser } = useContext(UserContext);
+    let { logOutUser } = useContext(UserContext); // logOutUser function pulled from context
 
     const navigate = useNavigate();
 
-    const [user, setUser] = useState();
+    const [user, setUser] = useState(); // user state variable
 
-    function isSignedIn() {
-        let user = localStorage.getItem('myUsername');
-        setUser(user);
+    function isSignedIn() { // verifies if user is signed in
+        let user = localStorage.getItem('myUsername'); // token for verification
+        setUser(user); // user state is set to the user that is signed in
     }
 
     useEffect(() => {
-        function autoSignOut() {
+        function autoSignOut() { // auto signs out when session expires
             setTimeout(() => {
                 navigate('/signIn');
                 window.alert('Session Expired: Please Sign In');
                 logOutUser();
 
                 return () => clearTimeout(autoSignOut);
-            }, 3600000);
+            }, 3600000); // milliseconds = 1hr
         }
         isSignedIn();
         autoSignOut();

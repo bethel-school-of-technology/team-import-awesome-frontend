@@ -12,15 +12,15 @@ export function GoalList({ goals }) {
     const completedGoals = goals.filter((goal) => goal.completed);
     const incompleteGoals = goals.filter((goal) => !goal.completed);
 
-    let newCurrentDate = new Date();
-    let currentDate = moment.utc(newCurrentDate).format('MM/DD/YYYY');
+    let newCurrentDate = new Date(); // // creates a Date object
+    let currentDate = moment.utc(newCurrentDate).format('MM/DD/YYYY'); // sets the currentDate to the current date on the user's device - formats as string
 
     return (
         <div>
             <div>
                 <div className="goalList">
                     <h2>Goal List</h2>
-                    {incompleteGoals.length > 0 ? (
+                    {incompleteGoals.length > 0 ? ( // conditional render to check if there are any goals in progress to display
                         <div>
                             <h3 className="category">In Progress:</h3>
                             {incompleteGoals
@@ -73,18 +73,19 @@ export function GoalList({ goals }) {
                                     );
                                 })}
                         </div>
-                    ) : (
+                    ) : ( // render if user has no goals in progress
                         <div>
                             <h3 className="category">In Progress:</h3>
                             <p>No Goals In Progress</p>
                         </div>
                     )}
-                    {completedGoals.length > 0 ? (
+                    {completedGoals.length > 0 ? ( // conditional render to check if there are any completed goals to display
                         <div>
                             <h3 className="category">Completed:</h3>
                             {completedGoals
-                                .sort((a, b) =>
-                                    b.createdAt.localeCompare(a.createdAt)
+                                .sort((a, b) => // sorts goals based on createdAt property
+                                    b.createdAt.localeCompare(a.createdAt) // compares the createdAt dates for the goals in the array
+                                    //  the array is sorted in descending order based on the createdAt property,
                                 )
                                 .map((goal) => {
                                     let startDate = moment
@@ -99,7 +100,7 @@ export function GoalList({ goals }) {
                                                 <div className="goal-title">
                                                     <FaTrophy />
                                                     <Link
-                                                        to={`/goals/detail/${goal.goalId}`}
+                                                        to={`/goals/detail/${goal.goalId}`} // link to GoalDetail of displayed goal
                                                     >
                                                         {goal.title}
                                                     </Link>
@@ -119,7 +120,7 @@ export function GoalList({ goals }) {
                                     );
                                 })}
                         </div>
-                    ) : (
+                    ) : ( // renders if user has no completed goals
                         <div>
                             <h3 className="category">Completed:</h3>
                             <p>No Goals Completed</p>
@@ -132,58 +133,3 @@ export function GoalList({ goals }) {
 }
 
 export default GoalList;
-
-// <AddGoal show={showModal} close={() => setShowModal(false)} />
-
-// const { goals, editGoal } = useContext(GoalContext);
-// const [ isChecked, setIsChecked ] = useState(false);
-
-// function handleCheckboxChange() {
-//     setIsChecked(!isChecked);
-//   }
-
-// const goalComplete = (goal) => {
-//     const editedGoal = { ...goal, completed: true}
-//     editGoal(editedGoal)
-//     .then(()=>{
-//         console.log('success')
-//     })
-//     .catch((error) =>{
-//         console.log(error)
-//     })
-// }
-
-// const goalIncomplete = (goal) => {
-//     const editedGoal = { ...goal, completed: false}
-//     editGoal(editedGoal)
-//     .then(()=>{
-//         console.log('success')
-//     })
-//     .catch((error) => {
-//         console.log(error)
-//     })
-// }
-
-// {({goals}) => {
-//     return (
-//         <div className="goal-container">
-
-//             <ul class="list-group">
-
-//                         {goals.map(goal =>
-//                             <li key={goal.goalId} className="list-group-item">
-//                                 <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange}/>
-//                                 <a className="goalItem" href={`/goals/${goal.goalId}`} >{goal.title}</a>
-//                             </li>
-//                         )}
-
-//             </ul>
-//             <br></br>
-// <Button variant="primary" onClick={() => setShowModal(true)}>
-//     Add Goal
-// </Button>
-
-//             <AddGoal show={showModal} close={() => setShowModal(false)} />
-//         </div>
-//     )
-// }}

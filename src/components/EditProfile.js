@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import '../css/edit-profile.css';
 
 const EditProfile = ({ show, close }) => {
-    const [user, setUser] = useState({
+    const [user, setUser] = useState({ // state varaible for user to be updated
         firstName: '',
         lastName: '',
         age: '',
@@ -14,26 +14,26 @@ const EditProfile = ({ show, close }) => {
         bio: '',
     });
 
-    const [currentUser, setCurrentUser] = useState('');
+    const [currentUser, setCurrentUser] = useState(''); // state varaible for currentUser that is logged in
 
-    function isLoggedIn() {
-        let user = localStorage.getItem('myUsername');
-        setCurrentUser(user);
+    function isLoggedIn() { // function that verifies if a user is logged in
+        let user = localStorage.getItem('myUsername'); // gets token verification
+        setCurrentUser(user); // current user state variable is set by the user that is fetched
     }
 
-    let { getUser, updateUser } = useContext(UserContext);
+    let { getUser, updateUser } = useContext(UserContext); // provider functions from context
     let navigate = useNavigate();
 
     useEffect(() => {
         async function fetch() {
-            await getUser(currentUser).then((user) => setUser(user));
+            await getUser(currentUser).then((user) => setUser(user)); // fetches current user and sets them as the state for the user variable
         }
         isLoggedIn();
         fetch();
-    }, [getUser, currentUser]);
+    }, [getUser, currentUser]); // getUser function and a current user as arguments
 
-    function handleChange(event) {
-        setUser((prevValue) => {
+    function handleChange(event) { // triggers when inputs are changed.
+        setUser((prevValue) => { // creates a new object by spreading the properties of the previous user state value (prevValue) and adding a new property.
             return { ...prevValue, [event.target.name]: event.target.value };
         });
     }

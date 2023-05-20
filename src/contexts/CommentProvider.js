@@ -1,5 +1,3 @@
-//  rough framework - might have to edit after testing - Brad
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CommentContext from './CommentContext.js';

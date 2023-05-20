@@ -14,20 +14,20 @@ import { Container, Row, Col } from 'react-bootstrap';
 import moment from 'moment';
 
 const ProfilePage = () => {
-    let { getUser } = useContext(UserContext);
+    let { getUser } = useContext(UserContext); // function from context
     let { username } = useParams();
     const navigate = useNavigate();
 
-    const [currentUser, setCurrentUser] = useState();
-    const [showModal, setShowModal] = useState(false);
-    const [showAddGoalModal, setShowAddGoalModal] = useState(false);
+    const [currentUser, setCurrentUser] = useState(); // current User state
+    const [showModal, setShowModal] = useState(false); // displays modal when editing
+    const [showAddGoalModal, setShowAddGoalModal] = useState(false); // displays Modal when adding a goal
 
-    function isLoggedIn() {
+    function isLoggedIn() { // verifies user logged in with token
         let loggedUser = localStorage.getItem('myUsername');
-        setCurrentUser(loggedUser);
+        setCurrentUser(loggedUser); // sets that logged user to the currentUser state
     }
 
-    const [user, setUser] = useState({
+    const [user, setUser] = useState({ // state variable for user that the profile page belongs to
         username: '',
         email: '',
         firstName: '',
@@ -40,9 +40,9 @@ const ProfilePage = () => {
 
     useEffect(() => {
         async function fetchData() {
-            await getUser(username)
+            await getUser(username) // fetches user by username param
                 .then((user) => {
-                    setUser(user);
+                    setUser(user); // user found is set to the state variable
                 })
                 .catch((error) => {
                     console.log(error);
@@ -61,7 +61,7 @@ const ProfilePage = () => {
         );
     }
 
-    let userJoined = moment.utc(user.createdAt).format('MM/DD/YYYY');
+    let userJoined = moment.utc(user.createdAt).format('MM/DD/YYYY'); // date that the user joined
 
     function profile() {
         return (
