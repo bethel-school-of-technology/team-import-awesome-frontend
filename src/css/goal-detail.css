@@ -32,11 +32,10 @@
     background-color: #99c2ce;
 }
 
-.rainbow {
-    background-clip: text;
+.congrats-gradient {
+    background: -webkit-linear-gradient(#00ff22, #00ffd5);
     -webkit-background-clip: text;
-    color: transparent;
-    background-image: linear-gradient(to right, #00ff00, #00ee00, #00dd00, #00ff00, #00ff00, #0088ff, #0055ff, #0022ff, #5500ff, #aa00ff);
+    -webkit-text-fill-color: transparent;
 }
 
 @media screen and (max-width: 830px) {}

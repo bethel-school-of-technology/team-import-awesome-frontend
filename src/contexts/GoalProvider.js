@@ -1,5 +1,3 @@
-//  rough framework - might have to edit after testing - Brad
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import GoalContext from './GoalContext.js';
@@ -7,7 +5,6 @@ import GoalContext from './GoalContext.js';
 export const GoalProvider = (props) => {
     const [goals, setGoals] = useState([]); // set state variable of goal
     const baseUrl = 'http://localhost:3000/goals/'; // the baseURL used for the axios calls
-    // const [user, setUser] = useState('');
 
     useEffect(() => {
         // once the component is mounted - executes getAllGoals only when necessary
@@ -42,7 +39,7 @@ export const GoalProvider = (props) => {
 
         const response = await axios.post(baseUrl, newGoal, {
             headers: myHeaders,
-        }); // creates new goal using token - maybe add a check if username matches goal?
+        }); // creates new goal using token
         getUserGoals();
         return await new Promise((resolve) => resolve(response.data));
     }
@@ -60,7 +57,7 @@ export const GoalProvider = (props) => {
                 headers: myHeaders,
             }
         );
-        // updates goal - maybe add a check if username matches goal?
+        // updates goal
         getUserGoals();
         return await new Promise((resolve) => resolve(response.data));
     }

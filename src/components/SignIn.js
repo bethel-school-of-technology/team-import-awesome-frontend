@@ -7,21 +7,21 @@ import UserContext from '../contexts/UserContext.js';
 import '../css/sign-in.css';
 
 const SignIn = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState(''); // username state variable
+    const [password, setPassword] = useState(''); // password state variable
 
-    const { getUser } = useContext(UserContext);
-    let { loginUser } = useContext(UserContext);
+    const { getUser } = useContext(UserContext); // function from user context
+    let { loginUser } = useContext(UserContext); // function from user context
     let navigate = useNavigate();
 
-    async function handleSubmit(event) {
+    async function handleSubmit(event) { // 'Sign In" button clicked
         event.preventDefault();
         try {
-            const result = await getUser(username);
+            const result = await getUser(username); // gets user based on the "username" entered in the text field
 
-            if (result.username === username && result.password) {
+            if (result.username === username && result.password) { // checks if username and password are correct
                 await loginUser(username, password).then(() => {
-                    navigate(`/profile-page/${username}`);
+                    navigate(`/profile-page/${username}`); // navigates to user's profile page
                 });
             } else {
                 window.alert(

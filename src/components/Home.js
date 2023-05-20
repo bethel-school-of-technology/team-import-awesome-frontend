@@ -4,29 +4,29 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const Home = () => {
-    const [quotes, setQuotes] = useState([]);
-    const [currentQuote, setCurrentQuote] = useState('');
-    const [currentAuthor, setCurrentAuthor] = useState('');
+    const [quotes, setQuotes] = useState([]); // quotes state variable
+    const [currentQuote, setCurrentQuote] = useState(''); // current quote being used state variable
+    const [currentAuthor, setCurrentAuthor] = useState(''); // author of quote state
 
     useEffect(() => {
         axios
-            .get('https://type.fit/api/quotes')
+            .get('https://type.fit/api/quotes') // quotes api
             .then((response) => {
                 const data = response.data;
                 setQuotes(data);
-                const randomIndex = Math.floor(Math.random() * data.length);
-                setCurrentQuote(data[randomIndex].text);
-                setCurrentAuthor(data[randomIndex].author);
+                const randomIndex = Math.floor(Math.random() * data.length); // randomly selects a quote from the api
+                setCurrentQuote(data[randomIndex].text); // text in the quote set to current quote state
+                setCurrentAuthor(data[randomIndex].author); // author of quote set to current author state
             })
             .catch((error) => console.log(error));
     }, []);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            const randomIndex = Math.floor(Math.random() * quotes.length);
-            setCurrentQuote(quotes[randomIndex].text);
-            setCurrentAuthor(quotes[randomIndex].author);
-        }, 10000);
+    useEffect(() => { // this useEffect triggers whenever the quote state variable changes
+        const interval = setInterval(() => { // interval for how long carousel displays image
+            const randomIndex = Math.floor(Math.random() * quotes.length); // randomly selects a quote each interval
+            setCurrentQuote(quotes[randomIndex].text); // updates state based on quote
+            setCurrentAuthor(quotes[randomIndex].author); // updates state based on author
+        }, 10000); // every 10 seconds
         return () => clearInterval(interval);
     }, [quotes]);
 

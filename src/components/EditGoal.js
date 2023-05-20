@@ -9,7 +9,7 @@ import '../css/add-goal.css';
 const EditGoal = ({ show, close }) => {
     let { id } = useParams();
 
-    const [updatedGoal, setUpdatedGoal] = useState({
+    const [updatedGoal, setUpdatedGoal] = useState({ // state varaible for the goal to be edited
         title: '',
         plan: '',
         startDate: '',
@@ -17,32 +17,32 @@ const EditGoal = ({ show, close }) => {
         completed: false,
     });
 
-    const [showCongratulations, setShowCongratulations] = useState(false);
+    const [showCongratulations, setShowCongratulations] = useState(false); // congratulations window for completed goals
 
-    let { getGoal, editGoal } = useContext(GoalContext);
+    let { getGoal, editGoal } = useContext(GoalContext); // functions to use from the context
     let navigate = useNavigate();
 
     useEffect(() => {
         if (id === undefined) return;
 
         async function fetch() {
-            await getGoal(id).then((goal) => setUpdatedGoal(goal));
+            await getGoal(id).then((goal) => setUpdatedGoal(goal)); // fetches goal by its idea, then sets it to the state variable
         }
         fetch();
-    }, [id, getGoal]);
+    }, [id, getGoal]); // goalId and getGoal function as arguments
 
-    function handleChange(event) {
-        setUpdatedGoal((prevValue) => {
+    function handleChange(event) { // triggers when input is changed
+        setUpdatedGoal((prevValue) => { // creates a new object by spreading the properties of the previous goal state value (prevValue) and adding a new property.
             return { ...prevValue, [event.target.name]: event.target.value };
         });
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event) => { // form submission
         event.preventDefault();
 
-        editGoal(updatedGoal)
+        editGoal(updatedGoal) // editGoal is called for the goal that's going to be updated
             .then(() => {
-                if (
+                if ( // checks that dates exist
                     moment(updatedGoal.startDate).isValid() &&
                     moment(updatedGoal.endDate).isValid()
                 ) {
@@ -52,12 +52,12 @@ const EditGoal = ({ show, close }) => {
             .then(() => {
                 if (updatedGoal.completed) {
                     close();
-                    setShowCongratulations(true);
+                    setShowCongratulations(true); // will show congratulations window if goal is completed
                 } else {
                     close();
                 }
             })
-            .then(() => navigate(`/goals/detail/${updatedGoal.goalId}`))
+            .then(() => navigate(`/goals/detail/${updatedGoal.goalId}`)) // navigates to the page of the goal that is being updated based on its id
             .catch((error) => {
                 console.log(error);
                 window.alert('Error updating goal');
@@ -80,15 +80,15 @@ const EditGoal = ({ show, close }) => {
                 <Form onSubmit={handleSubmit} className="modal-form">
                     <Form.Group>
                         <Form.Label>Goal Complete?</Form.Label>
-                        <Form.Check
+                        <Form.Check // toggle switch
                             type="switch"
                             id="custom-switch"
                             name="completed"
                             checked={updatedGoal.completed}
                             onChange={() =>
-                                setUpdatedGoal((prevGoal) => ({
-                                    ...prevGoal,
-                                    completed: !prevGoal.completed,
+                                setUpdatedGoal((prevGoal) => ({ //updates state of updated goal
+                                    ...prevGoal, // receives old data
+                                    completed: !prevGoal.completed, // returns new goal state that is set as 'completed'
                                 }))
                             }
                         />
