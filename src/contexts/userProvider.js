@@ -4,18 +4,18 @@ import axios from 'axios';
 import UserContext from './UserContext.js';
 
 export const UserProvider = (props) => {
-    const baseUrl = 'http://localhost:3000/users/';
+    const baseUrl = 'http://localhost:3000/users/'; // base URL for axios calls
     const [user, setUser] = useState(null); // store user data here after logging in
 
-    useEffect(() => {
+    useEffect(() => { // this effect is used to initialize the user state with the stored user data from the local storage when the component mounts or when the user state changes.
         if (user === null) {
             setUser(JSON.parse(localStorage.getItem('userData')));
         }
     }, [user]);
 
     async function createUser(newUser) {
-        const response = await axios.post(baseUrl, newUser);
-        return await new Promise((resolve) => resolve(response.data));
+        const response = await axios.post(baseUrl, newUser); //  POST request to the baseUrl endpoint, passing the newUser object as the request body
+        return await new Promise((resolve) => resolve(response.data)); // returns a promise that resolves with the data from the response
     }
 
     async function loginUser(username, password) {
@@ -30,18 +30,20 @@ export const UserProvider = (props) => {
     }
 
     function logOutUser() {
-        localStorage.setItem('myToken', '');
-        localStorage.setItem('myUsername', '');
+        localStorage.setItem('myToken', ''); // sets token to empty string
+        localStorage.setItem('myUsername', ''); // sets username token to empty string
         // window.location.reload(true);
     }
 
     async function getUser(username) {
+        // retrieve user by username
         const response = await axios.get(baseUrl + username);
         return await new Promise((resolve) => resolve(response.data));
         // return axios.get(baseUrl + username);
     }
 
     async function updateUser(user) {
+        // authenticate user to edit their profile
         const myHeaders = {
             Authorization: `Bearer ${localStorage.getItem('myToken')}`,
         };
