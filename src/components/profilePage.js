@@ -194,7 +194,7 @@ const ProfilePage = () => {
                                         Joined On: {userJoined}
                                     </h8>
                                 </Col>
-                                <Col xxlg={3} className="">
+                                <Col xxlg={3} className="bio-profile">
                                     <h6 className="profile-bio">{user.bio}</h6>
                                 </Col>
                                 <Col className="follow">
