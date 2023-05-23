@@ -1,27 +1,29 @@
 import React, { useContext, useState } from 'react';
 import { Button, Container, Form, Row, Col } from 'react-bootstrap';
-import Image from 'react-bootstrap/Image'
+import Image from 'react-bootstrap/Image';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../contexts/UserContext.js';
 import '../css/sign-in.css';
 
 const SignIn = () => {
-    const [username, setUsername] = useState(''); // username state variable
-    const [password, setPassword] = useState(''); // password state variable
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-    const { getUser } = useContext(UserContext); // function from user context
-    let { loginUser } = useContext(UserContext); // function from user context
+    const { getUser } = useContext(UserContext);
+    let { loginUser } = useContext(UserContext);
     let navigate = useNavigate();
 
-    async function handleSubmit(event) { // 'Sign In" button clicked
+    async function handleSubmit(event) {
         event.preventDefault();
         try {
-            const result = await getUser(username); // gets user based on the "username" entered in the text field
+            // gets user based on the "username" entered in the text field
+            const result = await getUser(username);
 
-            if (result.username === username && result.password) { // checks if username and password are correct
+            if (result.username === username && result.password) {
+                // checks if username and password are correct
                 await loginUser(username, password).then(() => {
-                    navigate(`/profile-page/${username}`); // navigates to user's profile page
+                    navigate(`/profile-page/${username}`);
                 });
             } else {
                 window.alert(
@@ -44,7 +46,6 @@ const SignIn = () => {
         <div className="sign-in">
             <Row className="main-row">
                 <Col className="form-column">
-
                     <Container className="form-sign-in">
                         <div className="login-header">
                             <div className="header">Login</div>
@@ -88,18 +89,15 @@ const SignIn = () => {
                             <footer className="signIn-footer">
                                 <Link className="footer" to="/signUp">
                                     <strong>
-                                        Don't have an account? Register
-                                        here.
+                                        Don't have an account? Register here.
                                     </strong>
                                 </Link>
                             </footer>
                         </Form>
                     </Container>
-
                 </Col>
                 <Col className="Welcome-col">
                     <Container className="welcome-container">
-
                         <h1 className="welcome-message">
                             <strong>Welcome Back!</strong>
                         </h1>
@@ -110,7 +108,6 @@ const SignIn = () => {
                             src={'/assets/GoalGetterLogo.png'}
                             alt="img"
                         />
-
                     </Container>
                 </Col>
             </Row>
@@ -118,99 +115,3 @@ const SignIn = () => {
     );
 };
 export default SignIn;
-
-// <body className='sign-in-body'>
-
-//         <div class="row align-items-center">
-//             <div class="col-sm">
-//                 <div className="sign-in-main">
-//                     <div class="form-container-sign-in">
-//                         <div class="center">
-//                             <div class="header">Login</div>
-//                         </div>
-
-//                         <form onSubmit={handleSubmit}>
-//                             <div class="form-grouping">
-//                                 <input
-//                                     class="form-control-sign-in"
-//                                     placeholder="Username"
-//                                     type="text"
-//                                     name="userName"
-//                                     onChange={(e) =>
-//                                         setUsername(e.target.value)
-//                                     }
-//                                 />
-//                             </div>
-//                             <div class="form-grouping">
-//                                 <input
-//                                     class="form-control-sign-in"
-//                                     placeholder="Password"
-//                                     type="password"
-//                                     name="password"
-//                                     onChange={(e) =>
-//                                         setPassword(e.target.value)
-//                                     }
-//                                 />
-//                             </div>
-
-//                             <br />
-//                             <div class="form-grouping">
-//                                 <button
-//                                     class="btn btn-success btn-block"
-//                                     type="submit"
-//                                 >
-//                                     Sign In
-//                                 </button>
-//                             </div>
-//                             <br />
-//                             <footer class="footer">
-//                                 <a class="footer" href="/signUp">
-//                                     Don't have an account? register here.
-//                                 </a>
-//                             </footer>
-//                         </form>
-//                     </div>
-//                 </div>
-//             </div>
-//             <div class="col-sm">
-//                 <div class="welcome-container">
-//                     <div class="container">
-//                         <h1 class="text-center dropshadow">
-//                             <strong>Welcome Back!</strong>
-//                         </h1>
-//                         <br />
-//                         <img
-//                             class="text-center"
-//                             width="40%"
-//                             src="../assets/GoalGetterLogo.png"
-//                         />
-//                     </div>
-
-//                     <br />
-//                     <div class="form-grouping"><button class="btn btn-success btn-block" type="submit">Sign In</button></div>
-//                     <br />
-//                     <footer class="footer">
-//                     <a class="footer" href="/signUp">Don't have an account? register here.</a>
-//               </footer>
-
-//                 </form>
-
-//             </div>
-//         </div>
-//         </div>
-//         <div class="col-sm">
-//             <div class="welcome-container">
-//             <div class="container">
-//         <h1 class="text-center dropshadow"><strong>Welcome Back!</strong></h1>
-//         <br />
-//         <img class="text-center" width="40%" src="../assets/GoalGetterLogo.png" />
-//         </div>
-//         </div>
-//         </div>
-//         </div>
-
-//                 </div>
-//             </div>
-//         </div>
-
-//     </body>

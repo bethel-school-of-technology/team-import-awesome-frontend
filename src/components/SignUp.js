@@ -6,9 +6,9 @@ import UserContext from '../contexts/UserContext';
 import '../css/sign-up.css';
 
 const SignUp = () => {
-    const { getUser } = useContext(UserContext); // function from context
+    const { getUser } = useContext(UserContext);
 
-    const [newUser, setNewUser] = useState({ // newUser state variable
+    const [newUser, setNewUser] = useState({
         username: '',
         password: '',
         firstName: '',
@@ -19,39 +19,36 @@ const SignUp = () => {
         avatar: '',
     });
 
-    const [agreedToTerms, setAgreedToTerms] = useState(false); // state variable for the 'Terms and Conditions' box.
+    const [agreedToTerms, setAgreedToTerms] = useState(false);
 
-    let { createUser } = useContext(UserContext); // function from context
+    let { createUser } = useContext(UserContext);
     let navigate = useNavigate();
 
+    // updates newUser state
     function handleChange(event) {
-        setNewUser((prevValue) => { // updates newUser state
+        setNewUser((prevValue) => {
             return { ...prevValue, [event.target.name]: event.target.value };
         });
     }
 
-    async function handleSubmit(event) { // 'Sign Up' button clicked
+    async function handleSubmit(event) {
         event.preventDefault();
 
-        if (!agreedToTerms) { // ( this probably can be removed since the button doesn't become clickable unless the box is checked)
-            window.alert('Please agree to the terms and conditions');
-            return;
-        }
-
         try {
-            const result = await getUser(newUser.username); // fetches newUser data
+            const result = await getUser(newUser.username);
 
             if (
-                result.username.toLowerCase() === newUser.username.toLowerCase() // checks whether or not username already exists
+                // checks whether or not username already exists
+                result.username.toLowerCase() === newUser.username.toLowerCase()
             ) {
                 window.alert('Username already exists. Please try another.');
                 return;
             }
         } catch (error) {
             if (error.response.status === 404) {
-                await createUser(newUser) // creates user based on the newUser data
+                await createUser(newUser)
                     .then(() => {
-                        navigate('/signIn'); // navigates to SignIn upon registration
+                        navigate('/signIn');
                     })
                     .catch((error) => {
                         console.log(error);

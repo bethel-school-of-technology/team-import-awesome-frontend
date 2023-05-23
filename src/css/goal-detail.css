@@ -12,11 +12,6 @@
     justify-content: space-between;
 }
 
-/* Stupid Buttons aren't moving closer together >:( */
-/* The Buttons are now evenly spaced out in their box so :) 
-    Also its a bootstrap thing that they literally dont move so be
-    >:( @ bootstrap :) */
-
 .goal-detail-body {
     display: flex;
     flex-direction: column;

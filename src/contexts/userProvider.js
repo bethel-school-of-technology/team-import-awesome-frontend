@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-// import { debounce } from 'debounce';
 import UserContext from './UserContext.js';
 
 export const UserProvider = (props) => {
-    const baseUrl = 'http://localhost:3000/users/'; // base URL for axios calls
-    const [user, setUser] = useState(null); // store user data here after logging in
+    const baseUrl = 'http://localhost:3000/users/';
+    const [user, setUser] = useState(null);
 
-    useEffect(() => { // this effect is used to initialize the user state with the stored user data from the local storage when the component mounts or when the user state changes.
+    // this effect is used to initialize the user state with the stored user data from the local storage when the component mounts or when the user state changes.
+    useEffect(() => {
         if (user === null) {
             setUser(JSON.parse(localStorage.getItem('userData')));
         }
     }, [user]);
 
+    //  POST request to the baseUrl endpoint, passing the newUser object as the request body
     async function createUser(newUser) {
-        const response = await axios.post(baseUrl, newUser); //  POST request to the baseUrl endpoint, passing the newUser object as the request body
-        return await new Promise((resolve) => resolve(response.data)); // returns a promise that resolves with the data from the response
+        const response = await axios.post(baseUrl, newUser);
+        return await new Promise((resolve) => resolve(response.data));
     }
 
     async function loginUser(username, password) {
@@ -29,21 +30,21 @@ export const UserProvider = (props) => {
         return await new Promise((resolve) => resolve(response.data));
     }
 
+    // sets token to empty string
+    // sets username token to empty string
     function logOutUser() {
-        localStorage.setItem('myToken', ''); // sets token to empty string
-        localStorage.setItem('myUsername', ''); // sets username token to empty string
-        // window.location.reload(true);
+        localStorage.setItem('myToken', '');
+        localStorage.setItem('myUsername', '');
     }
 
+    // retrieve user by username
     async function getUser(username) {
-        // retrieve user by username
         const response = await axios.get(baseUrl + username);
         return await new Promise((resolve) => resolve(response.data));
-        // return axios.get(baseUrl + username);
     }
 
+    // Update User
     async function updateUser(user) {
-        // authenticate user to edit their profile
         const myHeaders = {
             Authorization: `Bearer ${localStorage.getItem('myToken')}`,
         };
@@ -57,24 +58,6 @@ export const UserProvider = (props) => {
         );
         return await new Promise((resolve) => resolve(response.data));
     }
-
-    // function updateUserImmediate(user) {
-    //     console.log('saving', user);
-
-    //     // TODO: Fix authentication
-    //     axios
-    //         .put(baseUrl + 'edit/' + user.username, user, {
-    //             headers: {
-    //                 Authorization: `Bearer ${localStorage.getItem('myToken')}`,
-    //             },
-    //         })
-    //         .then((response) => {
-    //             localStorage.setItem('userData', JSON.stringify(user));
-    //             setUser(user);
-    //         });
-    // }
-
-    // const updateUser = debounce(updateUserImmediate, 2500);
 
     return (
         <UserContext.Provider

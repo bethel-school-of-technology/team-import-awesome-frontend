@@ -15,7 +15,6 @@ export function CommentList({ comments, currentUser, userGoal }) {
     let { getComment, deleteComment } = useContext(CommentContext);
     const navigate = useNavigate();
 
-    // delete comment
     const handleDelete = (commentId) => {
         // user confirmation to prevent accidental deleting
         if (window.confirm('Are you sure you want to delete this comment?')) {

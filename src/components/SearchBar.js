@@ -2,22 +2,26 @@ import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../contexts/UserContext';
+import '../css/add-goal.css';
 import '../css/search-bar.css';
 
 const SearchBar = () => {
-    const { getUser } = useContext(UserContext); // function from provider
-    const [userSearched, setUserSearched] = useState(''); // state for the user that was searched for
+    const { getUser } = useContext(UserContext);
+    const [userSearched, setUserSearched] = useState('');
     const navigate = useNavigate();
 
-    async function handleSubmit(e) { // search box submission
+    async function handleSubmit(e) {
         e.preventDefault();
 
         try {
-            const result = await getUser(userSearched); // gets user - sets it to state variable
+            // gets user - sets it to state variable
+            const result = await getUser(userSearched);
 
-            if (userSearched === result.username) { // checks that the user that searched matches up to an existing username
-                navigate(`/profile-page/${userSearched}`); // navigates to that user's page if so
-            } else { // if teh username does not match an existing user
+            if (userSearched === result.username) {
+                // checks that the user that searched matches up to an existing username
+                navigate(`/profile-page/${userSearched}`);
+            } else {
+                // if the username does not match an existing user
                 window.alert(`That User Does Not Exist :(
 
 Make sure the spelling is correct :)`);
@@ -47,12 +51,12 @@ Make sure the spelling is correct :)`
                     <Button
                         variant="outline"
                         type="submit"
-                        className="search-btn"
+                        className="search-btn add-goal-buttons"
                     >
                         Search
                     </Button>
                     <Form.Control
-                        className='search-bar-input'
+                        className="search-bar-input"
                         type="search"
                         placeholder="Search Users"
                         value={userSearched}

@@ -6,14 +6,12 @@ import moment from 'moment';
 import { FaTrophy } from 'react-icons/fa';
 
 export function GoalList({ goals }) {
-    // const [showModal, setShowModal] = useState(false);
-
-    // Filter goals based on whether they are completed or not - Brad
+    // Filter goals based on whether they are completed or not
     const completedGoals = goals.filter((goal) => goal.completed);
     const incompleteGoals = goals.filter((goal) => !goal.completed);
 
-    let newCurrentDate = new Date(); // // creates a Date object
-    let currentDate = moment.utc(newCurrentDate).format('MM/DD/YYYY'); // sets the currentDate to the current date on the user's device - formats as string
+    let newCurrentDate = new Date();
+    let currentDate = moment.utc(newCurrentDate).format('MM/DD/YYYY');
 
     return (
         <div>
@@ -73,7 +71,8 @@ export function GoalList({ goals }) {
                                     );
                                 })}
                         </div>
-                    ) : ( // render if user has no goals in progress
+                    ) : (
+                        // render if user has no goals in progress
                         <div>
                             <h3 className="category">In Progress:</h3>
                             <p>No Goals In Progress</p>
@@ -83,8 +82,11 @@ export function GoalList({ goals }) {
                         <div>
                             <h3 className="category">Completed:</h3>
                             {completedGoals
-                                .sort((a, b) => // sorts goals based on createdAt property
-                                    b.createdAt.localeCompare(a.createdAt) // compares the createdAt dates for the goals in the array
+                                .sort(
+                                    (
+                                        a,
+                                        b // sorts goals based on createdAt property
+                                    ) => b.createdAt.localeCompare(a.createdAt) // compares the createdAt dates for the goals in the array
                                     //  the array is sorted in descending order based on the createdAt property,
                                 )
                                 .map((goal) => {
@@ -100,7 +102,7 @@ export function GoalList({ goals }) {
                                                 <div className="goal-title">
                                                     <FaTrophy />
                                                     <Link
-                                                        to={`/goals/detail/${goal.goalId}`} // link to GoalDetail of displayed goal
+                                                        to={`/goals/detail/${goal.goalId}`}
                                                     >
                                                         {goal.title}
                                                     </Link>
@@ -120,7 +122,8 @@ export function GoalList({ goals }) {
                                     );
                                 })}
                         </div>
-                    ) : ( // renders if user has no completed goals
+                    ) : (
+                        // renders if user has no completed goals
                         <div>
                             <h3 className="category">Completed:</h3>
                             <p>No Goals Completed</p>

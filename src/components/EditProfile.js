@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import '../css/edit-profile.css';
 
 const EditProfile = ({ show, close }) => {
-    const [user, setUser] = useState({ // state varaible for user to be updated
+    const [user, setUser] = useState({
         firstName: '',
         lastName: '',
         age: '',
@@ -14,26 +14,30 @@ const EditProfile = ({ show, close }) => {
         bio: '',
     });
 
-    const [currentUser, setCurrentUser] = useState(''); // state varaible for currentUser that is logged in
+    const [currentUser, setCurrentUser] = useState('');
 
-    function isLoggedIn() { // function that verifies if a user is logged in
-        let user = localStorage.getItem('myUsername'); // gets token verification
-        setCurrentUser(user); // current user state variable is set by the user that is fetched
+    // function that verifies if a user is logged in
+    // current user state variable is set by the user that is fetched
+    function isLoggedIn() {
+        let user = localStorage.getItem('myUsername');
+        setCurrentUser(user);
     }
 
-    let { getUser, updateUser } = useContext(UserContext); // provider functions from context
+    let { getUser, updateUser } = useContext(UserContext);
     let navigate = useNavigate();
 
+    // fetches current user and sets them as the state for the user variable
     useEffect(() => {
         async function fetch() {
-            await getUser(currentUser).then((user) => setUser(user)); // fetches current user and sets them as the state for the user variable
+            await getUser(currentUser).then((user) => setUser(user));
         }
         isLoggedIn();
         fetch();
-    }, [getUser, currentUser]); // getUser function and a current user as arguments
+    }, [getUser, currentUser]);
 
-    function handleChange(event) { // triggers when inputs are changed.
-        setUser((prevValue) => { // creates a new object by spreading the properties of the previous user state value (prevValue) and adding a new property.
+    // creates a new object by spreading the properties of the previous user state value (prevValue) and adding a new property.
+    function handleChange(event) {
+        setUser((prevValue) => {
             return { ...prevValue, [event.target.name]: event.target.value };
         });
     }
