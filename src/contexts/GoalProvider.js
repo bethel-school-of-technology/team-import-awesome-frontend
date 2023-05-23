@@ -3,49 +3,44 @@ import axios from 'axios';
 import GoalContext from './GoalContext.js';
 
 export const GoalProvider = (props) => {
-    const [goals, setGoals] = useState([]); // set state variable of goal
-    const baseUrl = 'http://localhost:3000/goals/'; // the baseURL used for the axios calls
+    const [goals, setGoals] = useState([]);
+    const baseUrl = 'http://localhost:3000/goals/';
 
+    // once the component is mounted - executes getAllGoals only when necessary
+    // fetches goal data
     useEffect(() => {
-        // once the component is mounted - executes getAllGoals only when necessary
         async function fetchData() {
-            // fetches goal data
             await getUserGoals();
         }
         fetchData();
     }, []);
-
-    // function getAllGoals() {
-    //     // retrieve all goals
-    //     return axios.get(baseUrl).then((response) => setGoals(response.data));
-    // }
 
     async function getUserGoals(username) {
         const response = await axios.get(`${baseUrl}${username}`);
         return setGoals(response.data);
     }
 
+    // retrieve goal by id
     async function getGoal(id) {
-        // retrieve goal by id
         const response = await axios.get(`${baseUrl}detail/${id}`);
         return await new Promise((resolve) => resolve(response.data));
     }
 
+    // creates new goal using token
     async function addGoal(newGoal) {
-        // authenticate user to create a goal
         let myHeaders = {
             Authorization: `Bearer ${localStorage.getItem('myToken')}`,
         };
 
         const response = await axios.post(baseUrl, newGoal, {
             headers: myHeaders,
-        }); // creates new goal using token
+        });
         getUserGoals();
         return await new Promise((resolve) => resolve(response.data));
     }
 
+    // updates goal
     async function editGoal(goal) {
-        // authenticate user to edit a goal
         let myHeaders = {
             Authorization: `Bearer ${localStorage.getItem('myToken')}`,
         };
@@ -57,13 +52,13 @@ export const GoalProvider = (props) => {
                 headers: myHeaders,
             }
         );
-        // updates goal
+
         getUserGoals();
         return await new Promise((resolve) => resolve(response.data));
     }
 
+    // deletes goal using token
     async function deleteGoal(id) {
-        // authenticate user to delete a goal
         let myHeaders = {
             Authorization: `Bearer ${localStorage.getItem('myToken')}`,
         };
@@ -71,7 +66,7 @@ export const GoalProvider = (props) => {
         const response = await axios.delete(`${baseUrl}detail/${id}`, {
             headers: myHeaders,
         });
-        // deletes goal using token - maybe add a check if username matches goal?
+
         getUserGoals();
         return await new Promise((resolve) => resolve(response.data));
     }
@@ -80,7 +75,6 @@ export const GoalProvider = (props) => {
         <GoalContext.Provider
             value={{
                 goals,
-                // getAllGoals,
                 getGoal,
                 addGoal,
                 editGoal,

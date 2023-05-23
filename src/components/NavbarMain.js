@@ -8,26 +8,28 @@ import SearchBar from './SearchBar';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
 const NavbarMain = () => {
-    let { logOutUser } = useContext(UserContext); // logOutUser function pulled from context
+    let { logOutUser } = useContext(UserContext);
 
     const navigate = useNavigate();
 
-    const [user, setUser] = useState(); // user state variable
+    const [user, setUser] = useState();
 
-    function isSignedIn() { // verifies if user is signed in
-        let user = localStorage.getItem('myUsername'); // token for verification
-        setUser(user); // user state is set to the user that is signed in
+    // verifies if user is signed in
+    function isSignedIn() {
+        let user = localStorage.getItem('myUsername');
+        setUser(user);
     }
 
+    // auto signs out when session expires
     useEffect(() => {
-        function autoSignOut() { // auto signs out when session expires
+        function autoSignOut() {
             setTimeout(() => {
                 navigate('/signIn');
                 window.alert('Session Expired: Please Sign In');
                 logOutUser();
 
                 return () => clearTimeout(autoSignOut);
-            }, 3600000); // milliseconds = 1hr
+            }, 3600000); // 1hr
         }
         isSignedIn();
         autoSignOut();
@@ -75,9 +77,9 @@ const NavbarMain = () => {
                             <NavDropdown
                                 title={`Welcome, ${user}`}
                                 id="basic-nav-dropdown"
-                                className='nav-dropdown'
+                                className="nav-dropdown"
                             >
-                                <NavDropdown.Item className='nav-dropdown'>
+                                <NavDropdown.Item className="nav-dropdown">
                                     <Link
                                         to={`/profile-page/${user}`}
                                         style={{ color: 'black' }}
@@ -86,7 +88,7 @@ const NavbarMain = () => {
                                     </Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item
-                                    className='nav-dropdown'
+                                    className="nav-dropdown"
                                     onClick={() => {
                                         navigate('/signIn');
                                         logOutUser();
@@ -96,7 +98,7 @@ const NavbarMain = () => {
                                 </NavDropdown.Item>
                             </NavDropdown>
                         ) : (
-                            <>
+                            <div className="signIn-register">
                                 <Nav.Link style={{ marginLeft: '5px' }}>
                                     <Link
                                         className="sign-in-nav-link"
@@ -114,7 +116,7 @@ const NavbarMain = () => {
                                         Register
                                     </Link>
                                 </Nav.Link>
-                            </>
+                            </div>
                         )}
                     </Nav>
                 </Navbar.Collapse>

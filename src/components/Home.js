@@ -4,29 +4,37 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const Home = () => {
-    const [quotes, setQuotes] = useState([]); // quotes state variable
-    const [currentQuote, setCurrentQuote] = useState(''); // current quote being used state variable
-    const [currentAuthor, setCurrentAuthor] = useState(''); // author of quote state
+    const [quotes, setQuotes] = useState([]);
+    const [currentQuote, setCurrentQuote] = useState('');
+    const [currentAuthor, setCurrentAuthor] = useState('');
 
+    // quotes api
+    // randomly selects a quote from the api
+    // text in the quote set to current quote state
+    // author of quote set to current author state
     useEffect(() => {
         axios
-            .get('https://type.fit/api/quotes') // quotes api
+            .get('https://type.fit/api/quotes')
             .then((response) => {
                 const data = response.data;
                 setQuotes(data);
-                const randomIndex = Math.floor(Math.random() * data.length); // randomly selects a quote from the api
-                setCurrentQuote(data[randomIndex].text); // text in the quote set to current quote state
-                setCurrentAuthor(data[randomIndex].author); // author of quote set to current author state
+                const randomIndex = Math.floor(Math.random() * data.length);
+                setCurrentQuote(data[randomIndex].text);
+                setCurrentAuthor(data[randomIndex].author);
             })
             .catch((error) => console.log(error));
     }, []);
 
-    useEffect(() => { // this useEffect triggers whenever the quote state variable changes
-        const interval = setInterval(() => { // interval for how long carousel displays image
-            const randomIndex = Math.floor(Math.random() * quotes.length); // randomly selects a quote each interval
-            setCurrentQuote(quotes[randomIndex].text); // updates state based on quote
-            setCurrentAuthor(quotes[randomIndex].author); // updates state based on author
-        }, 10000); // every 10 seconds
+    // 10 second interval for how long carousel displays image
+    // randomly selects a quote each interval
+    // updates state based on quote
+    // updates state based on author
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            setCurrentQuote(quotes[randomIndex].text);
+            setCurrentAuthor(quotes[randomIndex].author);
+        }, 10000);
         return () => clearInterval(interval);
     }, [quotes]);
 

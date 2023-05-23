@@ -13,6 +13,11 @@
     font-weight: bold;
 }
 
+.signIn-register {
+    display: flex;
+    width: max-content;
+}
+
 .about{
     margin-right: 50rem;
 }

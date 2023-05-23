@@ -14,20 +14,21 @@ import { Container, Row, Col } from 'react-bootstrap';
 import moment from 'moment';
 
 const ProfilePage = () => {
-    let { getUser } = useContext(UserContext); // function from context
+    let { getUser } = useContext(UserContext);
     let { username } = useParams();
     const navigate = useNavigate();
 
-    const [currentUser, setCurrentUser] = useState(); // current User state
-    const [showModal, setShowModal] = useState(false); // displays modal when editing
-    const [showAddGoalModal, setShowAddGoalModal] = useState(false); // displays Modal when adding a goal
+    const [currentUser, setCurrentUser] = useState();
+    const [showModal, setShowModal] = useState(false);
+    const [showAddGoalModal, setShowAddGoalModal] = useState(false);
 
-    function isLoggedIn() { // verifies user logged in with token
+    // verifies user logged in with token
+    function isLoggedIn() {
         let loggedUser = localStorage.getItem('myUsername');
-        setCurrentUser(loggedUser); // sets that logged user to the currentUser state
+        setCurrentUser(loggedUser);
     }
 
-    const [user, setUser] = useState({ // state variable for user that the profile page belongs to
+    const [user, setUser] = useState({
         username: '',
         email: '',
         firstName: '',
@@ -38,11 +39,13 @@ const ProfilePage = () => {
         Goals: [],
     });
 
+    // fetches user by username param
+    // user found is set to the state variable
     useEffect(() => {
         async function fetchData() {
-            await getUser(username) // fetches user by username param
+            await getUser(username)
                 .then((user) => {
-                    setUser(user); // user found is set to the state variable
+                    setUser(user);
                 })
                 .catch((error) => {
                     console.log(error);
@@ -61,7 +64,7 @@ const ProfilePage = () => {
         );
     }
 
-    let userJoined = moment.utc(user.createdAt).format('MM/DD/YYYY'); // date that the user joined
+    let userJoined = moment.utc(user.createdAt).format('MM/DD/YYYY');
 
     function profile() {
         return (
@@ -130,7 +133,7 @@ const ProfilePage = () => {
                                                 </div>
                                                 <Col xxlg={1}>
                                                     <Button
-                                                        className="edit-goal-buttons"
+                                                        className="add-goal-buttons"
                                                         variant="outline"
                                                         onClick={() =>
                                                             setShowModal(true)
@@ -154,7 +157,7 @@ const ProfilePage = () => {
                                                 <div
                                                     style={{ display: 'none' }}
                                                 >
-                                                    <AddGoal // renders AddGoal component for the modal
+                                                    <AddGoal
                                                         show={showAddGoalModal}
                                                         close={() =>
                                                             setShowAddGoalModal(
@@ -215,18 +218,19 @@ const ProfilePage = () => {
                 </div>
                 <br />
                 <center className="row profile-container">
-                    <GoalList // renders GoalList to display goals - passes goals as parameter for user.Goal object to this nested component
-                        goals={user.Goals} />
+                    <GoalList goals={user.Goals} />
                 </center>
             </div>
         );
     }
 
-    if (user === undefined) return loading(); // check if the user data is undefined - return a loading state if the user data is not available
-    return user.username !== username ? loading() : profile();
+    // check if the user data is undefined - return a loading state if the user data is not available
+    if (user === undefined) return loading();
+
     // Check if the username associated with the user does not match the provided username
     // Return a loading state if the usernames don't match
     // Return the user's profile if the usernames match
+    return user.username !== username ? loading() : profile();
 };
 
 export default ProfilePage;
