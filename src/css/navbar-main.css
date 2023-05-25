@@ -51,6 +51,7 @@ a:hover {
 
 
  @media screen and (max-width: 1750px){
+
     .about{
         margin-right: 48rem;
     }
@@ -110,5 +111,11 @@ a:hover {
     }
     .nav-main{
         font-size: 14px;
+    }
+} 
+
+@media screen and (max-width: 991px){
+    .signIn-register {
+        display: block;
     }
 } 
