@@ -110,6 +110,7 @@ const NavbarMain = () => {
                                 </Nav.Link>
                                 <Nav.Link>
                                     <Link
+                                        className="register-nav-link"
                                         to="/signUp"
                                         style={{ color: 'black' }}
                                     >
