@@ -11,7 +11,7 @@ export function GoalList({ goals }) {
     const incompleteGoals = goals.filter((goal) => !goal.completed);
 
     let newCurrentDate = new Date();
-    let currentDate = moment.utc(newCurrentDate).format('MM/DD/YYYY');
+    let currentDate = moment.utc(newCurrentDate).format('YYYY/MM/DD');
 
     return (
         <div>
@@ -26,15 +26,20 @@ export function GoalList({ goals }) {
                                     b.createdAt.localeCompare(a.createdAt)
                                 )
                                 .map((goal) => {
-                                    let startDate = moment
+                                    let userStartDate = moment
                                         .utc(goal.startDate)
                                         .format('MM/DD/YYYY');
-                                    let endDate = moment
+                                    let userEndDate = moment
                                         .utc(goal.endDate)
                                         .format('MM/DD/YYYY');
 
+                                    let endDate =
+                                        moment(userEndDate).format(
+                                            'YYYY/MM/DD'
+                                        );
+
                                     const timeRemaining =
-                                        moment(endDate).fromNow(true);
+                                        moment(userEndDate).fromNow(true);
                                     return (
                                         <div key={goal.goalId}>
                                             <Card className="goalItem incomplete">
@@ -47,11 +52,12 @@ export function GoalList({ goals }) {
                                                 </div>
                                                 <div>
                                                     <span>
-                                                        Start Date: {startDate}
+                                                        Start Date:{' '}
+                                                        {userStartDate}
                                                     </span>{' '}
                                                     -{' '}
                                                     <span>
-                                                        End Date: {endDate}
+                                                        End Date: {userEndDate}
                                                     </span>
                                                     <br />
                                                     {currentDate > endDate ? (
