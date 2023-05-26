@@ -37,8 +37,6 @@ function GoalDetail() {
         async function fetchData() {
             await getGoal(id)
                 .then((goal) => {
-                    console.log(goal);
-                    console.log(id);
                     setUserGoal(goal);
                 })
                 .catch((error) => {
@@ -73,22 +71,26 @@ function GoalDetail() {
     };
 
     // goal start date formatted to a readable date format
-    let startDate = moment.utc(userGoal.startDate).format('MM/DD/YYYY');
+    let userStartDate = moment.utc(userGoal.startDate).format('MM/DD/YYYY');
     // goal end date formatted to a readable date format
-    let endDate = moment.utc(userGoal.endDate).format('MM/DD/YYYY');
+    let userEndDate = moment.utc(userGoal.endDate).format('MM/DD/YYYY');
+
+    let startDate = moment(userStartDate).format('YYYY/MM/DD');
+    let endDate = moment(userEndDate).format('YYYY/MM/DD');
 
     // amount of time that the user has left until the end date is reached
     const timeRemaining = moment(endDate).fromNow(true);
 
     // sets the currentDate to the current date on the user's device
     let newCurrentDate = new Date();
-    let currentDate = moment.utc(newCurrentDate).format('MM/DD/YYYY');
+    let currentDate = moment.utc(newCurrentDate).format('YYYY/MM/DD');
 
     let moment1 = moment(startDate);
     let moment2 = moment(endDate);
+    let moment3 = moment(currentDate);
 
     // calculates the difference in seconds between endDate and currentDate
-    let remainingTime = moment2.diff(currentDate, 'seconds', true);
+    let remainingTime = moment2.diff(moment3, 'seconds', true);
 
     //  calculates the difference in seconds between endDate and startDate
     let totalTime = moment2.diff(moment1, 'seconds', true);
@@ -149,11 +151,11 @@ function GoalDetail() {
 
                                 <div>
                                     <b>Start Date: </b>
-                                    {startDate}
+                                    {userStartDate}
                                 </div>
                                 <div>
                                     <b>End Date: </b>
-                                    {endDate}
+                                    {userEndDate}
                                 </div>
                                 {currentDate > endDate ? (
                                     <div>
