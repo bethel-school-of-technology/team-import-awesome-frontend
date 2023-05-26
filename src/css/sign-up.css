@@ -88,7 +88,7 @@ div.register-photo .image-holder {
 
   .form-container {
     width: 60%;
-    margin: 5% 0% 25% 30%;
+    margin: 5% 25% 25% 25%;
   }
 
   .registration-logo {
@@ -113,5 +113,22 @@ div.register-photo .image-holder {
   .register-photo .register-form .already {
     font-size: 15px;
     padding: 0;
+  }
+}
+@media screen and (max-width: 720px) {
+  .registration-logo {
+    width: 60%;
+    margin: 15% 15%  15%  15%;
+  }
+  h1.text-create {
+    color: #4A707A;
+    font-size: 250%;
+    text-align: center;
+    margin-top: 0px;
+  }
+
+  .form-container {
+    width: 100%;
+    margin: 5% 0 0% 0%;
   }
 }
